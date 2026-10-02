@@ -6,11 +6,11 @@ export const NAV = [
   { label: 'Inicio', path: '/', mobileOnly: true },
   { label: 'Fisioterapia invasiva', path: '/fisioterapia-invasiva-ecoguiada/' },
   { label: 'Tratamientos', path: '/tratamientos/' },
-  { label: 'Lesiones', path: '/lesiones/' },
-  { label: 'Sobre mí', path: '/sobre-mi/' },
+  { label: 'Patologías', path: '/lesiones/' },
+  { label: 'Metodología', path: '/sobre-mi/' },
   { label: 'Preguntas frecuentes', path: '/preguntas-frecuentes/' },
-  { label: 'Blog', path: '/blog/' },
   { label: 'Contacto', path: '/contacto/' },
+  { label: 'Blog', path: '/blog/' },
 ];
 
 export const brandMark = (cls = 'brand-mark') => `<svg class="${cls}" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect width="40" height="40" rx="11" fill="#2a2d31"/><path d="M8.5 15.5a16 16 0 0 1 23 0L25 31h-10z" fill="#7a8087" opacity=".28"/><path d="M8.5 15.5a16 16 0 0 1 23 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M12 24c2.7-1.3 5.3-1.3 8 0s5.3 1.3 8 0" fill="none" stroke="#c9ccd0" stroke-width="1.6" stroke-linecap="round"/><path d="m27.5 9-8 17" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="19.5" cy="26" r="1.8" fill="#d6d9dc"/></svg>`;
