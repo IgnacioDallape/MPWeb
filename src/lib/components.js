@@ -56,7 +56,7 @@ export function ctaInline({ waMessage, title = '¿Querés saber si este abordaje
 
 export function ctaBand({ waMessage, title = 'Primero, una evaluación. Después, el plan.', text = 'Cada tratamiento comienza con una valoración clínica y ecográfica. Si una técnica invasiva no es la mejor opción para tu caso, te lo vamos a decir.', heading = 'h2' } = {}) {
   return `<section class="section" aria-labelledby="cta-final"><div class="container"><div class="cta-band">
-<p class="eyebrow" style="color:#7fe0d6">Turnos en {{CIUDAD}}</p>
+<p class="eyebrow" style="color:#d6d9dc">Turnos en {{CIUDAD}}</p>
 <${heading} id="cta-final">${esc(title)}</${heading}>
 <p>${esc(text)}</p>
 <div class="btn-row"><a class="btn btn-light" href="${esc(waLink(waMessage))}">${icon('whatsapp', { size: 20 })}Hablar por WhatsApp</a><a class="btn btn-ghost" href="/contacto/">Reservar turno${icon('arrow', { size: 18 })}</a></div>

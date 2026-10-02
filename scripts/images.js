@@ -14,21 +14,21 @@ mkdirSync(out, { recursive: true });
 
 // ---------- Íconos
 const fav = readFileSync(resolve(root, 'public/favicon.svg'));
-await sharp(fav, { density: 1200 }).resize(180, 180).flatten({ background: '#0d4a5a' }).png().toFile(resolve(root, 'public/apple-touch-icon.png'));
+await sharp(fav, { density: 1200 }).resize(180, 180).flatten({ background: '#2a2d31' }).png().toFile(resolve(root, 'public/apple-touch-icon.png'));
 for (const s of [192, 512]) await sharp(fav, { density: 1200 }).resize(s, s).png().toFile(join(out, `icon-${s}.png`));
 
 // ---------- Open Graph 1200x630
 const { ultrasoundHero } = await import(pathToFileURL(resolve(root, 'src/lib/visuals.js')).href);
 const hero = ultrasoundHero().replace('<svg ', '<svg x="640" y="80" width="520" height="470" ');
 const og = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-<rect width="1200" height="630" fill="#f8f8f5"/>
+<rect width="1200" height="630" fill="#fafafa"/>
 <rect x="0" y="0" width="1200" height="630" fill="url(#g)"/>
-<defs><radialGradient id="g" cx=".85" cy=".2" r=".6"><stop offset="0" stop-color="#1f9e93" stop-opacity=".14"/><stop offset="1" stop-color="#1f9e93" stop-opacity="0"/></radialGradient></defs>
-<rect x="72" y="96" width="44" height="44" rx="12" fill="#0d4a5a"/>
-<text x="72" y="210" font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="#1f9e93">KINESIOLOGÍA · ECOGRAFÍA · REHABILITACIÓN</text>
-<text font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="64" font-weight="800" fill="#182023"><tspan x="72" y="300">Fisioterapia</tspan><tspan x="72" y="374">Invasiva</tspan><tspan x="72" y="448" fill="#0d4a5a">Ecoguiada</tspan></text>
-<text x="72" y="520" font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#5a666b">EPI · Neuromodulación · MEP · Punción seca</text>
-<rect x="620" y="60" width="560" height="510" rx="32" fill="#11191c"/>
+<defs><radialGradient id="g" cx=".85" cy=".2" r=".6"><stop offset="0" stop-color="#7a8087" stop-opacity=".14"/><stop offset="1" stop-color="#7a8087" stop-opacity="0"/></radialGradient></defs>
+<rect x="72" y="96" width="44" height="44" rx="12" fill="#2a2d31"/>
+<text x="72" y="210" font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="#7a8087">KINESIOLOGÍA · ECOGRAFÍA · REHABILITACIÓN</text>
+<text font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="64" font-weight="800" fill="#1c1e21"><tspan x="72" y="300">Fisioterapia</tspan><tspan x="72" y="374">Invasiva</tspan><tspan x="72" y="448" fill="#2a2d31">Ecoguiada</tspan></text>
+<text x="72" y="520" font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#61666c">EPI · Neuromodulación · MEP · Punción seca</text>
+<rect x="620" y="60" width="560" height="510" rx="32" fill="#151719"/>
 ${hero}
 </svg>`;
 await sharp(Buffer.from(og)).jpeg({ quality: 84, mozjpeg: true }).toFile(join(out, 'og-default.jpg'));

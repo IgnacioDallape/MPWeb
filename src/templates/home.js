@@ -2,7 +2,7 @@ import { config, esc, waLink, known } from '../lib/site.js';
 import { icon } from '../lib/icons.js';
 import { ultrasoundHero, layersFigure } from '../lib/visuals.js';
 import { ctaButtons, faqList, picture } from '../lib/components.js';
-import { CATEGORIES, treatmentCard, postCard } from './detail.js';
+import { CATEGORIES, treatmentCard } from './detail.js';
 import * as S from '../lib/schema.js';
 
 const HOME_FAQS = [
@@ -68,7 +68,7 @@ export function homePage(ctx) {
 <section class="section" aria-labelledby="que-es">
   <div class="container split">
     <div>
-      <p class="eyebrow">La especialidad</p>
+      <p class="eyebrow">Descripción</p>
       <h2 id="que-es">Precisión sobre el tejido que origina el problema</h2>
       <p>La <strong>fisioterapia invasiva ecoguiada</strong> engloba tratamientos que utilizan agujas ultrafinas para actuar directamente sobre la estructura afectada, siempre guiados por ecografía. Permite tratar de forma precisa lesiones tendinosas, musculares, ligamentarias y estructuras relacionadas con el sistema nervioso periférico.</p>
       <p>Tras una evaluación y anamnesis completa se identifica la estructura implicada y se determina el tratamiento más adecuado. Estas intervenciones forman parte de un abordaje integral que se complementa con readaptación, ejercicio terapéutico y cargas progresivas.</p>
@@ -115,8 +115,8 @@ export function homePage(ctx) {
 <section class="section section-alt" aria-labelledby="lesiones">
   <div class="container">
     <div class="section-head">
-      <p class="eyebrow">Lesiones</p>
-      <h2 id="lesiones">¿Qué lesiones pueden abordarse?</h2>
+      <p class="eyebrow">Patologías</p>
+      <h2 id="lesiones">¿Qué lesiones y patologías pueden abordarse?</h2>
       <p class="lead">Lesiones deportivas y del día a día en las que la fisioterapia invasiva ecoguiada puede formar parte del plan.</p>
     </div>
     <div class="cat-grid">
@@ -134,7 +134,7 @@ export function homePage(ctx) {
 <section class="section" aria-labelledby="proceso">
   <div class="container">
     <div class="section-head">
-      <p class="eyebrow">Cómo trabajamos</p>
+      <p class="eyebrow">Metodología</p>
       <h2 id="proceso">Primero se evalúa. Después se decide.</h2>
       <p class="lead">Ninguna técnica se aplica sin entender antes qué le pasa a tu tejido y qué necesitás recuperar.</p>
     </div>
@@ -152,7 +152,7 @@ export function homePage(ctx) {
     <div class="pro">
       <div class="pro-photo">${picture('profesional', `${p.name}, especialista en fisioterapia invasiva ecoguiada, realizando una ecografía`, { sizes: '(min-width: 900px) 300px, 100vw' }) || '<span>[PENDIENTE: foto profesional realizando una ecografía]</span>'}</div>
       <div>
-        <p class="eyebrow">Profesional</p>
+        <p class="eyebrow">Metodología · Profesional</p>
         <h2 id="profesional">${esc(p.name)}</h2>
         <p class="lead">${esc(p.title)} con formación específica en ecografía musculoesquelética y fisioterapia invasiva.</p>
         <dl>
@@ -170,37 +170,28 @@ export function homePage(ctx) {
 <section class="section" aria-labelledby="faq-home">
   <div class="container split" style="align-items:start">
     <div>
-      <p class="eyebrow">Preguntas frecuentes</p>
+      <p class="eyebrow">Preguntas frecuentes y datos</p>
       <h2 id="faq-home">Lo que más se consulta antes de empezar</h2>
       <p class="lead">Respuestas claras sobre cómo es el tratamiento, qué se siente y qué esperar.</p>
       <a class="btn btn-ghost" href="/preguntas-frecuentes/">Ver todas las preguntas${icon('arrow', { size: 18 })}</a>
+      <h3 style="margin-top:36px;font-size:1rem">Para profundizar</h3>
+      <ul class="checklist">${ctx.homePosts.map((p) => `<li>${icon('book')}<a href="/blog/${p.slug}/">${esc(p.h1)}</a></li>`).join('')}</ul>
     </div>
     ${faqList(HOME_FAQS)}
   </div>
 </section>
 
-<section class="section section-alt" aria-labelledby="blog">
-  <div class="container">
-    <div class="section-head">
-      <p class="eyebrow">Blog</p>
-      <h2 id="blog">Para entender tu lesión</h2>
-    </div>
-    <div class="grid grid-3">${ctx.homePosts.map(postCard).join('')}</div>
-    <p style="margin-top:24px"><a href="/blog/">Ver todos los artículos</a></p>
-  </div>
-</section>
-
-<section class="section" aria-labelledby="contacto-home">
+<section class="section" style="padding-top:0" aria-labelledby="contacto-home">
   <div class="container">
     <div class="cta-band">
       <div class="contact-grid" style="align-items:center">
         <div>
-          <p class="eyebrow" style="color:#7fe0d6">Turnos en {{CIUDAD}}</p>
+          <p class="eyebrow" style="color:#d6d9dc">Turnos en {{CIUDAD}}</p>
           <h2 id="contacto-home">Solicitá tu evaluación</h2>
           <p>Contanos brevemente qué te pasa y coordinamos una primera consulta de evaluación clínica y ecográfica.</p>
           <div class="btn-row"><a class="btn btn-light" href="${esc(waLink(wa))}">${icon('whatsapp', { size: 20 })}Hablar por WhatsApp</a><a class="btn btn-ghost" href="/contacto/">Ver dirección y horarios${icon('arrow', { size: 18 })}</a></div>
         </div>
-        <address class="footer-nap" style="font-style:normal;color:#e6f0f1">
+        <address class="footer-nap" style="font-style:normal;color:#e8eaec">
           <span>${icon('pin')}<span><strong>${esc(known(b.name) ? b.name : p.name)}</strong><br>${esc(b.address)}, ${esc(b.city)}, ${esc(b.province)}</span></span>
           <span>${icon('whatsapp')}<span>${esc(config.contact.phoneDisplay)}</span></span>
           <span>${icon('clock')}<span>${esc(config.hoursText)}</span></span>
