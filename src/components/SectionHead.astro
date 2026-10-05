@@ -1,0 +1,9 @@
+---
+interface Props { eyebrow?: string; title: string; id: string; lead?: string; center?: boolean; tag?: 'h2' | 'h3' }
+const { eyebrow, title, id, lead, center = false, tag: Tag = 'h2' } = Astro.props;
+---
+<div class:list={['mb-12 max-w-3xl md:mb-16', center && 'mx-auto text-center']} data-reveal>
+  {eyebrow && <p class="eyebrow mb-4">{eyebrow}</p>}
+  <Tag id={id} class="text-[clamp(2rem,4.4vw,3.3rem)] leading-[1.04] font-semibold"><Fragment set:html={title} /></Tag>
+  {lead && <p class="mt-5 text-[clamp(1.05rem,1.8vw,1.22rem)] leading-relaxed opacity-75">{lead}</p>}
+</div>

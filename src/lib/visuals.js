@@ -23,11 +23,12 @@ export function ultrasoundHero() {
   <clipPath id="us-clip"><rect x="36" y="58" width="404" height="376" rx="6"/></clipPath>
   <linearGradient id="us-depth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#45484b"/><stop offset=".35" stop-color="#1d1f21"/><stop offset="1" stop-color="#0e0f10"/></linearGradient>
   <radialGradient id="us-lesion" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#050505" stop-opacity=".95"/><stop offset=".7" stop-color="#0b0c0d" stop-opacity=".7"/><stop offset="1" stop-color="#0b0c0d" stop-opacity="0"/></radialGradient>
-  <radialGradient id="us-tip" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#d6d9dc" stop-opacity=".9"/><stop offset="1" stop-color="#d6d9dc" stop-opacity="0"/></radialGradient>
+  <radialGradient id="us-tip" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#a9c7ff" stop-opacity=".9"/><stop offset="1" stop-color="#a9c7ff" stop-opacity="0"/></radialGradient>
   <linearGradient id="us-shadow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".85"/><stop offset="1" stop-color="#000" stop-opacity=".98"/></linearGradient>
   <filter id="us-speckle" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 .85  0 0 0 0 .9  0 0 0 0 .9  0 0 0 1.1 -.42"/></filter>
+  <linearGradient id="us-sweep" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9c7ff" stop-opacity="0"/><stop offset="1" stop-color="#a9c7ff" stop-opacity=".18"/></linearGradient>
 </defs>
-<rect width="560" height="470" fill="#151719"/>
+<rect width="560" height="470" fill="#071024"/>
 <g font-family="Manrope, system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2" fill="#8a8e92">
   <text x="36" y="38">LINEAL 12 MHz · MSK</text>
   <text x="440" y="38" text-anchor="end" fill="#d6d9dc">● GUÍA EN TIEMPO REAL</text>
@@ -43,9 +44,10 @@ export function ultrasoundHero() {
   <path d="M36 372 C 140 352, 300 350, 440 366" stroke="#f5f6f7" stroke-opacity=".9" stroke-width="5" fill="none"/>
   <path d="M36 372 C 140 352, 300 350, 440 366 L 440 434 L 36 434 Z" fill="url(#us-shadow)"/>
   <rect x="36" y="58" width="404" height="376" filter="url(#us-speckle)" opacity=".55"/>
-  <line x1="44" y1="66" x2="284" y2="224" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
+  <line data-needle x1="44" y1="66" x2="284" y2="224" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
   <line x1="44" y1="74" x2="276" y2="226" stroke="#ffffff" stroke-opacity=".18" stroke-width="1.5"/>
-  <circle cx="285" cy="225" r="16" fill="url(#us-tip)"/>
+  <circle data-tip cx="285" cy="225" r="16" fill="url(#us-tip)"/>
+  <rect data-sweep x="36" y="0" width="404" height="40" fill="url(#us-sweep)"/>
 </g>
 <rect x="36" y="58" width="404" height="376" rx="6" fill="none" stroke="#33363a"/>
 <g stroke="#6e7276" stroke-width="1">
@@ -55,12 +57,12 @@ export function ultrasoundHero() {
   <text x="470" y="69">0</text><text x="470" y="159">1</text><text x="470" y="249">2</text><text x="470" y="339">3</text><text x="470" y="429">4 cm</text>
 </g>
 <g font-family="Manrope, system-ui, sans-serif" font-size="12" font-weight="700">
-  <g fill="#d9dcdf"><text x="150" y="112">Aguja</text></g>
+  <g data-us-label fill="#d9dcdf"><text x="150" y="112">Aguja</text></g>
   <line x1="148" y1="116" x2="128" y2="122" stroke="#d9dcdf" stroke-opacity=".6"/>
-  <g fill="#d9dcdf"><text x="350" y="208">Tendón</text></g>
-  <g fill="#d6d9dc"><text x="230" y="300">Zona a tratar</text></g>
+  <g data-us-label fill="#d9dcdf"><text x="350" y="208">Tendón</text></g>
+  <g data-us-label fill="#a9c7ff"><text x="230" y="300">Zona a tratar</text></g>
   <line x1="268" y1="288" x2="284" y2="252" stroke="#d6d9dc" stroke-opacity=".7"/>
-  <g fill="#a7abaf"><text x="60" y="398">Superficie ósea</text></g>
+  <g data-us-label fill="#a7abaf"><text x="60" y="398">Superficie ósea</text></g>
 </g>
 </svg>`;
 }

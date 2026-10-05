@@ -1,0 +1,130 @@
+---
+// Plantilla compartida: tratamiento, lesión o artículo.
+import Base from '../layouts/Base.astro';
+import PageHero from './PageHero.astro';
+import Icon from './Icon.astro';
+import Toc from './Toc.astro';
+import Faq from './Faq.astro';
+import Reviewed from './Reviewed.astro';
+import Related from './Related.astro';
+import Cards from './Cards.astro';
+import CtaBand from './CtaBand.astro';
+import CertRow from './CertRow.astro';
+import { markdown, wordCount } from '../lib/md.js';
+import { config, waLink, formatDate, abs, tokens } from '../lib/site.js';
+import { ctaInline, TREATMENT_CERT } from '../lib/components.js';
+import { relatedOf, CATEGORIES } from '../data/index.js';
+import * as S from '../lib/schema.js';
+
+interface Props { item: any; kind: 'tratamientos' | 'lesiones' | 'blog' }
+const { item, kind } = Astro.props;
+
+const path = `/${kind}/${item.slug}/`;
+const { html, toc } = markdown(tokens(item.body));
+const waMessage = item.waMessage || `Hola, leí el artículo "${item.h1}" y quería hacer una consulta.`;
+const body = html.replace(/<p>\{\{CTA\}\}<\/p>/g, ctaInline({ waMessage }));
+const rel = relatedOf(kind, item.slug);
+const updated = item.updated || item.date;
+const published = item.date || config.launchDate;
+const p = config.professional;
+const crumbs = [
+  { name: 'Inicio', path: '/' },
+  { name: { tratamientos: 'Tratamientos', lesiones: 'Patologías', blog: 'Blog' }[kind], path: `/${kind}/` },
+  { name: item.name || item.h1, path },
+];
+const eyebrow = kind === 'tratamientos' ? 'Tratamiento ecoguiado' : kind === 'lesiones' ? CATEGORIES[item.category]?.label : item.category;
+const minutes = Math.max(3, Math.round(wordCount(item.body) / 210));
+const cert = kind === 'tratamientos' ? TREATMENT_CERT[item.slug] : undefined;
+const hasFaq = item.faqs?.length > 0;
+const tocItems = [...toc, ...(hasFaq ? [{ id: 'preguntas-frecuentes', text: 'Preguntas frecuentes' }] : [])];
+
+const schema: object[] = [S.breadcrumbs(crumbs)];
+if (kind === 'tratamientos') {
+  schema.push(S.procedure(path, item.procedure));
+  schema.push(S.webPage({ path, title: item.h1, description: item.description, updated, published, medical: true, about: { '@id': abs(path + '#procedimiento') } }));
+} else if (kind === 'lesiones') {
+  schema.push(S.condition(path, item.condition, rel.tratamientos.map((t) => `/tratamientos/${t.slug}/`)));
+  schema.push(S.webPage({ path, title: item.h1, description: item.description, updated, published, medical: true, about: { '@id': abs(path + '#condicion') } }));
+} else {
+  schema.push(S.article(path, item, abs('/img/og-default.jpg')));
+  schema.push(S.webPage({ path, title: item.h1, description: item.description, updated, published, medical: true }));
+}
+if (hasFaq) schema.push(S.faqPage(path, item.faqs));
+---
+<Base
+  title={item.title}
+  description={item.description}
+  schema={schema}
+  ogType={kind === 'blog' ? 'article' : 'website'}
+  waMessage={waMessage}
+  published={kind === 'blog' ? published : undefined}
+  updated={updated}
+>
+  <PageHero crumbs={crumbs} eyebrow={eyebrow} h1={item.h1} lead={item.lead} facts={item.facts}>
+    {kind === 'blog' ? (
+      <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.86rem] text-white/55">
+        <span class="flex items-center gap-2"><Icon name="user" size={16} class="text-ice-400" />Por <a href="/sobre-mi/" class="text-white/85">{p.name}</a></span>
+        <span class="flex items-center gap-2"><Icon name="calendar" size={16} class="text-ice-400" /><time datetime={published}>{formatDate(published)}</time></span>
+        {updated !== published && <span>Actualizado: <time datetime={updated}>{formatDate(updated)}</time></span>}
+        <span class="flex items-center gap-2"><Icon name="clock" size={16} class="text-ice-400" />{minutes} min de lectura</span>
+      </p>
+    ) : (
+      <>
+        <div class="mt-9 flex flex-wrap gap-3">
+          <a href={waLink(waMessage)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />{kind === 'lesiones' ? 'Consultar por mi lesión' : 'Solicitar una evaluación'}</a>
+          <a href={kind === 'lesiones' ? '#tratamientos-relacionados' : '#lesiones-relacionadas'} class="btn btn-outline-dark">{kind === 'lesiones' ? 'Ver tratamientos' : 'Ver lesiones que aborda'}<Icon name="arrow" size={18} /></a>
+        </div>
+        <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.86rem] text-white/55">
+          <span class="flex items-center gap-2"><Icon name="shield" size={16} class="text-ice-400" />Revisado por {p.name} · Mat. {p.license}</span>
+          <span class="flex items-center gap-2"><Icon name="calendar" size={16} class="text-ice-400" />Actualizado: <time datetime={updated}>{formatDate(updated)}</time></span>
+        </p>
+        {cert && <CertRow cert={cert} dark />}
+      </>
+    )}
+  </PageHero>
+
+  <div class="mx-auto grid max-w-[1240px] gap-10 px-5 py-14 sm:px-8 md:py-20 lg:grid-cols-[minmax(0,1fr)_290px] lg:gap-16">
+    <aside class="grid content-start gap-4 lg:sticky lg:top-28 lg:order-2 lg:self-start">
+      <Toc items={tocItems} />
+      <div class="on-dark relative hidden overflow-hidden rounded-2xl bg-navy-950 p-5 text-[0.9rem] text-white/65 lg:block">
+        <div class="glow -top-20 -right-20 size-56 opacity-60" aria-hidden="true"></div>
+        <strong class="relative mb-1.5 block font-display text-[1.02rem] text-white">Evaluación individual</strong>
+        <span class="relative">Antes de cualquier técnica se evalúa tu caso con exploración y ecografía.</span>
+        <a href={waLink(waMessage)} class="btn btn-glow btn-sm relative mt-4 w-full"><Icon name="whatsapp" size={18} />Consultar por WhatsApp</a>
+      </div>
+    </aside>
+    <article class="prose-site min-w-0">
+      <Fragment set:html={body} />
+      {hasFaq && (
+        <section aria-labelledby="preguntas-frecuentes" class="not-prose mt-16">
+          <h2 id="preguntas-frecuentes" class="mb-6 font-display text-[1.75rem] font-semibold tracking-tight text-navy-950">Preguntas frecuentes</h2>
+          <Faq faqs={item.faqs} />
+        </section>
+      )}
+      <Reviewed updated={updated} published={kind === 'blog' ? published : undefined} />
+    </article>
+  </div>
+
+  {kind === 'tratamientos' && (
+    <>
+      <Related id="lesiones-relacionadas" title="Lesiones en las que suele indicarse" intro="La indicación siempre depende de la evaluación individual." count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
+      <Related id="tratamientos-relacionados" title="Otras técnicas de fisioterapia invasiva ecoguiada" count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
+      <Related id="articulos-relacionados" title="Para profundizar" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
+    </>
+  )}
+  {kind === 'lesiones' && (
+    <>
+      <Related id="tratamientos-relacionados" title="Técnicas que pueden formar parte del tratamiento" intro="Se combinan con ejercicio terapéutico y progresión de cargas cuando la evaluación lo indica." count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
+      <Related id="lesiones-relacionadas" title="Lesiones relacionadas" count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
+      <Related id="articulos-relacionados" title="Artículos sobre esta lesión" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
+    </>
+  )}
+  {kind === 'blog' && (
+    <>
+      <Related id="lesiones-relacionadas" title="Lesiones relacionadas" count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
+      <Related id="tratamientos-relacionados" title="Tratamientos mencionados" count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
+      <Related id="articulos-relacionados" title="Seguí leyendo" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
+    </>
+  )}
+  <CtaBand waMessage={waMessage} />
+</Base>

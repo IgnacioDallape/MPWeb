@@ -1,0 +1,13 @@
+---
+import { certBadge, CERTS } from '../lib/components.js';
+interface Props { dark?: boolean }
+const { dark = false } = Astro.props;
+---
+<div role="group" aria-label="Certificaciones" class="flex flex-wrap gap-x-6 gap-y-4">
+  {Object.keys(CERTS).map((k) => (
+    <figure class="m-0 w-[120px] text-center">
+      <div class="mx-auto w-fit rounded-full p-1 ring-1 ring-navy-700/10 transition duration-500 hover:scale-105 hover:ring-ice-400/50"><Fragment set:html={certBadge(k, 100)} /></div>
+      <figcaption class:list={['mt-2 text-[0.78rem] leading-snug font-semibold', dark ? 'text-white/60' : 'text-zinc-500']}>{CERTS[k]}</figcaption>
+    </figure>
+  ))}
+</div>

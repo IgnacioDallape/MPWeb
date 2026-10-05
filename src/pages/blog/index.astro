@@ -1,0 +1,52 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import Cards from '../../components/Cards.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { config, abs, formatDate } from '../../lib/site.js';
+import { posts, latest } from '../../data/index.js';
+import * as S from '../../lib/schema.js';
+
+const path = '/blog/';
+const crumbs = [{ name: 'Inicio', path: '/' }, { name: 'Blog', path }];
+const cats = [...new Set(posts.map((p) => p.category))];
+const slug = (c: string) => 'cat-' + c.toLowerCase().normalize('NFD').replace(/[^a-z]+/g, '-');
+const [featured] = posts.filter((p) => p.slug === 'primera-sesion-fisioterapia-invasiva');
+const schema = [
+  S.breadcrumbs(crumbs),
+  { '@type': 'Blog', '@id': abs(path + '#blog'), url: abs(path), name: 'Blog de fisioterapia invasiva ecoguiada', inLanguage: config.lang, publisher: { '@id': S.ids.ORG_ID() }, blogPost: posts.map((p) => ({ '@id': abs(`/blog/${p.slug}/#articulo`) })) },
+  S.webPage({ path, type: 'CollectionPage', title: 'Blog', description: 'Artículos sobre fisioterapia invasiva ecoguiada.', updated: latest(posts) }),
+];
+---
+<Base
+  title="Blog de fisioterapia invasiva y lesiones | {{NOMBRE}}"
+  description="Guías y artículos sobre fisioterapia invasiva ecoguiada, EPI, neuromodulación, punción seca, tendinopatías y rehabilitación, revisados por un kinesiólogo."
+  schema={schema}
+  updated={latest(posts)}
+>
+  <PageHero
+    crumbs={crumbs}
+    eyebrow="Blog"
+    h1="Blog de fisioterapia invasiva, lesiones y rehabilitación"
+    lead="Artículos para entender tu lesión, conocer cómo funcionan las técnicas ecoguiadas y llegar mejor informado a la consulta. Todo el contenido es revisado por un profesional matriculado."
+  >
+    {featured && (
+      <a href={`/blog/${featured.slug}/`} class="glass group mt-10 flex max-w-3xl flex-col gap-2 rounded-3xl p-6 text-white no-underline transition hover:border-ice-300/40 md:p-8">
+        <span class="tag">Destacado · {featured.category}</span>
+        <span class="font-display text-[1.5rem] leading-tight font-semibold">{featured.h1}</span>
+        <span class="text-white/60">{featured.description}</span>
+        <span class="mt-2 inline-flex items-center gap-2 text-[0.9rem] font-bold text-ice-300">Leer artículo<Icon name="arrow" size={16} class="transition group-hover:translate-x-1" /></span>
+      </a>
+    )}
+  </PageHero>
+  <div class="bg-zinc-50 pb-24">
+    {cats.map((c) => (
+      <section class="mx-auto max-w-[1240px] px-5 pt-20 sm:px-8" aria-labelledby={slug(c)}>
+        <h2 id={slug(c)} class="mb-8 text-[clamp(1.5rem,3vw,2.2rem)] font-semibold text-navy-950" data-reveal>{c}</h2>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"><Cards kind="blog" items={posts.filter((p) => p.category === c)} /></div>
+      </section>
+    ))}
+  </div>
+  <CtaBand />
+</Base>

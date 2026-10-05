@@ -1,0 +1,101 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import SectionHead from '../../components/SectionHead.astro';
+import Cards from '../../components/Cards.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { layersFigure } from '../../lib/visuals.js';
+import { config, waLink, abs } from '../../lib/site.js';
+import { treatments, latest } from '../../data/index.js';
+import * as S from '../../lib/schema.js';
+
+const path = '/tratamientos/';
+const crumbs = [{ name: 'Inicio', path: '/' }, { name: 'Tratamientos', path }];
+const wa = 'Hola, quería consultar qué tratamiento podría ser adecuado para mi lesión.';
+const rows = [
+  ['EPI', 'Corriente galvánica', 'Tejido lesionado (frecuentemente tendón)', 'Molestia intensa y breve al aplicar la corriente', 'Tendinopatías persistentes, fascitis, fibrosis', 'epi-electrolisis-percutanea'],
+  ['NMP-e', 'Estimulación eléctrica de baja frecuencia', 'Nervio periférico', 'Contracción muscular o sensación eléctrica', 'Dolor persistente, inhibición muscular', 'neuromodulacion-percutanea-ecoguiada'],
+  ['MEP', 'Corriente galvánica en microamperios', 'Tejidos blandos sensibles o superficiales', 'Generalmente bien tolerada', 'Fibrosis, cicatrices, ligamentos, bursas', 'microelectrolisis-percutanea-mep'],
+  ['Punción seca', 'Aguja sin corriente ni sustancias', 'Músculo y puntos gatillo', 'Pinchazo y respuesta de espasmo local', 'Dolor miofascial, sobrecargas musculares', 'puncion-seca-ecoguiada'],
+];
+const common = [
+  ['Evaluación previa', 'anamnesis, exploración física y ecografía antes de indicar cualquier técnica.'],
+  ['Guía ecográfica', 'se ve la aguja y la estructura durante toda la intervención.'],
+  ['Material estéril', 'de un solo uso y protocolos de asepsia.'],
+  ['Ejercicio terapéutico', 'y progresión de cargas como parte del plan.'],
+  ['Reevaluación', 'de la evolución antes de cada sesión.'],
+];
+const schema = [
+  S.breadcrumbs(crumbs),
+  S.webPage({ path, type: 'CollectionPage', title: 'Tratamientos de fisioterapia invasiva ecoguiada', description: 'Técnicas de fisioterapia invasiva guiadas por ecografía.', updated: config.launchDate }),
+  { '@type': 'ItemList', '@id': abs(path + '#lista'), itemListElement: treatments.map((t, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(`/tratamientos/${t.slug}/`), name: t.name })) },
+];
+---
+<Base
+  title="Tratamientos de Fisioterapia Invasiva en {{CIUDAD}}: EPI, NMP, MEP"
+  description="Compará EPI, neuromodulación percutánea ecoguiada, microelectrólisis (MEP) y punción seca ecoguiada: qué son, en qué se diferencian y cuándo se indican."
+  schema={schema}
+  waMessage={wa}
+  updated={latest(treatments)}
+>
+  <PageHero
+    crumbs={crumbs}
+    eyebrow="Tratamientos ecoguiados"
+    h1="Tratamientos de fisioterapia invasiva ecoguiada"
+    lead="EPI, neuromodulación percutánea, microelectrólisis y punción seca: cuatro técnicas con objetivos distintos que comparten dos principios, la **guía ecográfica en tiempo real** y la **integración con el ejercicio terapéutico**."
+  >
+    <div class="mt-9"><a href={waLink(wa)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />Consultar qué técnica es adecuada para mí</a></div>
+  </PageHero>
+
+  <section class="bg-zinc-50 py-20 md:py-28" aria-labelledby="tecnicas">
+    <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
+      <SectionHead id="tecnicas" title="Cuatro tratamientos, objetivos diferentes" />
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"><Cards kind="tratamientos" items={treatments} /></div>
+    </div>
+  </section>
+
+  <section class="on-dark noise relative overflow-hidden bg-navy-950 py-20 text-white md:py-28" aria-labelledby="comparativa">
+    <div class="bg-grid bg-grid-fade absolute inset-0" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
+      <SectionHead id="comparativa" eyebrow="Comparativa" title='¿En qué se diferencian <span class="text-gradient">las técnicas</span>?' lead="Una guía orientativa. La elección final depende siempre de la evaluación clínica y ecográfica." />
+      <div class="glass overflow-x-auto rounded-3xl" data-reveal>
+        <table class="w-full min-w-[760px] text-left text-[0.93rem]">
+          <thead>
+            <tr class="border-b border-white/10 font-display text-[0.72rem] tracking-[0.16em] text-ice-300/80 uppercase">
+              {['Técnica', 'Qué utiliza', 'Sobre qué actúa', 'Sensación habitual', 'Se utiliza sobre todo en'].map((h) => <th scope="col" class="px-5 py-4 font-semibold">{h}</th>)}
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/10">
+            {rows.map((r) => (
+              <tr class="transition hover:bg-white/[0.03]">
+                <th scope="row" class="px-5 py-4"><a href={`/tratamientos/${r[5]}/`} class="font-display font-semibold text-white">{r[0]}</a></th>
+                {r.slice(1, 5).map((c) => <td class="px-5 py-4 align-top text-white/65">{c}</td>)}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-6 text-white/55">¿Dudás entre dos técnicas? Leé <a href="/blog/diferencias-entre-epi-y-puncion-seca/" class="text-ice-300">diferencias entre EPI y punción seca</a> o la guía completa de <a href="/fisioterapia-invasiva-ecoguiada/" class="text-ice-300">fisioterapia invasiva ecoguiada</a>.</p>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 md:py-28" aria-labelledby="comun">
+    <div class="mx-auto grid max-w-[1240px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-2">
+      <div>
+        <SectionHead id="comun" eyebrow="En todos los casos" title="Lo que tienen en común" />
+        <ul class="-mt-4 grid gap-3">
+          {common.map(([k, v]) => (
+            <li class="flex gap-3" data-reveal><span class="mt-1 grid size-6 flex-none place-items-center rounded-full bg-navy-700 text-white"><Icon name="check" size={14} /></span><span><strong class="text-navy-950">{k}</strong>: {v}</span></li>
+          ))}
+        </ul>
+        <a href="/lesiones/" class="btn btn-outline mt-8">Ver patologías que se abordan<Icon name="arrow" size={18} /></a>
+      </div>
+      <figure class="glass-light m-0 overflow-hidden rounded-[2rem] p-2" data-reveal>
+        <div class="overflow-hidden rounded-[1.5rem]" set:html={layersFigure()} />
+        <figcaption class="px-4 py-3 text-[0.82rem] text-zinc-500">La guía ecográfica es común a todas las técnicas.</figcaption>
+      </figure>
+    </div>
+  </section>
+  <CtaBand waMessage={wa} />
+</Base>

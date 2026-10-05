@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import SectionHead from '../components/SectionHead.astro';
+import CertStrip from '../components/CertStrip.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { picture } from '../lib/components.js';
+import { config, waLink } from '../lib/site.js';
+import * as S from '../lib/schema.js';
+
+const path = '/sobre-mi/';
+const p = config.professional;
+const crumbs = [{ name: 'Inicio', path: '/' }, { name: 'Metodología', path }];
+const steps = [
+  ['evaluation', 'Evaluación y anamnesis', 'Entrevista sobre la lesión, la actividad y los objetivos; pruebas de movilidad, fuerza y tolerancia a la carga.'],
+  ['probe', 'Ecografía musculoesquelética', 'Se observa la estructura implicada, su organización y su comportamiento en movimiento.'],
+  ['needle', 'Intervención ecoguiada (si está indicada)', 'Se elige la técnica según el tejido y la fase de la lesión, siempre con guía ecográfica en tiempo real.'],
+  ['progress', 'Readaptación y seguimiento', 'Ejercicio terapéutico, progresión de cargas y reevaluaciones para volver a tu actividad.'],
+];
+const credentials = [
+  ['book', 'Formación de grado y posgrado', p.education],
+  ['probe', 'Especializaciones', p.specializations],
+  ['shield', 'Cursos y certificaciones', p.certifications],
+];
+const areas = [
+  ['/fisioterapia-invasiva-ecoguiada/', 'Fisioterapia invasiva ecoguiada'],
+  ['/tratamientos/epi-electrolisis-percutanea/', 'Electrólisis percutánea (EPI)'],
+  ['/tratamientos/microelectrolisis-percutanea-mep/', 'Microelectrólisis percutánea (MEP)'],
+  ['/tratamientos/neuromodulacion-percutanea-ecoguiada/', 'Neuromodulación percutánea ecoguiada'],
+  ['/tratamientos/puncion-seca-ecoguiada/', 'Punción seca ecoguiada'],
+  ['/lesiones/', 'Tendinopatías y lesiones deportivas'],
+];
+const schema = [
+  S.breadcrumbs(crumbs),
+  S.webPage({ path, type: 'ProfilePage', title: 'Metodología y profesional', description: 'Perfil profesional y forma de trabajo.', updated: config.launchDate, extra: { mainEntity: { '@id': S.ids.PERSON_ID() } } }),
+];
+---
+<Base
+  title="Metodología y profesional | {{NOMBRE}} – Kinesiología en {{CIUDAD}}"
+  description="Cómo trabaja {{NOMBRE}}: evaluación, ecografía, fisioterapia invasiva ecoguiada y readaptación. Formación, certificaciones y matrícula en {{CIUDAD}}."
+  schema={schema}
+>
+  <PageHero crumbs={crumbs} eyebrow="Metodología" h1={`${p.name}, ${p.role} especialista en fisioterapia invasiva ecoguiada`} lead={`${p.title} · Matrícula ${p.license}. Atención en {{CIUDAD}}, {{PROVINCIA}}.`}>
+    <div class="mt-9"><a href={waLink()} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />Solicitar una evaluación</a></div>
+  </PageHero>
+
+  <section class="bg-white py-20 md:py-28" aria-labelledby="forma">
+    <div class="mx-auto grid max-w-[1240px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-[360px_1fr] lg:gap-16">
+      <div class="grid aspect-[4/5] place-items-center overflow-hidden rounded-[2rem] bg-gradient-to-br from-navy-900 to-navy-700 p-6 text-center text-[0.85rem] text-white/70" data-reveal>
+        <Fragment set:html={picture('profesional', `${p.name} realizando una evaluación ecográfica`, { sizes: '(min-width: 1024px) 360px, 100vw' }) || '<span>[PENDIENTE: foto profesional con el ecógrafo]</span>'} />
+      </div>
+      <div>
+        <SectionHead id="forma" eyebrow="Mi forma de trabajar" title='Tecnología al servicio de <span class="text-gradient-navy">una buena evaluación</span>' />
+        <div class="-mt-4 space-y-5 text-[1.08rem] text-zinc-600" data-reveal>
+          <p>Me especializo en el tratamiento de lesiones musculoesqueléticas combinando <strong class="text-navy-950">kinesiología, ecografía musculoesquelética, fisioterapia invasiva y ejercicio terapéutico</strong>. La ecografía me permite ver la estructura que genera el problema y, cuando está indicado, intervenir sobre ella con precisión.</p>
+          <p>Pero ninguna técnica funciona sola. Cada tratamiento empieza con una evaluación completa y continúa con un plan de readaptación para que vuelvas a tu actividad con un tejido capaz de tolerar la carga. Si una técnica invasiva no es la mejor opción para tu caso, te lo voy a decir.</p>
+          <p>{p.experience}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-dark noise relative overflow-hidden bg-navy-950 py-20 text-white md:py-28" aria-labelledby="pasos">
+    <div class="bg-grid bg-grid-fade absolute inset-0" aria-hidden="true"></div>
+    <div class="glow -top-40 right-0 size-[560px] opacity-50" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
+      <SectionHead id="pasos" eyebrow="Metodología" title='Cuatro pasos, <span class="text-gradient">un mismo criterio</span>' lead="Primero se evalúa. Después se decide." />
+      <ol class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {steps.map(([ic, t, d], i) => (
+          <li class="border-gradient spotlight relative rounded-3xl p-6" data-reveal data-spotlight>
+            <span class="grid size-12 place-items-center rounded-2xl bg-white/10 text-ice-300"><Icon name={ic} /></span>
+            <p class="mt-5 font-display text-[0.72rem] font-semibold tracking-[0.2em] text-ice-300/70">PASO {String(i + 1).padStart(2, '0')}</p>
+            <h3 class="mt-1 text-[1.15rem] font-semibold text-white">{t}</h3>
+            <p class="mt-2 text-[0.94rem] text-white/60">{d}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="bg-zinc-50 py-20 md:py-28" aria-labelledby="formacion">
+    <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
+      <SectionHead id="formacion" eyebrow="Credenciales" title="Formación y certificaciones" />
+      <div class="rounded-[2rem] border border-zinc-200 bg-white p-6 md:p-10" data-reveal>
+        <h3 class="mb-6 text-[1.2rem] font-semibold text-navy-950">Sellos de certificación</h3>
+        <CertStrip />
+      </div>
+      <div class="mt-5 grid gap-5 md:grid-cols-3">
+        {credentials.map(([ic, t, list]) => (
+          <div class="card" data-reveal>
+            <span class="mb-2 grid size-12 place-items-center rounded-2xl bg-navy-50 text-navy-700"><Icon name={ic as string} /></span>
+            <h3 class="text-[1.15rem] font-semibold text-navy-950">{t}</h3>
+            <ul class="m-0 list-disc pl-5 text-zinc-600">{(list as string[]).map((x) => <li>{x}</li>)}</ul>
+          </div>
+        ))}
+      </div>
+      <p class="mt-6 text-zinc-500">Matrícula profesional: <strong class="text-navy-950">{p.license}</strong>.</p>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 md:py-28" aria-labelledby="areas">
+    <div class="mx-auto grid max-w-[1240px] gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <SectionHead id="areas" eyebrow="Áreas de trabajo" title="En qué me especializo" />
+        <ul class="-mt-4 grid gap-2">
+          {areas.map(([href, label]) => (
+            <li data-reveal><a href={href} class="group flex items-center justify-between rounded-2xl border border-zinc-200 px-5 py-4 font-semibold text-navy-900 no-underline transition hover:border-navy-700/30 hover:bg-navy-50">{label}<Icon name="arrow" size={18} class="text-navy-500 transition group-hover:translate-x-1" /></a></li>
+          ))}
+        </ul>
+      </div>
+      <div data-reveal>
+        <p class="eyebrow mb-4">Política editorial</p>
+        <h2 id="politica-editorial" class="text-[clamp(1.6rem,3vw,2.2rem)] font-semibold text-navy-950">Revisión del contenido</h2>
+        <div class="mt-5 space-y-4 text-zinc-600">
+          <p>Todo el contenido clínico de este sitio —páginas de tratamientos, lesiones y artículos del blog— es redactado o revisado por <strong class="text-navy-950">{p.name}</strong>, {p.role}, matrícula {p.license}.</p>
+          <p>Cada página indica su fecha de revisión. El contenido se actualiza cuando cambian las recomendaciones o la práctica clínica, utiliza un lenguaje prudente y evita promesas de resultados. Es información educativa: <strong class="text-navy-950">no reemplaza una consulta</strong> ni un diagnóstico médico.</p>
+          <p>Si encontrás un error o una información desactualizada, podés escribir a través de la <a href="/contacto/" class="font-semibold text-navy-600">página de contacto</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Base>

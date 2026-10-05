@@ -1,0 +1,58 @@
+---
+import BrandMark from './BrandMark.astro';
+import Icon from './Icon.astro';
+import { config, known, waLink } from '../lib/site.js';
+import { treatments, featuredLesions } from '../data/index.js';
+const b = config.business;
+const c = config.contact;
+const p = config.professional;
+const brand = known(b.name) || p.name;
+const ig = known(c.instagram);
+const year = new Date().getFullYear();
+const linkCls = 'text-white/70 no-underline transition hover:text-white';
+---
+<footer class="no-print on-dark relative overflow-hidden bg-abyss text-[0.93rem] text-white/60">
+  <div class="bg-grid bg-grid-fade absolute inset-0 opacity-60" aria-hidden="true"></div>
+  <div class="glow -bottom-40 left-1/2 size-[520px] -translate-x-1/2 opacity-40" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-[1240px] px-5 pt-20 pb-10 sm:px-8">
+    <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
+      <div>
+        <a href="/" class="flex items-center gap-3 text-white no-underline"><BrandMark class="size-10" /><span class="font-display text-lg font-semibold">{brand}</span></a>
+        <p class="mt-5 max-w-sm">{p.name} · {p.title}<br />Kinesiología especializada en <strong class="text-white/90">fisioterapia invasiva ecoguiada</strong> y rehabilitación musculoesquelética.<br />Matrícula: {p.license}</p>
+        <address class="mt-6 grid gap-2.5 not-italic">
+          <span class="flex gap-3"><Icon name="pin" size={18} class="mt-1 text-ice-400" /><span>{b.address}, {b.city}, {b.province}</span></span>
+          <span class="flex gap-3"><Icon name="whatsapp" size={18} class="mt-1 text-ice-400" /><a class={linkCls} href={waLink()}>{c.phoneDisplay}</a></span>
+          <span class="flex gap-3"><Icon name="clock" size={18} class="mt-1 text-ice-400" /><span>{config.hoursText}</span></span>
+          <span class="flex gap-3"><Icon name="instagram" size={18} class="mt-1 text-ice-400" />{ig ? <a class={linkCls} href={ig} rel="noopener" target="_blank">Instagram</a> : <span>{c.instagram}</span>}</span>
+        </address>
+      </div>
+      <nav aria-label="Tratamientos">
+        <h2 class="mb-5 font-display text-[0.72rem] font-semibold tracking-[0.2em] text-ice-300/70 uppercase">Tratamientos</h2>
+        <ul class="grid gap-2.5">
+          <li><a class={linkCls} href="/fisioterapia-invasiva-ecoguiada/">Fisioterapia invasiva ecoguiada</a></li>
+          {treatments.map((t) => <li><a class={linkCls} href={`/tratamientos/${t.slug}/`}>{t.name}</a></li>)}
+        </ul>
+      </nav>
+      <nav aria-label="Patologías frecuentes">
+        <h2 class="mb-5 font-display text-[0.72rem] font-semibold tracking-[0.2em] text-ice-300/70 uppercase">Patologías</h2>
+        <ul class="grid gap-2.5">
+          {featuredLesions.map((l) => <li><a class={linkCls} href={`/lesiones/${l.slug}/`}>{l.name}</a></li>)}
+          <li><a class={linkCls} href="/lesiones/">Ver todas</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Sitio">
+        <h2 class="mb-5 font-display text-[0.72rem] font-semibold tracking-[0.2em] text-ice-300/70 uppercase">Información</h2>
+        <ul class="grid gap-2.5">
+          <li><a class={linkCls} href="/sobre-mi/">Metodología y profesional</a></li>
+          <li><a class={linkCls} href="/preguntas-frecuentes/">Preguntas frecuentes</a></li>
+          <li><a class={linkCls} href="/contacto/">Contacto y turnos</a></li>
+          <li><a class={linkCls} href="/blog/">Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="mt-16 flex flex-wrap justify-between gap-4 border-t border-white/10 pt-6 text-[0.82rem] text-white/45">
+      <p>© {year} {brand}. La información de este sitio es educativa y no reemplaza una consulta profesional.</p>
+      <ul class="flex gap-5"><li><a class={linkCls} href="/aviso-legal/">Aviso legal</a></li><li><a class={linkCls} href="/politica-de-privacidad/">Política de privacidad</a></li></ul>
+    </div>
+  </div>
+</footer>

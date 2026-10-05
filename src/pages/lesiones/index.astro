@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import Cards from '../../components/Cards.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { ctaInline } from '../../lib/components.js';
+import { config, waLink, abs } from '../../lib/site.js';
+import { lesions, CATEGORIES, latest } from '../../data/index.js';
+import * as S from '../../lib/schema.js';
+
+const path = '/lesiones/';
+const crumbs = [{ name: 'Inicio', path: '/' }, { name: 'Patologías', path }];
+const wa = 'Hola, quería consultar por mi lesión.';
+const groups = Object.entries(CATEGORIES)
+  .map(([key, c]) => ({ key, ...c, items: lesions.filter((l) => l.category === key) }))
+  .filter((g) => g.items.length);
+const schema = [
+  S.breadcrumbs(crumbs),
+  S.webPage({ path, type: 'CollectionPage', title: 'Lesiones que aborda la fisioterapia invasiva ecoguiada', description: 'Índice de lesiones musculoesqueléticas.', updated: config.launchDate }),
+  { '@type': 'ItemList', '@id': abs(path + '#lista'), itemListElement: lesions.map((l, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(`/lesiones/${l.slug}/`), name: l.name })) },
+];
+---
+<Base
+  title="Lesiones que trata la Fisioterapia Invasiva en {{CIUDAD}}"
+  description="Tendinopatías, desgarros, fascitis plantar, epicondilitis, esguinces, bursitis y dolor persistente: cómo se evalúan y tratan con fisioterapia ecoguiada."
+  schema={schema}
+  waMessage={wa}
+  updated={latest(lesions)}
+>
+  <PageHero
+    crumbs={crumbs}
+    eyebrow="Patologías"
+    h1="¿Qué lesiones puede abordar la fisioterapia invasiva ecoguiada?"
+    lead="Tendinopatías, lesiones musculares, ligamentarias, fascitis plantar, bursopatías y dolor persistente. Cada página explica la lesión, cómo se evalúa y qué opciones de tratamiento existen."
+  >
+    <div class="mt-9 flex flex-wrap gap-2">
+      {groups.map((g) => <a href={`#cat-${g.key}`} class="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[0.85rem] text-white/80 no-underline transition hover:border-ice-300/50 hover:text-white">{g.label}</a>)}
+    </div>
+  </PageHero>
+
+  <div class="bg-zinc-50 pb-20">
+    {groups.map((g) => (
+      <section class="mx-auto max-w-[1240px] px-5 pt-20 sm:px-8" aria-labelledby={`cat-${g.key}`}>
+        <div class="mb-8 flex items-center gap-4" data-reveal>
+          <span class="grid size-12 place-items-center rounded-2xl bg-navy-950 text-ice-300"><Icon name={g.icon} /></span>
+          <div>
+            <h2 id={`cat-${g.key}`} class="text-[clamp(1.5rem,3vw,2.2rem)] font-semibold text-navy-950">{g.label}</h2>
+            <p class="m-0 text-zinc-500">{g.intro}</p>
+          </div>
+        </div>
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"><Cards kind="lesiones" items={g.items} /></div>
+      </section>
+    ))}
+    <div class="mx-auto max-w-[1240px] px-5 pt-16 sm:px-8">
+      <Fragment set:html={ctaInline({ title: '¿No encontrás tu lesión?', text: 'Estas son las consultas más frecuentes, pero no las únicas. Escribinos y te orientamos sobre si una evaluación puede ayudarte.', button: 'Hacer una consulta', waMessage: 'Hola, quería consultar por una lesión que no figura en la web.' })} />
+    </div>
+  </div>
+  <CtaBand waMessage={wa} />
+</Base>

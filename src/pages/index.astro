@@ -1,0 +1,309 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Cards from '../components/Cards.astro';
+import Faq from '../components/Faq.astro';
+import CertRow from '../components/CertRow.astro';
+import CertStrip from '../components/CertStrip.astro';
+import { ultrasoundHero, layersFigure } from '../lib/visuals.js';
+import { picture } from '../lib/components.js';
+import { config, known, waLink, tokens } from '../lib/site.js';
+import { treatments, lesions, CATEGORIES, homePosts } from '../data/index.js';
+import { HOME_FAQS } from '../data/faqs.js';
+import * as S from '../lib/schema.js';
+
+const p = config.professional;
+const b = config.business;
+const wa = 'Hola, quería solicitar una evaluación de fisioterapia invasiva ecoguiada.';
+const groups = Object.entries(CATEGORIES).map(([key, c]) => ({ key, ...c, items: lesions.filter((l) => l.category === key) }));
+const ticker = ['Ecografía musculoesquelética', 'Electrólisis percutánea · EPI', 'Neuromodulación percutánea · NMP-e', 'Microelectrólisis · MEP', 'Punción seca ecoguiada', 'Ejercicio terapéutico', 'Readaptación deportiva', 'Tendinopatías', 'Lesiones musculares'];
+const benefits = [
+  ['target', 'Mayor precisión', 'La ecografía permite visualizar las estructuras en tiempo real y guiar la intervención hacia la zona de interés.'],
+  ['needle', 'Intervención específica', 'Permite actuar directamente sobre determinadas estructuras musculares, tendinosas o nerviosas, y no sobre el tejido de alrededor.'],
+  ['pulse', 'Abordaje del dolor persistente', 'Algunas técnicas pueden incorporarse al tratamiento de cuadros musculoesqueléticos que se mantienen en el tiempo.'],
+  ['layers', 'Lesiones complejas', 'Puede utilizarse dentro del plan de rehabilitación de lesiones crónicas o recurrentes que no evolucionan como se espera.'],
+  ['activity', 'Integración con rehabilitación', 'No es una intervención aislada: se complementa con ejercicio terapéutico, readaptación y progresión de cargas.'],
+];
+const steps = [
+  ['evaluation', 'Evaluación y anamnesis', 'Historia de la lesión, actividad, tratamientos previos y pruebas físicas de movilidad, fuerza y carga.'],
+  ['probe', 'Ecografía musculoesquelética', 'Se observa la estructura afectada, su organización y su comportamiento en movimiento.'],
+  ['needle', 'Intervención ecoguiada', 'Si está indicada, se aplica la técnica más adecuada con guía ecográfica en tiempo real.'],
+  ['progress', 'Readaptación y ejercicio', 'Plan de cargas progresivas para consolidar la recuperación y volver a tu actividad.'],
+];
+const xpSteps = [
+  { tag: 'Evaluación', title: 'Entender qué estructura está alterada', text: 'En una tendinopatía, las fibras del tendón pierden su organización y el tejido tolera peor la carga. Todo empieza con la historia clínica y la exploración física.' },
+  { tag: 'Ecografía', title: 'Ver el tejido en tiempo real', text: 'La sonda ecográfica recorre la zona y muestra el grosor, la organización de las fibras y el área alterada, en reposo y en movimiento.', link: ['/blog/ecografia-en-fisioterapia/', '¿Para qué sirve la ecografía?'] },
+  { tag: 'Intervención', title: 'La aguja llega al punto exacto', text: 'Con guía ecográfica, una aguja ultrafina se dirige a la estructura objetivo. Según el caso: EPI, MEP, neuromodulación o punción seca.', link: ['/tratamientos/', 'Conocer los tratamientos'] },
+  { tag: 'Readaptación', title: 'Un tejido que vuelve a tolerar carga', text: 'El ejercicio terapéutico y la progresión de cargas acompañan la recuperación para que vuelvas a entrenar, trabajar o competir.', link: ['/sobre-mi/', 'Ver la metodología'] },
+];
+const schema = [
+  S.webPage({ path: '/', title: 'Fisioterapia Invasiva Ecoguiada', description: 'Kinesiología especializada en fisioterapia invasiva ecoguiada.', updated: config.launchDate, extra: { about: { '@id': S.ids.ORG_ID() }, mainEntity: { '@id': S.ids.ORG_ID() } } }),
+  S.faqPage('/', HOME_FAQS),
+];
+---
+<Base
+  title="Fisioterapia Invasiva Ecoguiada en {{CIUDAD}} | {{NOMBRE}}"
+  description="Fisioterapia invasiva ecoguiada en {{CIUDAD}}: EPI, neuromodulación percutánea, MEP y punción seca para tendinopatías y lesiones deportivas."
+  schema={schema}
+  waMessage={wa}
+>
+  <!-- ============ HERO + EXPERIENCIA 3D ============ -->
+  <div id="xp" class="on-dark relative bg-navy-950 text-white">
+    <!-- Lienzo 3D fijo mientras se recorre el hero y la historia -->
+    <div class="pointer-events-none sticky top-0 h-[100svh] overflow-hidden" aria-hidden="true">
+      <div data-xp-deco class="bg-grid bg-grid-fade absolute inset-0"></div>
+      <div data-xp-deco class="glow -top-48 right-[-15%] size-[760px] opacity-60"></div>
+      <div data-xp-deco class="glow bottom-[-30%] left-[-20%] size-[620px] opacity-35"></div>
+      <picture data-xp-poster class="absolute inset-0 transition-opacity duration-1000">
+        <source type="image/webp" srcset="/img/hero-3d-mobile.webp" media="(max-width: 1023px)" />
+        <source type="image/webp" srcset="/img/hero-3d.webp" />
+        <img src="/img/hero-3d.jpg" alt="" width="1600" height="900" fetchpriority="low" decoding="async" class="h-full w-full object-cover opacity-90" />
+      </picture>
+      <canvas id="xp-canvas" class="absolute inset-0 h-full w-full opacity-0 transition-opacity duration-1000"></canvas>
+      <div data-xp-overlay class="absolute inset-0 bg-gradient-to-b from-navy-950/40 via-navy-950/75 to-navy-950 lg:bg-gradient-to-r lg:from-navy-950/95 lg:via-navy-950/40 lg:to-transparent"></div>
+      <div data-xp-overlay class="noise absolute inset-0"></div>
+      <ol class="absolute top-1/2 right-6 z-10 hidden -translate-y-1/2 flex-col gap-3 lg:flex" aria-hidden="true">
+          {xpSteps.map((_, i) => <li data-xp-dot class="size-2 rounded-full bg-white/20 transition-all duration-500 data-[active]:h-6 data-[active]:bg-ice-300"></li>)}
+        </ol>
+    </div>
+
+    <div class="relative -mt-[100svh]">
+      <section class="relative mx-auto flex min-h-[100svh] max-w-[1320px] items-center px-5 pt-28 pb-20 sm:px-8" aria-labelledby="h1">
+        <div class="max-w-2xl">
+          <p class="mb-7 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 py-1.5 pr-4 pl-2 text-[0.8rem] font-medium text-white/75">
+            <span class="relative grid size-5 place-items-center"><span class="pulse-dot relative size-2 rounded-full bg-ice-400"></span></span>
+            Kinesiología · Ecografía · Rehabilitación deportiva
+          </p>
+          <h1 id="h1" class="text-[clamp(2.7rem,7.4vw,5.6rem)] leading-[0.98] font-semibold tracking-[-0.045em]" data-hero-title>
+            Fisioterapia Invasiva <span class="text-gradient">Ecoguiada</span>
+            <span class="mt-2 block text-[0.52em] font-medium tracking-[-0.02em] text-white/55">{tokens('en {{CIUDAD}}')}</span>
+          </h1>
+          <p class="mt-7 max-w-xl text-[clamp(1.08rem,1.9vw,1.28rem)] leading-relaxed text-white/75">
+            Tratamientos de alta precisión guiados por ecografía para lesiones musculares, tendinosas y del sistema nervioso periférico, integrados con rehabilitación y ejercicio terapéutico.
+          </p>
+          <div class="mt-10 flex flex-wrap gap-3">
+            <a href={waLink(wa)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />Solicitar evaluación</a>
+            <a href="/tratamientos/" class="btn btn-outline-dark">Conocer tratamientos<Icon name="arrow" size={18} /></a>
+          </div>
+          <p class="mt-10 flex items-start gap-3 text-[0.88rem] text-white/55">
+            <Icon name="shield" size={20} class="mt-0.5 text-ice-400" />
+            <span><strong class="text-white/85">{p.name}</strong> · {p.title} · Mat. {p.license}<br />{b.address}, {b.city}</span>
+          </p>
+        </div>
+        <!-- Vista ecográfica 2D (HUD) -->
+        <div class="glass absolute right-8 bottom-10 hidden w-[330px] rounded-2xl bg-navy-950/60 p-2 2xl:block" data-ultrasound>
+          <div class="overflow-hidden rounded-xl [aspect-ratio:560/470]" set:html={ultrasoundHero()} />
+          <p class="flex items-center gap-2 px-2 pt-2 pb-1 text-[0.72rem] font-semibold tracking-[0.14em] text-ice-300/80 uppercase"><span class="pulse-dot relative size-1.5 rounded-full bg-ice-400"></span>Vista ecográfica en tiempo real</p>
+        </div>
+        <a href="#xp-historia" class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[0.72rem] tracking-[0.2em] text-white/40 uppercase no-underline md:flex">Así funciona<span class="block h-10 w-px animate-pulse bg-gradient-to-b from-ice-300 to-transparent"></span></a>
+      </section>
+
+      <!-- Historia guiada por scroll -->
+      <section id="xp-historia" aria-labelledby="xp-title" class="relative">
+        <h2 id="xp-title" class="sr-only">Así funciona el tratamiento de fisioterapia invasiva ecoguiada</h2>
+        
+        {xpSteps.map((st, i) => (
+          <div data-xp-step class="mx-auto flex min-h-[100svh] max-w-[1320px] items-end px-5 pb-24 sm:px-8 lg:items-center lg:pb-0">
+            <article class="glass max-w-md rounded-3xl bg-navy-950/55 p-7 md:p-9" data-reveal>
+              <p class="font-display text-[0.75rem] font-semibold tracking-[0.22em] text-ice-300">PASO {String(i + 1).padStart(2, '0')} · {st.tag}</p>
+              <h3 class="mt-3 text-[clamp(1.6rem,3vw,2.3rem)] leading-[1.05] font-semibold">{st.title}</h3>
+              <p class="mt-4 text-white/70">{st.text}</p>
+              {st.link && <a href={st.link[0]} class="mt-5 inline-flex items-center gap-2 text-[0.9rem] font-semibold text-ice-300 no-underline hover:text-white">{st.link[1]}<Icon name="arrow" size={16} /></a>}
+            </article>
+          </div>
+        ))}
+        <p class="mx-auto max-w-[1320px] px-5 pb-6 text-[0.75rem] text-white/35 sm:px-8">Representación ilustrativa con fines educativos.</p>
+      </section>
+    </div>
+  </div>
+
+  <section class="on-dark relative overflow-hidden bg-navy-950 text-white" aria-label="Técnicas y diferenciales">
+    <!-- Marquee de técnicas -->
+    <div class="marquee relative border-y border-white/10 bg-white/[0.02] py-5" aria-hidden="true">
+      <div class="marquee-track flex w-max gap-12 font-display text-[1.05rem] font-medium whitespace-nowrap text-white/45">
+        {[...ticker, ...ticker].map((t) => <span class="flex items-center gap-12">{t}<span class="text-ice-400/60">✦</span></span>)}
+      </div>
+    </div>
+
+    <!-- Diferenciales -->
+    <div class="relative mx-auto max-w-[1320px] px-5 py-14 sm:px-8">
+      <ul class="grid grid-cols-2 gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 lg:grid-cols-4">
+        {[
+          ['probe', 'Ecografía en tiempo real', 'Se ve la estructura y la aguja durante toda la intervención.'],
+          ['needle', 'Mínimamente invasivo', 'Agujas ultrafinas, material estéril de un solo uso.'],
+          ['evaluation', 'Evaluación individual', 'Anamnesis, exploración y ecografía antes de decidir.'],
+          ['activity', 'Rehabilitación y ejercicio', 'La técnica se integra en un plan de cargas progresivas.'],
+        ].map(([ic, t, d]) => (
+          <li class="flex flex-col gap-3 bg-navy-950/90 p-6 md:p-8" data-reveal>
+            <Icon name={ic} size={28} class="text-ice-300" />
+            <strong class="font-display text-[1.02rem] leading-snug font-semibold text-white">{t}</strong>
+            <span class="text-[0.88rem] leading-relaxed text-white/50">{d}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ DESCRIPCIÓN ============ -->
+  <section class="relative bg-white py-24 md:py-32" aria-labelledby="que-es">
+    <div class="bg-dots-light absolute inset-x-0 top-0 h-64 [mask-image:linear-gradient(#000,transparent)]" aria-hidden="true"></div>
+    <div class="relative mx-auto grid max-w-[1240px] items-center gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
+      <div>
+        <div data-reveal>
+          <p class="eyebrow mb-4">Descripción</p>
+          <h2 id="que-es" class="text-[clamp(2rem,4.4vw,3.3rem)] leading-[1.04] font-semibold text-navy-950">¿Qué es la Fisioterapia Invasiva <span class="text-gradient-navy">Ecoguiada</span>?</h2>
+        </div>
+        <div class="mt-7 space-y-5 text-[1.08rem] text-zinc-600" data-reveal>
+          <p>La <strong class="text-navy-950">fisioterapia invasiva ecoguiada</strong> engloba tratamientos que utilizan agujas ultrafinas para actuar directamente sobre la estructura afectada, siempre guiados por ecografía. Permite tratar de forma precisa lesiones tendinosas, musculares, ligamentarias y estructuras relacionadas con el sistema nervioso periférico.</p>
+          <p>Tras una evaluación y anamnesis completa se identifica la estructura implicada y se determina el tratamiento más adecuado. Estas intervenciones forman parte de un abordaje integral que se complementa con readaptación, ejercicio terapéutico y cargas progresivas.</p>
+        </div>
+        <a href="/fisioterapia-invasiva-ecoguiada/" class="btn btn-outline mt-8" data-reveal>Guía completa de fisioterapia invasiva ecoguiada<Icon name="arrow" size={18} /></a>
+        <div data-reveal><CertRow cert="ecografia" /></div>
+      </div>
+      <figure class="glass-light m-0 overflow-hidden rounded-[2rem] p-2" data-reveal>
+        <div class="overflow-hidden rounded-[1.5rem]" set:html={layersFigure()} />
+        <figcaption class="px-4 py-3 text-[0.82rem] text-zinc-500">La sonda ecográfica permite seguir el recorrido de la aguja hasta la estructura objetivo.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ BENEFICIOS ============ -->
+  <section class="on-dark noise relative overflow-hidden bg-navy-950 py-24 text-white md:py-32" aria-labelledby="por-que">
+    <div class="bg-grid bg-grid-fade absolute inset-0 opacity-70" aria-hidden="true"></div>
+    <div class="glow top-1/3 left-1/2 size-[700px] -translate-x-1/2 opacity-40" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
+      <SectionHead id="por-que" eyebrow="Por qué ecoguiada" title='Beneficios de la Fisioterapia Invasiva <span class="text-gradient">Ecoguiada</span>' lead="La ecografía convierte una técnica basada en la palpación en una intervención visible, específica y controlada." center />
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {benefits.map(([ic, t, d]) => (
+          <div class="spotlight card border-white/10 bg-white/[0.03] hover:border-ice-300/30" data-reveal data-spotlight>
+            <span class="mb-2 grid size-12 place-items-center rounded-2xl bg-white/10 text-ice-300"><Icon name={ic} /></span>
+            <h3 class="text-[1.2rem] font-semibold text-white">{t}</h3>
+            <p class="m-0 text-[0.96rem] leading-relaxed text-white/60">{d}</p>
+          </div>
+        ))}
+        <div class="card overflow-hidden border-0 bg-gradient-to-br from-ice-500 to-navy-600 text-white" data-reveal>
+          <div class="glow -right-20 -bottom-24 size-72 opacity-60" aria-hidden="true"></div>
+          <span class="relative mb-2 grid size-12 place-items-center rounded-2xl bg-white/20"><Icon name="shield" /></span>
+          <h3 class="relative text-[1.2rem] font-semibold">Seguridad</h3>
+          <p class="relative m-0 text-[0.96rem] leading-relaxed text-white/85">Ver vasos, nervios y otras estructuras sensibles durante la intervención permite evitarlos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRATAMIENTOS ============ -->
+  <section class="relative bg-zinc-50 py-24 md:py-32" aria-labelledby="tratamientos">
+    <div class="bg-dots-light absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,#000,transparent_70%)]" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
+      <div class="flex flex-wrap items-end justify-between gap-6">
+        <SectionHead id="tratamientos" eyebrow="Tratamientos" title="Técnicas de fisioterapia invasiva guiadas por ecografía" lead="Cada técnica tiene un objetivo distinto. La elección depende del tejido afectado, de la fase de la lesión y de tu actividad." />
+      </div>
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"><Cards kind="tratamientos" items={treatments} /></div>
+      <a href="/tratamientos/" class="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-navy-950" data-reveal>Comparar todos los tratamientos<Icon name="arrow" size={18} /></a>
+    </div>
+  </section>
+
+  <!-- ============ PATOLOGÍAS ============ -->
+  <section class="on-dark noise relative overflow-hidden bg-navy-950 py-24 text-white md:py-32" aria-labelledby="lesiones">
+    <div class="bg-grid absolute inset-0 opacity-50 [mask-image:linear-gradient(transparent,#000_30%,#000_70%,transparent)]" aria-hidden="true"></div>
+    <div class="glow -top-32 -left-40 size-[600px] opacity-40" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
+      <SectionHead id="lesiones" eyebrow="Patologías" title='¿Qué lesiones y patologías pueden <span class="text-gradient">abordarse</span>?' lead="Lesiones deportivas y del día a día en las que la fisioterapia invasiva ecoguiada puede formar parte del plan." />
+      <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {groups.map((g) => (
+          <div class="border-gradient spotlight relative rounded-3xl p-6" data-reveal data-spotlight>
+            <h3 class="mb-3 flex items-center gap-3 text-[1.1rem] font-semibold text-white"><span class="grid size-10 place-items-center rounded-xl bg-white/10 text-ice-300"><Icon name={g.icon} size={20} /></span>{g.label}</h3>
+            <ul class="divide-y divide-white/10">
+              {g.items.map((l) => (
+                <li><a href={`/lesiones/${l.slug}/`} class="group flex items-center justify-between gap-3 py-3 text-[0.96rem] font-medium text-white/75 no-underline transition hover:text-white">{l.name}<Icon name="arrow" size={16} class="text-white/30 transition group-hover:translate-x-1 group-hover:text-ice-300" /></a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ METODOLOGÍA ============ -->
+  <section class="bg-white py-24 md:py-32" aria-labelledby="proceso">
+    <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
+      <SectionHead id="proceso" eyebrow="Metodología" title='Primero se evalúa. <span class="text-gradient-navy">Después se decide.</span>' lead="Ninguna técnica se aplica sin entender antes qué le pasa a tu tejido y qué necesitás recuperar." />
+      <div class="relative">
+        <div class="absolute top-7 right-0 left-0 hidden h-px bg-zinc-200 lg:block" aria-hidden="true"><div data-progress-line class="h-full w-full bg-gradient-to-r from-navy-700 to-ice-400"></div></div>
+        <ol class="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {steps.map(([ic, t, d], i) => (
+            <li class="relative" data-reveal>
+              <span class="relative z-10 grid size-14 place-items-center rounded-2xl bg-navy-950 text-ice-300 shadow-[0_10px_30px_-10px_rgba(10,21,48,.6)] ring-8 ring-white"><Icon name={ic} /></span>
+              <p class="mt-6 font-display text-[0.75rem] font-semibold tracking-[0.2em] text-navy-500">PASO {String(i + 1).padStart(2, '0')}</p>
+              <h3 class="mt-1 text-[1.2rem] font-semibold text-navy-950">{t}</h3>
+              <p class="mt-2 text-[0.95rem] text-zinc-600">{d}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <div class="mt-24 grid items-center gap-10 overflow-hidden rounded-[2rem] border border-zinc-200 bg-zinc-50 p-6 md:p-10 lg:grid-cols-[320px_1fr] lg:gap-14" aria-labelledby="profesional" data-reveal>
+        <div class="grid aspect-[4/5] place-items-center overflow-hidden rounded-3xl bg-gradient-to-br from-navy-900 to-navy-700 p-6 text-center text-[0.85rem] text-white/70">
+          <Fragment set:html={picture('profesional', `${p.name}, especialista en fisioterapia invasiva ecoguiada, realizando una ecografía`, { sizes: '(min-width: 1024px) 320px, 100vw' }) || '<span>[PENDIENTE: foto profesional realizando una ecografía]</span>'} />
+        </div>
+        <div>
+          <p class="eyebrow mb-3">Metodología · Profesional</p>
+          <h2 id="profesional" class="text-[clamp(1.8rem,3.4vw,2.6rem)] font-semibold text-navy-950">{p.name}</h2>
+          <p class="mt-3 text-[1.1rem] text-zinc-600">{p.title} con formación específica en ecografía musculoesquelética y fisioterapia invasiva.</p>
+          <dl class="mt-6 grid gap-x-8 sm:grid-cols-2">
+            {[['Matrícula', p.license], ['Formación', p.education.join(' · ')], ['Especialización', p.specializations.join(' · ')], ['Experiencia', p.experience]].map(([k, v]) => (
+              <div class="border-b border-zinc-200 py-3"><dt class="text-[0.78rem] font-semibold tracking-wide text-zinc-400 uppercase">{k}</dt><dd class="mt-1 font-semibold text-navy-950">{v}</dd></div>
+            ))}
+          </dl>
+          <p class="eyebrow mt-8 mb-4">Certificaciones</p>
+          <CertStrip />
+          <a href="/sobre-mi/" class="btn btn-outline mt-8">Conocer trayectoria y formación<Icon name="arrow" size={18} /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PREGUNTAS FRECUENTES Y DATOS ============ -->
+  <section class="bg-zinc-50 py-24 md:py-32" aria-labelledby="faq-home">
+    <div class="mx-auto grid max-w-[1240px] gap-12 px-5 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:gap-16">
+      <div class="lg:sticky lg:top-28 lg:self-start">
+        <SectionHead id="faq-home" eyebrow="Preguntas frecuentes y datos" title="Lo que más se consulta antes de empezar" lead="Respuestas claras sobre cómo es el tratamiento, qué se siente y qué esperar." />
+        <a href="/preguntas-frecuentes/" class="btn btn-outline -mt-4">Ver todas las preguntas<Icon name="arrow" size={18} /></a>
+        <h3 class="mt-12 mb-4 font-display text-[0.8rem] font-semibold tracking-[0.18em] text-zinc-400 uppercase">Para profundizar</h3>
+        <ul class="grid gap-2">
+          {homePosts.map((post) => (
+            <li><a href={`/blog/${post.slug}/`} class="group flex items-start gap-3 rounded-xl p-2 text-[0.96rem] font-semibold text-navy-800 no-underline transition hover:bg-white"><Icon name="book" size={18} class="mt-1 text-navy-500" /><span>{post.h1}</span></a></li>
+          ))}
+        </ul>
+      </div>
+      <Faq faqs={HOME_FAQS} />
+    </div>
+
+    <div class="mx-auto mt-20 max-w-[1240px] px-5 sm:px-8">
+      <div class="on-dark noise relative overflow-hidden rounded-[2rem] bg-navy-950 p-8 text-white md:p-14" data-reveal>
+        <div class="bg-grid bg-grid-fade absolute inset-0" aria-hidden="true"></div>
+        <div class="glow -top-40 -right-20 size-[520px] opacity-60" aria-hidden="true"></div>
+        <div class="relative grid items-center gap-10 lg:grid-cols-[1.2fr_1fr]">
+          <div>
+            <p class="eyebrow mb-4">{tokens('Turnos en {{CIUDAD}}')}</p>
+            <h2 id="contacto-home" class="text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.03] font-semibold"><span class="text-gradient">Solicitá tu evaluación</span></h2>
+            <p class="mt-4 max-w-lg text-white/65">Contanos brevemente qué te pasa y coordinamos una primera consulta de evaluación clínica y ecográfica.</p>
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a href={waLink(wa)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />Hablar por WhatsApp</a>
+              <a href="/contacto/" class="btn btn-outline-dark">Ver dirección y horarios<Icon name="arrow" size={18} /></a>
+            </div>
+          </div>
+          <address class="glass grid gap-5 rounded-3xl p-6 not-italic">
+            <span class="flex gap-4"><Icon name="pin" class="mt-0.5 text-ice-300" /><span><strong class="block text-white">{known(b.name) || p.name}</strong><span class="text-white/60">{b.address}, {b.city}, {b.province}</span></span></span>
+            <span class="flex gap-4"><Icon name="whatsapp" class="mt-0.5 text-ice-300" /><span class="text-white/80">{config.contact.phoneDisplay}</span></span>
+            <span class="flex gap-4"><Icon name="clock" class="mt-0.5 text-ice-300" /><span class="text-white/80">{config.hoursText}</span></span>
+          </address>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    import '../scripts/xp.js';
+  </script>
+</Base>

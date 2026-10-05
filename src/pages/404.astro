@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+const links = [
+  ['/fisioterapia-invasiva-ecoguiada/', 'Fisioterapia invasiva ecoguiada'],
+  ['/tratamientos/', 'Tratamientos'],
+  ['/lesiones/', 'Patologías'],
+  ['/contacto/', 'Contacto y turnos'],
+];
+---
+<Base title="Página no encontrada | {{NOMBRE}}" description="La página que buscás no existe o cambió de dirección." noindex>
+  <section class="on-dark noise relative grid min-h-[80svh] place-items-center overflow-hidden bg-navy-950 px-5 pt-32 pb-20 text-white">
+    <div class="bg-grid bg-grid-fade absolute inset-0" aria-hidden="true"></div>
+    <div class="glow top-0 left-1/2 size-[600px] -translate-x-1/2 opacity-60" aria-hidden="true"></div>
+    <div class="relative max-w-xl text-center">
+      <p class="font-display text-[7rem] leading-none font-semibold text-gradient">404</p>
+      <h1 class="mt-4 text-[2.2rem] font-semibold">No encontramos esta página</h1>
+      <p class="mt-3 text-white/60">Puede que la dirección haya cambiado. Estas secciones pueden ayudarte:</p>
+      <ul class="mt-8 grid gap-2 text-left">
+        {links.map(([href, label]) => <li><a href={href} class="glass flex items-center justify-between rounded-2xl px-5 py-4 text-white no-underline hover:border-ice-300/40">{label}<Icon name="arrow" size={18} /></a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>

@@ -1,7 +1,12 @@
 # Web — Fisioterapia Invasiva Ecoguiada
 
-Sitio estático pre-renderizado, pensado para SEO local, autoridad temática y conversión por WhatsApp.
-Sin framework en runtime: HTML + CSS inline + 0 KB de JavaScript en casi todas las páginas.
+Sitio construido con **Astro 7 + Tailwind CSS 4 + Three.js + GSAP + Lenis**, pensado para SEO local, autoridad temática y conversión por WhatsApp.
+
+- **Astro** pre-renderiza todo a HTML estático: SEO intacto, sin framework en el navegador.
+- **Three.js**: escena 3D en tiempo real en el hero (tendón con fibras, sonda ecográfica, aguja con partículas de energía, bloom) que cuenta el tratamiento al hacer scroll. Se carga con la primera interacción del usuario; mientras tanto se muestra un render pre-generado (`public/img/hero-3d*.webp`).
+- **GSAP + ScrollTrigger** coreografían la cámara 3D con el scroll (se cargan junto con la escena).
+- **Lenis** (scroll suave en escritorio) + IntersectionObserver y transiciones CSS para las animaciones de entrada.
+- Lighthouse (build de producción): home 99 mobile / 100 desktop; páginas internas 99–100.
 
 - Estrategia (sitemap, keywords por URL, enlazado, estructura de la home): [`docs/ESTRATEGIA-SEO.md`](docs/ESTRATEGIA-SEO.md)
 - Reglas editoriales para redactar contenido nuevo: [`docs/CONTENT-BRIEF.md`](docs/CONTENT-BRIEF.md)
@@ -10,10 +15,15 @@ Sin framework en runtime: HTML + CSS inline + 0 KB de JavaScript en casi todas l
 
 ```bash
 npm install
-npm run dev       # build + servidor en http://localhost:4321 + rebuild al guardar
-npm run build     # genera dist/ (listo para subir)
+npm run dev       # servidor de desarrollo en http://localhost:4321
+npm run build     # genera dist/ + sitemap.xml + robots.txt + validación SEO
+npm run preview   # sirve dist/ localmente
 npm run images    # optimiza fotos de src/images/ y regenera íconos + imagen Open Graph
 ```
+
+### Regenerar los renders 3D (imagen previa del hero)
+
+Con `npm run dev` corriendo, capturar la escena con `node scripts/shot.mjs "http://localhost:4321/?render=poster" poster.png 1600 900 5000` (y 780×1500 para la versión mobile) y convertirla a `public/img/hero-3d.webp/.jpg` y `public/img/hero-3d-mobile.webp/.jpg`.
 
 ## 1. Completar los datos (una sola vez)
 
@@ -59,7 +69,7 @@ node scripts/check-content.js src/content/blog/mi-articulo.js
 
 ## 4. Validaciones del build
 
-El build falla si encuentra: enlaces internos rotos, assets inexistentes, títulos o descripciones duplicados, páginas sin H1 o con más de uno, imágenes sin `alt`. Avisa sobre longitudes de title/description, páginas huérfanas y datos pendientes.
+Al terminar `npm run build`, la integración `scripts/postbuild.js` reemplaza tokens, resalta los datos pendientes, genera `sitemap.xml` y `robots.txt`, y **falla** si encuentra: enlaces internos rotos, assets inexistentes, títulos o descripciones duplicados, páginas sin un único H1 o imágenes sin `alt`.
 
 ## 5. Publicación
 
@@ -79,10 +89,15 @@ Después de publicar:
 
 ```
 site.config.js            datos del negocio (única fuente de verdad)
+astro.config.mjs          Astro + Tailwind + integración SEO de postbuild
 src/content/              contenido editorial (tratamientos, lesiones, blog, pilar)
-src/templates/            plantillas de página (home, detalle, hubs, contacto…)
-src/lib/                  layout, schema.org, markdown, íconos, ilustraciones SVG
-src/styles/site.css       sistema visual (se inyecta inline y minificado)
-public/                   archivos estáticos (favicon, manifest, imágenes generadas)
-scripts/                  build, servidor local, imágenes, validador de contenido
+src/data/                 carga de contenido, red de enlaces, menú, FAQs, legales
+src/pages/                rutas (home, pilar, índices, [slug] dinámicos, contacto…)
+src/components/           componentes Astro (header, hero, cards, FAQ, CTA, sellos…)
+src/layouts/Base.astro    <head> SEO, schema.org, header, footer, barra móvil
+src/scripts/              motion.js (animaciones), xp.js + scene3d.js (experiencia 3D)
+src/styles/global.css     sistema visual Tailwind (dark tech médico)
+src/lib/                  schema.org, markdown, íconos, ilustraciones SVG
+public/                   favicon, manifest, imágenes, sellos, renders 3D
+scripts/                  postbuild SEO, imágenes, capturas (shot.mjs), validador de contenido
 ```

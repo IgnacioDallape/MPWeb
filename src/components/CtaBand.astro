@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+import { waLink, tokens } from '../lib/site.js';
+interface Props { waMessage?: string; title?: string; text?: string }
+const {
+  waMessage,
+  title = 'Primero, una evaluación. Después, el plan.',
+  text = 'Cada tratamiento comienza con una valoración clínica y ecográfica. Si una técnica invasiva no es la mejor opción para tu caso, te lo vamos a decir.',
+} = Astro.props;
+---
+<section class="px-3 py-16 sm:px-5 md:py-24" aria-labelledby="cta-final">
+  <div class="on-dark noise relative mx-auto max-w-[1320px] overflow-hidden rounded-[2rem] bg-navy-950 px-6 py-16 text-white sm:px-12 md:py-24" data-reveal>
+    <div class="bg-grid bg-grid-fade absolute inset-0" aria-hidden="true"></div>
+    <div class="glow -top-32 -right-24 size-[520px] opacity-70" aria-hidden="true"></div>
+    <div class="relative max-w-3xl">
+      <p class="eyebrow mb-5">{tokens('Turnos en {{CIUDAD}}')}</p>
+      <h2 id="cta-final" class="text-[clamp(2rem,4.6vw,3.6rem)] leading-[1.03] font-semibold"><span class="text-gradient">{title}</span></h2>
+      <p class="mt-5 max-w-2xl text-[1.1rem] text-white/70">{text}</p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href={waLink(waMessage)} class="btn btn-glow btn-shine"><Icon name="whatsapp" size={20} />Hablar por WhatsApp</a>
+        <a href="/contacto/" class="btn btn-outline-dark">Reservar turno<Icon name="arrow" size={18} /></a>
+      </div>
+    </div>
+  </div>
+</section>

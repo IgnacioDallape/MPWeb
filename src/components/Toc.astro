@@ -1,0 +1,18 @@
+---
+interface Props { items: { id: string; text: string }[] }
+const { items } = Astro.props;
+---
+{items.length >= 3 && (
+  <details class="group rounded-2xl border border-zinc-200 bg-white text-[0.9rem]" data-toc>
+    <summary class="flex cursor-pointer list-none items-center justify-between px-5 py-4 font-display font-semibold text-navy-950 [&::-webkit-details-marker]:hidden">
+      En esta página<span class="text-navy-500 transition group-open:rotate-180">▾</span>
+    </summary>
+    <nav aria-label="Contenido de la página">
+      <ol class="grid gap-1 px-3 pb-4">
+        {items.map((t, i) => (
+          <li><a href={`#${t.id}`} data-toc-link class="flex gap-3 rounded-lg px-2 py-1.5 text-zinc-600 no-underline transition hover:bg-navy-50 hover:text-navy-900 data-[active]:bg-navy-50 data-[active]:text-navy-900"><span class="font-display text-[0.75rem] text-navy-500/70 tabular-nums">{String(i + 1).padStart(2, '0')}</span>{t.text}</a></li>
+        ))}
+      </ol>
+    </nav>
+  </details>
+)}

@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+import Toc from '../components/Toc.astro';
+import Faq from '../components/Faq.astro';
+import Reviewed from '../components/Reviewed.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { config } from '../lib/site.js';
+import { pillar, treatments } from '../data/index.js';
+import { HOME_FAQS, PROCESS_FAQS } from '../data/faqs.js';
+import * as S from '../lib/schema.js';
+
+const path = '/preguntas-frecuentes/';
+const crumbs = [{ name: 'Inicio', path: '/' }, { name: 'Preguntas frecuentes', path }];
+const seen = new Set();
+const norm = (q: string) => q.toLowerCase().normalize('NFD').replace(/[^a-z ]/g, '').trim();
+const take = (faqs: { q: string; a: string }[], n = 99) =>
+  faqs.filter((f) => (seen.has(norm(f.q)) ? false : (seen.add(norm(f.q)), true))).slice(0, n);
+const about = { 'EPI': 'la EPI', 'NMP-e': 'la neuromodulación percutánea', 'MEP': 'la MEP', 'Punción seca': 'la punción seca' };
+const groups = [
+  { id: 'general', title: 'Sobre la fisioterapia invasiva ecoguiada', link: ['/fisioterapia-invasiva-ecoguiada/', 'Guía completa de fisioterapia invasiva ecoguiada'], faqs: take([...HOME_FAQS, ...pillar.faqs]) },
+  ...treatments.map((t) => ({ id: t.slug, title: `Sobre ${about[t.shortName] || t.shortName}`, link: [`/tratamientos/${t.slug}/`, `Ver la página de ${t.name}`], faqs: take(t.faqs, 4) })),
+  { id: 'evaluacion', title: 'Sobre la evaluación, las sesiones y la recuperación', link: ['/contacto/', 'Solicitar una evaluación'], faqs: take(PROCESS_FAQS) },
+];
+const schema = [
+  S.breadcrumbs(crumbs),
+  S.webPage({ path, title: 'Preguntas frecuentes', description: 'Preguntas frecuentes sobre fisioterapia invasiva ecoguiada.', updated: config.launchDate, medical: true }),
+  S.faqPage(path, groups.flatMap((g) => g.faqs)),
+];
+---
+<Base
+  title="Preguntas frecuentes: fisioterapia invasiva, EPI y punción seca"
+  description="¿Duele la fisioterapia invasiva? ¿Cuántas sesiones de EPI se necesitan? ¿Puedo entrenar después? Respuestas claras de un kinesiólogo especializado."
+  schema={schema}
+>
+  <PageHero
+    crumbs={crumbs}
+    eyebrow="Preguntas frecuentes y datos"
+    h1="Preguntas frecuentes sobre fisioterapia invasiva ecoguiada"
+    lead="Respuestas claras y prudentes a las dudas más habituales sobre EPI, neuromodulación, MEP, punción seca, la evaluación y la recuperación."
+  />
+  <div class="mx-auto grid max-w-[1240px] gap-10 px-5 py-14 sm:px-8 md:py-20 lg:grid-cols-[minmax(0,1fr)_290px] lg:gap-16">
+    <aside class="grid content-start gap-4 lg:sticky lg:top-28 lg:order-2 lg:self-start">
+      <Toc items={groups.map((g) => ({ id: g.id, text: g.title }))} />
+    </aside>
+    <div class="min-w-0">
+      {groups.map((g) => (
+        <section aria-labelledby={g.id} class="mb-16">
+          <h2 id={g.id} class="mb-6 text-[clamp(1.5rem,2.8vw,2rem)] font-semibold text-navy-950" data-reveal>{g.title}</h2>
+          <Faq faqs={g.faqs} />
+          <a href={g.link[0]} class="mt-5 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-navy-950">{g.link[1]}<Icon name="arrow" size={16} /></a>
+        </section>
+      ))}
+      <Reviewed updated={config.launchDate} />
+    </div>
+  </div>
+  <CtaBand title="¿Tu pregunta no está acá?" text="Escribinos por WhatsApp y te respondemos. Si es necesario, coordinamos una evaluación." />
+</Base>

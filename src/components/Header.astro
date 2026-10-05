@@ -1,0 +1,54 @@
+---
+import BrandMark from './BrandMark.astro';
+import Icon from './Icon.astro';
+import { NAV } from '../data/nav.js';
+import { config, known, waLink } from '../lib/site.js';
+interface Props { waMessage?: string }
+const { waMessage } = Astro.props;
+const current = Astro.url.pathname;
+const brand = known(config.business.name) || config.professional.name;
+const isActive = (p: string) => (current === p ? 'page' : p !== '/' && current.startsWith(p) ? 'true' : undefined);
+---
+<header id="site-header" class="no-print fixed inset-x-0 top-0 z-50 px-3 pt-3 transition-all duration-500 sm:px-5">
+  <div data-header-inner class="mx-auto flex h-16 max-w-[1320px] items-center justify-between gap-4 rounded-2xl border border-white/10 bg-navy-950/60 px-3 pl-4 shadow-[0_10px_40px_-20px_rgba(0,0,0,.8)] backdrop-blur-md transition-all duration-500 sm:px-4">
+    <a href="/" class="flex min-w-0 items-center gap-3 text-white no-underline">
+      <BrandMark />
+      <span class="flex min-w-0 flex-col leading-tight">
+        <span class="truncate font-display text-[0.98rem] font-semibold tracking-tight">{brand}</span>
+        <span class="text-[0.7rem] font-medium tracking-[0.14em] text-ice-300/80 uppercase">Fisioterapia ecoguiada</span>
+      </span>
+    </a>
+
+    <nav aria-label="Principal" class="hidden xl:block">
+      <ul class="flex items-center gap-0.5">
+        {NAV.filter((n) => !n.mobileOnly).map((n) => (
+          <li>
+            <a href={n.path} aria-current={isActive(n.path)} class="relative rounded-xl px-3 py-2 text-[0.86rem] font-medium whitespace-nowrap text-white/70 no-underline transition hover:bg-white/5 hover:text-white aria-[current]:bg-white/10 aria-[current]:text-white">{n.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a href={waLink(waMessage)} class="btn btn-glow btn-shine btn-sm hidden 2xl:inline-flex"><Icon name="whatsapp" size={18} />Solicitar evaluación</a>
+      <details class="group relative xl:hidden" data-menu>
+        <summary aria-label="Abrir menú" class="grid size-11 cursor-pointer list-none place-items-center rounded-xl border border-white/15 text-white transition hover:bg-white/10 [&::-webkit-details-marker]:hidden">
+          <Icon name="menu" class="group-open:hidden" />
+          <Icon name="close" class="hidden group-open:block" />
+        </summary>
+        <nav aria-label="Principal (móvil)" class="glass fixed inset-x-3 top-[84px] max-h-[calc(100dvh-100px)] overflow-auto rounded-2xl bg-navy-950/95 p-3 sm:inset-x-5">
+          <ul>
+            {NAV.map((n) => (
+              <li>
+                <a href={n.path} aria-current={isActive(n.path)} class="flex items-center justify-between rounded-xl px-4 py-3.5 font-display text-[1.05rem] text-white/85 no-underline transition hover:bg-white/5 aria-[current]:text-ice-300">
+                  {n.label}<Icon name="arrow" size={18} class="text-white/30" />
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a href={waLink(waMessage)} class="btn btn-glow mt-3 w-full"><Icon name="whatsapp" size={20} />Solicitar evaluación</a>
+        </nav>
+      </details>
+    </div>
+  </div>
+</header>

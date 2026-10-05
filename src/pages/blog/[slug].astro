@@ -1,0 +1,9 @@
+---
+import DetailPage from '../../components/DetailPage.astro';
+import { posts } from '../../data/index.js';
+export function getStaticPaths() {
+  return posts.map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+const { item } = Astro.props;
+---
+<DetailPage item={item} kind="blog" />

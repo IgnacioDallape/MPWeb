@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import Toc from '../../components/Toc.astro';
+import Faq from '../../components/Faq.astro';
+import Reviewed from '../../components/Reviewed.astro';
+import Related from '../../components/Related.astro';
+import Cards from '../../components/Cards.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import CertStrip from '../../components/CertStrip.astro';
+import { markdown } from '../../lib/md.js';
+import { layersFigure } from '../../lib/visuals.js';
+import { config, waLink, formatDate, abs, tokens } from '../../lib/site.js';
+import { ctaInline } from '../../lib/components.js';
+import { pillar, treatments, bySlug } from '../../data/index.js';
+import * as S from '../../lib/schema.js';
+
+const path = '/fisioterapia-invasiva-ecoguiada/';
+const crumbs = [{ name: 'Inicio', path: '/' }, { name: 'Fisioterapia invasiva ecoguiada', path }];
+const { html, toc } = markdown(tokens(pillar.body));
+const body = html.replace(/<p>\{\{CTA\}\}<\/p>/g, ctaInline({ waMessage: pillar.waMessage }));
+const p = config.professional;
+const posts = ['primera-sesion-fisioterapia-invasiva', 'ecografia-en-fisioterapia', 'cuando-se-recomienda-fisioterapia-invasiva'].map((s) => bySlug('blog', s));
+const schema = [
+  S.breadcrumbs(crumbs),
+  S.webPage({
+    path,
+    title: pillar.h1,
+    description: pillar.description,
+    updated: pillar.updated,
+    published: config.launchDate,
+    medical: true,
+    about: { '@type': 'MedicalTherapy', name: 'Fisioterapia invasiva ecoguiada', alternateName: ['Kinesiología invasiva ecoguiada', 'Fisioterapia ecoguiada'] },
+    extra: { hasPart: treatments.map((t) => ({ '@id': abs(`/tratamientos/${t.slug}/#procedimiento`) })) },
+  }),
+  S.faqPage(path, pillar.faqs),
+];
+---
+<Base title={pillar.title} description={pillar.description} schema={schema} waMessage={pillar.waMessage} updated={pillar.updated}>
+  <PageHero crumbs={crumbs} eyebrow="Especialidad" h1={pillar.h1} lead={pillar.lead} facts={pillar.facts}>
+    <div class="mt-9 flex flex-wrap gap-3">
+      <a href={waLink(pillar.waMessage)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />Solicitar una evaluación</a>
+      <a href="#tratamientos-relacionados" class="btn btn-outline-dark">Ver tratamientos<Icon name="arrow" size={18} /></a>
+    </div>
+    <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.86rem] text-white/55">
+      <span class="flex items-center gap-2"><Icon name="shield" size={16} class="text-ice-400" />Revisado por {p.name} · Mat. {p.license}</span>
+      <span class="flex items-center gap-2"><Icon name="calendar" size={16} class="text-ice-400" />Actualizado: <time datetime={pillar.updated}>{formatDate(pillar.updated)}</time></span>
+    </p>
+  </PageHero>
+
+  <div class="mx-auto grid max-w-[1240px] gap-10 px-5 py-14 sm:px-8 md:py-20 lg:grid-cols-[minmax(0,1fr)_290px] lg:gap-16">
+    <aside class="grid content-start gap-4 lg:sticky lg:top-28 lg:order-2 lg:self-start">
+      <Toc items={[...toc, { id: 'preguntas-frecuentes', text: 'Preguntas frecuentes' }]} />
+      <div class="hidden rounded-2xl border border-zinc-200 bg-white p-5 lg:block">
+        <p class="eyebrow mb-4">Certificaciones</p>
+        <CertStrip />
+      </div>
+    </aside>
+    <article class="prose-site min-w-0">
+      <figure class="not-prose glass-light mb-12 overflow-hidden rounded-[1.75rem] p-2">
+        <div class="overflow-hidden rounded-[1.3rem]" set:html={layersFigure()} />
+        <figcaption class="px-4 py-3 text-[0.82rem] text-zinc-500">Esquema: la sonda ecográfica permite seguir la aguja hasta la estructura objetivo.</figcaption>
+      </figure>
+      <Fragment set:html={body} />
+      <section aria-labelledby="preguntas-frecuentes" class="not-prose mt-16">
+        <h2 id="preguntas-frecuentes" class="mb-6 font-display text-[1.75rem] font-semibold tracking-tight text-navy-950">Preguntas frecuentes</h2>
+        <Faq faqs={pillar.faqs} />
+      </section>
+      <Reviewed updated={pillar.updated} />
+    </article>
+  </div>
+
+  <Related id="tratamientos-relacionados" title="Tratamientos de fisioterapia invasiva" cols={4} count={treatments.length}><Cards kind="tratamientos" items={treatments} /></Related>
+  <Related id="articulos-relacionados" title="Artículos recomendados" count={posts.length}><Cards kind="blog" items={posts} /></Related>
+  <CtaBand waMessage={pillar.waMessage} />
+</Base>

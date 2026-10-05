@@ -1,0 +1,29 @@
+---
+import Breadcrumbs from './Breadcrumbs.astro';
+import { inline } from '../lib/md.js';
+import { tokens } from '../lib/site.js';
+interface Props { crumbs: { name: string; path: string }[]; eyebrow?: string; h1: string; lead?: string; facts?: { label: string; value: string }[] }
+const { crumbs, eyebrow, h1, lead, facts } = Astro.props;
+---
+<section class="on-dark noise relative overflow-hidden bg-navy-950 pt-36 pb-16 text-white md:pt-44 md:pb-20">
+  <div class="bg-grid bg-grid-fade absolute inset-0" aria-hidden="true"></div>
+  <div class="glow -top-40 right-[-10%] size-[640px] opacity-60" aria-hidden="true"></div>
+  <div class="glow bottom-[-60%] left-[-10%] size-[520px] opacity-30" aria-hidden="true"></div>
+  <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
+    <Breadcrumbs items={crumbs} />
+    {eyebrow && <p class="eyebrow mb-5">{eyebrow}</p>}
+    <h1 class="max-w-[18em] text-[clamp(2.2rem,5.6vw,4.2rem)] leading-[1.02] font-semibold" data-hero-title>{tokens(h1)}</h1>
+    {lead && <p class="mt-6 max-w-3xl text-[clamp(1.05rem,1.9vw,1.25rem)] leading-relaxed text-white/70" set:html={inline(tokens(lead))} />}
+    <slot />
+    {facts && (
+      <dl class="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:grid-cols-4" data-reveal>
+        {facts.map((f) => (
+          <div class="bg-navy-950/80 p-5">
+            <dt class="font-display text-[0.68rem] font-semibold tracking-[0.18em] text-ice-300/70 uppercase">{f.label}</dt>
+            <dd class="mt-2 text-[0.95rem] leading-snug font-semibold text-white">{tokens(f.value)}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+  </div>
+</section>
