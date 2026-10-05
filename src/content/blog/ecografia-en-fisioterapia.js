@@ -5,10 +5,10 @@ export default {
     'Para qué sirve la ecografía en fisioterapia: apoyo a la evaluación, ver tejidos en movimiento, guiar agujas, seguir la evolución, biofeedback y sus límites.',
   h1: '¿Para qué sirve la ecografía en fisioterapia?',
   lead:
-    'En fisioterapia, la ecografía sirve para complementar la evaluación clínica, observar tejidos en movimiento, guiar con precisión las técnicas con aguja y seguir la evolución de una lesión. No reemplaza el diagnóstico médico ni explica por sí sola el dolor: es una herramienta que se interpreta junto con la entrevista y la exploración física.',
+    'En fisioterapia, la ecografía sirve para complementar la evaluación clínica, observar tejidos en movimiento, guiar con precisión los tratamientos con aguja y seguir la evolución de una lesión. No reemplaza el diagnóstico médico ni explica por sí sola el dolor: es una herramienta que se interpreta junto con la entrevista y la exploración física.',
   date: '2026-10-02',
   updated: '2026-10-02',
-  category: 'Técnicas',
+  category: 'Tratamientos',
 
   seo: {
     primary: 'ecografía en fisioterapia',
@@ -53,9 +53,9 @@ Esta información funcional es difícil de obtener con una imagen estática, y m
 
 ## Guiar las agujas con precisión
 
-En las técnicas invasivas, la ecografía cumple un rol central: permite **ver la aguja dentro del cuerpo** en tiempo real y dirigirla al objetivo. Esto aporta dos cosas.
+En los tratamientos invasivos, la ecografía cumple un rol central: permite **ver la aguja dentro del cuerpo** en tiempo real y dirigirla al objetivo. Esto aporta dos cosas.
 
-**Precisión.** La punta puede llevarse a la zona alterada de un tendón, a un punto concreto de una cicatriz o a la proximidad de un nervio. Es lo que da sentido a técnicas como la [electrólisis percutánea (EPI)](/tratamientos/epi-electrolisis-percutanea/), la [microelectrólisis (MEP)](/tratamientos/microelectrolisis-percutanea-mep/) o la [neuromodulación percutánea](/tratamientos/neuromodulacion-percutanea-ecoguiada/), que necesitan actuar sobre un lugar concreto.
+**Precisión.** La punta puede llevarse a la zona alterada de un tendón, a un punto concreto de una cicatriz o a la proximidad de un nervio. Es lo que da sentido a tratamientos como la [electrólisis percutánea (EPI)](/tratamientos/epi-electrolisis-percutanea/), la [microelectrólisis (MEP)](/tratamientos/microelectrolisis-percutanea-mep/) o la [neuromodulación percutánea](/tratamientos/neuromodulacion-percutanea-ecoguiada/), que necesitan actuar sobre un lugar concreto.
 
 **Seguridad.** Se identifican antes y durante el procedimiento estructuras que conviene evitar: vasos sanguíneos, nervios, pleura en la región del tórax, cavidades articulares. En la [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/), por ejemplo, permite trabajar en músculos profundos con mayor margen de control.
 
@@ -87,13 +87,13 @@ También ayuda a entender la propia lesión: ver el tendón o el músculo del qu
 
 ## Dónde seguir
 
-Si querés saber cómo se integra la ecografía con cada técnica, revisá las páginas de [tratamientos](/tratamientos/) y, para tu caso concreto, la [lesión](/lesiones/) que más se parezca a lo que te pasa. La página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/) explica el enfoque completo. Si querés una valoración con ecografía en {{CIUDAD}}, podés [solicitar una evaluación](/contacto/).
+Si querés saber cómo se integra la ecografía con cada tratamiento, revisá [sus páginas](/tratamientos/) y, para tu caso concreto, la [lesión](/lesiones/) que más se parezca a lo que te pasa. La página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/) explica el enfoque completo. Si querés una valoración con ecografía en {{CIUDAD}}, podés [solicitar una evaluación](/contacto/).
 `,
 
   faqs: [
     {
       q: '¿La ecografía que hace el fisioterapeuta reemplaza a la del médico?',
-      a: 'No. En fisioterapia se usa como apoyo a la evaluación funcional y para guiar técnicas. El diagnóstico médico y los estudios por imágenes diagnósticos corresponden al médico, y ante hallazgos dudosos o señales de alarma se deriva.',
+      a: 'No. En fisioterapia se usa como apoyo a la evaluación funcional y para guiar los tratamientos con aguja. El diagnóstico médico y los estudios por imágenes diagnósticos corresponden al médico, y ante hallazgos dudosos o señales de alarma se deriva.',
     },
     {
       q: '¿Es necesario traer estudios previos?',

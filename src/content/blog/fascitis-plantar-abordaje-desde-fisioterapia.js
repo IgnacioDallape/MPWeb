@@ -2,10 +2,10 @@ export default {
   slug: 'fascitis-plantar-abordaje-desde-fisioterapia',
   title: 'Fascitis plantar: abordaje desde la fisioterapia | {{NOMBRE}}',
   description:
-    'Fascitis plantar desde la fisioterapia: mitos sobre el espolón, calzado, gestión de la carga, ejercicio y cuándo se consideran técnicas invasivas.',
+    'Fascitis plantar desde la fisioterapia: mitos sobre el espolón, calzado, gestión de la carga, ejercicio y cuándo se consideran tratamientos invasivos.',
   h1: 'Fascitis plantar: cómo se aborda desde la fisioterapia',
   lead:
-    'Desde la fisioterapia, la fascitis plantar se aborda combinando educación, ajuste de la carga diaria y deportiva, revisión del calzado y un programa de ejercicio progresivo para el pie y la pantorrilla. Las técnicas invasivas ecoguiadas solo se consideran tras una evaluación, cuando el cuadro se prolonga pese a un plan bien llevado.',
+    'Desde la fisioterapia, la fascitis plantar se aborda combinando educación, ajuste de la carga diaria y deportiva, revisión del calzado y un programa de ejercicio progresivo para el pie y la pantorrilla. Los tratamientos invasivos ecoguiados solo se consideran tras una evaluación, cuando el cuadro se prolonga pese a un plan bien llevado.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Lesiones',
@@ -83,9 +83,9 @@ La progresión se guía por la respuesta del dolor: una molestia leve que no emp
 
 Conviene tener expectativas realistas. La fascia es un tejido que se adapta despacio, y es habitual que la mejoría sea gradual, con días mejores y peores. Un buen indicador de avance es que el dolor de los primeros pasos de la mañana sea cada vez menos intenso o dure menos, aunque todavía no haya desaparecido del todo.
 
-## Cuándo se consideran las técnicas invasivas
+## Cuándo se consideran los tratamientos invasivos
 
-En muchos casos, educación, ajustes de carga y ejercicio son suficientes. Las técnicas ecoguiadas se evalúan cuando el cuadro se prolonga pese a un programa bien llevado, o cuando la ecografía muestra un engrosamiento o una alteración localizada de la fascia.
+En muchos casos, educación, ajustes de carga y ejercicio son suficientes. Los tratamientos ecoguiados se evalúan cuando el cuadro se prolonga pese a un programa bien llevado, o cuando la ecografía muestra un engrosamiento o una alteración localizada de la fascia.
 
 En ese contexto, tras una evaluación, pueden considerarse:
 
@@ -93,14 +93,14 @@ En ese contexto, tras una evaluación, pueden considerarse:
 - [Microelectrólisis percutánea (MEP)](/tratamientos/microelectrolisis-percutanea-mep/), con corriente de muy baja intensidad, que suele tolerarse mejor.
 - [Punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/) cuando hay puntos gatillo en la musculatura del pie o de la pantorrilla que contribuyen al dolor.
 
-Ninguna de estas técnicas reemplaza al ejercicio: se integran con él para facilitar la adaptación del tejido. No todas las personas son candidatas, y existen contraindicaciones que se revisan en la consulta.
+Ninguno de estos tratamientos reemplaza al ejercicio: se integran con él para facilitar la adaptación del tejido. No todas las personas son candidatas, y existen contraindicaciones que se revisan en la consulta.
 
 ## Cómo seguir
 
 Si tu dolor de talón encaja con lo que leíste, este es el recorrido sugerido:
 
 1. Revisá cómo se evalúa y se trata en la página de [fascitis plantar](/lesiones/fascitis-plantar/).
-2. Conocé las técnicas que pueden integrarse al plan, como la [MEP](/tratamientos/microelectrolisis-percutanea-mep/).
+2. Conocé los tratamientos que pueden integrarse al plan, como la [MEP](/tratamientos/microelectrolisis-percutanea-mep/).
 3. Entendé el enfoque general en [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/).
 4. Si querés que analicemos tu caso, [pedí una evaluación](/contacto/).
 `,
@@ -119,7 +119,7 @@ Si tu dolor de talón encaja con lo que leíste, este es el recorrido sugerido:
       a: 'Pueden ayudar a reducir el dolor en algunas personas y en ciertas etapas, pero suelen funcionar mejor como complemento de un programa de ejercicio y gestión de la carga, no como única medida.',
     },
     {
-      q: '¿Cuándo se indica una técnica invasiva para la fascitis plantar?',
+      q: '¿Cuándo se indica un tratamiento invasivo para la fascitis plantar?',
       a: 'Se considera cuando el dolor persiste pese a un plan de ejercicio y ajustes de carga bien llevados, o cuando la ecografía muestra una alteración localizada de la fascia. La decisión se toma tras una evaluación individual.',
     },
   ],

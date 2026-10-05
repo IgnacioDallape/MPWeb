@@ -89,7 +89,7 @@ Y consultá con un médico sin demora si aparece **hormigueo o adormecimiento** 
 
 ## Cómo suele abordarse (en pocas palabras)
 
-El enfoque inicial suele incluir educación sobre la carga, ajustes en las tareas o en el material deportivo y un programa de **ejercicio terapéutico progresivo** para los extensores, el agarre y la musculatura del hombro. Cuando el cuadro se prolonga o la ecografía muestra una alteración localizada del tendón, puede evaluarse sumar técnicas ecoguiadas como la [electrólisis percutánea (EPI)](/tratamientos/epi-electrolisis-percutanea/) o la [neuromodulación percutánea](/tratamientos/neuromodulacion-percutanea-ecoguiada/), integradas con el ejercicio. Si te interesa entender cómo se aplican, leé [EPI para tendinopatías](/blog/epi-para-tendinopatias/).
+El enfoque inicial suele incluir educación sobre la carga, ajustes en las tareas o en el material deportivo y un programa de **ejercicio terapéutico progresivo** para los extensores, el agarre y la musculatura del hombro. Cuando el cuadro se prolonga o la ecografía muestra una alteración localizada del tendón, puede evaluarse sumar tratamientos ecoguiados como la [electrólisis percutánea (EPI)](/tratamientos/epi-electrolisis-percutanea/) o la [neuromodulación percutánea](/tratamientos/neuromodulacion-percutanea-ecoguiada/), integrados con el ejercicio. Si te interesa entender cómo se aplican, leé [EPI para tendinopatías](/blog/epi-para-tendinopatias/).
 
 Mientras tanto, algunas medidas suelen ayudar: repartir las tareas de agarre a lo largo del día, alternar con pausas breves, usar herramientas con mangos más gruesos y evitar sostener objetos pesados con la palma hacia abajo y el codo extendido.
 

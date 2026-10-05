@@ -8,7 +8,7 @@ export default {
 
   title: 'Tratamiento del manguito rotador en {{CIUDAD}} | {{NOMBRE}}',
   description:
-    'Tratamiento de la tendinopatía del manguito rotador y del supraespinoso: ecografía del hombro, ejercicio progresivo y técnicas ecoguiadas. Consultá en {{CIUDAD}}.',
+    'Tratamiento de la tendinopatía del manguito rotador y del supraespinoso: ecografía del hombro, ejercicio progresivo y tratamientos ecoguiados. Consultá en {{CIUDAD}}.',
   h1: 'Tratamiento del manguito rotador: dolor de hombro al elevar el brazo',
   lead:
     'Cuando el hombro duele al peinarte, al alcanzar un estante alto o al acostarte de ese lado, muchas veces el origen está en el manguito rotador. El tratamiento empieza por entender qué tendón está comprometido y cuánto, y sigue con un plan de ejercicio que devuelva fuerza y control al hombro.',
@@ -25,7 +25,7 @@ export default {
     { label: 'Zona', value: 'Cara anterior y lateral del hombro' },
     { label: 'Síntoma típico', value: 'Dolor al elevar el brazo y al dormir sobre ese lado' },
     { label: 'Frecuente en', value: 'Natación, tenis, pádel, vóley y trabajos con brazos en alto' },
-    { label: 'Técnicas asociadas', value: 'EPI, neuromodulación y punción seca ecoguiadas' },
+    { label: 'Tratamientos asociados', value: 'EPI, neuromodulación y punción seca ecoguiadas' },
   ],
 
   body: `
@@ -90,7 +90,7 @@ El programa suele combinar:
 
 Las cargas y repeticiones se definen en la consulta y se ajustan según la respuesta.
 
-### Técnicas ecoguiadas como complemento
+### Tratamientos ecoguiados como complemento
 
 En tendinopatías persistentes del supraespinoso con alteración localizada en la ecografía puede valorarse la [EPI guiada por ecografía](/tratamientos/epi-electrolisis-percutanea/). Si el dolor inhibe la musculatura y dificulta el ejercicio, la [neuromodulación percutánea](/tratamientos/neuromodulacion-percutanea-ecoguiada/) sobre el nervio supraescapular es una alternativa a considerar. Cuando hay puntos gatillo activos en infraespinoso, trapecio o deltoides que reproducen el dolor, la [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/) permite tratarlos con seguridad, lejos de estructuras como la pleura. Para ver cuándo se indican en tendones, leé [EPI para tendinopatías](/blog/epi-para-tendinopatias/).
 
@@ -121,7 +121,7 @@ Es importante una valoración médica si después de una **caída o un tirón** 
       a: 'Es el dolor que aparece al levantar el brazo de costado en un rango intermedio, aproximadamente entre la altura del hombro y algo más arriba, y que se alivia por encima o por debajo de ese tramo. Es un signo frecuente en problemas del manguito rotador y de la bursa subacromial.',
     },
     {
-      q: '¿Qué técnica ecoguiada se usa en el hombro?',
+      q: '¿Qué tratamiento ecoguiado se usa en el hombro?',
       a: 'Depende de lo que muestre la evaluación. La EPI puede indicarse en zonas alteradas del tendón, la neuromodulación sobre el nervio supraescapular cuando el dolor limita el movimiento, y la punción seca en puntos gatillo de los músculos del hombro. Siempre se integran con ejercicio y no todos los casos las requieren.',
     },
   ],

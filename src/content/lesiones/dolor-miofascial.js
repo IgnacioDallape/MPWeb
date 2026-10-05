@@ -25,7 +25,7 @@ export default {
     { label: 'Zona', value: 'Cuello, hombros, espalda, glúteos y piernas' },
     { label: 'Síntoma típico', value: 'Dolor sordo con "nudos" palpables que se irradia a otra zona' },
     { label: 'Frecuente en', value: 'Trabajo de escritorio, estrés sostenido y sobrecarga deportiva' },
-    { label: 'Técnicas asociadas', value: 'Punción seca ecoguiada, NMP-e y ejercicio terapéutico' },
+    { label: 'Tratamientos asociados', value: 'Punción seca ecoguiada, NMP-e y ejercicio terapéutico' },
   ],
 
   body: `
@@ -81,7 +81,7 @@ En músculos superficiales el diagnóstico es fundamentalmente clínico. En mús
 
 ## Cómo es el tratamiento
 
-El abordaje del dolor miofascial combina varias herramientas y no depende de una sola técnica.
+El abordaje del dolor miofascial combina varias herramientas y no depende de un solo tratamiento.
 
 ### Educación y hábitos
 
@@ -93,12 +93,12 @@ El ejercicio es el que sostiene los cambios a mediano plazo. Según la zona, pue
 
 {{CTA}}
 
-### Técnicas ecoguiadas
+### Tratamientos ecoguiados
 
-- La [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/) consiste en introducir una aguja fina en el punto gatillo para provocar una respuesta de espasmo local y reducir la sensibilidad de la zona. En músculos profundos o cercanos a estructuras delicadas, la guía ecográfica aporta precisión y seguridad. En [punción seca con ecografía: qué cambia](/blog/puncion-seca-con-ecografia-que-cambia/) se explica la diferencia con la técnica tradicional.
+- La [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/) consiste en introducir una aguja fina en el punto gatillo para provocar una respuesta de espasmo local y reducir la sensibilidad de la zona. En músculos profundos o cercanos a estructuras delicadas, la guía ecográfica aporta precisión y seguridad. En [punción seca con ecografía: qué cambia](/blog/puncion-seca-con-ecografia-que-cambia/) se explica la diferencia con el tratamiento tradicional.
 - La [neuromodulación percutánea ecoguiada (NMP-e)](/tratamientos/neuromodulacion-percutanea-ecoguiada/) estimula el nervio que inerva el músculo y puede ser útil cuando hay inhibición, dolor persistente o mala tolerancia a la punción repetida.
 
-Ninguna de estas técnicas reemplaza el ejercicio ni el cambio de hábitos; se integran en un plan. Si te interesa comparar técnicas con aguja, podés leer las [diferencias entre EPI y punción seca](/blog/diferencias-entre-epi-y-puncion-seca/).
+Ninguno de estos tratamientos reemplaza el ejercicio ni el cambio de hábitos; se integran en un plan. Si te interesa comparar tratamientos con aguja, podés leer las [diferencias entre EPI y punción seca](/blog/diferencias-entre-epi-y-puncion-seca/).
 
 ## Evolución esperable
 
@@ -134,7 +134,7 @@ Pedí una consulta médica si el dolor se acompaña de:
     },
     {
       q: '¿Por qué las contracturas me vuelven siempre?',
-      a: 'Porque los factores que las generan suelen seguir presentes: posturas sostenidas, estrés, poco descanso o falta de fuerza. Por eso el tratamiento combina técnicas para bajar el dolor con ejercicio y cambios en la rutina.',
+      a: 'Porque los factores que las generan suelen seguir presentes: posturas sostenidas, estrés, poco descanso o falta de fuerza. Por eso el abordaje combina tratamientos para bajar el dolor con ejercicio y cambios en la rutina.',
     },
   ],
 

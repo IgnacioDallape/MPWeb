@@ -4,7 +4,7 @@ export default {
   category: 'dolor',
   name: 'Dolor musculoesquelético persistente',
   icon: 'pulse',
-  cardText: 'Dolor que dura más de tres meses y no responde como esperabas. Un enfoque integral con educación, ejercicio gradual y técnicas complementarias.',
+  cardText: 'Dolor que dura más de tres meses y no responde como esperabas. Un enfoque integral con educación, ejercicio gradual y tratamientos complementarios.',
 
   title: 'Dolor musculoesquelético persistente en {{CIUDAD}} | {{NOMBRE}}',
   description:
@@ -25,7 +25,7 @@ export default {
     { label: 'Duración', value: 'Dolor que persiste más de tres meses' },
     { label: 'Síntoma típico', value: 'Dolor que fluctúa, se extiende o aparece con estímulos leves' },
     { label: 'Frecuente en', value: 'Lumbalgia, cervicalgia, hombro, rodilla y dolor tras lesiones previas' },
-    { label: 'Técnicas asociadas', value: 'Educación, ejercicio gradual; NMP-e y punción seca como complemento' },
+    { label: 'Tratamientos asociados', value: 'Educación, ejercicio gradual; NMP-e y punción seca como complemento' },
   ],
 
   body: `
@@ -65,7 +65,7 @@ No se trata de "culpar" a ninguno de ellos, sino de identificar sobre cuáles se
 
 La primera consulta dedica tiempo a escuchar la historia completa: cómo empezó el dolor, qué tratamientos hiciste, qué estudios tenés, qué empeora y qué alivia, cómo dormís y qué actividades dejaste. Luego se realiza una exploración física que valora movilidad, fuerza, tolerancia a la carga y sensibilidad.
 
-La ecografía puede ser útil para revisar una estructura concreta (un tendón, una cicatriz, un músculo) o para guiar con seguridad una técnica con aguja. Pero en el dolor persistente la imagen tiene un valor limitado por sí sola: muchas alteraciones que aparecen en los estudios también se encuentran en personas sin dolor. Se interpreta siempre en contexto.
+La ecografía puede ser útil para revisar una estructura concreta (un tendón, una cicatriz, un músculo) o para guiar con seguridad un tratamiento con aguja. Pero en el dolor persistente la imagen tiene un valor limitado por sí sola: muchas alteraciones que aparecen en los estudios también se encuentran en personas sin dolor. Se interpreta siempre en contexto.
 
 ## Cómo es el tratamiento
 
@@ -83,20 +83,20 @@ Se trabaja sobre el descanso, la distribución de la actividad durante la semana
 
 {{CTA}}
 
-### Técnicas complementarias, nunca aisladas
+### Tratamientos complementarios, nunca aislados
 
-Algunas técnicas ecoguiadas pueden ayudar a reducir la sensibilidad y facilitar el ejercicio, siempre **como complemento** y no como solución por sí mismas:
+Algunos tratamientos ecoguiados pueden ayudar a reducir la sensibilidad y facilitar el ejercicio, siempre **como complemento** y no como solución por sí mismas:
 
 - La [neuromodulación percutánea ecoguiada (NMP-e)](/tratamientos/neuromodulacion-percutanea-ecoguiada/) estimula un nervio periférico con el objetivo de modular el dolor y mejorar la función muscular. Si querés entender cómo actúa, leé [neuromodulación percutánea: nervio y dolor](/blog/neuromodulacion-percutanea-nervio-y-dolor/).
 - La [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/) puede considerarse cuando hay un componente de [dolor miofascial](/lesiones/dolor-miofascial/) con puntos gatillo relevantes.
 
-No todas las personas con dolor persistente son candidatas a técnicas invasivas. En [cuándo se recomienda la fisioterapia invasiva](/blog/cuando-se-recomienda-fisioterapia-invasiva/) se explican los criterios generales.
+No todas las personas con dolor persistente son candidatas a tratamientos invasivos. En [cuándo se recomienda la fisioterapia invasiva](/blog/cuando-se-recomienda-fisioterapia-invasiva/) se explican los criterios generales.
 
 ## Expectativas realistas y trabajo en equipo
 
 El objetivo no siempre es llegar a cero dolor en poco tiempo, sino **recuperar actividades**, ganar capacidad y que el dolor deje de ocupar el centro de tu vida. Los avances suelen llegar en semanas o meses, con altibajos normales en el camino.
 
-Conviene desconfiar de las propuestas que prometen resolver en pocas sesiones un dolor de años, o que dependen solo de tratamientos pasivos que recibís acostado en una camilla. Las técnicas manuales o con aguja pueden dar una ventana de alivio; lo que sostiene la mejoría es lo que hacés con esa ventana: moverte más, retomar actividades y ganar fuerza. Si querés conocer en qué consisten las técnicas ecoguiadas y qué lugar ocupan dentro de un plan, podés leer la página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/).
+Conviene desconfiar de las propuestas que prometen resolver en pocas sesiones un dolor de años, o que dependen solo de intervenciones pasivas que recibís acostado en una camilla. Los tratamientos manuales o con aguja pueden dar una ventana de alivio; lo que sostiene la mejoría es lo que hacés con esa ventana: moverte más, retomar actividades y ganar fuerza. Si querés conocer en qué consisten los tratamientos ecoguiados y qué lugar ocupan dentro de un plan, podés leer la página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/).
 
 Cuando corresponde, el tratamiento se coordina con tu médico de cabecera, traumatólogo, reumatólogo o especialista en dolor, y en algunos casos con un profesional de salud mental. Es un trabajo en equipo.
 

@@ -5,7 +5,7 @@ export default {
     'Guía para tu primera sesión de fisioterapia invasiva ecoguiada: cómo prepararte, qué pasa durante el procedimiento, qué se siente y qué cuidados seguir.',
   h1: 'Primera sesión de fisioterapia invasiva ecoguiada: qué esperar paso a paso',
   lead:
-    'En una primera sesión de fisioterapia invasiva ecoguiada primero se evalúa tu caso con entrevista, exploración física y ecografía, y solo después se decide si corresponde aplicar una técnica con aguja. Si se aplica, el procedimiento suele ser breve, se adapta a tu tolerancia y termina con pautas claras de actividad y ejercicio para los días siguientes.',
+    'En una primera sesión de fisioterapia invasiva ecoguiada primero se evalúa tu caso con entrevista, exploración física y ecografía, y solo después se decide si corresponde aplicar un tratamiento con aguja. Si se aplica, el procedimiento suele ser breve, se adapta a tu tolerancia y termina con pautas claras de actividad y ejercicio para los días siguientes.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Guías para pacientes',
@@ -20,9 +20,9 @@ export default {
   body: `
 ## Por qué la primera sesión empieza sin agujas
 
-Mucha gente llega a la primera consulta pensando que va a recibir el tratamiento apenas se acueste en la camilla. En la práctica, la primera parte de la sesión está dedicada a entender qué te pasa. Una técnica invasiva solo tiene sentido si responde a un problema bien identificado, y para eso hace falta tiempo de evaluación.
+Mucha gente llega a la primera consulta pensando que le van a aplicar la aguja apenas se acueste en la camilla. En la práctica, la primera parte de la sesión está dedicada a entender qué te pasa. Un tratamiento invasivo solo tiene sentido si responde a un problema bien identificado, y para eso hace falta tiempo de evaluación.
 
-Por eso conviene pensar la primera sesión como una **consulta de evaluación que puede incluir un procedimiento**, no al revés. Hay casos en los que se aplica la técnica ese mismo día y otros en los que se decide empezar por ejercicio, ajustar cargas o derivar a un médico antes de avanzar. Si querés entender primero de qué se trata el enfoque en general, tenés la página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/).
+Por eso conviene pensar la primera sesión como una **consulta de evaluación que puede incluir un procedimiento**, no al revés. Hay casos en los que se aplica el tratamiento ese mismo día y otros en los que se decide empezar por ejercicio, ajustar cargas o derivar a un médico antes de avanzar. Si querés entender primero de qué se trata el enfoque en general, tenés la página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/).
 
 ## Antes de la consulta: cómo prepararte
 
@@ -44,7 +44,7 @@ Algunos detalles simples hacen que la sesión sea más cómoda y aprovechable.
 ### Preguntas que vale la pena llevar anotadas
 
 1. ¿Qué estructura creés que está generando mi dolor?
-2. ¿Por qué esta técnica y no otra, o por qué no hacer solo ejercicio?
+2. ¿Por qué este tratamiento y no otro, o por qué no hacer solo ejercicio?
 3. ¿Qué actividad puedo mantener y cuál conviene ajustar?
 4. ¿Cómo vamos a medir si estoy mejorando?
 5. ¿Qué señales deberían hacerme consultar antes de la próxima sesión?
@@ -59,13 +59,13 @@ Después viene la **exploración física**: pruebas de movilidad, fuerza, palpac
 
 Luego se hace la **valoración ecográfica**. Sobre la piel se coloca gel y una sonda que muestra en pantalla tendones, músculos, fascia y otras estructuras. Es indolora. Te pueden pedir que muevas la articulación o que contraigas el músculo para ver cómo se comporta en movimiento. Si te interesa este punto, el artículo sobre [para qué sirve la ecografía en fisioterapia](/blog/ecografia-en-fisioterapia/) lo desarrolla en detalle.
 
-Con todo eso, el profesional te explica qué encontró, qué opciones hay y por qué propone una u otra. Es el momento de hacer tus preguntas y de dar tu **consentimiento informado** si se decide aplicar una técnica.
+Con todo eso, el profesional te explica qué encontró, qué opciones hay y por qué propone una u otra. Es el momento de hacer tus preguntas y de dar tu **consentimiento informado** si se decide aplicar un tratamiento.
 
 {{CTA}}
 
 ## Si se realiza el procedimiento: paso a paso
 
-Cuando la técnica está indicada, la secuencia suele ser parecida:
+Cuando el tratamiento está indicado, la secuencia suele ser parecida:
 
 1. **Posición cómoda.** Te ubicás acostado o semisentado, de manera que la zona quede accesible y puedas relajarte.
 2. **Higiene y asepsia.** Se limpia y desinfecta la piel y se usan agujas estériles de un solo uso.
@@ -77,7 +77,7 @@ El tiempo de aguja propiamente dicho suele ser corto. Lo que lleva más tiempo e
 
 ## Qué se siente
 
-Las sensaciones dependen de la técnica y de la zona, pero hay algunas frecuentes:
+Las sensaciones dependen del tratamiento y de la zona, pero hay algunas frecuentes:
 
 - **El pinchazo de entrada** suele ser leve, porque las agujas son muy finas.
 - En punción seca puede aparecer una **contracción breve del músculo**, como un "salto" involuntario.
@@ -105,13 +105,13 @@ Consultá antes de la próxima cita si notás enrojecimiento que se extiende, ca
 
 **"Con una sesión se resuelve."** Algunas personas notan cambios rápidos y otras necesitan varias sesiones espaciadas. La evolución depende del tejido, del tiempo de evolución y de la carga que reciba después.
 
-**"La aguja reemplaza al ejercicio."** Las técnicas invasivas se integran en un plan que incluye ejercicio, gestión de cargas y readaptación. Sin esa parte, el resultado suele ser limitado.
+**"La aguja reemplaza al ejercicio."** Los tratamientos invasivos se integran en un plan que incluye ejercicio, gestión de cargas y readaptación. Sin esa parte, el resultado suele ser limitado.
 
 **"Si la ecografía sale mal, voy a tener dolor siempre."** Lo que muestra la imagen no siempre coincide con lo que sentís. Se interpreta junto con la clínica, no de forma aislada.
 
 ## Cómo seguir después de leer esto
 
-Si estás pensando en consultar, revisá primero en qué [lesiones suele indicarse este enfoque](/lesiones/) y conocé las distintas [técnicas de tratamiento](/tratamientos/). La página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/) resume cómo se integran entre sí. Cuando quieras, podés [solicitar una evaluación](/contacto/) y llevar tus preguntas anotadas a la primera consulta en {{CIUDAD}}.
+Si estás pensando en consultar, revisá primero en qué [lesiones suele indicarse este enfoque](/lesiones/) y conocé los distintos [tratamientos](/tratamientos/). La página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/) resume cómo se integran entre sí. Cuando quieras, podés [solicitar una evaluación](/contacto/) y llevar tus preguntas anotadas a la primera consulta en {{CIUDAD}}.
 `,
 
   faqs: [
@@ -120,8 +120,8 @@ Si estás pensando en consultar, revisá primero en qué [lesiones suele indicar
       a: 'Suele ser más larga que las siguientes, porque incluye entrevista, exploración física y ecografía. El tiempo con aguja, si se aplica, es solo una parte breve de la consulta.',
     },
     {
-      q: '¿Siempre se aplica la técnica en la primera consulta?',
-      a: 'No. Primero se evalúa el caso y solo se aplica si está indicada y no hay contraindicaciones. A veces se empieza por ejercicio o se pide una valoración médica antes de avanzar.',
+      q: '¿Siempre se aplica el tratamiento en la primera consulta?',
+      a: 'No. Primero se evalúa el caso y solo se aplica si está indicado y no hay contraindicaciones. A veces se empieza por ejercicio o se pide una valoración médica antes de avanzar.',
     },
     {
       q: '¿Puedo ir a trabajar o entrenar después?',

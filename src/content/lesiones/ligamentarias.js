@@ -25,7 +25,7 @@ export default {
     { label: 'Zona', value: 'Tobillo y rodilla, principalmente' },
     { label: 'Síntoma típico', value: 'Dolor e hinchazón tras una torcedura; sensación de que la articulación "se va"' },
     { label: 'Frecuente en', value: 'Básquet, vóley, fútbol, hockey, running en terreno irregular' },
-    { label: 'Técnicas asociadas', value: 'Ejercicio y propiocepción; MEP o EPI en casos persistentes' },
+    { label: 'Tratamientos asociados', value: 'Ejercicio y propiocepción; MEP o EPI en casos persistentes' },
   ],
 
   body: `
@@ -83,14 +83,14 @@ Se trabaja la movilidad del tobillo (en especial la flexión dorsal, que suele q
 
 La **propiocepción** es la capacidad del cuerpo de percibir la posición de la articulación y reaccionar a tiempo. Se entrena con ejercicios de equilibrio en una pierna, superficies inestables, cambios de dirección, saltos con aterrizajes controlados y tareas con estímulos imprevistos. Es probablemente el componente más importante para prevenir recaídas.
 
-### Técnicas ecoguiadas en casos persistentes
+### Tratamientos ecoguiados en casos persistentes
 
-Cuando, pasados varios meses y con un programa de ejercicio bien hecho, persiste dolor sobre un ligamento engrosado o con alteraciones en la ecografía, pueden considerarse técnicas que actúan sobre el tejido:
+Cuando, pasados varios meses y con un programa de ejercicio bien hecho, persiste dolor sobre un ligamento engrosado o con alteraciones en la ecografía, pueden considerarse tratamientos que actúan sobre el tejido:
 
 - La [microelectrólisis percutánea (MEP)](/tratamientos/microelectrolisis-percutanea-mep/), con corrientes de muy baja intensidad, suele ser bien tolerada sobre estructuras superficiales como los ligamentos del tobillo.
 - La [electrólisis percutánea intratisular (EPI)](/tratamientos/epi-electrolisis-percutanea/) puede indicarse en algunos cuadros de dolor ligamentario de larga evolución.
 
-No son técnicas para el esguince agudo ni sustituyen al entrenamiento de fuerza y propiocepción. Su indicación depende de la evaluación clínica y ecográfica.
+No son tratamientos para el esguince agudo ni sustituyen al entrenamiento de fuerza y propiocepción. Su indicación depende de la evaluación clínica y ecográfica.
 
 ## Tiempos y vuelta al deporte
 

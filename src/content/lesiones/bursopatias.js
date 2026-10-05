@@ -25,7 +25,7 @@ export default {
     { label: 'Zona', value: 'Cadera, hombro, codo, rodilla y talón' },
     { label: 'Síntoma típico', value: 'Dolor localizado al apoyarse, al acostarse de costado o al mover la articulación' },
     { label: 'Frecuente en', value: 'Corredores, personas mayores de 40, trabajos con apoyo o gestos repetidos' },
-    { label: 'Técnicas asociadas', value: 'Ejercicio de fuerza; MEP, EPI o NMP-e según la estructura afectada' },
+    { label: 'Tratamientos asociados', value: 'Ejercicio de fuerza; MEP, EPI o NMP-e según la estructura afectada' },
   ],
 
   body: `
@@ -90,9 +90,9 @@ El ejercicio es el eje, sobre todo cuando hay un tendón involucrado. En el dolo
 
 {{CTA}}
 
-### Técnicas ecoguiadas, según la estructura
+### Tratamientos ecoguiados, según la estructura
 
-Si el cuadro persiste pese a un programa bien llevado, pueden considerarse técnicas ecoguiadas:
+Si el cuadro persiste pese a un programa bien llevado, pueden considerarse tratamientos ecoguiados:
 
 - La [microelectrólisis percutánea (MEP)](/tratamientos/microelectrolisis-percutanea-mep/), con corriente de muy baja intensidad, se utiliza en tejidos blandos sensibles y puede tener lugar en algunas bursopatías persistentes.
 - La [electrólisis percutánea intratisular (EPI)](/tratamientos/epi-electrolisis-percutanea/) se orienta sobre todo al **tendón** cuando la ecografía muestra una tendinopatía asociada, como ocurre a menudo en la cadera.
@@ -135,7 +135,7 @@ En esos casos no corresponde iniciar fisioterapia hasta contar con una valoraci�
     },
     {
       q: '¿Se puede hacer fisioterapia invasiva en una bursitis?',
-      a: 'En algunos casos persistentes sí, por ejemplo con microelectrólisis o con técnicas dirigidas al tendón asociado. La indicación depende de la evaluación clínica y ecográfica y nunca se aplica sobre una bursa con sospecha de infección.',
+      a: 'En algunos casos persistentes sí, por ejemplo con microelectrólisis o con tratamientos dirigidos al tendón asociado. La indicación depende de la evaluación clínica y ecográfica y nunca se aplica sobre una bursa con sospecha de infección.',
     },
   ],
 

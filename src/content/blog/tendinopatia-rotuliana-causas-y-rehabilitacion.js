@@ -90,18 +90,18 @@ Algunos criterios que se suelen considerar antes de liberar el salto completo:
 
 Es normal que haya días mejores y peores. Un rebrote puntual no significa volver a cero: suele indicar que hubo que ajustar la carga.
 
-## Cuándo se suman técnicas ecoguiadas
+## Cuándo se suman tratamientos ecoguiados
 
 En muchos casos, un buen programa de ejercicio con gestión de la carga es suficiente. Hay cuadros, sin embargo, que no evolucionan como se esperaba pese a un trabajo bien hecho, o en los que la ecografía muestra una alteración localizada del tendón. En esas situaciones, tras una evaluación, puede considerarse complementar la rehabilitación con [electrólisis percutánea (EPI)](/tratamientos/epi-electrolisis-percutanea/) o con [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/).
 
-Estas técnicas no sustituyen al ejercicio: se integran con él. Para entender cómo se aplican sobre el tendón podés leer [EPI para tendinopatías: cuándo se considera](/blog/epi-para-tendinopatias/).
+Estos tratamientos no sustituyen al ejercicio: se integran con él. Para entender cómo se aplican sobre el tendón podés leer [EPI para tendinopatías: cuándo se considera](/blog/epi-para-tendinopatias/).
 
 ## Próximo paso: de la información a una evaluación
 
 Si te identificás con lo que leíste, el camino sugerido es este:
 
 1. Revisá cómo se evalúa y se aborda clínicamente en la página de [tendinopatía rotuliana](/lesiones/tendinopatia-rotuliana/).
-2. Conocé en qué consiste la [EPI guiada por ecografía](/tratamientos/epi-electrolisis-percutanea/), una de las técnicas que pueden integrarse al plan.
+2. Conocé en qué consiste la [EPI guiada por ecografía](/tratamientos/epi-electrolisis-percutanea/), uno de los tratamientos que pueden integrarse al plan.
 3. Entendé el enfoque general en [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/).
 4. Si querés que analicemos tu caso, [solicitá una evaluación](/contacto/).
 

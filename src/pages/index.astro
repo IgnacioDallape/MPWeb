@@ -21,14 +21,14 @@ const ticker = ['Ecografía musculoesquelética', 'Electrólisis percutánea · 
 const benefits = [
   ['target', 'Mayor precisión', 'La ecografía permite visualizar las estructuras en tiempo real y guiar la intervención hacia la zona de interés.'],
   ['needle', 'Intervención específica', 'Permite actuar directamente sobre determinadas estructuras musculares, tendinosas o nerviosas, y no sobre el tejido de alrededor.'],
-  ['pulse', 'Abordaje del dolor persistente', 'Algunas técnicas pueden incorporarse al tratamiento de cuadros musculoesqueléticos que se mantienen en el tiempo.'],
+  ['pulse', 'Abordaje del dolor persistente', 'Algunos tratamientos pueden incorporarse al abordaje de cuadros musculoesqueléticos que se mantienen en el tiempo.'],
   ['layers', 'Lesiones complejas', 'Puede utilizarse dentro del plan de rehabilitación de lesiones crónicas o recurrentes que no evolucionan como se espera.'],
   ['activity', 'Integración con rehabilitación', 'No es una intervención aislada: se complementa con ejercicio terapéutico, readaptación y progresión de cargas.'],
 ];
 const steps = [
   ['evaluation', 'Evaluación y anamnesis', 'Historia de la lesión, actividad, tratamientos previos y pruebas físicas de movilidad, fuerza y carga.'],
   ['probe', 'Ecografía musculoesquelética', 'Se observa la estructura afectada, su organización y su comportamiento en movimiento.'],
-  ['needle', 'Intervención ecoguiada', 'Si está indicada, se aplica la técnica más adecuada con guía ecográfica en tiempo real.'],
+  ['needle', 'Intervención ecoguiada', 'Si está indicado, se aplica el tratamiento más adecuado con guía ecográfica en tiempo real.'],
   ['progress', 'Readaptación y ejercicio', 'Plan de cargas progresivas para consolidar la recuperación y volver a tu actividad.'],
 ];
 const xpSteps = [
@@ -118,8 +118,8 @@ const schema = [
     </div>
   </div>
 
-  <section class="on-dark relative overflow-hidden bg-navy-950 text-white" aria-label="Técnicas y diferenciales">
-    <!-- Marquee de técnicas -->
+  <section class="on-dark relative overflow-hidden bg-navy-950 text-white" aria-label="Tratamientos y diferenciales">
+    <!-- Marquee de tratamientos -->
     <div class="marquee relative border-y border-white/10 bg-white/[0.02] py-5" aria-hidden="true">
       <div class="marquee-track flex w-max gap-12 font-display text-[1.05rem] font-medium whitespace-nowrap text-white/45">
         {[...ticker, ...ticker].map((t) => <span class="flex items-center gap-12">{t}<span class="text-ice-400/60">✦</span></span>)}
@@ -133,7 +133,7 @@ const schema = [
           ['probe', 'Ecografía en tiempo real', 'Se ve la estructura y la aguja durante toda la intervención.'],
           ['needle', 'Mínimamente invasivo', 'Agujas ultrafinas, material estéril de un solo uso.'],
           ['evaluation', 'Evaluación individual', 'Anamnesis, exploración y ecografía antes de decidir.'],
-          ['activity', 'Rehabilitación y ejercicio', 'La técnica se integra en un plan de cargas progresivas.'],
+          ['activity', 'Rehabilitación y ejercicio', 'El tratamiento se integra en un plan de cargas progresivas.'],
         ].map(([ic, t, d]) => (
           <li class="flex flex-col gap-3 bg-navy-950/90 p-6 md:p-8" data-reveal>
             <Icon name={ic} size={28} class="text-ice-300" />
@@ -173,7 +173,7 @@ const schema = [
     <div class="bg-grid bg-grid-fade absolute inset-0 opacity-70" aria-hidden="true"></div>
     <div class="glow top-1/3 left-1/2 size-[700px] -translate-x-1/2 opacity-40" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
-      <SectionHead id="por-que" eyebrow="Por qué ecoguiada" title='Beneficios de la Fisioterapia Invasiva <span class="text-gradient">Ecoguiada</span>' lead="La ecografía convierte una técnica basada en la palpación en una intervención visible, específica y controlada." center />
+      <SectionHead id="por-que" eyebrow="Por qué ecoguiada" title='Beneficios de la Fisioterapia Invasiva <span class="text-gradient">Ecoguiada</span>' lead="La ecografía convierte un tratamiento basado en la palpación en una intervención visible, específica y controlada." center />
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {benefits.map(([ic, t, d]) => (
           <div class="spotlight card border-white/10 bg-white/[0.03] hover:border-ice-300/30" data-reveal data-spotlight>
@@ -192,43 +192,42 @@ const schema = [
     </div>
   </section>
 
-  <!-- ============ TRATAMIENTOS ============ -->
-  <section class="relative bg-zinc-50 py-24 md:py-32" aria-labelledby="tratamientos">
+  <!-- ============ PATOLOGÍAS ============ -->
+  <section class="relative bg-zinc-50 py-24 md:py-32" aria-labelledby="lesiones">
     <div class="bg-dots-light absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,#000,transparent_70%)]" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
-      <div class="flex flex-wrap items-end justify-between gap-6">
-        <SectionHead id="tratamientos" eyebrow="Tratamientos" title="Técnicas de fisioterapia invasiva guiadas por ecografía" lead="Cada técnica tiene un objetivo distinto. La elección depende del tejido afectado, de la fase de la lesión y de tu actividad." />
-      </div>
-      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"><Cards kind="tratamientos" items={treatments} /></div>
-      <a href="/tratamientos/" class="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-navy-950" data-reveal>Comparar todos los tratamientos<Icon name="arrow" size={18} /></a>
-    </div>
-  </section>
-
-  <!-- ============ PATOLOGÍAS ============ -->
-  <section class="on-dark noise relative overflow-hidden bg-navy-950 py-24 text-white md:py-32" aria-labelledby="lesiones">
-    <div class="bg-grid absolute inset-0 opacity-50 [mask-image:linear-gradient(transparent,#000_30%,#000_70%,transparent)]" aria-hidden="true"></div>
-    <div class="glow -top-32 -left-40 size-[600px] opacity-40" aria-hidden="true"></div>
-    <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
-      <SectionHead id="lesiones" eyebrow="Patologías" title='¿Qué lesiones y patologías pueden <span class="text-gradient">abordarse</span>?' lead="Lesiones deportivas y del día a día en las que la fisioterapia invasiva ecoguiada puede formar parte del plan." />
+      <SectionHead id="lesiones" eyebrow="Patologías" title='¿Qué lesiones y patologías pueden <span class="text-gradient-navy">abordarse</span>?' lead="Lesiones deportivas y del día a día en las que la fisioterapia invasiva ecoguiada puede formar parte del plan." />
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {groups.map((g) => (
-          <div class="border-gradient spotlight relative rounded-3xl p-6" data-reveal data-spotlight>
-            <h3 class="mb-3 flex items-center gap-3 text-[1.1rem] font-semibold text-white"><span class="grid size-10 place-items-center rounded-xl bg-white/10 text-ice-300"><Icon name={g.icon} size={20} /></span>{g.label}</h3>
-            <ul class="divide-y divide-white/10">
+          <div class="card card-hover spotlight p-6" data-reveal data-spotlight>
+            <h3 class="mb-1 flex items-center gap-3 text-[1.1rem] font-semibold text-navy-950"><span class="grid size-10 place-items-center rounded-xl bg-navy-950 text-ice-300"><Icon name={g.icon} size={20} /></span>{g.label}</h3>
+            <ul class="divide-y divide-zinc-200">
               {g.items.map((l) => (
-                <li><a href={`/lesiones/${l.slug}/`} class="group flex items-center justify-between gap-3 py-3 text-[0.96rem] font-medium text-white/75 no-underline transition hover:text-white">{l.name}<Icon name="arrow" size={16} class="text-white/30 transition group-hover:translate-x-1 group-hover:text-ice-300" /></a></li>
+                <li><a href={`/lesiones/${l.slug}/`} class="group relative z-10 flex items-center justify-between gap-3 py-3 text-[0.96rem] font-medium text-zinc-700 no-underline transition hover:text-navy-900">{l.name}<Icon name="arrow" size={16} class="text-zinc-300 transition group-hover:translate-x-1 group-hover:text-navy-600" /></a></li>
               ))}
             </ul>
           </div>
         ))}
       </div>
+      <a href="/lesiones/" class="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-navy-950" data-reveal>Ver todas las patologías<Icon name="arrow" size={18} /></a>
+    </div>
+  </section>
+
+  <!-- ============ TRATAMIENTOS ============ -->
+  <section class="on-dark noise relative overflow-hidden bg-navy-950 py-24 text-white md:py-32" aria-labelledby="tratamientos">
+    <div class="bg-grid absolute inset-0 opacity-50 [mask-image:linear-gradient(transparent,#000_30%,#000_70%,transparent)]" aria-hidden="true"></div>
+    <div class="glow -top-32 -right-40 size-[600px] opacity-40" aria-hidden="true"></div>
+    <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
+      <SectionHead id="tratamientos" eyebrow="Tratamientos" title='Tratamientos de fisioterapia invasiva <span class="text-gradient">guiados por ecografía</span>' lead="Cada tratamiento tiene un objetivo distinto. La elección depende del tejido afectado, de la fase de la lesión y de tu actividad." />
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"><Cards kind="tratamientos" items={treatments} dark /></div>
+      <a href="/tratamientos/" class="mt-10 inline-flex items-center gap-2 font-semibold text-ice-300 no-underline hover:text-white" data-reveal>Comparar todos los tratamientos<Icon name="arrow" size={18} /></a>
     </div>
   </section>
 
   <!-- ============ METODOLOGÍA ============ -->
   <section class="bg-white py-24 md:py-32" aria-labelledby="proceso">
     <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
-      <SectionHead id="proceso" eyebrow="Metodología" title='Primero se evalúa. <span class="text-gradient-navy">Después se decide.</span>' lead="Ninguna técnica se aplica sin entender antes qué le pasa a tu tejido y qué necesitás recuperar." />
+      <SectionHead id="proceso" eyebrow="Metodología" title='Primero se evalúa. <span class="text-gradient-navy">Después se decide.</span>' lead="Ningún tratamiento se aplica sin entender antes qué le pasa a tu tejido y qué necesitás recuperar." />
       <div class="relative">
         <div class="absolute top-7 right-0 left-0 hidden h-px bg-zinc-200 lg:block" aria-hidden="true"><div data-progress-line class="h-full w-full bg-gradient-to-r from-navy-700 to-ice-400"></div></div>
         <ol class="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

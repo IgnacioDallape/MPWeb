@@ -8,7 +8,7 @@ export default {
     'La EPI actúa aplicando una corriente galvánica muy localizada que genera una reacción electroquímica en la zona alterada del tendón. Esa reacción provoca una respuesta inflamatoria controlada que busca reactivar un proceso de reparación que, en la tendinopatía, suele estar estancado. Para que el tejido nuevo se organice y gane resistencia, después necesita recibir carga progresiva.',
   date: '2026-10-02',
   updated: '2026-10-02',
-  category: 'Técnicas',
+  category: 'Tratamientos',
 
   seo: {
     primary: 'cómo funciona la EPI',
@@ -45,7 +45,7 @@ La EPI introduce una aguja muy fina en la zona alterada del tendón, guiada por 
 
 Cuando esa corriente atraviesa el tejido, que contiene agua y sales, se produce una **electrólisis**: una reacción química en la que las moléculas se reorganizan alrededor de la punta de la aguja. El resultado es un cambio muy localizado del entorno químico del tejido, con un pH más alcalino en la zona tratada.
 
-Dos detalles importan para entender la técnica:
+Dos detalles importan para entender el tratamiento:
 
 1. **Es local.** El efecto se concentra alrededor de la punta de la aguja. Por eso la precisión de la ecografía es tan relevante: el objetivo es actuar sobre el tejido alterado y no sobre zonas sanas vecinas.
 2. **Es dosificable.** La intensidad, el tiempo de aplicación y el número de puntos se ajustan a cada caso. No se trata de "más es mejor", sino de aplicar un estímulo suficiente y tolerable.
@@ -62,7 +62,7 @@ Esto también explica por qué es habitual notar molestia en la zona durante las
 
 ### Lo que todavía se está estudiando
 
-Conviene ser prudentes. El mecanismo descrito es el modelo con el que se explica la técnica, y hay investigación básica y clínica que lo respalda en términos generales. Pero no todos los detalles están completamente aclarados, y la respuesta varía entre personas y entre tendones. Por eso la EPI se indica tras una evaluación, se reevalúa entre sesiones y nunca se presenta como una solución aislada.
+Conviene ser prudentes. El mecanismo descrito es el modelo con el que se explica el tratamiento, y hay investigación básica y clínica que lo respalda en términos generales. Pero no todos los detalles están completamente aclarados, y la respuesta varía entre personas y entre tendones. Por eso la EPI se indica tras una evaluación, se reevalúa entre sesiones y nunca se presenta como una solución aislada.
 
 ## Por qué la carga posterior es la mitad del trabajo
 
@@ -74,7 +74,7 @@ Por eso la EPI se acompaña de un programa de ejercicio que suele avanzar en eta
 - **Fases intermedias:** fortalecimiento progresivo, más lento y pesado, que aumenta la capacidad del tendón.
 - **Fases finales:** gestos más rápidos y específicos de cada deporte o actividad, como saltos, cambios de dirección o carrera.
 
-Sin ese estímulo, el tejido nuevo tiene menos oportunidades de organizarse. Con un exceso de carga demasiado pronto, en cambio, puede irritarse otra vez. El equilibrio entre ambos extremos es lo que se ajusta en cada consulta. En [EPI para tendinopatías](/blog/epi-para-tendinopatias/) se desarrolla cómo se combinan técnica y ejercicio.
+Sin ese estímulo, el tejido nuevo tiene menos oportunidades de organizarse. Con un exceso de carga demasiado pronto, en cambio, puede irritarse otra vez. El equilibrio entre ambos extremos es lo que se ajusta en cada consulta. En [EPI para tendinopatías](/blog/epi-para-tendinopatias/) se desarrolla cómo se combinan tratamiento y ejercicio.
 
 ## Qué significa esto para vos como paciente
 
@@ -85,7 +85,7 @@ Entender el mecanismo ayuda a tener expectativas realistas:
 - El ejercicio no es un complemento opcional: es lo que consolida el trabajo sobre el tejido.
 - No todas las tendinopatías ni todas las personas son candidatas. La fase de la lesión, lo que muestra la ecografía y la respuesta a tratamientos previos orientan la decisión.
 
-Si tenés dudas sobre en qué se diferencia de otras técnicas con aguja, podés leer las [diferencias entre EPI y punción seca](/blog/diferencias-entre-epi-y-puncion-seca/).
+Si tenés dudas sobre en qué se diferencia de otros tratamientos con aguja, podés leer las [diferencias entre EPI y punción seca](/blog/diferencias-entre-epi-y-puncion-seca/).
 
 ## Dónde seguir leyendo
 
@@ -99,15 +99,15 @@ La EPI se usa con frecuencia en la [tendinopatía de Aquiles](/lesiones/tendinop
     },
     {
       q: '¿Por qué duele la zona después de la EPI?',
-      a: 'Porque la técnica busca provocar una respuesta inflamatoria local controlada. Es habitual notar molestia durante horas o uno o dos días. Si el dolor aumenta progresivamente o aparece fiebre, enrojecimiento o calor marcado, conviene consultar.',
+      a: 'Porque el tratamiento busca provocar una respuesta inflamatoria local controlada. Es habitual notar molestia durante horas o uno o dos días. Si el dolor aumenta progresivamente o aparece fiebre, enrojecimiento o calor marcado, conviene consultar.',
     },
     {
       q: '¿Puedo tomar antiinflamatorios después de una sesión?',
-      a: 'Es una pregunta para hacer en consulta y, si corresponde, a tu médico. Como la técnica busca una respuesta inflamatoria controlada, en general se conversa caso por caso qué manejo del dolor conviene.',
+      a: 'Es una pregunta para hacer en consulta y, si corresponde, a tu médico. Como el tratamiento busca una respuesta inflamatoria controlada, en general se conversa caso por caso qué manejo del dolor conviene.',
     },
     {
       q: '¿La EPI sirve si no hago ejercicio?',
-      a: 'El tejido nuevo necesita carga para organizarse y ganar resistencia. Sin un programa de ejercicio progresivo, el efecto de la técnica suele ser limitado. Por eso siempre se integra con readaptación.',
+      a: 'El tejido nuevo necesita carga para organizarse y ganar resistencia. Sin un programa de ejercicio progresivo, el efecto del tratamiento suele ser limitado. Por eso siempre se integra con readaptación.',
     },
   ],
 

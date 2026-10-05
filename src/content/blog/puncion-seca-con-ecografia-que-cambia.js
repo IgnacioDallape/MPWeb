@@ -8,31 +8,31 @@ export default {
     'La diferencia principal es que, con ecografía, el fisioterapeuta ve en tiempo real la aguja, el músculo objetivo y las estructuras que debe evitar, mientras que sin ella se guía solo por la palpación y el conocimiento anatómico. La guía ecográfica aporta más precisión y seguridad, sobre todo en músculos profundos o cercanos a la pleura, vasos y nervios; en músculos superficiales y bien palpables, la palpación puede ser suficiente en manos entrenadas.',
   date: '2026-10-02',
   updated: '2026-10-02',
-  category: 'Técnicas',
+  category: 'Tratamientos',
 
   seo: {
     primary: 'punción seca con ecografía',
     secondary: ['punción seca ecoguiada vs palpación', 'punción seca guiada por ecografía', 'seguridad punción seca', 'punción seca músculos profundos'],
-    intent: 'Informacional: comprender qué aporta la ecografía a la punción seca respecto de la técnica guiada por palpación.',
+    intent: 'Informacional: comprender qué aporta la ecografía a la punción seca respecto del tratamiento guiado por palpación.',
     entities: ['punto gatillo miofascial', 'respuesta de espasmo local', 'palpación', 'ecografía musculoesquelética', 'pleura', 'neumotórax', 'vasos sanguíneos', 'nervios periféricos', 'músculos profundos'],
   },
 
   body: `
 ## Punción seca: un repaso breve
 
-La **punción seca** es una técnica de fisioterapia invasiva que utiliza una aguja fina, sin inyectar ninguna sustancia (por eso "seca"), para tratar **puntos gatillo miofasciales**: zonas hipersensibles dentro de una banda tensa del músculo que pueden generar dolor local o referido a distancia.
+La **punción seca** es un tratamiento de fisioterapia invasiva que utiliza una aguja fina, sin inyectar ninguna sustancia (por eso "seca"), para tratar **puntos gatillo miofasciales**: zonas hipersensibles dentro de una banda tensa del músculo que pueden generar dolor local o referido a distancia.
 
 Al introducir la aguja en el punto gatillo, con frecuencia se produce una **respuesta de espasmo local**, una contracción breve e involuntaria de las fibras. Esa respuesta se considera un indicador de que la aguja alcanzó la zona buscada y suele asociarse a cambios en el dolor y en la función del músculo.
 
 Se utiliza sobre todo en el [síndrome de dolor miofascial](/lesiones/dolor-miofascial/), aunque también puede formar parte del abordaje de otras lesiones musculares. En todos los casos, el punto de partida es una evaluación que confirme que hay un componente muscular relevante en tu dolor y que descarte otras causas.
 
-La técnica puede realizarse de dos formas: guiándose solo por la palpación o con apoyo de la ecografía en tiempo real.
+El tratamiento puede realizarse de dos formas: guiándose solo por la palpación o con apoyo de la ecografía en tiempo real.
 
 ## Punción seca guiada por palpación: cómo funciona
 
 En la modalidad clásica, el fisioterapeuta localiza el punto gatillo con los dedos: busca la banda tensa, el punto más sensible y la reproducción del dolor que describe el paciente. Luego dirige la aguja apoyándose en su conocimiento de la anatomía de superficie, los ángulos de entrada y la profundidad esperable.
 
-Es una técnica con mucha trayectoria y puede ser eficaz y segura cuando la realiza un profesional formado. Su límite está en que **no se ve lo que hay debajo de la piel**: la referencia es la anatomía "promedio", y cada cuerpo tiene variaciones en el grosor del tejido, la profundidad de los músculos y la posición de vasos y nervios.
+Es un tratamiento con mucha trayectoria y puede ser eficaz y seguro cuando lo realiza un profesional formado. Su límite está en que **no se ve lo que hay debajo de la piel**: la referencia es la anatomía "promedio", y cada cuerpo tiene variaciones en el grosor del tejido, la profundidad de los músculos y la posición de vasos y nervios.
 
 ## Qué aporta la ecografía
 
@@ -50,7 +50,7 @@ Si querés profundizar en el uso general del ecógrafo, leé [para qué sirve la
 
 ## Seguridad: pleura, vasos y nervios
 
-La punción seca, bien indicada y realizada, se considera una técnica segura. Aun así, como cualquier procedimiento con aguja, tiene riesgos que dependen sobre todo de **dónde** se punciona.
+La punción seca, bien indicada y realizada, se considera un tratamiento seguro. Aun así, como cualquier procedimiento con aguja, tiene riesgos que dependen sobre todo de **dónde** se punciona.
 
 ### Pleura y tórax
 
@@ -88,10 +88,10 @@ La imagen no modifica algunos principios básicos:
 
 - La punción seca se indica **tras una evaluación** y no todas las personas son candidatas.
 - Forma parte de un plan que incluye **ejercicio terapéutico**, educación y ajuste de cargas.
-- Puede generar una molestia durante la técnica y dolor tipo "agujetas" durante uno o dos días.
+- Puede generar una molestia durante el tratamiento y dolor tipo "agujetas" durante uno o dos días.
 - El objetivo final es mejorar el dolor y la función, no "romper" contracturas.
 
-Si te interesa comparar la punción seca con otras técnicas con aguja, leé [diferencias entre EPI y punción seca](/blog/diferencias-entre-epi-y-puncion-seca/).
+Si te interesa comparar la punción seca con otros tratamientos con aguja, leé [diferencias entre EPI y punción seca](/blog/diferencias-entre-epi-y-puncion-seca/).
 
 ## De la información a la consulta
 
@@ -106,7 +106,7 @@ Si tenés dolor muscular persistente, contracturas que vuelven o dolor referido 
   faqs: [
     {
       q: '¿Es más segura la punción seca con ecografía?',
-      a: 'La guía ecográfica permite ver la aguja y las estructuras cercanas (pleura, vasos, nervios) durante la técnica, lo que aporta un margen de seguridad adicional, sobre todo en músculos profundos o próximos al tórax. La seguridad también depende de la formación del profesional y de la evaluación previa.',
+      a: 'La guía ecográfica permite ver la aguja y las estructuras cercanas (pleura, vasos, nervios) durante el tratamiento, lo que aporta un margen de seguridad adicional, sobre todo en músculos profundos o próximos al tórax. La seguridad también depende de la formación del profesional y de la evaluación previa.',
     },
     {
       q: '¿Siempre hace falta ecografía para hacer punción seca?',

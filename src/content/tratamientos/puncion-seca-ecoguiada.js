@@ -11,7 +11,7 @@ export default {
     'Qué es la punción seca ecoguiada, cómo actúa sobre los puntos gatillo, por qué la ecografía aporta precisión en músculos profundos y qué esperar. {{CIUDAD}}.',
   h1: 'Punción seca ecoguiada para el dolor miofascial',
   lead:
-    'La punción seca ecoguiada es una técnica en la que se introduce una aguja fina en un músculo, sobre un punto gatillo, sin inyectar ninguna sustancia. Realizarla con ecografía permite ver el músculo, la punta de la aguja y las estructuras vecinas, algo especialmente valioso en músculos profundos o cercanos al tórax.',
+    'La punción seca ecoguiada es un tratamiento en el que se introduce una aguja fina en un músculo, sobre un punto gatillo, sin inyectar ninguna sustancia. Realizarla con ecografía permite ver el músculo, la punta de la aguja y las estructuras vecinas, algo especialmente valioso en músculos profundos o cercanos al tórax.',
   updated: '2026-10-02',
 
   seo: {
@@ -31,11 +31,11 @@ export default {
   body: `
 ## ¿Qué es la punción seca ecoguiada?
 
-La **punción seca** es una técnica de fisioterapia invasiva que utiliza una **aguja filiforme**, maciza y muy fina, para actuar sobre el músculo. Se llama "seca" porque **no se inyecta ningún medicamento ni sustancia**: el estímulo es la propia aguja.
+La **punción seca** es un tratamiento de fisioterapia invasiva que utiliza una **aguja filiforme**, maciza y muy fina, para actuar sobre el músculo. Se llama "seca" porque **no se inyecta ningún medicamento ni sustancia**: el estímulo es la propia aguja.
 
 Su objetivo principal son los **puntos gatillo miofasciales**: pequeñas zonas dentro de un músculo que se notan como un nódulo o una banda tensa, son dolorosas a la presión y pueden provocar dolor a distancia (dolor referido). Un punto gatillo en el hombro, por ejemplo, puede hacer doler el brazo o la cabeza.
 
-Cuando la técnica se realiza con **guía ecográfica**, el fisioterapeuta ve en pantalla el músculo, sus capas y la aguja mientras avanza. Esa diferencia, que parece técnica, cambia mucho la precisión y la seguridad del procedimiento.
+Cuando el tratamiento se realiza con **guía ecográfica**, el fisioterapeuta ve en pantalla el músculo, sus capas y la aguja mientras avanza. Esa diferencia, que parece un detalle, cambia mucho la precisión y la seguridad del procedimiento.
 
 > La punción seca no es un tratamiento aislado. Se indica tras una evaluación y forma parte de un plan que incluye ejercicio terapéutico, movilidad y ajuste de la carga diaria o deportiva.
 
@@ -89,7 +89,7 @@ Se conversa sobre tu dolor, tu actividad diaria o deportiva, tus antecedentes y 
 - La aguja entra con un pinchazo rápido y se guía con el ecógrafo hasta el punto gatillo.
 - Se realizan pequeños movimientos de la aguja dentro del músculo para provocar las respuestas de espasmo local.
 
-**¿Qué se siente?** El pinchazo de entrada suele ser poco molesto. Lo más característico es la **sacudida muscular**, que puede sorprender y producir un dolor breve, a veces similar al dolor que sentís habitualmente o irradiado hacia la misma zona. Es una sensación distinta a la de las técnicas con corriente: no hay calor ni hormigueo, sino contracciones puntuales del músculo. Si necesitás una pausa, se detiene.
+**¿Qué se siente?** El pinchazo de entrada suele ser poco molesto. Lo más característico es la **sacudida muscular**, que puede sorprender y producir un dolor breve, a veces similar al dolor que sentís habitualmente o irradiado hacia la misma zona. Es una sensación distinta a la de los tratamientos con corriente: no hay calor ni hormigueo, sino contracciones puntuales del músculo. Si necesitás una pausa, se detiene.
 
 ### Después
 
@@ -117,11 +117,11 @@ La punción seca no se aplica, o se aplica con especial cuidado, en situaciones 
 - Miedo intenso a las agujas.
 - Enfermedades sistémicas que afectan la cicatrización o la respuesta inmunitaria.
 
-En la evaluación se revisa tu caso y se adapta la técnica o se elige otra estrategia cuando corresponde.
+En la evaluación se revisa tu caso y se adapta el tratamiento o se elige otra estrategia cuando corresponde.
 
-## Punción seca y otras técnicas ecoguiadas
+## Punción seca y otros tratamientos ecoguiados
 
-La punción seca comparte con otras técnicas el uso de aguja y ecografía, pero su blanco es el **músculo**:
+La punción seca comparte con otros tratamientos el uso de aguja y ecografía, pero su blanco es el **músculo**:
 
 - La [electrólisis percutánea intratisular (EPI)](/tratamientos/epi-electrolisis-percutanea/) aplica corriente galvánica sobre el tejido lesionado, en general el tendón, para estimular su reparación. Podés comparar ambas en [diferencias entre EPI y punción seca](/blog/diferencias-entre-epi-y-puncion-seca/).
 - La [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) estimula el nervio periférico con corriente de baja frecuencia.
@@ -133,7 +133,7 @@ Es habitual que se combinen: por ejemplo, tratar un tendón con EPI y, en la mis
   faqs: [
     {
       q: '¿Qué es la punción seca?',
-      a: 'Es una técnica en la que se introduce una aguja filiforme en el músculo, sobre un punto gatillo, sin inyectar ninguna sustancia. Busca reducir la sensibilidad del punto gatillo y la tensión muscular, y se combina con ejercicio y movilidad.',
+      a: 'Es un tratamiento en el que se introduce una aguja filiforme en el músculo, sobre un punto gatillo, sin inyectar ninguna sustancia. Busca reducir la sensibilidad del punto gatillo y la tensión muscular, y se combina con ejercicio y movilidad.',
     },
     {
       q: '¿La punción seca duele?',

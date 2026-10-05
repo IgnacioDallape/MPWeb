@@ -8,7 +8,7 @@ export default {
     'La neuromodulación percutánea funciona estimulando eléctricamente un nervio periférico con una aguja fina colocada cerca de él bajo guía ecográfica. Ese estímulo genera respuestas motoras y sensitivas que pueden ayudar a reactivar músculos inhibidos y a modificar cómo el sistema nervioso procesa el dolor. No actúa sobre el tejido lesionado, sino sobre la vía que lo controla y lo informa.',
   date: '2026-10-02',
   updated: '2026-10-02',
-  category: 'Técnicas',
+  category: 'Tratamientos',
 
   seo: {
     primary: 'neuromodulación percutánea cómo funciona',
@@ -18,9 +18,9 @@ export default {
   },
 
   body: `
-## Una técnica que apunta al cableado, no a la lesión
+## Un tratamiento que apunta al cableado, no a la lesión
 
-La mayoría de las técnicas con aguja se dirigen al tejido donde está el problema: un tendón alterado, un punto gatillo, una cicatriz. La [neuromodulación percutánea ecoguiada (NMP-e)](/tratamientos/neuromodulacion-percutanea-ecoguiada/) hace algo distinto: se acerca al **nervio periférico** que inerva la región y lo estimula eléctricamente.
+La mayoría de los tratamientos con aguja se dirigen al tejido donde está el problema: un tendón alterado, un punto gatillo, una cicatriz. La [neuromodulación percutánea ecoguiada (NMP-e)](/tratamientos/neuromodulacion-percutanea-ecoguiada/) hace algo distinto: se acerca al **nervio periférico** que inerva la región y lo estimula eléctricamente.
 
 Una forma simple de pensarlo: si el músculo y la zona dolorosa son la lámpara, el nervio es el cable que la conecta con la central. La neuromodulación no repara la lámpara; intenta cambiar la señal que viaja por el cable en ambos sentidos.
 
@@ -33,9 +33,9 @@ Los nervios periféricos son los que salen de la médula espinal y llegan a mús
 - **Fibras motoras**, que llevan órdenes desde el sistema nervioso central hacia los músculos para que se contraigan.
 - **Fibras sensitivas**, que llevan información desde la periferia hacia la médula y el cerebro: tacto, posición, temperatura, presión y también señales que pueden terminar percibiéndose como dolor.
 
-Cuando se aplica una corriente cerca de un nervio, se pueden activar ambos tipos de fibras. Por eso la técnica genera dos respuestas que el paciente nota con claridad.
+Cuando se aplica una corriente cerca de un nervio, se pueden activar ambos tipos de fibras. Por eso el tratamiento genera dos respuestas que el paciente nota con claridad.
 
-## Respuestas motoras y sensitivas durante la técnica
+## Respuestas motoras y sensitivas durante el tratamiento
 
 Con el ecógrafo se localiza el nervio y se lleva la punta de la aguja a su proximidad, sin atravesarlo. Luego se aplica una estimulación eléctrica de parámetros controlados.
 
@@ -64,7 +64,7 @@ Algunas ideas generales ayudan a entender el posible efecto de la neuromodulaci�
 2. **El sistema nervioso tiene frenos propios.** El cerebro y el tronco encefálico pueden activar mecanismos que disminuyen la percepción de dolor. Ciertos estímulos parecen favorecer ese sistema.
 3. **En el dolor persistente, la sensibilidad puede quedar alta.** Cuando un dolor dura mucho tiempo, el sistema nervioso puede volverse más reactivo, un fenómeno conocido como **sensibilización**. Intervenir sobre la vía nerviosa es una de las estrategias que se exploran para modular ese estado.
 
-Es importante ser prudentes: estos mecanismos explican por qué la técnica tiene sentido, pero la respuesta varía mucho entre personas y la investigación sobre sus efectos todavía está en desarrollo. La neuromodulación se indica tras una evaluación y se combina con educación sobre el dolor, ejercicio y gestión de la carga.
+Es importante ser prudentes: estos mecanismos explican por qué el tratamiento tiene sentido, pero la respuesta varía mucho entre personas y la investigación sobre sus efectos todavía está en desarrollo. La neuromodulación se indica tras una evaluación y se combina con educación sobre el dolor, ejercicio y gestión de la carga.
 
 ## En qué situaciones suele considerarse
 
@@ -81,13 +81,13 @@ Consultá con un médico si notás pérdida de fuerza progresiva, hormigueo o ad
 
 ## Por qué el ejercicio sigue siendo central
 
-La neuromodulación puede facilitar la activación muscular o reducir temporalmente la sensibilidad, pero esos cambios necesitan consolidarse. El ejercicio activo, repetido y progresivo es lo que enseña al sistema nervioso a usar ese músculo de nuevo y lo que construye tolerancia a la carga. Por eso la técnica suele aplicarse justo antes o en combinación con ejercicios específicos.
+La neuromodulación puede facilitar la activación muscular o reducir temporalmente la sensibilidad, pero esos cambios necesitan consolidarse. El ejercicio activo, repetido y progresivo es lo que enseña al sistema nervioso a usar ese músculo de nuevo y lo que construye tolerancia a la carga. Por eso el tratamiento suele aplicarse justo antes o en combinación con ejercicios específicos.
 
-Si querés comparar este enfoque con las técnicas que actúan sobre el tejido, leé las [diferencias entre EPI y punción seca](/blog/diferencias-entre-epi-y-puncion-seca/).
+Si querés comparar este enfoque con los tratamientos que actúan sobre el tejido, leé las [diferencias entre EPI y punción seca](/blog/diferencias-entre-epi-y-puncion-seca/).
 
 ## Para seguir
 
-En la página de [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) tenés el detalle de la técnica, cómo es una sesión y sus contraindicaciones. Si convivís con un dolor que se prolonga, revisá la página de [dolor crónico musculoesquelético](/lesiones/dolor-cronico-musculoesqueletico/). El marco general está en [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/), y para valorar tu caso podés [pedir una evaluación](/contacto/).
+En la página de [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) tenés el detalle del tratamiento, cómo es una sesión y sus contraindicaciones. Si convivís con un dolor que se prolonga, revisá la página de [dolor crónico musculoesquelético](/lesiones/dolor-cronico-musculoesqueletico/). El marco general está en [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/), y para valorar tu caso podés [pedir una evaluación](/contacto/).
 `,
 
   faqs: [

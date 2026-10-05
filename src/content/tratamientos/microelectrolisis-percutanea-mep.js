@@ -11,7 +11,7 @@ export default {
     'Qué es la microelectrólisis percutánea MEP, en qué se diferencia de la EPI, para qué lesiones de fascia, cicatriz o ligamento se usa y qué sentís. {{CIUDAD}}.',
   h1: 'Microelectrólisis percutánea (MEP) guiada por ecografía',
   lead:
-    'La microelectrólisis percutánea (MEP) aplica una corriente galvánica de muy baja intensidad, medida en microamperios, a través de una aguja fina guiada por ecografía. Suele tolerarse mejor que otras técnicas con corriente y se utiliza en tejidos blandos sensibles, superficiales o con fibrosis.',
+    'La microelectrólisis percutánea (MEP) aplica una corriente galvánica de muy baja intensidad, medida en microamperios, a través de una aguja fina guiada por ecografía. Suele tolerarse mejor que otros tratamientos con corriente y se utiliza en tejidos blandos sensibles, superficiales o con fibrosis.',
   updated: '2026-10-02',
 
   seo: {
@@ -31,7 +31,7 @@ export default {
   body: `
 ## ¿Qué es la microelectrólisis percutánea?
 
-La **microelectrólisis percutánea (MEP)** es una técnica de fisioterapia invasiva que utiliza **corriente galvánica**, es decir, corriente continua, a una intensidad muy baja. Mientras otras técnicas trabajan en el rango de los miliamperios, la MEP lo hace en **microamperios (µA)**: una intensidad unas mil veces menor.
+La **microelectrólisis percutánea (MEP)** es un tratamiento de fisioterapia invasiva que utiliza **corriente galvánica**, es decir, corriente continua, a una intensidad muy baja. Mientras otros tratamientos trabajan en el rango de los miliamperios, la MEP lo hace en **microamperios (µA)**: una intensidad unas mil veces menor.
 
 La corriente llega al tejido a través de una aguja fina, del tipo de acupuntura, que se coloca con guía ecográfica en la zona que se quiere tratar. Al ser tan baja la intensidad, el efecto sobre el tejido es más suave y progresivo, y la sensación durante la aplicación suele ser mucho más llevadera.
 
@@ -48,7 +48,7 @@ La lógica es parecida a la de la electrólisis percutánea, pero con una dosis 
 3. **Se aplica la microcorriente.** La corriente galvánica en microamperios circula durante un tiempo que se ajusta a cada caso. Puede repetirse en varios puntos de la misma zona.
 4. **Se continúa con movimiento y carga.** El tejido tratado necesita estímulos mecánicos adecuados en los días siguientes para reorganizarse.
 
-A estas intensidades, la reacción local es mucho menor que con la EPI. La idea es favorecer un estímulo de remodelación del tejido de forma gradual, priorizando la tolerancia. Como con otras técnicas, la investigación sobre sus efectos sigue avanzando y su uso se basa en el razonamiento clínico de cada caso.
+A estas intensidades, la reacción local es mucho menor que con la EPI. La idea es favorecer un estímulo de remodelación del tejido de forma gradual, priorizando la tolerancia. Como con otros tratamientos, la investigación sobre sus efectos sigue avanzando y su uso se basa en el razonamiento clínico de cada caso.
 
 ## ¿Para qué lesiones se utiliza?
 
@@ -60,7 +60,7 @@ La microelectrólisis suele considerarse en lesiones de tejido blando donde la t
 - [Bursopatías](/lesiones/bursopatias/) persistentes, actuando sobre los tejidos engrosados que rodean la bursa.
 - Algunas [tendinopatías, como la de Aquiles](/lesiones/tendinopatia-aquiles/), en personas que no toleran bien estímulos más intensos o en fases iniciales del tratamiento.
 
-Que la técnica sea suave no significa que esté indicada para todos. En la evaluación se define si la MEP aporta algo en tu caso o si conviene otro enfoque.
+Que el tratamiento sea suave no significa que esté indicado para todos. En la evaluación se define si la MEP aporta algo en tu caso o si conviene otro enfoque.
 
 {{CTA}}
 
@@ -100,13 +100,13 @@ Al trabajar con intensidades tan bajas, la MEP **suele dejar menos molestia post
 
 - No suele requerirse reposo; se ajusta la carga de la actividad que más exige la zona tratada durante uno o dos días.
 - Se indican ejercicios de movilidad, deslizamiento de tejidos o fortalecimiento, según el caso.
-- Las sesiones pueden ser algo más frecuentes o numerosas que con técnicas más intensas, siempre en función de la respuesta.
+- Las sesiones pueden ser algo más frecuentes o numerosas que con tratamientos más intensos, siempre en función de la respuesta.
 
 Consultá si aparece enrojecimiento que se extiende, calor, secreción en el punto de punción o fiebre: son poco habituales, pero requieren valoración.
 
 ## Contraindicaciones y precauciones
 
-Aunque la intensidad sea baja, sigue siendo una técnica invasiva con corriente eléctrica. No se aplica, o se aplica con precaución, en casos como:
+Aunque la intensidad sea baja, sigue siendo un tratamiento invasivo con corriente eléctrica. No se aplica, o se aplica con precaución, en casos como:
 
 - Marcapasos u otros dispositivos electrónicos implantados.
 - Embarazo.
@@ -118,13 +118,13 @@ Aunque la intensidad sea baja, sigue siendo una técnica invasiva con corriente 
 
 Todo esto se revisa en la evaluación inicial, junto con tus antecedentes médicos.
 
-## MEP, EPI y otras técnicas
+## MEP, EPI y otros tratamientos
 
 La MEP pertenece a la misma familia que la [electrólisis percutánea intratisular (EPI)](/tratamientos/epi-electrolisis-percutanea/): ambas usan corriente galvánica. La diferencia está en la **intensidad** y, por lo tanto, en el tipo de respuesta, la sensación y la tolerancia. La EPI produce una reacción local más marcada y suele orientarse a tendones con cambios estructurales claros; la MEP prioriza un estímulo suave y se adapta mejor a tejidos finos o a personas sensibles.
 
-Las otras técnicas ecoguiadas tienen objetivos diferentes: la [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) estimula el nervio periférico para modular el dolor y la activación muscular, y la [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/) actúa sobre puntos gatillo del músculo sin corriente.
+Los otros tratamientos ecoguiados tienen objetivos diferentes: la [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) estimula el nervio periférico para modular el dolor y la activación muscular, y la [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/) actúa sobre puntos gatillo del músculo sin corriente.
 
-En algunos planes se empieza con MEP y, según la respuesta, se progresa a otra técnica, o se combinan. Si tu problema está en la fascia del pie, también te puede servir el artículo sobre [el abordaje de la fascitis plantar desde la fisioterapia](/blog/fascitis-plantar-abordaje-desde-fisioterapia/).
+En algunos planes se empieza con MEP y, según la respuesta, se progresa a otro tratamiento, o se combinan. Si tu problema está en la fascia del pie, también te puede servir el artículo sobre [el abordaje de la fascitis plantar desde la fisioterapia](/blog/fascitis-plantar-abordaje-desde-fisioterapia/).
 `,
 
   faqs: [
@@ -150,7 +150,7 @@ En algunos planes se empieza con MEP y, según la respuesta, se progresa a otra 
     },
     {
       q: '¿Cuántas sesiones de microelectrólisis se necesitan?',
-      a: 'Varía según el tejido, la antigüedad del problema y la respuesta. Por su baja intensidad, a veces se requieren más sesiones que con técnicas más intensas. El plan se ajusta en cada reevaluación.',
+      a: 'Varía según el tejido, la antigüedad del problema y la respuesta. Por su baja intensidad, a veces se requieren más sesiones que con tratamientos más intensos. El plan se ajusta en cada reevaluación.',
     },
   ],
 

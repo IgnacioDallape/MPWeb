@@ -95,7 +95,7 @@ Si en algún momento la rigidez de la mañana aumenta de manera sostenida, convi
 - Cambiar varias cosas a la vez (calzado, superficie, distancia) y no saber qué generó un rebrote.
 - Presionar o masajear el tendón con fuerza por cuenta propia buscando "soltarlo".
 
-## Cuándo se considera sumar técnicas ecoguiadas
+## Cuándo se considera sumar tratamientos ecoguiados
 
 La mayoría de las tendinopatías de Aquiles se abordan con ejercicio y gestión de la carga. Cuando la evolución se estanca pese a un programa bien llevado, o la ecografía muestra una alteración localizada del tendón, puede evaluarse complementar el plan con [electrólisis percutánea (EPI)](/tratamientos/epi-electrolisis-percutanea/) o con [microelectrólisis percutánea (MEP)](/tratamientos/microelectrolisis-percutanea-mep/). Siempre se integran con el ejercicio, nunca lo reemplazan. Para profundizar en el mecanismo, leé [cómo actúa la EPI sobre el tendón](/blog/como-actua-la-epi-en-el-tendon/).
 
@@ -106,7 +106,7 @@ Consultá con un médico de forma urgente si sentiste un "chasquido" o la sensac
 Si tu caso encaja con una tendinopatía, este es el recorrido sugerido:
 
 1. Revisá cómo se evalúa y se aborda en [tendinopatía de Aquiles](/lesiones/tendinopatia-aquiles/).
-2. Conocé la [EPI ecoguiada](/tratamientos/epi-electrolisis-percutanea/), una técnica que puede formar parte del plan.
+2. Conocé la [EPI ecoguiada](/tratamientos/epi-electrolisis-percutanea/), un tratamiento que puede formar parte del plan.
 3. Entendé el enfoque completo en [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/).
 4. Y si querés una valoración de tu tendón, [pedí una evaluación](/contacto/).
 `,

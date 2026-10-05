@@ -2,11 +2,11 @@
 export const HOME_FAQS = [
   {
     q: '¿Qué es la fisioterapia invasiva ecoguiada?',
-    a: 'Es un conjunto de técnicas que utilizan agujas ultrafinas para actuar directamente sobre la estructura afectada (tendón, músculo, ligamento o nervio periférico), guiadas en todo momento por ecografía. Forma parte de un tratamiento integral con ejercicio terapéutico.',
+    a: 'Es un conjunto de tratamientos que utilizan agujas ultrafinas para actuar directamente sobre la estructura afectada (tendón, músculo, ligamento o nervio periférico), guiadas en todo momento por ecografía. Forma parte de un tratamiento integral con ejercicio terapéutico.',
   },
   {
     q: '¿La fisioterapia invasiva duele?',
-    a: 'Puede generar una molestia breve durante la aplicación, cuya intensidad depende de la técnica y de cada persona. Se adapta a tu tolerancia y siempre se puede detener. Después es habitual una molestia local leve durante algunas horas.',
+    a: 'Puede generar una molestia breve durante la aplicación, cuya intensidad depende del tratamiento y de cada persona. Se adapta a tu tolerancia y siempre se puede detener. Después es habitual una molestia local leve durante algunas horas.',
   },
   {
     q: '¿Qué lesiones pueden tratarse?',
@@ -14,7 +14,7 @@ export const HOME_FAQS = [
   },
   {
     q: '¿Es necesaria una evaluación previa?',
-    a: 'Sí. Toda intervención comienza con una anamnesis, una exploración física y una valoración ecográfica. Si una técnica invasiva no es adecuada para tu caso, se propone otro abordaje.',
+    a: 'Sí. Toda intervención comienza con una anamnesis, una exploración física y una valoración ecográfica. Si un tratamiento invasivo no es adecuado para tu caso, se propone otro abordaje.',
   },
   {
     q: '¿Qué diferencia existe entre EPI y punción seca?',
@@ -29,7 +29,7 @@ export const HOME_FAQS = [
 export const PROCESS_FAQS = [
   { q: '¿Qué tengo que llevar a la primera consulta?', a: 'Si tenés estudios previos (ecografías, resonancias, radiografías) o indicaciones médicas, traelos. También conviene usar ropa cómoda que permita descubrir la zona a evaluar.' },
   { q: '¿Necesito una orden médica?', a: 'No es imprescindible para realizar una evaluación kinesiológica. Si tu obra social o prepaga la requiere para la cobertura, consultá antes del turno. [PENDIENTE: confirmar coberturas y requisitos.]' },
-  { q: '¿Cuánto dura una sesión?', a: 'La primera consulta incluye evaluación y suele ser más extensa. Las sesiones siguientes combinan reevaluación, técnica (si corresponde) y ejercicio; la duración depende del plan.' },
-  { q: '¿Qué pasa si una técnica invasiva no es adecuada para mí?', a: 'Se propone otro abordaje: ejercicio terapéutico, terapia manual, educación o derivación médica cuando corresponde. La técnica se adapta al caso y no al revés.' },
+  { q: '¿Cuánto dura una sesión?', a: 'La primera consulta incluye evaluación y suele ser más extensa. Las sesiones siguientes combinan reevaluación, tratamiento invasivo (si corresponde) y ejercicio; la duración depende del plan.' },
+  { q: '¿Qué pasa si un tratamiento invasivo no es adecuado para mí?', a: 'Se propone otro abordaje: ejercicio terapéutico, terapia manual, educación o derivación médica cuando corresponde. El tratamiento se adapta al caso y no al revés.' },
   { q: '¿Atienden deportistas y personas no deportistas?', a: 'Sí. Las tendinopatías y lesiones musculares son frecuentes en deportistas, pero también aparecen por el trabajo o las actividades diarias.' },
 ];

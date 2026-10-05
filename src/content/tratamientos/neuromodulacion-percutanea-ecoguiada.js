@@ -11,7 +11,7 @@ export default {
     'Qué es la neuromodulación percutánea ecoguiada (NMP-e), cómo se aplica sobre el nervio periférico, en qué casos se indica y qué sentís en la sesión. {{CIUDAD}}.',
   h1: 'Neuromodulación percutánea ecoguiada (NMP-e)',
   lead:
-    'La neuromodulación percutánea ecoguiada es una técnica que estimula un nervio periférico con una corriente eléctrica de baja frecuencia, aplicada mediante una aguja fina ubicada junto al nervio bajo control ecográfico. No busca actuar sobre el tejido lesionado, sino sobre la forma en que el sistema nervioso procesa el dolor y activa los músculos.',
+    'La neuromodulación percutánea ecoguiada es un tratamiento que estimula un nervio periférico con una corriente eléctrica de baja frecuencia, aplicada mediante una aguja fina ubicada junto al nervio bajo control ecográfico. No busca actuar sobre el tejido lesionado, sino sobre la forma en que el sistema nervioso procesa el dolor y activa los músculos.',
   updated: '2026-10-02',
 
   seo: {
@@ -35,7 +35,7 @@ La **neuromodulación percutánea ecoguiada (NMP-e)** es un procedimiento de fis
 
 Un nervio periférico es como un cable que conecta la médula espinal con los músculos, la piel y las articulaciones. Lleva órdenes de movimiento hacia los músculos y trae información de sensibilidad (incluido el dolor) hacia el sistema nervioso central. Al estimularlo de forma controlada, se busca **modificar cómo se procesan esas señales**.
 
-La diferencia clave con otras técnicas con aguja es el objetivo: la NMP-e **no pretende generar un daño o una reacción local en el tejido**. Actúa sobre la vía nerviosa que conecta la zona dolorida o débil con el resto del sistema nervioso.
+La diferencia clave con otros tratamientos con aguja es el objetivo: la NMP-e **no pretende generar un daño o una reacción local en el tejido**. Actúa sobre la vía nerviosa que conecta la zona dolorida o débil con el resto del sistema nervioso.
 
 > La neuromodulación percutánea se indica después de una evaluación completa y siempre forma parte de un plan que incluye ejercicio terapéutico y progresión de cargas.
 
@@ -48,7 +48,7 @@ Explicado de forma simple, el procedimiento sigue estos pasos:
 3. **Se ubica la aguja a su lado.** La punta se lleva hasta las proximidades del nervio, sin atravesarlo.
 4. **Se aplican los estímulos.** Un equipo de electroterapia envía pulsos de baja frecuencia. Según el objetivo, se busca una **respuesta motora** (el músculo se contrae de forma rítmica) o una **respuesta sensitiva** (un hormigueo o cosquilleo que se irradia por el recorrido del nervio).
 
-Los parámetros (frecuencia, duración del pulso, intensidad y tiempo total) se ajustan a cada persona. El razonamiento detrás es que una estimulación repetida y controlada puede influir sobre los mecanismos que regulan el dolor y sobre la capacidad de activar un músculo que quedó "apagado" tras una lesión. La evidencia sobre estos mecanismos sigue en desarrollo; por eso la técnica se usa con objetivos concretos y se reevalúa en cada sesión.
+Los parámetros (frecuencia, duración del pulso, intensidad y tiempo total) se ajustan a cada persona. El razonamiento detrás es que una estimulación repetida y controlada puede influir sobre los mecanismos que regulan el dolor y sobre la capacidad de activar un músculo que quedó "apagado" tras una lesión. La evidencia sobre estos mecanismos sigue en desarrollo; por eso el tratamiento se usa con objetivos concretos y se reevalúa en cada sesión.
 
 Si te interesa entender el fundamento con más detalle, leé [cómo actúa la neuromodulación percutánea sobre el nervio, el músculo y el dolor](/blog/neuromodulacion-percutanea-nervio-y-dolor/).
 
@@ -63,7 +63,7 @@ La NMP-e suele considerarse cuando el problema principal no es solo una alteraci
 - [Problemas del manguito rotador](/lesiones/manguito-rotador/) con dificultad para estabilizar el hombro.
 - Recuperación de la activación muscular después de [desgarros musculares](/lesiones/desgarros-musculares/), cirugías o períodos de inmovilización, cuando el músculo cuesta "encenderlo".
 
-No todas las personas con estos cuadros son candidatas. La decisión depende de la historia clínica, de la exploración neurológica y muscular, de lo que muestra la ecografía y de lo que se espera lograr con la técnica dentro del plan.
+No todas las personas con estos cuadros son candidatas. La decisión depende de la historia clínica, de la exploración neurológica y muscular, de lo que muestra la ecografía y de lo que se espera lograr con el tratamiento dentro del plan.
 
 {{CTA}}
 
@@ -109,7 +109,7 @@ Consultá de inmediato si después de una sesión notás **adormecimiento o debi
 
 ## Contraindicaciones y precauciones
 
-Antes de indicar la técnica se revisan situaciones en las que no se aplica o se aplica con especial cuidado:
+Antes de indicar el tratamiento se revisan situaciones en las que no se aplica o se aplica con especial cuidado:
 
 - Marcapasos, desfibriladores u otros dispositivos electrónicos implantados.
 - Embarazo.
@@ -121,21 +121,21 @@ Antes de indicar la técnica se revisan situaciones en las que no se aplica o se
 
 Si tenés pérdida de fuerza progresiva, pérdida de sensibilidad extensa o dolor que no se modifica con el reposo ni con el movimiento, lo primero es una consulta médica para descartar otras causas.
 
-## Relación con otras técnicas ecoguiadas
+## Relación con otros tratamientos ecoguiados
 
-La neuromodulación comparte con otras técnicas el uso de aguja y ecografía, pero su papel es diferente:
+La neuromodulación comparte con otros tratamientos el uso de aguja y ecografía, pero su papel es diferente:
 
 - La [electrólisis percutánea intratisular (EPI)](/tratamientos/epi-electrolisis-percutanea/) aplica corriente galvánica sobre el tejido alterado, generalmente un tendón, para estimular su reparación.
 - La [microelectrólisis percutánea](/tratamientos/microelectrolisis-percutanea-mep/) usa corriente galvánica de muy baja intensidad sobre tejidos blandos sensibles.
 - La [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/) se dirige al músculo y a sus puntos gatillo, sin corriente.
 
-En algunos casos se combinan: por ejemplo, una técnica orientada al tejido y la NMP-e para trabajar el dolor y la activación muscular. La elección se hace caso por caso, dentro de un plan de rehabilitación.
+En algunos casos se combinan: por ejemplo, un tratamiento orientado al tejido y la NMP-e para trabajar el dolor y la activación muscular. La elección se hace caso por caso, dentro de un plan de rehabilitación.
 `,
 
   faqs: [
     {
       q: '¿Qué es la neuromodulación percutánea?',
-      a: 'Es una técnica en la que se coloca una aguja fina junto a un nervio periférico, guiada por ecografía, y se aplica una corriente eléctrica de baja frecuencia. Busca modular el dolor y mejorar la activación muscular, sin actuar directamente sobre el tejido lesionado.',
+      a: 'Es un tratamiento en el que se coloca una aguja fina junto a un nervio periférico, guiada por ecografía, y se aplica una corriente eléctrica de baja frecuencia. Busca modular el dolor y mejorar la activación muscular, sin actuar directamente sobre el tejido lesionado.',
     },
     {
       q: '¿La neuromodulación percutánea duele?',

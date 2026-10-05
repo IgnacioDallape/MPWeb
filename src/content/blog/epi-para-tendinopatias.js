@@ -8,7 +8,7 @@ export default {
     'La EPI suele considerarse en tendinopatías persistentes que no evolucionan bien con un programa de ejercicio bien dosificado y en las que la ecografía muestra una alteración localizada del tendón. No se plantea como primera opción aislada: se suma a un plan de carga progresiva que va de ejercicios isométricos a fortalecimiento pesado y, al final, a gestos rápidos y específicos.',
   date: '2026-10-02',
   updated: '2026-10-02',
-  category: 'Técnicas',
+  category: 'Tratamientos',
 
   seo: {
     primary: 'EPI tendinopatía',
@@ -43,7 +43,7 @@ Si querés entender qué pasa en el tejido durante la aplicación, el artículo 
 
 ## Por qué no es una primera opción aislada
 
-En las tendinopatías, el tratamiento con mayor respaldo general es el **ejercicio terapéutico con progresión de cargas**. Ninguna técnica pasiva, con o sin aguja, reemplaza la necesidad de que el tendón vuelva a tolerar las fuerzas de la actividad diaria y deportiva.
+En las tendinopatías, el abordaje con mayor respaldo general es el **ejercicio terapéutico con progresión de cargas**. Ningún tratamiento pasivo, con o sin aguja, reemplaza la necesidad de que el tendón vuelva a tolerar las fuerzas de la actividad diaria y deportiva.
 
 Por eso la EPI se piensa como un **complemento** dentro de un plan, no como el plan en sí. En la práctica suele ocupar uno de estos lugares:
 
@@ -91,7 +91,7 @@ Consultá con un médico si el dolor aparece después de un traumatismo con sens
 
 ## Próximos pasos
 
-Si tu molestia coincide con alguna de las tendinopatías mencionadas, revisá la página de la lesión correspondiente, por ejemplo [Aquiles](/lesiones/tendinopatia-aquiles/) o [rotuliana](/lesiones/tendinopatia-rotuliana/), donde se explica el tratamiento completo. En la página de [EPI](/tratamientos/epi-electrolisis-percutanea/) tenés detalles de la técnica, y en [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/) el marco general. Para saber si sos candidato o candidata, [solicitá una evaluación](/contacto/).
+Si tu molestia coincide con alguna de las tendinopatías mencionadas, revisá la página de la lesión correspondiente, por ejemplo [Aquiles](/lesiones/tendinopatia-aquiles/) o [rotuliana](/lesiones/tendinopatia-rotuliana/), donde se explica el abordaje completo. En la página de [EPI](/tratamientos/epi-electrolisis-percutanea/) tenés detalles del tratamiento, y en [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/) el marco general. Para saber si sos candidato o candidata, [solicitá una evaluación](/contacto/).
 `,
 
   faqs: [

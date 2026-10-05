@@ -25,7 +25,7 @@ export default {
     { label: 'Zona', value: 'Cara interna del codo (epitróclea)' },
     { label: 'Síntoma típico', value: 'Dolor al cerrar el puño con fuerza o girar la palma hacia abajo' },
     { label: 'Frecuente en', value: 'Escalada, golf, lanzadores, oficios con herramientas' },
-    { label: 'Técnicas asociadas', value: 'EPI y neuromodulación ecoguiadas' },
+    { label: 'Tratamientos asociados', value: 'EPI y neuromodulación ecoguiadas' },
   ],
 
   body: `
@@ -97,7 +97,7 @@ Una progresión habitual:
 
 Las cargas se adaptan a cada persona; si hay síntomas del nervio, se ajustan también las posiciones de trabajo.
 
-### Técnicas ecoguiadas indicadas
+### Tratamientos ecoguiados indicados
 
 Cuando el tendón muestra una alteración localizada y la evolución con ejercicio se estanca, se puede valorar la [EPI ecoguiada](/tratamientos/epi-electrolisis-percutanea/) en el origen flexor-pronador. La guía ecográfica es especialmente relevante en esta zona por la proximidad del nervio cubital, que se visualiza en todo momento. La [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) puede considerarse cuando predomina el componente doloroso o hay inhibición de la musculatura del antebrazo. Son complementos del ejercicio y no todas las epitrocleitis las requieren; la [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/) se plantea siempre tras una evaluación.
 

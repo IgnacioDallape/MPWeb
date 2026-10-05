@@ -26,18 +26,18 @@ const linkCls = 'text-white/70 no-underline transition hover:text-white';
           <span class="flex gap-3"><Icon name="instagram" size={18} class="mt-1 text-ice-400" />{ig ? <a class={linkCls} href={ig} rel="noopener" target="_blank">Instagram</a> : <span>{c.instagram}</span>}</span>
         </address>
       </div>
-      <nav aria-label="Tratamientos">
-        <h2 class="mb-5 font-display text-[0.72rem] font-semibold tracking-[0.2em] text-ice-300/70 uppercase">Tratamientos</h2>
-        <ul class="grid gap-2.5">
-          <li><a class={linkCls} href="/fisioterapia-invasiva-ecoguiada/">Fisioterapia invasiva ecoguiada</a></li>
-          {treatments.map((t) => <li><a class={linkCls} href={`/tratamientos/${t.slug}/`}>{t.name}</a></li>)}
-        </ul>
-      </nav>
       <nav aria-label="Patologías frecuentes">
         <h2 class="mb-5 font-display text-[0.72rem] font-semibold tracking-[0.2em] text-ice-300/70 uppercase">Patologías</h2>
         <ul class="grid gap-2.5">
           {featuredLesions.map((l) => <li><a class={linkCls} href={`/lesiones/${l.slug}/`}>{l.name}</a></li>)}
           <li><a class={linkCls} href="/lesiones/">Ver todas</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Tratamientos">
+        <h2 class="mb-5 font-display text-[0.72rem] font-semibold tracking-[0.2em] text-ice-300/70 uppercase">Tratamientos</h2>
+        <ul class="grid gap-2.5">
+          <li><a class={linkCls} href="/fisioterapia-invasiva-ecoguiada/">Fisioterapia invasiva ecoguiada</a></li>
+          {treatments.map((t) => <li><a class={linkCls} href={`/tratamientos/${t.slug}/`}>{t.name}</a></li>)}
         </ul>
       </nav>
       <nav aria-label="Sitio">

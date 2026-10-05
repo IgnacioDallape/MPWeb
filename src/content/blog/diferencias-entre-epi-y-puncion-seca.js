@@ -8,12 +8,12 @@ export default {
     'La diferencia principal es que la EPI aplica corriente galvánica sobre el tejido lesionado, sobre todo el tendón, para estimular su reparación, mientras que la punción seca no usa corriente y se dirige al músculo, en especial a los puntos gatillo, para modular el dolor y la tensión. Comparten la aguja y la guía ecográfica, pero tienen objetivos, sensaciones e indicaciones distintas.',
   date: '2026-10-02',
   updated: '2026-10-02',
-  category: 'Técnicas',
+  category: 'Tratamientos',
 
   seo: {
     primary: 'diferencia EPI y punción seca',
     secondary: ['EPI vs punción seca', 'EPI o punción seca', 'qué es mejor EPI o punción seca', 'electrólisis percutánea y punción seca', 'MEP y NMP-e diferencias'],
-    intent: 'Informacional comparativa: entender en qué se diferencian las técnicas con aguja y cuál se usa en cada caso.',
+    intent: 'Informacional comparativa: entender en qué se diferencian los tratamientos con aguja y cuál se usa en cada caso.',
     entities: ['electrólisis percutánea intratisular', 'punción seca', 'corriente galvánica', 'punto gatillo miofascial', 'respuesta de espasmo local', 'tendón', 'músculo', 'microelectrólisis percutánea', 'neuromodulación percutánea', 'ecografía'],
   },
 
@@ -23,7 +23,7 @@ export default {
 Antes de compararlas, vale aclarar por qué se confunden tan seguido. Tanto la [electrólisis percutánea intratisular (EPI)](/tratamientos/epi-electrolisis-percutanea/) como la [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/):
 
 - Usan **agujas finas de tipo acupuntura**, estériles y de un solo uso.
-- Son técnicas de **fisioterapia invasiva**: la aguja atraviesa la piel para actuar sobre un tejido profundo.
+- Son tratamientos de **fisioterapia invasiva**: la aguja atraviesa la piel para actuar sobre un tejido profundo.
 - Ganan precisión y seguridad cuando se realizan con **guía ecográfica**, que permite ver la aguja y las estructuras que conviene evitar.
 - Se indican tras una evaluación y se integran con ejercicio y readaptación.
 
@@ -40,7 +40,7 @@ A partir de ahí, se separan en casi todo lo demás.
 | Indicaciones típicas | Tendinopatías persistentes, fasciopatías, fibrosis | Dolor miofascial, contracturas persistentes, sobrecargas |
 | Después | Molestia local horas o uno o dos días; carga progresiva | Sensación de "agujetas" uno o dos días; movilidad y ejercicio |
 
-La tabla resume tendencias generales. En la práctica, cada caso se ajusta según la evaluación, y hay situaciones en las que ambas técnicas se usan en distintos momentos de un mismo tratamiento.
+La tabla resume tendencias generales. En la práctica, cada caso se ajusta según la evaluación, y hay situaciones en las que ambos tratamientos se usan en distintos momentos de un mismo plan.
 
 ## Objetivo: reparar el tejido o modular el músculo
 
@@ -48,7 +48,7 @@ La EPI parte de la idea de que, en ciertas lesiones persistentes, el tejido qued
 
 La punción seca, en cambio, apunta a **puntos gatillo miofasciales**: zonas del músculo hipersensibles, a menudo palpables como una banda tensa, que pueden generar dolor local o referido a otra región. Al introducir la aguja suele producirse una **respuesta de espasmo local**, una contracción breve e involuntaria, que se asocia a cambios en la tensión y la sensibilidad de esa zona. El foco no está en reparar una estructura dañada, sino en modificar el comportamiento del músculo y del dolor.
 
-## Qué se siente con cada técnica
+## Qué se siente con cada tratamiento
 
 Las sensaciones ayudan a entender la diferencia:
 
@@ -67,7 +67,7 @@ La elección no depende tanto de la zona del cuerpo como del tejido que se consi
 
 **Se piensa más en punción seca** cuando el dolor parece venir del músculo: [dolor miofascial](/lesiones/dolor-miofascial/) con puntos gatillo, contracturas que no ceden o sobrecargas que limitan el movimiento.
 
-Una misma persona puede tener los dos componentes. Por ejemplo, un codo con tendinopatía y músculos del antebrazo muy sensibles. En ese caso, la evaluación define qué se trabaja primero y si conviene combinar técnicas en distintas sesiones.
+Una misma persona puede tener los dos componentes. Por ejemplo, un codo con tendinopatía y músculos del antebrazo muy sensibles. En ese caso, la evaluación define qué se trabaja primero y si conviene combinar tratamientos en distintas sesiones.
 
 ## Después de la sesión
 
@@ -77,23 +77,23 @@ En ninguno de los dos casos se suele indicar reposo absoluto. Se ajusta la activ
 
 ## Y dónde entran la MEP y la NMP-e
 
-Hay otras dos técnicas con aguja que suelen aparecer en la misma conversación:
+Hay otros dos tratamientos con aguja que suelen aparecer en la misma conversación:
 
 - La [microelectrólisis percutánea (MEP)](/tratamientos/microelectrolisis-percutanea-mep/) también usa corriente galvánica, pero de muy baja intensidad, en microamperios. Suele tolerarse mejor y se aplica en tejidos o personas en los que se busca un estímulo más suave.
 - La [neuromodulación percutánea ecoguiada (NMP-e)](/tratamientos/neuromodulacion-percutanea-ecoguiada/) no actúa sobre el tejido lesionado sino sobre el **nervio periférico**, con estimulación eléctrica que busca influir en el dolor y en la activación muscular. Si te interesa este punto, leé [cómo actúa la neuromodulación sobre el nervio y el dolor](/blog/neuromodulacion-percutanea-nervio-y-dolor/).
 
 ## Cuál conviene en tu caso
 
-No existe una técnica superior a otra en abstracto: cada una responde a un objetivo distinto. La pregunta útil no es "EPI o punción seca", sino **qué tejido está generando el problema y qué necesita**. Eso se responde con entrevista, exploración física y ecografía.
+No existe un tratamiento superior a otro en abstracto: cada uno responde a un objetivo distinto. La pregunta útil no es "EPI o punción seca", sino **qué tejido está generando el problema y qué necesita**. Eso se responde con entrevista, exploración física y ecografía.
 
 Algunos datos que suelen inclinar la decisión:
 
 - **Dónde duele y cómo.** Un dolor bien localizado sobre un tendón, que aumenta con la carga, orienta hacia un lado; un dolor difuso o referido a distancia, que se reproduce al presionar un músculo, orienta hacia otro.
-- **Qué muestra la ecografía.** Una alteración localizada del tendón o de la fascia pesa a favor de una técnica dirigida al tejido; un tendón de aspecto conservado con músculos muy sensibles, a favor de abordar el músculo.
+- **Qué muestra la ecografía.** Una alteración localizada del tendón o de la fascia pesa a favor de un tratamiento dirigido al tejido; un tendón de aspecto conservado con músculos muy sensibles, a favor de abordar el músculo.
 - **Cómo respondiste a tratamientos previos** y cuánto tiempo lleva el cuadro.
-- **Precauciones individuales.** Ambas técnicas comparten contraindicaciones como infecciones en la piel de la zona, alteraciones de la coagulación o miedo intenso a las agujas; la EPI suma las propias de la corriente eléctrica, como marcapasos o embarazo.
+- **Precauciones individuales.** Ambos tratamientos comparten contraindicaciones como infecciones en la piel de la zona, alteraciones de la coagulación o miedo intenso a las agujas; la EPI suma las propias de la corriente eléctrica, como marcapasos o embarazo.
 
-Para profundizar, revisá la página de la técnica que te interese, [EPI](/tratamientos/epi-electrolisis-percutanea/) o [punción seca](/tratamientos/puncion-seca-ecoguiada/), y la lesión que más se parezca a lo que te pasa. La página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/) ofrece el panorama completo. Si querés que evaluemos tu caso, [escribinos](/contacto/).
+Para profundizar, revisá la página del tratamiento que te interese, [EPI](/tratamientos/epi-electrolisis-percutanea/) o [punción seca](/tratamientos/puncion-seca-ecoguiada/), y la lesión que más se parezca a lo que te pasa. La página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/) ofrece el panorama completo. Si querés que evaluemos tu caso, [escribinos](/contacto/).
 `,
 
   faqs: [
@@ -103,15 +103,15 @@ Para profundizar, revisá la página de la técnica que te interese, [EPI](/trat
     },
     {
       q: '¿Se pueden combinar EPI y punción seca?',
-      a: 'Sí, cuando el caso lo requiere. Es frecuente que un problema tenga un componente tendinoso y otro muscular. La evaluación define qué técnica usar, en qué orden y si conviene hacerlas en sesiones distintas.',
+      a: 'Sí, cuando el caso lo requiere. Es frecuente que un problema tenga un componente tendinoso y otro muscular. La evaluación define qué tratamiento usar, en qué orden y si conviene hacerlas en sesiones distintas.',
     },
     {
       q: '¿La punción seca sirve para una tendinopatía?',
-      a: 'La punción seca se dirige principalmente al músculo. Puede ayudar si hay un componente muscular asociado, pero cuando el tendón es el protagonista suelen considerarse otras técnicas, como la EPI, siempre junto con ejercicio.',
+      a: 'La punción seca se dirige principalmente al músculo. Puede ayudar si hay un componente muscular asociado, pero cuando el tendón es el protagonista suelen considerarse otros tratamientos, como la EPI, siempre junto con ejercicio.',
     },
     {
-      q: '¿Ambas técnicas necesitan ecografía?',
-      a: 'La guía ecográfica aporta precisión y seguridad en las dos, porque permite ver la aguja, el tejido objetivo y las estructuras que hay que evitar. En la EPI es especialmente importante porque se busca actuar sobre un punto concreto del tejido alterado.',
+      q: '¿Ambos tratamientos necesitan ecografía?',
+      a: 'La guía ecográfica aporta precisión y seguridad en los dos, porque permite ver la aguja, el tejido objetivo y las estructuras que hay que evitar. En la EPI es especialmente importante porque se busca actuar sobre un punto concreto del tejido alterado.',
     },
   ],
 

@@ -8,7 +8,7 @@ export default {
 
   title: 'Tratamiento de la fascitis plantar en {{CIUDAD}} | {{NOMBRE}}',
   description:
-    'Tratamiento de la fascitis plantar: ecografía de la fascia, ejercicio, calzado y técnicas ecoguiadas cuando están indicadas. Evaluación individual en {{CIUDAD}}.',
+    'Tratamiento de la fascitis plantar: ecografía de la fascia, ejercicio, calzado y tratamientos ecoguiados cuando están indicados. Evaluación individual en {{CIUDAD}}.',
   h1: 'Tratamiento de la fascitis plantar: dolor en el talón al levantarte',
   lead:
     'Apoyar el pie al bajar de la cama y sentir un pinchazo en el talón es la forma en que muchas personas descubren la fascitis plantar. El dolor suele aflojar al caminar un rato, pero vuelve después de estar sentado. Con una evaluación precisa y un plan constante, es un cuadro que suele responder bien al tratamiento conservador.',
@@ -25,7 +25,7 @@ export default {
     { label: 'Zona', value: 'Planta del pie, cara interna del talón' },
     { label: 'Síntoma típico', value: 'Dolor con los primeros pasos tras el reposo' },
     { label: 'Frecuente en', value: 'Corredores, trabajos de pie, cambios de peso o calzado' },
-    { label: 'Técnicas asociadas', value: 'Ejercicio, EPI, MEP y punción seca ecoguiadas' },
+    { label: 'Tratamientos asociados', value: 'Ejercicio, EPI, MEP y punción seca ecoguiadas' },
   ],
 
   body: `
@@ -101,7 +101,7 @@ El programa de ejercicio suele incluir:
 
 Las plantillas o los vendajes pueden aliviar durante un tiempo en algunas personas; se indican como apoyo, no como solución única. La dosificación de cada ejercicio se adapta en la consulta.
 
-### Técnicas ecoguiadas en casos seleccionados
+### Tratamientos ecoguiados en casos seleccionados
 
 Cuando el dolor se mantiene a pesar de un tratamiento conservador bien realizado y la ecografía muestra una fascia engrosada y alterada, se puede valorar la [electrólisis percutánea (EPI)](/tratamientos/epi-electrolisis-percutanea/) sobre la inserción de la fascia. En personas más sensibles al dolor, la [microelectrólisis percutánea (MEP)](/tratamientos/microelectrolisis-percutanea-mep/) ofrece una aplicación de menor intensidad. Si hay puntos gatillo en la musculatura de la pantorrilla o del pie que contribuyen al dolor, la [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/) puede formar parte del plan. Todas se integran con el ejercicio y se indican solo tras la evaluación; conocé más sobre la [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/).
 

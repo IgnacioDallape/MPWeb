@@ -17,7 +17,7 @@ Este sitio web es titularidad de **${name}** (${p.name}, ${p.title}, matrícula 
 
 ## Alcance de la información
 
-El contenido publicado tiene fines **exclusivamente informativos y educativos**. No constituye un diagnóstico ni reemplaza la consulta con un profesional de la salud. Las técnicas descriptas se indican únicamente tras una evaluación individual.
+El contenido publicado tiene fines **exclusivamente informativos y educativos**. No constituye un diagnóstico ni reemplaza la consulta con un profesional de la salud. Los tratamientos descriptos se indican únicamente tras una evaluación individual.
 
 ## Propiedad intelectual
 

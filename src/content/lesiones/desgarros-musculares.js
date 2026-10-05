@@ -25,7 +25,7 @@ export default {
     { label: 'Zona', value: 'Muslo posterior, pantorrilla, cuádriceps y aductores' },
     { label: 'Síntoma típico', value: 'Dolor súbito tipo pinchazo durante un sprint, salto o cambio de ritmo' },
     { label: 'Frecuente en', value: 'Fútbol, rugby, hockey, atletismo, pádel y tenis' },
-    { label: 'Técnicas asociadas', value: 'Ejercicio progresivo; NMP-e, punción seca o EPI según fase y criterio' },
+    { label: 'Tratamientos asociados', value: 'Ejercicio progresivo; NMP-e, punción seca o EPI según fase y criterio' },
   ],
 
   body: `
@@ -85,15 +85,15 @@ Se suman carrera progresiva, aceleraciones, cambios de dirección, saltos y gest
 
 {{CTA}}
 
-## Técnicas ecoguiadas: cuándo pueden tener lugar
+## Tratamientos ecoguiados: cuándo pueden tener lugar
 
-Las técnicas invasivas **no se aplican en la fase aguda sin un criterio claro**. Su lugar, cuando lo tienen, es como complemento del ejercicio:
+Los tratamientos invasivos **no se aplican en la fase aguda sin un criterio claro**. Su lugar, cuando lo tienen, es como complemento del ejercicio:
 
 - La [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) puede considerarse para favorecer la activación muscular cuando hay inhibición o déficit de fuerza persistente, por ejemplo en isquiotibiales o cuádriceps.
 - La [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/) puede indicarse ante puntos gatillo o sobrecarga en músculos vecinos que compensaron la lesión.
 - La [electrólisis percutánea (EPI)](/tratamientos/epi-electrolisis-percutanea/) se reserva para etapas tardías, cuando la ecografía muestra una cicatriz organizada que limita la función. Ese escenario se desarrolla en la página de [fibrosis muscular](/lesiones/fibrosis-muscular/).
 
-No todos los desgarros requieren estas técnicas. Muchos evolucionan bien solo con un programa de ejercicio bien dosificado.
+No todos los desgarros requieren estos tratamientos. Muchos evolucionan bien solo con un programa de ejercicio bien dosificado.
 
 ## Criterios para volver a jugar
 
@@ -121,7 +121,7 @@ Consultá cuanto antes si notás:
 - Dolor tras un golpe directo fuerte con tensión creciente en el muslo.
 - Hormigueo, adormecimiento o debilidad que no corresponde al músculo lesionado.
 
-Si querés entender qué técnicas se usan en la consulta y en qué casos, la página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/) lo explica en detalle.
+Si querés entender qué tratamientos se usan en la consulta y en qué casos, la página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/) lo explica en detalle.
 `,
 
   faqs: [
@@ -143,7 +143,7 @@ Si querés entender qué técnicas se usan en la consulta y en qué casos, la p�
     },
     {
       q: '¿Se puede hacer punción o EPI en un desgarro reciente?',
-      a: 'No se aplican técnicas invasivas en la fase aguda sin un criterio claro. Más adelante, y tras una evaluación, pueden considerarse la neuromodulación para la activación muscular, la punción seca para la sobrecarga de músculos vecinos o la EPI si se forma una cicatriz que limita la función.',
+      a: 'No se aplican tratamientos invasivos en la fase aguda sin un criterio claro. Más adelante, y tras una evaluación, pueden considerarse la neuromodulación para la activación muscular, la punción seca para la sobrecarga de músculos vecinos o la EPI si se forma una cicatriz que limita la función.',
     },
     {
       q: '¿Por qué me vuelvo a desgarrar en el mismo lugar?',

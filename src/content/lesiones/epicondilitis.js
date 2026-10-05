@@ -8,7 +8,7 @@ export default {
 
   title: 'Tratamiento de la epicondilitis en {{CIUDAD}} | {{NOMBRE}}',
   description:
-    'Tratamiento de la epicondilitis o codo de tenista: evaluación ecográfica, ejercicio para los extensores de muñeca y técnicas ecoguiadas si se indican. En {{CIUDAD}}.',
+    'Tratamiento de la epicondilitis o codo de tenista: evaluación ecográfica, ejercicio para los extensores de muñeca y tratamientos ecoguiados si se indican. En {{CIUDAD}}.',
   h1: 'Tratamiento de la epicondilitis (codo de tenista)',
   lead:
     'Cuando agarrar una taza, abrir un frasco o estrechar una mano te provoca un pinchazo en la parte de afuera del codo, lo más probable es una epicondilitis. Y no hace falta jugar al tenis para tenerla: la mayoría de los casos aparecen en personas que usan mucho las manos en el trabajo o en casa.',
@@ -25,7 +25,7 @@ export default {
     { label: 'Zona', value: 'Cara externa del codo (epicóndilo lateral)' },
     { label: 'Síntoma típico', value: 'Dolor al agarrar, levantar con la palma hacia abajo o girar' },
     { label: 'Frecuente en', value: 'Trabajo manual, oficina, deportes de raqueta' },
-    { label: 'Técnicas asociadas', value: 'EPI, neuromodulación y punción seca ecoguiadas' },
+    { label: 'Tratamientos asociados', value: 'EPI, neuromodulación y punción seca ecoguiadas' },
   ],
 
   body: `
@@ -99,7 +99,7 @@ El ejercicio es el núcleo del tratamiento. Una progresión habitual incluye:
 
 Las cargas se ajustan en cada sesión según la respuesta del codo.
 
-### Técnicas ecoguiadas cuando el caso lo pide
+### Tratamientos ecoguiados cuando el caso lo pide
 
 En epicondilitis de evolución prolongada, con alteración visible del tendón en la ecografía, se puede valorar la [EPI con guía ecográfica](/tratamientos/epi-electrolisis-percutanea/) sobre la inserción de los extensores. Cuando el componente de dolor es muy marcado o se sospecha participación del nervio radial, la [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) puede ser útil. Si hay puntos gatillo en los músculos del antebrazo que reproducen el dolor, se considera la [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/). Para entender cuándo se elige cada una, podés leer [EPI para tendinopatías](/blog/epi-para-tendinopatias/).
 

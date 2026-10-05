@@ -25,7 +25,7 @@ export default {
     { label: 'Zona', value: 'Isquiotibiales, gemelo, cuádriceps y aductores, sobre todo' },
     { label: 'Síntoma típico', value: 'Tirantez localizada y molestias en el mismo punto al exigir el músculo' },
     { label: 'Frecuente en', value: 'Deportistas con desgarros previos o golpes fuertes en el muslo' },
-    { label: 'Técnicas asociadas', value: 'EPI, MEP o punción seca, siempre junto a ejercicio de carga' },
+    { label: 'Tratamientos asociados', value: 'EPI, MEP o punción seca, siempre junto a ejercicio de carga' },
   ],
 
   body: `
@@ -86,15 +86,15 @@ Se trabaja la movilidad del músculo y de la fascia que lo rodea, y se atienden 
 
 {{CTA}}
 
-### Técnicas ecoguiadas sobre la cicatriz
+### Tratamientos ecoguiados sobre la cicatriz
 
-Cuando la cicatriz es evidente en la ecografía y limita la función pese a un buen programa de ejercicio, pueden considerarse técnicas que actúan directamente sobre el tejido:
+Cuando la cicatriz es evidente en la ecografía y limita la función pese a un buen programa de ejercicio, pueden considerarse tratamientos que actúan directamente sobre el tejido:
 
 - La [electrólisis percutánea intratisular (EPI)](/tratamientos/epi-electrolisis-percutanea/) aplica corriente galvánica sobre la zona fibrosa para generar una respuesta local que favorezca su remodelado. El principio es similar al que se describe en [cómo actúa la EPI sobre el tendón](/blog/como-actua-la-epi-en-el-tendon/).
 - La [microelectrólisis percutánea (MEP)](/tratamientos/microelectrolisis-percutanea-mep/) usa corrientes de intensidad mucho menor y suele tolerarse mejor, por lo que puede ser una alternativa según el caso y la sensibilidad de la persona.
 - La [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/) puede indicarse cuando, además de la cicatriz, hay puntos gatillo en el mismo músculo o en músculos vecinos.
 
-En todos los casos, la técnica busca **acompañar** el estímulo de carga, no reemplazarlo. Después de cada sesión se ajusta el ejercicio para que el tejido reciba la tensión adecuada.
+En todos los casos, el tratamiento busca **acompañar** el estímulo de carga, no reemplazarlo. Después de cada sesión se ajusta el ejercicio para que el tejido reciba la tensión adecuada.
 
 ## Tiempos y evolución
 

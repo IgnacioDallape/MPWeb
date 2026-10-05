@@ -8,7 +8,7 @@ export default {
 
   title: 'Tratamiento de la tendinopatía rotuliana en {{CIUDAD}} | {{NOMBRE}}',
   description:
-    'Tratamiento de la tendinopatía rotuliana o rodilla de saltador: evaluación con ecografía, progresión de cargas y técnicas ecoguiadas si se indican. En {{CIUDAD}}.',
+    'Tratamiento de la tendinopatía rotuliana o rodilla de saltador: evaluación con ecografía, progresión de cargas y tratamientos ecoguiados si se indican. En {{CIUDAD}}.',
   h1: 'Tratamiento de la tendinopatía rotuliana (rodilla de saltador)',
   lead:
     'Ese dolor puntual debajo de la rótula que aparece al saltar, al aterrizar o al bajar en sentadilla tiene nombre: tendinopatía rotuliana. Su tratamiento busca que el tendón vuelva a tolerar los saltos de tu deporte, con un plan progresivo y una evaluación ecográfica que muestra cómo está el tejido.',
@@ -25,7 +25,7 @@ export default {
     { label: 'Zona', value: 'Borde inferior de la rótula' },
     { label: 'Síntoma típico', value: 'Dolor localizado al saltar, aterrizar o bajar en sentadilla' },
     { label: 'Frecuente en', value: 'Vóley, básquet, handball, atletismo de saltos' },
-    { label: 'Técnicas asociadas', value: 'Progresión de cargas, EPI y neuromodulación' },
+    { label: 'Tratamientos asociados', value: 'Progresión de cargas, EPI y neuromodulación' },
   ],
 
   body: `
@@ -94,7 +94,7 @@ El ejercicio terapéutico es el eje del tratamiento. La secuencia habitual es:
 
 Se avanza de fase según criterios de dolor y de rendimiento, no por calendario. Las series, cargas y frecuencias se ajustan a cada persona en la consulta.
 
-### Cuándo suman las técnicas ecoguiadas
+### Cuándo suman los tratamientos ecoguiados
 
 Si el tendón no responde como se espera al programa de carga, o la ecografía muestra una zona alterada concreta, se puede plantear la [EPI ecoguiada](/tratamientos/epi-electrolisis-percutanea/) sobre esa región del tendón. Cuando hay mucha inhibición del cuádriceps o un dolor que limita el entrenamiento de fuerza, la [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) sobre el nervio femoral puede facilitar el trabajo. En [EPI para tendinopatías](/blog/epi-para-tendinopatias/) se explica cuándo tiene sentido y por qué siempre va acompañada de ejercicio.
 

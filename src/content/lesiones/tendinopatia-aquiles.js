@@ -8,7 +8,7 @@ export default {
 
   title: 'Tendinopatía de Aquiles: tratamiento en {{CIUDAD}} | {{NOMBRE}}',
   description:
-    'Tratamiento de la tendinopatía de Aquiles con evaluación ecográfica, ejercicio de carga progresiva y técnicas ecoguiadas cuando están indicadas. En {{CIUDAD}}.',
+    'Tratamiento de la tendinopatía de Aquiles con evaluación ecográfica, ejercicio de carga progresiva y tratamientos ecoguiados cuando están indicados. En {{CIUDAD}}.',
   h1: 'Tratamiento de la tendinopatía de Aquiles (tendinitis aquílea)',
   lead:
     'Si te duele el tendón de Aquiles al correr, al subir escaleras o con los primeros pasos de la mañana, no estás solo: es una de las consultas más frecuentes en corredores. El tratamiento de la tendinopatía de Aquiles combina una evaluación precisa con ecografía y un plan de carga pensado para tu tendón.',
@@ -25,7 +25,7 @@ export default {
     { label: 'Zona', value: 'Parte posterior del tobillo, sobre el talón' },
     { label: 'Síntoma típico', value: 'Rigidez y dolor al arrancar, que cede al entrar en calor' },
     { label: 'Frecuente en', value: 'Corredores, deportes con saltos y cambios de ritmo' },
-    { label: 'Técnicas asociadas', value: 'Ejercicio de carga, EPI y MEP ecoguiadas' },
+    { label: 'Tratamientos asociados', value: 'Ejercicio de carga, EPI y MEP ecoguiadas' },
   ],
 
   body: `
@@ -99,11 +99,11 @@ El ejercicio es la base del tratamiento. Suele progresar por etapas:
 
 En la forma insercional se evita, al principio, bajar el talón por debajo del nivel del escalón, para no comprimir el tendón contra el hueso. Las cargas concretas se definen en la consulta según tu caso.
 
-### Técnicas ecoguiadas cuando están indicadas
+### Tratamientos ecoguiados cuando están indicados
 
 Si el dolor persiste a pesar de un buen programa de ejercicio, o la ecografía muestra una alteración localizada, se puede considerar la [electrólisis percutánea intratisular (EPI)](/tratamientos/epi-electrolisis-percutanea/). Con la aguja guiada en tiempo real, se actúa sobre la zona alterada del tendón para estimular su reparación. En personas más sensibles o en tejidos peritendinosos, la [microelectrólisis percutánea (MEP)](/tratamientos/microelectrolisis-percutanea-mep/) es una opción de menor intensidad.
 
-Estas técnicas no reemplazan al ejercicio: se suman a él. Podés ver cuándo se plantean en [EPI para tendinopatías](/blog/epi-para-tendinopatias/) y, en general, en qué consiste la [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/).
+Estos tratamientos no reemplazan al ejercicio: se suman a él. Podés ver cuándo se plantean en [EPI para tendinopatías](/blog/epi-para-tendinopatias/) y, en general, en qué consiste la [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/).
 
 ## Tiempos y evolución
 

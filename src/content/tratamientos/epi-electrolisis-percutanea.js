@@ -11,7 +11,7 @@ export default {
     'Qué es la EPI, cómo se realiza con guía ecográfica, en qué tendinopatías y lesiones se indica y cómo se integra con el ejercicio. Evaluación previa en {{CIUDAD}}.',
   h1: 'Electrólisis Percutánea Intratisular (EPI) guiada por ecografía',
   lead:
-    'La EPI es una técnica de fisioterapia invasiva que aplica una corriente galvánica a través de una aguja ultrafina directamente sobre el tejido afectado. Se utiliza principalmente en tendinopatías y lesiones de partes blandas, siempre con guía ecográfica y como parte de un plan de rehabilitación.',
+    'La EPI es un tratamiento de fisioterapia invasiva que aplica una corriente galvánica a través de una aguja ultrafina directamente sobre el tejido afectado. Se utiliza principalmente en tendinopatías y lesiones de partes blandas, siempre con guía ecográfica y como parte de un plan de rehabilitación.',
   updated: '2026-10-02',
 
   seo: {
@@ -22,7 +22,7 @@ export default {
   },
 
   facts: [
-    { label: 'Tipo de técnica', value: 'Percutánea, mínimamente invasiva' },
+    { label: 'Tipo de tratamiento', value: 'Percutáneo, mínimamente invasivo' },
     { label: 'Guía', value: 'Ecografía en tiempo real' },
     { label: 'Indicación principal', value: 'Tendinopatías y lesiones de partes blandas' },
     { label: 'Se combina con', value: 'Ejercicio terapéutico y progresión de cargas' },
@@ -35,13 +35,13 @@ La **electrólisis percutánea intratisular (EPI)** es un procedimiento de fisio
 
 Al circular la corriente por el tejido se produce una reacción electroquímica muy localizada. Esa reacción genera una respuesta inflamatoria controlada en el punto tratado, con el objetivo de estimular los procesos de reparación de un tejido que, en muchos cuadros persistentes, se encuentra "estancado".
 
-Es una técnica que se emplea sobre todo en **tendinopatías**: lesiones del tendón en las que, más que una inflamación aguda, suele haber una alteración de la estructura del tejido y de su capacidad para tolerar carga.
+Es un tratamiento que se emplea sobre todo en **tendinopatías**: lesiones del tendón en las que, más que una inflamación aguda, suele haber una alteración de la estructura del tejido y de su capacidad para tolerar carga.
 
 > La EPI no es un tratamiento aislado. Se indica tras una evaluación completa y forma parte de un plan que incluye ejercicio terapéutico, readaptación y progresión de cargas.
 
 ## Cómo funciona la EPI
 
-El principio de la técnica es simple de explicar, aunque su aplicación requiere formación específica:
+El principio del tratamiento es simple de explicar, aunque su aplicación requiere formación específica:
 
 1. **Se localiza la zona alterada.** Con el ecógrafo se identifica la región del tendón o del tejido que muestra cambios (engrosamiento, áreas hipoecoicas, desorganización de fibras, neovascularización).
 2. **Se dirige la aguja bajo visión ecográfica.** El fisioterapeuta ve en pantalla la aguja y la estructura objetivo, y guía la punta hacia el área de interés.
@@ -67,7 +67,7 @@ No todas las personas con estos diagnósticos son candidatas. La indicación dep
 
 ## Por qué la EPI debe realizarse con ecografía
 
-La guía ecográfica no es un detalle accesorio: es lo que da sentido a una técnica que busca actuar sobre un punto concreto.
+La guía ecográfica no es un detalle accesorio: es lo que da sentido a un tratamiento que busca actuar sobre un punto concreto.
 
 - **Precisión:** permite llevar la aguja al área alterada del tendón y no a una zona sana vecina.
 - **Seguridad:** se visualizan vasos sanguíneos, nervios y otras estructuras que conviene evitar.
@@ -103,11 +103,11 @@ El número de sesiones varía según la lesión, su antigüedad y la respuesta d
 
 ## Contraindicaciones y precauciones
 
-Como toda técnica invasiva, la EPI tiene situaciones en las que no se aplica o se aplica con precaución. Entre otras: embarazo, marcapasos u otros dispositivos electrónicos implantados, infecciones o lesiones de piel en la zona, alteraciones de la coagulación o tratamiento anticoagulante, tumores, miedo intenso a las agujas (belonefobia) y algunas enfermedades sistémicas. Todo esto se revisa en la evaluación inicial.
+Como todo tratamiento invasivo, la EPI tiene situaciones en las que no se aplica o se aplica con precaución. Entre otras: embarazo, marcapasos u otros dispositivos electrónicos implantados, infecciones o lesiones de piel en la zona, alteraciones de la coagulación o tratamiento anticoagulante, tumores, miedo intenso a las agujas (belonefobia) y algunas enfermedades sistémicas. Todo esto se revisa en la evaluación inicial.
 
-## EPI y otras técnicas ecoguiadas
+## EPI y otros tratamientos ecoguiados
 
-La EPI comparte con otras técnicas el uso de aguja y ecografía, pero su objetivo es distinto:
+La EPI comparte con otros tratamientos el uso de aguja y ecografía, pero su objetivo es distinto:
 
 - La [microelectrólisis percutánea (MEP)](/tratamientos/microelectrolisis-percutanea-mep/) utiliza corriente de muy baja intensidad (microamperios) y suele tolerarse mejor.
 - La [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) actúa sobre el nervio periférico, no sobre el tejido lesionado.
@@ -135,11 +135,11 @@ Si querés comparar en detalle, leé [diferencias entre EPI y punción seca](/bl
     },
     {
       q: '¿Qué diferencia hay entre EPI y punción seca?',
-      a: 'La EPI aplica corriente galvánica sobre el tejido lesionado (con frecuencia el tendón) para generar una respuesta de reparación. La punción seca no utiliza corriente y se dirige principalmente a puntos gatillo musculares. Son técnicas con objetivos distintos y pueden combinarse si el caso lo requiere.',
+      a: 'La EPI aplica corriente galvánica sobre el tejido lesionado (con frecuencia el tendón) para generar una respuesta de reparación. La punción seca no utiliza corriente y se dirige principalmente a puntos gatillo musculares. Son tratamientos con objetivos distintos y pueden combinarse si el caso lo requiere.',
     },
     {
       q: '¿Es necesaria una evaluación antes de hacer EPI?',
-      a: 'Sí. La EPI solo se indica después de una anamnesis, una exploración física y una valoración ecográfica. En algunos casos la conclusión es que otra técnica o un programa de ejercicio es la opción más adecuada.',
+      a: 'Sí. La EPI solo se indica después de una anamnesis, una exploración física y una valoración ecográfica. En algunos casos la conclusión es que otro tratamiento o un programa de ejercicio es la opción más adecuada.',
     },
   ],
 

@@ -89,7 +89,7 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
       <div class="on-dark relative hidden overflow-hidden rounded-2xl bg-navy-950 p-5 text-[0.9rem] text-white/65 lg:block">
         <div class="glow -top-20 -right-20 size-56 opacity-60" aria-hidden="true"></div>
         <strong class="relative mb-1.5 block font-display text-[1.02rem] text-white">Evaluación individual</strong>
-        <span class="relative">Antes de cualquier técnica se evalúa tu caso con exploración y ecografía.</span>
+        <span class="relative">Antes de cualquier tratamiento se evalúa tu caso con exploración y ecografía.</span>
         <a href={waLink(waMessage)} class="btn btn-glow btn-sm relative mt-4 w-full"><Icon name="whatsapp" size={18} />Consultar por WhatsApp</a>
       </div>
     </aside>
@@ -108,13 +108,13 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
   {kind === 'tratamientos' && (
     <>
       <Related id="lesiones-relacionadas" title="Lesiones en las que suele indicarse" intro="La indicación siempre depende de la evaluación individual." count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
-      <Related id="tratamientos-relacionados" title="Otras técnicas de fisioterapia invasiva ecoguiada" count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
+      <Related id="tratamientos-relacionados" title="Otros tratamientos de fisioterapia invasiva ecoguiada" count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
       <Related id="articulos-relacionados" title="Para profundizar" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
     </>
   )}
   {kind === 'lesiones' && (
     <>
-      <Related id="tratamientos-relacionados" title="Técnicas que pueden formar parte del tratamiento" intro="Se combinan con ejercicio terapéutico y progresión de cargas cuando la evaluación lo indica." count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
+      <Related id="tratamientos-relacionados" title="Tratamientos que pueden formar parte del plan" intro="Se combinan con ejercicio terapéutico y progresión de cargas cuando la evaluación lo indica." count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
       <Related id="lesiones-relacionadas" title="Lesiones relacionadas" count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
       <Related id="articulos-relacionados" title="Artículos sobre esta lesión" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
     </>
