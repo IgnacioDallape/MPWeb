@@ -97,9 +97,9 @@ export function reviewedBox(updated, published) {
 <p class="disclaimer">Esta información es educativa y no reemplaza una consulta. Ante dolor intenso, fiebre, pérdida de fuerza súbita, traumatismo importante o síntomas que empeoran, consultá con un médico.</p>`;
 }
 
-export function card({ href, title, text, iconName, tag, feature = false, more = 'Ver más', headingTag = 'h3' }) {
+export function card({ href, title, text, iconName, badge, tag, feature = false, more = 'Ver más', headingTag = 'h3' }) {
   return `<article class="card card-link${feature ? ' card-feature' : ''}">
-${iconName ? `<span class="card-icon">${icon(iconName)}</span>` : ''}
+${badge ? `<span class="card-badge">${badge}</span>` : iconName ? `<span class="card-icon">${icon(iconName)}</span>` : ''}
 ${tag ? `<span class="tag">${esc(tag)}</span>` : ''}
 <${headingTag}><a href="${href}">${esc(title)}</a></${headingTag}>
 <p>${esc(text)}</p>
@@ -112,4 +112,30 @@ export function relatedSection({ id, title, intro, items, cols = 3 }) {
   return `<section class="related" aria-labelledby="${id}"><div class="container">
 <h2 id="${id}">${esc(title)}</h2>${intro ? `<p class="muted">${esc(intro)}</p>` : ''}
 <div class="grid grid-${cols}">${items.join('')}</div></div></section>`;
+}
+
+// Sellos de certificación (MVClinic). Imágenes en public/img/cert-*.{webp,png}.
+export const CERTS = {
+  ecografia: 'Ecografía musculoesquelética',
+  electrolisis: 'Electrólisis percutánea',
+  neuromodulacion: 'Neuromodulación percutánea',
+};
+export const TREATMENT_CERT = {
+  'epi-electrolisis-percutanea': 'electrolisis',
+  'microelectrolisis-percutanea-mep': 'electrolisis',
+  'neuromodulacion-percutanea-ecoguiada': 'neuromodulacion',
+};
+
+export function certBadge(key, size = 96) {
+  return `<picture><source type="image/webp" srcset="/img/cert-${key}.webp"><img class="cert" src="/img/cert-${key}.png" width="${size}" height="${size}" alt="Sello Certified Quality en ${esc(CERTS[key])} – MVClinic, Institute of Invasive Physiotherapy" loading="lazy" decoding="async"></picture>`;
+}
+
+export function certRow(key) {
+  return `<div class="cert-row">${certBadge(key, 84)}<p><strong>Formación certificada</strong>${esc(CERTS[key])} · Certified Quality – MVClinic, Institute of Invasive Physiotherapy</p></div>`;
+}
+
+export function certStrip(keys = Object.keys(CERTS), title = 'Certificaciones') {
+  return `<div class="certs" role="group" aria-label="${esc(title)}">${keys
+    .map((k) => `<figure>${certBadge(k, 104)}<figcaption>${esc(CERTS[k])}</figcaption></figure>`)
+    .join('')}</div>`;
 }

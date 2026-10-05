@@ -1,7 +1,7 @@
 import { config, esc, waLink, known } from '../lib/site.js';
 import { icon } from '../lib/icons.js';
 import { ultrasoundHero, layersFigure } from '../lib/visuals.js';
-import { ctaButtons, faqList, picture } from '../lib/components.js';
+import { ctaButtons, faqList, picture, certRow, certStrip } from '../lib/components.js';
 import { CATEGORIES, treatmentCard } from './detail.js';
 import * as S from '../lib/schema.js';
 
@@ -69,10 +69,11 @@ export function homePage(ctx) {
   <div class="container split">
     <div>
       <p class="eyebrow">Descripción</p>
-      <h2 id="que-es">Precisión sobre el tejido que origina el problema</h2>
+      <h2 id="que-es">¿Qué es la Fisioterapia Invasiva Ecoguiada?</h2>
       <p>La <strong>fisioterapia invasiva ecoguiada</strong> engloba tratamientos que utilizan agujas ultrafinas para actuar directamente sobre la estructura afectada, siempre guiados por ecografía. Permite tratar de forma precisa lesiones tendinosas, musculares, ligamentarias y estructuras relacionadas con el sistema nervioso periférico.</p>
       <p>Tras una evaluación y anamnesis completa se identifica la estructura implicada y se determina el tratamiento más adecuado. Estas intervenciones forman parte de un abordaje integral que se complementa con readaptación, ejercicio terapéutico y cargas progresivas.</p>
-      <a class="btn btn-ghost" href="/fisioterapia-invasiva-ecoguiada/">Qué es la fisioterapia invasiva ecoguiada${icon('arrow', { size: 18 })}</a>
+      <a class="btn btn-ghost" href="/fisioterapia-invasiva-ecoguiada/">Guía completa de fisioterapia invasiva ecoguiada${icon('arrow', { size: 18 })}</a>
+      ${certRow('ecografia')}
     </div>
     <figure class="figure">${layersFigure()}<figcaption>La sonda ecográfica permite seguir el recorrido de la aguja hasta la estructura objetivo.</figcaption></figure>
   </div>
@@ -81,8 +82,8 @@ export function homePage(ctx) {
 <section class="section section-alt" aria-labelledby="por-que">
   <div class="container">
     <div class="section-head center">
-      <p class="eyebrow">Beneficios</p>
-      <h2 id="por-que">¿Por qué utilizar fisioterapia invasiva ecoguiada?</h2>
+      <p class="eyebrow">Por qué ecoguiada</p>
+      <h2 id="por-que">Beneficios de la Fisioterapia Invasiva Ecoguiada</h2>
       <p class="lead">La ecografía convierte una técnica basada en la palpación en una intervención visible, específica y controlada.</p>
     </div>
     <div class="grid grid-3">
@@ -161,6 +162,8 @@ export function homePage(ctx) {
           <div><dt>Especialización</dt><dd>${p.specializations.map(esc).join('<br>')}</dd></div>
           <div><dt>Experiencia</dt><dd>${esc(p.experience)}</dd></div>
         </dl>
+        <p class="eyebrow" style="margin-top:8px">Certificaciones</p>
+        ${certStrip()}
         <a class="btn btn-ghost" href="/sobre-mi/">Conocer trayectoria y formación${icon('arrow', { size: 18 })}</a>
       </div>
     </div>

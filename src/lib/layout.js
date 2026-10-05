@@ -13,7 +13,7 @@ export const NAV = [
   { label: 'Blog', path: '/blog/' },
 ];
 
-export const brandMark = (cls = 'brand-mark') => `<svg class="${cls}" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect width="40" height="40" rx="11" fill="#2a2d31"/><path d="M8.5 15.5a16 16 0 0 1 23 0L25 31h-10z" fill="#7a8087" opacity=".28"/><path d="M8.5 15.5a16 16 0 0 1 23 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M12 24c2.7-1.3 5.3-1.3 8 0s5.3 1.3 8 0" fill="none" stroke="#c9ccd0" stroke-width="1.6" stroke-linecap="round"/><path d="m27.5 9-8 17" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="19.5" cy="26" r="1.8" fill="#d6d9dc"/></svg>`;
+export const brandMark = (cls = 'brand-mark') => `<svg class="${cls}" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect width="40" height="40" rx="11" fill="#1b2b4b"/><path d="M8.5 15.5a16 16 0 0 1 23 0L25 31h-10z" fill="#5b6b8c" opacity=".28"/><path d="M8.5 15.5a16 16 0 0 1 23 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M12 24c2.7-1.3 5.3-1.3 8 0s5.3 1.3 8 0" fill="none" stroke="#c9ccd0" stroke-width="1.6" stroke-linecap="round"/><path d="m27.5 9-8 17" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/><circle cx="19.5" cy="26" r="1.8" fill="#d6d9dc"/></svg>`;
 
 const brandName = () => (known(config.business.name) ? config.business.name : config.professional.name);
 
@@ -136,7 +136,7 @@ ${conversionBar(waMessage)}`
 <meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1'}">
 <link rel="preload" href="/fonts/manrope-latin-wght.woff2" as="font" type="font/woff2" crossorigin>
 ${preload.join('\n')}
-<meta name="theme-color" content="#2a2d31">
+<meta name="theme-color" content="#1b2b4b">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">

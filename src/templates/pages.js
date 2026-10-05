@@ -1,7 +1,7 @@
 import { config, esc, waLink, known, abs, hasWhatsapp, formatDate } from '../lib/site.js';
 import { icon } from '../lib/icons.js';
 import { markdown, inline } from '../lib/md.js';
-import { picture, pageHero, ctaButtons, ctaInline, ctaBand, faqList, faqSection, tocBlock, asideCta, reviewedBox, relatedSection } from '../lib/components.js';
+import { certStrip, picture, pageHero, ctaButtons, ctaInline, ctaBand, faqList, faqSection, tocBlock, asideCta, reviewedBox, relatedSection } from '../lib/components.js';
 import { CATEGORIES, treatmentCard, lesionCard, postCard } from './detail.js';
 import { layersFigure } from '../lib/visuals.js';
 import { HOME_FAQS } from './home.js';
@@ -82,7 +82,7 @@ ${pageHero({
   actions: `<div style="margin-top:24px">${ctaButtons({ primary: 'Consultar qué técnica es adecuada para mí', waMessage: 'Hola, quería consultar qué tratamiento podría ser adecuado para mi lesión.' })}</div>`,
 })}
 <section class="section" aria-labelledby="tecnicas"><div class="container">
-  <div class="section-head"><h2 id="tecnicas">Cuatro técnicas, cuatro objetivos distintos</h2></div>
+  <div class="section-head"><h2 id="tecnicas">Cuatro tratamientos, objetivos diferentes</h2></div>
   <div class="grid grid-4">${ctx.treatments.map(treatmentCard).join('')}</div>
 </div></section>
 <section class="section section-alt" aria-labelledby="comparativa"><div class="container">
@@ -299,6 +299,8 @@ ${pageHero({
     <div class="card"><span class="card-icon">${icon('probe')}</span><h3>Especializaciones</h3><div class="prose">${list(p.specializations)}</div></div>
     <div class="card"><span class="card-icon">${icon('shield')}</span><h3>Cursos y certificaciones</h3><div class="prose">${list(p.certifications)}</div></div>
   </div>
+  <h3 style="margin-top:36px">Sellos de certificación</h3>
+  ${certStrip()}
   <p class="muted" style="margin-top:20px">Matrícula profesional: <strong>${esc(p.license)}</strong>.</p>
 </div></section>
 <section class="section" aria-labelledby="areas"><div class="container split">

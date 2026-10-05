@@ -75,26 +75,26 @@ export function layersFigure() {
 <rect x="0" y="142" width="560" height="46" fill="#f3f4f5"/>
 <rect x="0" y="188" width="560" height="92" fill="#dcdee0"/>
 <g stroke="#c4c7ca" stroke-width="1.2" fill="none" opacity=".9">${Array.from({ length: 7 }, (_, i) => `<path d="M0 ${200 + i * 12} C 140 ${194 + i * 12}, 420 ${206 + i * 12}, 560 ${198 + i * 12}"/>`).join('')}</g>
-<rect x="0" y="280" width="560" height="34" fill="#eceef0"/>
+<rect x="0" y="280" width="560" height="34" fill="#e9edf5"/>
 <g stroke="#b4b8bc" stroke-width="1.2" fill="none">${Array.from({ length: 4 }, (_, i) => `<path d="M0 ${286 + i * 7} C 180 ${283 + i * 7}, 380 ${289 + i * 7}, 560 ${285 + i * 7}"/>`).join('')}</g>
-<ellipse cx="350" cy="297" rx="44" ry="10" fill="#2a2d31" opacity=".16"/>
+<ellipse cx="350" cy="297" rx="44" ry="10" fill="#1b2b4b" opacity=".16"/>
 <rect x="0" y="314" width="560" height="46" fill="#f5f5f5"/>
-<path d="M300 120 l-18 -64 h76 l-18 64 Z" fill="#2a2d31"/>
-<rect x="276" y="40" width="88" height="20" rx="8" fill="#17191c"/>
-<path d="M300 122 L 270 314 M 340 122 L 370 314" stroke="#7a8087" stroke-opacity=".5" stroke-dasharray="4 5"/>
+<path d="M300 120 l-18 -64 h76 l-18 64 Z" fill="#1b2b4b"/>
+<rect x="276" y="40" width="88" height="20" rx="8" fill="#111c33"/>
+<path d="M300 122 L 270 314 M 340 122 L 370 314" stroke="#5b6b8c" stroke-opacity=".5" stroke-dasharray="4 5"/>
 <line x1="150" y1="70" x2="345" y2="296" stroke="#1c1e21" stroke-width="2.4" stroke-linecap="round"/>
 <line x1="150" y1="70" x2="128" y2="44" stroke="#61666c" stroke-width="7" stroke-linecap="round"/>
-<circle cx="346" cy="297" r="6" fill="#7a8087"/>
-<circle cx="346" cy="297" r="13" fill="none" stroke="#7a8087" stroke-opacity=".45"/>
+<circle cx="346" cy="297" r="6" fill="#5b6b8c"/>
+<circle cx="346" cy="297" r="13" fill="none" stroke="#5b6b8c" stroke-opacity=".45"/>
 <g font-family="Manrope, system-ui, sans-serif" font-size="13" font-weight="700" fill="#3d4146">
   <text x="378" y="54">Sonda ecográfica</text>
   <text x="16" y="135" font-size="11" fill="#6b6f74">PIEL</text>
   <text x="16" y="170" font-size="11" fill="#6b6f74">TEJIDO SUBCUTÁNEO</text>
   <text x="16" y="240" font-size="11" fill="#55595e">MÚSCULO</text>
-  <text x="16" y="302" font-size="11" fill="#2a2d31">TENDÓN</text>
-  <text x="404" y="336" fill="#2a2d31">Estructura objetivo</text>
+  <text x="16" y="302" font-size="11" fill="#1b2b4b">TENDÓN</text>
+  <text x="404" y="336" fill="#1b2b4b">Estructura objetivo</text>
   <text x="60" y="96">Aguja ultrafina</text>
 </g>
-<line x1="402" y1="330" x2="360" y2="304" stroke="#2a2d31" stroke-opacity=".5"/>
+<line x1="402" y1="330" x2="360" y2="304" stroke="#1b2b4b" stroke-opacity=".5"/>
 </svg>`;
 }
