@@ -55,6 +55,7 @@ async function start() {
     // Paso 3 · Intervención: la aguja llega al punto exacto y libera energía
     .to(s, { insert: 1, duration: 0.7 }, 2)
     .to(s, { energy: 1, duration: 0.4 }, 2.6)
+    .to(s, { scanOn: 0.2, duration: 0.6 }, 2)
     .to(s.cam, { x: 2.2, y: 1.0, z: mobile ? 7 : 4.4 }, 2)
     .to(s.look, { x: L, y: 0.1 }, 2)
     // Paso 4 · Readaptación: el tejido se reorganiza y vuelve a tolerar carga

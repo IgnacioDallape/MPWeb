@@ -57,7 +57,10 @@ export function organization() {
       opens: h.opens,
       closes: h.closes,
     })),
-    areaServed: b.areaServed.map((a) => (known(a) ? { '@type': 'City', name: a } : undefined)),
+    areaServed: [
+      ...b.areaServed.map((a) => (known(a) ? { '@type': 'City', name: a } : undefined)),
+      known(b.province) ? { '@type': 'AdministrativeArea', name: `Provincia de ${b.province}` } : undefined,
+    ],
     sameAs: [known(c.instagram)],
     founder: { '@id': PERSON_ID() },
     employee: { '@id': PERSON_ID() },

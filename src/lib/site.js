@@ -12,7 +12,8 @@ export const abs = (path) => config.siteUrl.replace(/\/$/, '') + path;
 
 // Tokens editoriales disponibles en todo el contenido.
 export const TOKENS = {
-  CIUDAD: config.business.city,
+  CIUDAD: config.business.seoArea || config.business.city,
+  LOCALIDAD: config.business.city,
   PROVINCIA: config.business.province,
   NOMBRE: config.professional.name,
   TITULO: config.professional.title,

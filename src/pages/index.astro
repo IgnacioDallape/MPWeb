@@ -88,7 +88,7 @@ const schema = [
           </div>
           <p class="mt-10 flex items-start gap-3 text-[0.88rem] text-white/70">
             <Icon name="shield" size={20} class="mt-0.5 text-ice-400" />
-            <span><strong class="text-white/85">{p.name}</strong> · {p.title} · Mat. {p.license}<br />{b.address}, {b.city}</span>
+            <span><strong class="text-white/85">{p.name}</strong> · {p.title} · Mat. {p.license}<br />Consultorio en {b.city} · Atención en todo {b.province}</span>
           </p>
         </div>
         <!-- Vista ecográfica 2D (HUD) -->
@@ -288,6 +288,7 @@ const schema = [
             <p class="eyebrow mb-4">{tokens('Turnos en {{CIUDAD}}')}</p>
             <h2 id="contacto-home" class="text-[clamp(2rem,4.4vw,3.4rem)] leading-[1.03] font-semibold"><span class="text-gradient">Solicitá tu evaluación</span></h2>
             <p class="mt-4 max-w-lg text-white/65">Contanos brevemente qué te pasa y coordinamos una primera consulta de evaluación clínica y ecográfica.</p>
+            <p class="mt-3 max-w-lg text-[0.92rem] text-white/65">Consultorio en {b.city}. Atendemos pacientes de todo Mendoza: {b.areaServed.filter((a) => a !== b.city).join(', ')}.</p>
             <div class="mt-8 flex flex-wrap gap-3">
               <a href={waLink(wa)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />Hablar por WhatsApp</a>
               <a href="/contacto/" class="btn btn-outline-dark">Ver dirección y horarios<Icon name="arrow" size={18} /></a>

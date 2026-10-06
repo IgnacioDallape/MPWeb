@@ -35,8 +35,11 @@ export default {
   business: {
     name: '[NOMBRE CONSULTORIO]',
     specialty: 'Fisioterapia Invasiva Ecoguiada',
-    city: '[CIUDAD]',
-    province: '[PROVINCIA]',
+    // Localidad real del consultorio (NAP, dirección y schema).
+    city: 'Luján de Cuyo',
+    // Zona que se usa para el SEO en títulos y textos ({{CIUDAD}}): la búsqueda principal es 'Mendoza'.
+    seoArea: 'Mendoza',
+    province: 'Mendoza',
     country: 'AR',
     address: '[DIRECCIÓN]',
     postalCode: '[CÓDIGO POSTAL]',
@@ -45,7 +48,7 @@ export default {
     // Link "Cómo llegar" de Google Maps / Google Business Profile.
     mapsUrl: '',
     // Áreas atendidas (ciudad + localidades cercanas reales).
-    areaServed: ['[CIUDAD]'],
+    areaServed: ['Luján de Cuyo', 'Chacras de Coria', 'Mendoza', 'Godoy Cruz', 'Maipú', 'Guaymallén', 'Las Heras'],
   },
 
   contact: {
