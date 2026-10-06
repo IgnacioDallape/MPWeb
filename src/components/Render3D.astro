@@ -1,0 +1,6 @@
+---
+// Imagen de render 3D con transparencia (WebP con canal alfa).
+interface Props { name: string; alt: string; class?: string; size?: 'sm' | 'lg'; eager?: boolean; width?: number; height?: number }
+const { name, alt, class: cls = '', size = 'sm', eager = false, width = 480, height = 300 } = Astro.props;
+---
+<img src={`/img/3d/${name}${size === 'sm' ? '-sm' : ''}.webp`} alt={alt} width={width} height={height} loading={eager ? 'eager' : 'lazy'} decoding="async" class:list={['render3d select-none object-contain', cls]} draggable="false" />

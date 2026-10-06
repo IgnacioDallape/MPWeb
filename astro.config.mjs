@@ -10,6 +10,7 @@ export default defineConfig({
   trailingSlash: 'always',
   build: { format: 'directory', inlineStylesheets: 'always' },
   compressHTML: true,
+  devToolbar: { enabled: false },
   prefetch: { prefetchAll: false, defaultStrategy: 'hover' },
   integrations: [postbuild()],
   vite: {

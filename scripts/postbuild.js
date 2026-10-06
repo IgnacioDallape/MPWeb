@@ -3,7 +3,7 @@
 //  2. resalta los datos pendientes ([CIUDAD], [MATRÍCULA]…) solo en nodos de texto,
 //  3. genera sitemap.xml y robots.txt,
 //  4. valida SEO técnico (H1 único, títulos/descripciones duplicados, enlaces rotos, alt).
-import { readdirSync, readFileSync, writeFileSync, existsSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync, writeFileSync, existsSync, statSync, rmSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { config, tokens, abs, pendingReport } from '../src/lib/site.js';
@@ -29,6 +29,8 @@ export default function postbuild() {
     hooks: {
       'astro:build:done': ({ dir, logger }) => {
         const out = fileURLToPath(dir);
+        // El estudio de renders es una herramienta interna: no se publica.
+        rmSync(join(out, 'render-lab'), { recursive: true, force: true });
         const files = walk(out);
         const pages = [];
         const errors = [];

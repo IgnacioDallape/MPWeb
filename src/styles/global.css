@@ -290,3 +290,7 @@
   .us-live .us-sweep { animation-duration: 8s !important; }
   .us-live .us-flow { animation-duration: 11s !important; }
 }
+
+/* Renders 3D: leve flotación */
+.render-float { animation: renderFloat 7s ease-in-out infinite; }
+@keyframes renderFloat { 0%, 100% { transform: translateY(0) rotate(-0.6deg); } 50% { transform: translateY(-14px) rotate(0.6deg); } }

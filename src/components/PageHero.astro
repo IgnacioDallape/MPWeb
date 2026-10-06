@@ -2,18 +2,25 @@
 import Breadcrumbs from './Breadcrumbs.astro';
 import { inline } from '../lib/md.js';
 import { tokens } from '../lib/site.js';
-interface Props { crumbs: { name: string; path: string }[]; eyebrow?: string; h1: string; lead?: string; facts?: { label: string; value: string }[] }
-const { crumbs, eyebrow, h1, lead, facts } = Astro.props;
+import Render3D from './Render3D.astro';
+interface Props { crumbs: { name: string; path: string }[]; eyebrow?: string; h1: string; lead?: string; facts?: { label: string; value: string }[]; render?: string; renderAlt?: string }
+const { crumbs, eyebrow, h1, lead, facts, render, renderAlt = '' } = Astro.props;
 ---
 <section class="on-dark noise relative overflow-hidden bg-navy-950 pt-36 pb-16 text-white md:pt-44 md:pb-20">
   <div class="bg-grid bg-grid-fade absolute inset-0" aria-hidden="true"></div>
   <div class="glow -top-40 right-[-10%] size-[640px] opacity-60" aria-hidden="true"></div>
   <div class="glow bottom-[-60%] left-[-10%] size-[520px] opacity-30" aria-hidden="true"></div>
+  {render && (
+    <div class="pointer-events-none absolute top-32 right-0 hidden w-[42%] max-w-[700px] lg:block xl:right-[3%]" aria-hidden="true">
+      <div class="glow inset-[10%] opacity-70"></div>
+      <Render3D name={render} alt={renderAlt} size="lg" eager width={900} height={560} class="render-float relative w-full drop-shadow-[0_40px_60px_rgba(0,0,0,.45)]" />
+    </div>
+  )}
   <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
     <Breadcrumbs items={crumbs} />
     {eyebrow && <p class="eyebrow mb-5">{eyebrow}</p>}
-    <h1 class="max-w-[18em] text-[clamp(2.2rem,5.6vw,4.2rem)] leading-[1.02] font-semibold" data-hero-title>{tokens(h1)}</h1>
-    {lead && <p class="mt-6 max-w-3xl text-[clamp(1.05rem,1.9vw,1.25rem)] leading-relaxed text-white/70" set:html={inline(tokens(lead))} />}
+    <h1 class:list={['max-w-[18em] text-[clamp(2.2rem,5.6vw,4.2rem)] leading-[1.02] font-semibold', render && 'lg:max-w-[54%]']} data-hero-title>{tokens(h1)}</h1>
+    {lead && <p class="mt-6 max-w-3xl lg:max-w-[52%] text-[clamp(1.05rem,1.9vw,1.25rem)] leading-relaxed text-white/70" set:html={inline(tokens(lead))} />}
     <slot />
     {facts && (
       <dl class="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 lg:grid-cols-4" data-reveal>

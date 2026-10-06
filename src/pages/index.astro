@@ -6,7 +6,7 @@ import Cards from '../components/Cards.astro';
 import Faq from '../components/Faq.astro';
 import CertRow from '../components/CertRow.astro';
 import CertStrip from '../components/CertStrip.astro';
-import { ultrasoundHero, ultrasoundLive, layersFigure } from '../lib/visuals.js';
+import { ultrasoundHero, ultrasoundLive } from '../lib/visuals.js';
 import { picture } from '../lib/components.js';
 import { config, known, waLink, tokens } from '../lib/site.js';
 import { treatments, lesions, CATEGORIES, homePosts } from '../data/index.js';
@@ -50,7 +50,7 @@ const schema = [
 >
   <!-- ============ HERO + EXPERIENCIA 3D ============ -->
   <div id="xp" class="on-dark relative bg-navy-950 text-white">
-    <!-- Lienzo 3D fijo mientras se recorre el hero y la historia -->
+    <!-- Lienzo 3D del hero -->
     <div class="pointer-events-none sticky top-0 h-[100svh] overflow-hidden" aria-hidden="true">
       <div data-xp-deco class="bg-grid bg-grid-fade absolute inset-0"></div>
       <div data-xp-deco class="glow -top-48 right-[-15%] size-[760px] opacity-60"></div>
@@ -63,9 +63,7 @@ const schema = [
       <canvas id="xp-canvas" class="absolute inset-0 h-full w-full opacity-0 transition-opacity duration-1000"></canvas>
       <div data-xp-overlay class="absolute inset-0 bg-gradient-to-b from-navy-950/40 via-navy-950/75 to-navy-950 lg:bg-gradient-to-r lg:from-navy-950/95 lg:via-navy-950/40 lg:to-transparent"></div>
       <div data-xp-overlay class="noise absolute inset-0"></div>
-      <ol class="absolute top-1/2 right-6 z-10 hidden -translate-y-1/2 flex-col gap-3 lg:flex" aria-hidden="true">
-          {xpSteps.map((_, i) => <li data-xp-dot class="size-2 rounded-full bg-white/20 transition-all duration-500 data-[active]:h-6 data-[active]:bg-ice-300"></li>)}
-        </ol>
+
     </div>
 
     <div class="relative -mt-[100svh]">
@@ -96,24 +94,9 @@ const schema = [
           <div class="relative overflow-hidden rounded-xl [aspect-ratio:560/470]"><Fragment set:html={ultrasoundHero({ live: true })} /><Fragment set:html={ultrasoundLive()} /></div>
           <p class="flex items-center gap-2 px-2 pt-2 pb-1 text-[0.72rem] font-semibold tracking-[0.14em] text-ice-300/80 uppercase"><span class="pulse-dot relative size-1.5 rounded-full bg-ice-400"></span>Vista ecográfica en tiempo real</p>
         </div>
-        <a href="#xp-historia" class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[0.72rem] tracking-[0.2em] text-white/40 uppercase no-underline md:flex">Así funciona<span class="block h-10 w-px animate-pulse bg-gradient-to-b from-ice-300 to-transparent"></span></a>
+        <a href="#que-es" class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[0.72rem] tracking-[0.2em] text-white/40 uppercase no-underline md:flex">Descubrí más<span class="block h-10 w-px animate-pulse bg-gradient-to-b from-ice-300 to-transparent"></span></a>
       </section>
 
-      <!-- Historia guiada por scroll -->
-      <section id="xp-historia" aria-labelledby="xp-title" class="relative">
-        <h2 id="xp-title" class="sr-only">Así funciona el tratamiento de fisioterapia invasiva ecoguiada</h2>
-        
-        {xpSteps.map((st, i) => (
-          <div data-xp-step class="mx-auto flex min-h-[100svh] max-w-[1320px] items-end px-5 pb-24 sm:px-8 lg:items-center lg:pb-0">
-            <article class="glass max-w-md rounded-3xl bg-navy-950/55 p-7 md:p-9" data-reveal>
-              <p class="font-display text-[0.75rem] font-semibold tracking-[0.22em] text-ice-300">PASO {String(i + 1).padStart(2, '0')} · {st.tag}</p>
-              <h3 class="mt-3 text-[clamp(1.6rem,3vw,2.3rem)] leading-[1.05] font-semibold">{st.title}</h3>
-              <p class="mt-4 text-white/70">{st.text}</p>
-              {st.link && <a href={st.link[0]} class="mt-5 inline-flex items-center gap-2 text-[0.9rem] font-semibold text-ice-300 no-underline hover:text-white">{st.link[1]}<Icon name="arrow" size={16} /></a>}
-            </article>
-          </div>
-        ))}
-      </section>
     </div>
   </div>
 
@@ -160,9 +143,20 @@ const schema = [
         <a href="/fisioterapia-invasiva-ecoguiada/" class="btn btn-outline mt-8" data-reveal>Guía completa de fisioterapia invasiva ecoguiada<Icon name="arrow" size={18} /></a>
         <div data-reveal><CertRow cert="ecografia" /></div>
       </div>
-      <figure class="glass-light m-0 overflow-hidden rounded-[2rem] p-2" data-reveal>
-        <div class="overflow-hidden rounded-[1.5rem]" set:html={layersFigure()} />
-        <figcaption class="px-4 py-3 text-[0.82rem] text-zinc-500">La sonda ecográfica permite seguir el recorrido de la aguja hasta la estructura objetivo.</figcaption>
+      <figure class="relative m-0" data-reveal>
+        <div id="slab" class="relative aspect-[4/3] cursor-grab overflow-hidden rounded-[2rem] bg-gradient-to-br from-navy-50 via-white to-zinc-100 ring-1 ring-navy-700/10 active:cursor-grabbing">
+          <div class="bg-dots-light absolute inset-0 opacity-70" aria-hidden="true"></div>
+          <img data-slab-poster src="/img/3d/slab.webp" alt="Ilustración 3D de un corte de tejido: piel, tejido subcutáneo, músculo y tendón, con la sonda ecográfica y la aguja llegando a la zona a tratar" width="900" height="675" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-contain p-4 transition-opacity duration-700" />
+          <canvas id="slab-canvas" class="absolute inset-0 h-full w-full opacity-0 transition-opacity duration-700" aria-hidden="true"></canvas>
+          <ul class="pointer-events-none absolute top-4 left-4 grid gap-1.5 text-[0.7rem] font-semibold tracking-[0.12em] uppercase" aria-hidden="true">
+            <li class="flex items-center gap-2 text-[#b08d7c]"><span class="size-2 rounded-full bg-[#ead1c4]"></span>Piel</li>
+            <li class="flex items-center gap-2 text-[#a8925c]"><span class="size-2 rounded-full bg-[#f2dfb5]"></span>Tejido subcutáneo</li>
+            <li class="flex items-center gap-2 text-[#b25e60]"><span class="size-2 rounded-full bg-[#d4797b]"></span>Músculo</li>
+            <li class="flex items-center gap-2 text-navy-500"><span class="size-2 rounded-full bg-[#b9cbe8]"></span>Tendón</li>
+          </ul>
+          <span class="pointer-events-none absolute right-4 bottom-4 rounded-full bg-white/80 px-3 py-1 text-[0.72rem] font-semibold text-navy-600 ring-1 ring-navy-700/10" aria-hidden="true">Arrastrá para girar</span>
+        </div>
+        <figcaption class="px-2 pt-3 text-[0.82rem] text-zinc-500">La sonda ecográfica permite seguir el recorrido de la aguja hasta la estructura objetivo.</figcaption>
       </figure>
     </div>
   </section>
@@ -198,7 +192,8 @@ const schema = [
       <SectionHead id="lesiones" eyebrow="Patologías" title='¿Qué lesiones y patologías pueden <span class="text-gradient-navy">abordarse</span>?' lead="Lesiones deportivas y del día a día en las que la fisioterapia invasiva ecoguiada puede formar parte del plan." />
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {groups.map((g) => (
-          <div class="card card-hover spotlight p-6" data-reveal data-spotlight>
+          <div class="card card-hover spotlight group p-6" data-reveal data-spotlight>
+            <div class="-mx-2 -mt-2 mb-2 grid aspect-[16/9] place-items-center overflow-hidden rounded-2xl bg-gradient-to-b from-navy-50 to-white"><img src={`/img/3d/${g.key}-sm.webp`} alt={`Ilustración 3D: ${g.label}`} width="480" height="270" loading="lazy" decoding="async" class="h-full w-full object-contain p-3 transition-transform duration-700 ease-out-expo group-hover:scale-[1.06]" /></div>
             <h3 class="mb-1 flex items-center gap-3 text-[1.1rem] font-semibold text-navy-950"><span class="grid size-10 place-items-center rounded-xl bg-navy-950 text-ice-300"><Icon name={g.icon} size={20} /></span>{g.label}</h3>
             <ul class="divide-y divide-zinc-200">
               {g.items.map((l) => (
@@ -213,37 +208,56 @@ const schema = [
   </section>
 
   <!-- ============ TRATAMIENTOS ============ -->
-  <section class="on-dark noise relative overflow-hidden bg-navy-950 py-24 text-white md:py-32" aria-labelledby="tratamientos">
-    <div class="bg-grid absolute inset-0 opacity-50 [mask-image:linear-gradient(transparent,#000_30%,#000_70%,transparent)]" aria-hidden="true"></div>
-    <div class="glow -top-32 -right-40 size-[600px] opacity-40" aria-hidden="true"></div>
+  <section class="relative bg-white py-24 md:py-32" aria-labelledby="tratamientos">
     <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
-      <SectionHead id="tratamientos" eyebrow="Tratamientos" title='Tratamientos de fisioterapia invasiva <span class="text-gradient">guiados por ecografía</span>' lead="Cada tratamiento tiene un objetivo distinto. La elección depende del tejido afectado, de la fase de la lesión y de tu actividad." />
-      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"><Cards kind="tratamientos" items={treatments} dark /></div>
-      <a href="/tratamientos/" class="mt-10 inline-flex items-center gap-2 font-semibold text-ice-300 no-underline hover:text-white" data-reveal>Comparar todos los tratamientos<Icon name="arrow" size={18} /></a>
+      <SectionHead id="tratamientos" eyebrow="Tratamientos" title='Tratamientos de fisioterapia invasiva <span class="text-gradient-navy">guiados por ecografía</span>' lead="Cada tratamiento tiene un objetivo distinto. La elección depende del tejido afectado, de la fase de la lesión y de tu actividad." />
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"><Cards kind="tratamientos" items={treatments} /></div>
+      <a href="/tratamientos/" class="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-navy-950" data-reveal>Comparar todos los tratamientos<Icon name="arrow" size={18} /></a>
     </div>
   </section>
 
-  <!-- ============ METODOLOGÍA ============ -->
-  <section class="bg-white py-24 md:py-32" aria-labelledby="proceso">
-    <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
-      <SectionHead id="proceso" eyebrow="Metodología" title='Primero se evalúa. <span class="text-gradient-navy">Después se decide.</span>' lead="Ningún tratamiento se aplica sin entender antes qué le pasa a tu tejido y qué necesitás recuperar." />
-      <div class="relative">
-        <div class="absolute top-7 right-0 left-0 hidden h-px bg-zinc-200 lg:block" aria-hidden="true"><div data-progress-line class="h-full w-full bg-gradient-to-r from-navy-700 to-ice-400"></div></div>
-        <ol class="relative grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map(([ic, t, d], i) => (
-            <li class="relative" data-reveal>
-              <span class="relative z-10 grid size-14 place-items-center rounded-2xl bg-navy-950 text-ice-300 shadow-[0_10px_30px_-10px_rgba(10,21,48,.6)] ring-8 ring-white"><Icon name={ic} /></span>
-              <p class="mt-6 font-display text-[0.75rem] font-semibold tracking-[0.2em] text-navy-500">PASO {String(i + 1).padStart(2, '0')}</p>
-              <h3 class="mt-1 text-[1.2rem] font-semibold text-navy-950">{t}</h3>
-              <p class="mt-2 text-[0.95rem] text-zinc-600">{d}</p>
+  <!-- ============ METODOLOGÍA Y PASOS ============ -->
+  <section aria-labelledby="proceso">
+    <div id="metodo" class="on-dark relative bg-navy-950 text-white">
+      <div class="pointer-events-none sticky top-0 h-[100svh] overflow-hidden" aria-hidden="true">
+        <div class="bg-grid bg-grid-fade absolute inset-0"></div>
+        <div class="glow -top-40 right-[-10%] size-[700px] opacity-50"></div>
+        <picture data-metodo-poster class="absolute inset-0 transition-opacity duration-1000">
+          <source type="image/webp" srcset="/img/hero-3d-mobile.webp" media="(max-width: 1023px)" />
+          <source type="image/webp" srcset="/img/hero-3d.webp" />
+          <img src="/img/hero-3d.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async" class="h-full w-full object-cover opacity-80" />
+        </picture>
+        <canvas id="metodo-canvas" class="absolute inset-0 h-full w-full opacity-0 transition-opacity duration-1000"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-b from-navy-950/40 via-navy-950/70 to-navy-950 lg:bg-gradient-to-r lg:from-navy-950/90 lg:via-navy-950/30 lg:to-transparent"></div>
+        <ol class="absolute top-1/2 right-6 z-10 hidden -translate-y-1/2 flex-col gap-3 lg:flex">
+          {xpSteps.map(() => <li data-metodo-dot class="size-2 rounded-full bg-white/20 transition-all duration-500 data-[active]:h-6 data-[active]:bg-ice-300"></li>)}
+        </ol>
+      </div>
+      <div class="relative -mt-[100svh]">
+        <div class="mx-auto flex min-h-[70svh] max-w-[1320px] items-center px-5 pt-24 sm:px-8">
+          <SectionHead id="proceso" eyebrow="Metodología y pasos" title='Primero se evalúa. <span class="text-gradient">Después se decide.</span>' lead="Ningún tratamiento se aplica sin entender antes qué le pasa a tu tejido y qué necesitás recuperar. Así es el recorrido, paso a paso." />
+        </div>
+        <ol>
+          {xpSteps.map((st, i) => (
+            <li data-metodo-step class="mx-auto flex min-h-[100svh] max-w-[1320px] items-end px-5 pb-24 sm:px-8 lg:items-center lg:pb-0">
+              <article class="glass max-w-md rounded-3xl bg-navy-950/65 p-7 md:p-9" data-reveal>
+                <p class="font-display text-[0.75rem] font-semibold tracking-[0.22em] text-ice-300">PASO {String(i + 1).padStart(2, '0')} · {st.tag}</p>
+                <h3 class="mt-3 text-[clamp(1.6rem,3vw,2.3rem)] leading-[1.05] font-semibold">{st.title}</h3>
+                <p class="mt-4 text-white/75">{st.text}</p>
+                {st.link && <a href={st.link[0]} class="mt-5 inline-flex items-center gap-2 text-[0.9rem] font-semibold text-ice-300 no-underline hover:text-white">{st.link[1]}<Icon name="arrow" size={16} /></a>}
+              </article>
             </li>
           ))}
         </ol>
       </div>
+    </div>
+  </section>
 
-      <div class="mt-24 grid items-center gap-10 overflow-hidden rounded-[2rem] border border-zinc-200 bg-zinc-50 p-6 md:p-10 lg:grid-cols-[320px_1fr] lg:gap-14" aria-labelledby="profesional" data-reveal>
+  <section class="bg-white py-24 md:py-32" aria-labelledby="profesional">
+    <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
+      <div class="mt-24 grid items-center gap-10 overflow-hidden rounded-[2rem] border border-zinc-200 bg-zinc-50 p-6 md:p-10 lg:grid-cols-[320px_1fr] lg:gap-14" data-reveal>
         <div class="grid aspect-[4/5] place-items-center overflow-hidden rounded-3xl bg-gradient-to-br from-navy-900 to-navy-700 p-6 text-center text-[0.85rem] text-white/70">
-          <Fragment set:html={picture('profesional', `${b.name}: evaluación con ecografía musculoesquelética`, { sizes: '(min-width: 1024px) 320px, 100vw' }) || '<span>[PENDIENTE: foto profesional realizando una ecografía]</span>'} />
+          <Fragment set:html={picture('profesional', `${b.name}: evaluación con ecografía musculoesquelética`, { sizes: '(min-width: 1024px) 320px, 100vw' }) || '<img src="/img/3d/probe.webp" alt="Ilustración 3D de una sonda ecográfica" width="600" height="700" loading="lazy" decoding="async" class="render-float h-full w-full object-contain p-6" />'} />
         </div>
         <div>
           <p class="eyebrow mb-3">Metodología · Profesional</p>
@@ -304,5 +318,6 @@ const schema = [
   </section>
   <script>
     import '../scripts/xp.js';
+    import '../scripts/slab.js';
   </script>
 </Base>

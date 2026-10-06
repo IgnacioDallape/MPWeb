@@ -13,6 +13,7 @@ import { markdown, wordCount } from '../lib/md.js';
 import { config, waLink, formatDate, abs, tokens, known } from '../lib/site.js';
 import { ctaInline, TREATMENT_CERT } from '../lib/components.js';
 import { relatedOf, CATEGORIES } from '../data/index.js';
+import { TREATMENT_RENDER, CATEGORY_RENDER } from '../data/renders.js';
 import * as S from '../lib/schema.js';
 
 interface Props { item: any; kind: 'tratamientos' | 'lesiones' | 'blog' }
@@ -60,7 +61,7 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
   published={kind === 'blog' ? published : undefined}
   updated={updated}
 >
-  <PageHero crumbs={crumbs} eyebrow={eyebrow} h1={item.h1} lead={item.lead} facts={item.facts}>
+  <PageHero crumbs={crumbs} eyebrow={eyebrow} h1={item.h1} lead={item.lead} facts={item.facts} render={kind === 'tratamientos' ? TREATMENT_RENDER[item.slug] : kind === 'lesiones' ? CATEGORY_RENDER[item.category] : undefined} renderAlt={`Ilustración 3D: ${item.name || item.h1}`}>
     {kind === 'blog' ? (
       <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.86rem] text-white/70">
         <span class="flex items-center gap-2"><Icon name="calendar" size={16} class="text-ice-400" /><time datetime={published}>{formatDate(published)}</time></span>

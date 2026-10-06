@@ -1,9 +1,8 @@
-// Carga diferida de la experiencia 3D y su coreografía con el scroll.
-// - Escritorio: se carga cuando el navegador queda libre (no compite con el LCP).
-// - Celular: se muestra un render pre-generado y el 3D se carga al primer gesto del usuario.
-
-const wrap = document.getElementById('xp');
-const canvas = document.getElementById('xp-canvas');
+// Experiencias 3D en vivo (Three.js), cargadas sin frenar la página:
+//  - Portada (#xp): escena ambiental (sonda escaneando, aguja con energía).
+//  - Metodología (#metodo): la misma escena cuenta los 4 pasos con el scroll.
+// Se cargan con la primera interacción del usuario; mientras tanto se ve un render fijo.
+// Solo se dibuja la escena que está en pantalla.
 
 function webglOK() {
   try {
@@ -14,38 +13,58 @@ function webglOK() {
   }
 }
 
-async function start() {
-  if (!wrap || !canvas || canvas.dataset.ready || !webglOK()) return;
+const mobile = matchMedia('(max-width: 1023px)').matches;
+const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let libs;
+const loadLibs = () =>
+  (libs ||= Promise.all([import('./scene3d.js'), import('gsap'), import('gsap/ScrollTrigger')]).then(([scene, g, st]) => {
+    g.gsap.registerPlugin(st.ScrollTrigger);
+    if (window.__lenis) window.__lenis.on('scroll', st.ScrollTrigger.update);
+    return { createScene: scene.createScene, gsap: g.gsap, ScrollTrigger: st.ScrollTrigger };
+  }));
+
+async function mount(wrap, canvas, posterSel) {
+  if (!wrap || !canvas || canvas.dataset.ready || !webglOK()) return null;
   canvas.dataset.ready = '1';
-  const mobile = matchMedia('(max-width: 1023px)').matches;
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const [{ createScene }, { gsap }, { ScrollTrigger }] = await Promise.all([import('./scene3d.js'), import('gsap'), import('gsap/ScrollTrigger')]);
-  const xp = createScene(canvas, { mobile });
-  const s = xp.state;
-  if (import.meta.env.DEV) window.__xp = xp;
-  const desktopOffset = mobile ? 0 : 1.7;
-  s.offsetX = desktopOffset;
-  if (mobile) Object.assign(s.cam, { x: 0, y: 1.1, z: 10.5 });
-  canvas.classList.remove('opacity-0');
-  wrap.querySelector('[data-xp-poster]')?.classList.add('opacity-0');
-
-  // Con 'reducir movimiento' (p. ej. Windows con efectos de animación desactivados) la escena
-  // sigue viva pero más calma: sin inclinación por mouse y con animación ambiental más lenta.
+  const L = await loadLibs();
+  const xp = L.createScene(canvas, { mobile });
   if (reduced) xp.calm?.();
-
-  // Pausar cuando no se ve (ahorra batería y CPU)
+  canvas.classList.remove('opacity-0');
+  wrap.querySelector(posterSel)?.classList.add('opacity-0');
   new IntersectionObserver(([e]) => (e.isIntersecting ? xp.play() : xp.pause())).observe(wrap);
   document.addEventListener('visibilitychange', () => (document.hidden ? xp.pause() : xp.play()));
+  return { xp, ...L };
+}
 
-  gsap.registerPlugin(ScrollTrigger);
-  if (window.__lenis) window.__lenis.on('scroll', ScrollTrigger.update);
+// ---------------------------------------------------------------- Portada
+async function startHero() {
+  const wrap = document.getElementById('xp');
+  const m = await mount(wrap, document.getElementById('xp-canvas'), '[data-xp-poster]');
+  if (!m) return;
+  const s = m.xp.state;
+  s.offsetX = mobile ? 0 : 1.7;
+  if (mobile) Object.assign(s.cam, { x: 0, y: 1.1, z: 10.5 });
+  // Al salir de la portada la cámara se acerca levemente
+  m.gsap.to(s.cam, { z: mobile ? 9 : 9.5, y: 1.6, ease: 'none', scrollTrigger: { trigger: wrap, start: 'top top', end: 'bottom top', scrub: 1 } });
+}
+
+// ---------------------------------------------------------------- Metodología (historia por scroll)
+async function startStory() {
+  const wrap = document.getElementById('metodo');
+  const m = await mount(wrap, document.getElementById('metodo-canvas'), '[data-metodo-poster]');
+  if (!m) return;
+  const { xp, gsap, ScrollTrigger } = m;
+  const s = xp.state;
   const L = xp.LESION_X;
   const off = (v) => (mobile ? 0 : v);
+  // Estado inicial: tejido alterado, sin sonda ni aguja
+  Object.assign(s, { insert: 0, energy: 0, scanOn: 0, scanAuto: 0, offsetX: off(1.3) });
+  Object.assign(s.cam, { x: -1.4, y: 0.7, z: mobile ? 8.5 : 6.4 });
+  Object.assign(s.look, { x: L, y: 0, z: 0 });
+
   const tl = gsap.timeline({ defaults: { ease: 'power2.inOut', duration: 1 } });
-  // Paso 1 · Evaluación: se retira la aguja, foco en el tejido alterado
-  tl.to(s, { insert: 0, energy: 0, scanOn: 0, scanAuto: 0, offsetX: off(1.3) }, 0)
-    .to(s.cam, { x: -1.4, y: 0.7, z: mobile ? 8.5 : 6.2 }, 0)
-    .to(s.look, { x: L, y: 0, z: 0 }, 0)
+  // Introducción → Paso 1 · Evaluación: foco en la zona alterada
+  tl.to(s.cam, { x: -1.0, y: 0.9, z: mobile ? 8 : 5.8 }, 0)
     // Paso 2 · Ecografía: la sonda baja y escanea hasta la zona alterada
     .set(s, { scanX: -3.2 }, 1)
     .to(s, { scanOn: 1, duration: 0.4 }, 1)
@@ -62,28 +81,42 @@ async function start() {
     .to(s, { disorder: 0, scanAuto: 0.8, scanOn: 0.35, offsetX: off(1.5), duration: 1 }, 3)
     .to(s.cam, { x: 0, y: 1.3, z: mobile ? 11.5 : 9 }, 3)
     .to(s.look, { x: 0, y: 0 }, 3);
-
   ScrollTrigger.create({ trigger: wrap, start: 'top top', end: 'bottom bottom', scrub: 1.2, animation: tl });
 
-  // Indicador de paso activo
-  const dots = [...wrap.querySelectorAll('[data-xp-dot]')];
-  wrap.querySelectorAll('[data-xp-step]').forEach((el, i) =>
+  const dots = [...wrap.querySelectorAll('[data-metodo-dot]')];
+  wrap.querySelectorAll('[data-metodo-step]').forEach((el, i) =>
     ScrollTrigger.create({ trigger: el, start: 'top 60%', end: 'bottom 40%', onToggle: (st) => st.isActive && dots.forEach((d, j) => d.toggleAttribute('data-active', j === i)) })
   );
 }
 
-if (wrap && canvas) {
-  // Se carga con la primera interacción (mouse, rueda, toque o teclado): nunca compite con la carga inicial.
-  const events = ['pointermove', 'pointerdown', 'wheel', 'touchstart', 'keydown'];
-  const once = () => {
-    events.forEach((ev) => removeEventListener(ev, once));
-    start();
-  };
-  events.forEach((ev) => addEventListener(ev, once, { passive: true }));
+// ---------------------------------------------------------------- Disparadores
+let interacted = false;
+let storyNear = false;
+const events = ['pointermove', 'pointerdown', 'wheel', 'touchstart', 'keydown'];
+const onFirst = () => {
+  events.forEach((ev) => removeEventListener(ev, onFirst));
+  interacted = true;
+  startHero();
+  if (storyNear) startStory();
+};
+events.forEach((ev) => addEventListener(ev, onFirst, { passive: true }));
+
+// La historia se monta recién cuando la sección se acerca a la pantalla.
+const metodo = document.getElementById('metodo');
+if (metodo) {
+  new IntersectionObserver(
+    ([e], o) => {
+      if (!e.isIntersecting) return;
+      storyNear = true;
+      if (interacted) startStory();
+      o.disconnect();
+    },
+    { rootMargin: '600px 0px' }
+  ).observe(metodo);
 }
 
 // Modo captura (solo desarrollo): ?render=poster genera el fotograma usado como imagen previa.
 if (new URLSearchParams(location.search).get('render') === 'poster') {
   document.documentElement.classList.add('render-poster');
-  start();
+  startHero();
 }
