@@ -29,10 +29,9 @@ async function start() {
   canvas.classList.remove('opacity-0');
   wrap.querySelector('[data-xp-poster]')?.classList.add('opacity-0');
 
-  if (reduced) {
-    xp.renderOnce();
-    return;
-  }
+  // Con 'reducir movimiento' (p. ej. Windows con efectos de animación desactivados) la escena
+  // sigue viva pero más calma: sin inclinación por mouse y con animación ambiental más lenta.
+  if (reduced) xp.calm?.();
 
   // Pausar cuando no se ve (ahorra batería y CPU)
   new IntersectionObserver(([e]) => (e.isIntersecting ? xp.play() : xp.pause())).observe(wrap);

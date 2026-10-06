@@ -332,7 +332,10 @@ export function createScene(canvas, { mobile = false } = {}) {
     offsetX: 0,
   };
   const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+  let calm = false;
+  let speed = 1;
   addEventListener('pointermove', (e) => {
+    if (calm) return;
     pointer.tx = e.clientX / innerWidth - 0.5;
     pointer.ty = e.clientY / innerHeight - 0.5;
   }, { passive: true });
@@ -356,7 +359,7 @@ export function createScene(canvas, { mobile = false } = {}) {
   let raf = 0;
 
   function frame() {
-    const t = clock.getElapsedTime();
+    const t = clock.getElapsedTime() * speed;
     pointer.x += (pointer.tx - pointer.x) * 0.05;
     pointer.y += (pointer.ty - pointer.y) * 0.05;
 
@@ -417,6 +420,10 @@ export function createScene(canvas, { mobile = false } = {}) {
     pause() {
       running = false;
       cancelAnimationFrame(raf);
+    },
+    calm() {
+      calm = true;
+      speed = 0.55;
     },
     renderOnce() {
       running = false;
