@@ -1,13 +1,16 @@
 // Tendinopatía del manguito rotador (supraespinoso).
-// Hombro derecho en vista anterolateral: cabeza humeral con tuberosidades e inicio de la diáfisis,
-// escápula con glena, coracoides, espina y acromion (techo), músculo supraespinoso que se continúa
-// en su tendón bajo el acromion hasta el troquíter, con la zona lesionada cerca de la inserción.
+// Hombro derecho en vista anterolateral-superior: cabeza humeral con tuberosidades y la diáfisis,
+// escápula con glena, coracoides, espina y acromion (techo), muñón de clavícula (articulación
+// acromioclavicular) y el músculo supraespinoso, que se continúa en su tendón bajo el acromion hasta
+// la huella de inserción en el troquíter. La zona lesionada está en el tendón, cerca de la inserción.
 export default function build(L) {
-  const { THREE, M, halo, rnd, reseed } = L;
+  const { THREE, halo, rnd, reseed } = L;
   const V3 = THREE.Vector3;
   const root = new THREE.Group();
-  // Cámara (se usa también para oscurecer suavemente los contornos, como en una ilustración)
-  const LOOK = [0.14, 0.08, -0.58], CAM = [3.42, 6.64, 8.67], ZOOM = 0.72;
+  // Cámara (elevación y azimut desde anterior hacia lateral). Se usa también para oscurecer los contornos.
+  const LOOK = [-0.1, -0.45, -0.5], ZOOM = 1.0;
+  const EL = 0.5, AZ = 0.4, DIST = 11.8, ROLL = 0.26;
+  const CAM = [LOOK[0] + DIST * Math.sin(AZ) * Math.cos(EL), LOOK[1] + DIST * Math.sin(EL), LOOK[2] + DIST * Math.cos(AZ) * Math.cos(EL)];
   const EYE = new V3(...CAM).sub(new V3(...LOOK)).multiplyScalar(ZOOM).add(new V3(...LOOK));
   const edgeShade = (geo, amount, width = 0.55) => {
     const P = geo.attributes.position, Nn = geo.attributes.normal, Cc = geo.attributes.color;
@@ -37,8 +40,6 @@ export default function build(L) {
     const l = Math.sqrt(x * x + y * y + z * z);
     return [x / l, y / l, z / l];
   };
-  const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
-  const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
   const add = (...vs) => vs.reduce((s, v) => [s[0] + v[0], s[1] + v[1], s[2] + v[2]], [0, 0, 0]);
   const mul = (v, k) => [v[0] * k, v[1] * k, v[2] * k];
 
@@ -83,6 +84,12 @@ export default function build(L) {
       for (let i = 1; i < parts.length; i++) d = smin(d, parts[i](x, y, z), k);
       return d;
     };
+  };
+  // Cadena aplastada en vertical (ky > 1 = más plana)
+  const flatChain = (pts, rads, ky, k) => {
+    const c = chain(pts.map((p) => [p[0], p[1] * ky, p[2]]), rads, k);
+    const s = Math.sqrt(ky);
+    return (x, y, z) => c(x, y * ky, z) / s;
   };
   // Polígono 2D con signo — iq
   const poly2 = (V) => (px, py) => {
@@ -176,7 +183,6 @@ export default function build(L) {
     const I = [];
     for (let i = 0; i < quads.length; i += 4) {
       const a = quads[i], b = quads[i + 1], cc = quads[i + 2], d = quads[i + 3];
-      // orientación según la normal del gradiente
       const ux = pos[cc * 3] - pos[a * 3], uy = pos[cc * 3 + 1] - pos[a * 3 + 1], uz = pos[cc * 3 + 2] - pos[a * 3 + 2];
       const wx = pos[d * 3] - pos[b * 3], wy = pos[d * 3 + 1] - pos[b * 3 + 1], wz = pos[d * 3 + 2] - pos[b * 3 + 2];
       const fx = uy * wz - uz * wy, fy = uz * wx - ux * wz, fz = ux * wy - uy * wx;
@@ -196,28 +202,48 @@ export default function build(L) {
   const Hc = [0.9, 0, 0];
   const R = 0.95;
 
-  // Húmero proximal: cabeza, troquíter (tuberosidad mayor), troquín, metáfisis e inicio de la diáfisis
-  // La superficie articular (casquete esférico) mira hacia la glena: medial, arriba y atrás
+  // Húmero proximal: cabeza, troquíter (tuberosidad mayor), troquín, corredera bicipital, metáfisis y diáfisis.
+  // Se modela en posición neutra (marco local) y se abduce ABD rad en el plano de la escápula alrededor del
+  // centro de la cabeza: el brazo baja hacia afuera, lo que da una silueta más apaisada y natural.
+  // La superficie articular mira hacia la glena: medial, arriba y atrás.
+  const ABD = 0.42;
+  const nAx = nrm(-0.32, 0, 1); // eje de abducción (normal al plano escapular)
+  const rotM = (ang) => {
+    const c = Math.cos(ang), s = Math.sin(ang), t = 1 - c, [x, y, z] = nAx;
+    return [t * x * x + c, t * x * y - s * z, t * x * z + s * y, t * x * y + s * z, t * y * y + c, t * y * z - s * x, t * x * z - s * y, t * y * z + s * x, t * z * z + c];
+  };
+  const RF = rotM(ABD), RI = rotM(-ABD);
+  const app = (Mx, v) => [Mx[0] * v[0] + Mx[1] * v[1] + Mx[2] * v[2], Mx[3] * v[0] + Mx[4] * v[1] + Mx[5] * v[2], Mx[6] * v[0] + Mx[7] * v[1] + Mx[8] * v[2]];
+  const toLocal = (x, y, z) => add(app(RI, [x - Hc[0], y - Hc[1], z - Hc[2]]), Hc);
   const dArt = nrm(-0.9, 0.45, -0.29);
+  const artP = (x, y, z) => (x - Hc[0]) * dArt[0] + (y - Hc[1]) * dArt[1] + (z - Hc[2]) * dArt[2];
   const headSph = sphere(Hc, R);
-  const dome = (x, y, z) => smax(headSph(x, y, z), -((x - Hc[0]) * dArt[0] + (y - Hc[1]) * dArt[1] + (z - Hc[2]) * dArt[2] + 0.3), 0.06);
-  const meta = ellipsoid(add(Hc, [0.42, -0.34, 0.12]), [0.62, 0.74, 0.64]);
-  const gt = ellipsoid(add(Hc, [0.66, -0.06, 0.1]), [0.36, 0.48, 0.5]);
-  const lt = ellipsoid(add(Hc, [0.3, -0.46, 0.66]), [0.21, 0.27, 0.19]);
-  const groove = roundCone(add(Hc, [0.53, 0.0, 0.84]), add(Hc, [0.62, -1.3, 0.6]), 0.11, 0.1);
-  const shaft = roundCone(add(Hc, [0.45, -0.6, 0.08]), add(Hc, [0.6, -2.3, 0.08]), 0.54, 0.36);
+  // Casquete amplio con borde muy suavizado: el cuello anatómico queda como un surco suave, sin escalón
+  const dome = (x, y, z) => smax(headSph(x, y, z), -(artP(x, y, z) + 0.42), 0.34);
+  const meta = ellipsoid(add(Hc, [0.4, -0.4, 0.1]), [0.66, 0.74, 0.66]);
+  const gt = ellipsoid(add(Hc, [0.62, 0.0, 0.12]), [0.4, 0.5, 0.52]);
+  const lt = ellipsoid(add(Hc, [0.3, -0.5, 0.64]), [0.17, 0.22, 0.15]);
+  const groove = roundCone(add(Hc, [0.5, -0.1, 0.86]), add(Hc, [0.6, -1.25, 0.6]), 0.085, 0.07);
+  const shaft = roundCone(add(Hc, [0.45, -0.6, 0.08]), add(Hc, [0.55, -2.8, 0.06]), 0.5, 0.34);
+  const humLocal = (x, y, z) => {
+    let d = smin(dome(x, y, z), meta(x, y, z), 0.3);
+    d = smin(d, gt(x, y, z), 0.3);
+    d = smin(d, lt(x, y, z), 0.14);
+    d = smin(d, shaft(x, y, z), 0.4);
+    return smax(d, -groove(x, y, z), 0.1);
+  };
   const humBase = (x, y, z) => {
-    let d = smin(dome(x, y, z), meta(x, y, z), 0.1);
-    d = smin(d, gt(x, y, z), 0.16);
-    d = smin(d, lt(x, y, z), 0.12);
-    d = smin(d, shaft(x, y, z), 0.3);
-    return smax(d, -groove(x, y, z), 0.09);
+    const p = toLocal(x, y, z);
+    return humLocal(p[0], p[1], p[2]);
   };
   // Relieve óseo de la huella de inserción (se define cuando se conoce el recorrido del tendón)
   let footprint = () => 1e9;
   const humerus = (x, y, z) => smin(humBase(x, y, z), footprint(x, y, z), 0.22);
   // 1 sobre el cartílago articular, 0 fuera
-  const cartilage = (x, y, z) => sstep(-0.18, -0.02, (x - Hc[0]) * dArt[0] + (y - Hc[1]) * dArt[1] + (z - Hc[2]) * dArt[2]) * sstep(0.05, 0.0, Math.abs(headSph(x, y, z)));
+  const cartilage = (x, y, z) => {
+    const p = toLocal(x, y, z);
+    return sstep(-0.12, 0.08, artP(p[0], p[1], p[2])) * sstep(0.06, 0.0, Math.abs(headSph(p[0], p[1], p[2])));
+  };
 
   // Escápula: plano escapular (m = hacia medial/posterior, n = cara anterior)
   const m = nrm(-1, 0, -0.32);
@@ -225,8 +251,8 @@ export default function build(L) {
   const G = add(Hc, mul(m, R + 0.04)); // centro de la glena
   const W = (s, y, v) => add(G, mul(m, s), [0, y, 0], mul(n, v));
   const blade = poly2([
-    [0.35, 0.4],
-    [1.1, 0.62],
+    [0.35, 0.6],
+    [1.1, 0.74],
     [2.85, 0.86],
     [3.05, 0.3],
     [2.6, -2.9],
@@ -235,17 +261,36 @@ export default function build(L) {
   const TH = 0.085, RR = 0.075;
   const latBorder = roundCone(W(0.45, -0.45, 0), W(2.55, -2.8, 0), 0.16, 0.1);
   const supBorder = roundCone(W(1.05, 0.6, 0), W(2.8, 0.82, 0), 0.08, 0.1);
-  const glenRim = ellipsoid(W(0.12, -0.05, 0), [0.18, 0.56, 0.38], m, [0, 1, 0], n);
-  const glenNeck = roundCone(W(0.2, -0.04, 0), W(0.5, 0, 0), 0.28, 0.22);
-  // Acromion: repisa ancha y aplanada sobre la cabeza humeral, continuación de la espina
-  const flatChain = (pts, rads, ky, k) => {
-    const c = chain(pts.map((p) => [p[0], p[1] * ky, p[2]]), rads, k);
-    const s = Math.sqrt(ky);
-    return (x, y, z) => c(x, y * ky, z) / s;
+  const glenRim = ellipsoid(W(0.05, -0.05, 0), [0.08, 0.5, 0.34], m, [0, 1, 0], n);
+  const glenNeck = roundCone(W(0.12, -0.04, 0), W(0.55, 0, 0), 0.2, 0.26);
+  // Coracoides: sale del cuello de la escápula hacia arriba y adelante y se curva como un gancho
+  const coracoid = chain([W(0.3, 0.36, 0.12), add(Hc, [-0.72, 0.64, 0.72]), add(Hc, [-0.52, 0.52, 1.06])], [0.27, 0.17, 0.15], 0.22);
+  // Acromion: losa plana y angulosa sobre la cabeza humeral (contorno poligonal, sección en lente: gruesa
+  // al centro y de borde fino), apenas arqueada hacia abajo en su parte anterior; continuación de la espina.
+  const AO = add(Hc, [0.15, 1.42, -0.42]);
+  const AU = nrm(0.8, 0, 0.6), AW = nrm(-0.6, 0, 0.8); // u: de la espina a la punta; w: hacia anteromedial
+  const acrPoly = poly2([
+    [-1.1, -0.18],
+    [-0.6, -0.36],
+    [0.4, -0.38],
+    [0.95, -0.2],
+    [1.06, 0.08],
+    [0.85, 0.3],
+    [0.2, 0.34],
+    [-0.6, 0.24],
+    [-1.1, 0.06],
+  ]);
+  const ATH = 0.13;
+  const acromion = (x, y, z) => {
+    const px = x - AO[0], py = y - AO[1], pz = z - AO[2];
+    const u = px * AU[0] + pz * AU[2], w = px * AW[0] + pz * AW[2];
+    const h = py + 0.14 * Math.max(u, 0) ** 2 + 0.1 * Math.max(u, 0) + 0.04 * Math.min(u, 0); // desciende hacia la punta anterolateral
+    const d2 = acrPoly(u, w);
+    const th = ATH * (0.35 + 0.65 * sstep(0, 0.28, -d2));
+    return smax(d2, Math.abs(h) - th, 0.05);
   };
-  const A = [add(Hc, [-0.72, 1.22, -1.1]), add(Hc, [-0.12, 1.47, -0.62]), add(Hc, [0.5, 1.44, -0.22]), add(Hc, [0.86, 1.28, 0.02])];
-  const acromion = flatChain(A, [0.3, 0.38, 0.38, 0.3], 2.3, 0.2);
-  const spine = chain([A[0], W(1.1, 0.68, -0.85), W(2.1, 0.42, -0.45), W(3.0, 0.28, -0.1)], [0.2, 0.15, 0.12, 0.09], 0.12);
+  const A0 = add(AO, mul(AU, -0.95), [0, 0.0, -0.02]);
+  const spine = chain([A0, W(1.1, 0.6, -0.8), W(2.1, 0.4, -0.45), W(3.0, 0.28, -0.1)], [0.15, 0.13, 0.11, 0.09], 0.14);
   const headCut = sphere(Hc, R + 0.05);
   const scapula = (x, y, z) => {
     const px = x - G[0], py = y - G[1], pz = z - G[2];
@@ -256,14 +301,18 @@ export default function build(L) {
     const ez = Math.abs(v) - (TH - RR);
     let d = Math.min(Math.max(d2, ez), 0) + Math.sqrt(Math.max(d2, 0) ** 2 + Math.max(ez, 0) ** 2) - RR;
     d = smin(d, latBorder(x, y, z), 0.14);
-    d = smin(d, supBorder(x, y, z), 0.08);
-    d = smin(d, smin(glenRim(x, y, z), glenNeck(x, y, z), 0.18), 0.2);
+    d = smin(d, supBorder(x, y, z), 0.18);
+    d = smin(d, smin(glenRim(x, y, z), glenNeck(x, y, z), 0.35), 0.2);
+    d = smin(d, coracoid(x, y, z), 0.3);
     d = smin(d, spine(x, y, z), 0.14);
-    d = smin(d, acromion(x, y, z), 0.16);
+    d = smin(d, acromion(x, y, z), 0.26);
     return smax(d, -headCut(x, y, z), 0.05);
   };
-  const bones = (x, y, z) => Math.min(humerus(x, y, z), scapula(x, y, z));
-
+  // Clavícula: curva en S, aplanada en su extremo lateral, que se articula con el borde anteromedial del
+  // acromion (articulación acromioclavicular) y se desvanece hacia medial
+  const CL = [add(Hc, [0.16, 1.47, 0.3]), add(Hc, [-0.45, 1.52, 0.52]), add(Hc, [-1.5, 1.6, 0.92]), add(Hc, [-2.7, 1.62, 0.92])];
+  const clavicle = flatChain(CL, [0.2, 0.165, 0.15, 0.17], 1.6, 0.25);
+  const bones = (x, y, z) => Math.min(humerus(x, y, z), scapula(x, y, z), clavicle(x, y, z));
 
   // ------------------------------------------------------------ supraespinoso: vientre muscular → tendón → inserción
   // Punto sobre la superficie del húmero en la dirección d desde el centro de la cabeza, separado `off`
@@ -279,36 +328,34 @@ export default function build(L) {
   };
   const path = new THREE.CatmullRomCurve3(
     [
-      new V3(...W(2.95, 0.7, -0.3)),
-      new V3(...W(2.2, 0.92, -0.38)),
-      new V3(...W(1.4, 1.08, -0.38)),
-      new V3(...W(0.7, 1.16, -0.32)),
+      new V3(...W(2.65, 0.62, -0.42)),
+      new V3(...W(2.2, 0.8, -0.46)),
+      new V3(...W(1.4, 0.96, -0.46)),
+      new V3(...W(0.7, 0.98, -0.36)),
       onHum([-0.45, 1, -0.25], 0.17),
-      onHum([-0.05, 1, -0.12], 0.16),
-      onHum([0.4, 0.92, 0.0], 0.16),
-      onHum([0.74, 0.66, 0.2], 0.19),
-      onHum([0.88, 0.45, 0.27], 0.13),
-      onHum([0.95, 0.3, 0.3], 0.0),
-      onHum([0.99, 0.14, 0.31], -0.28),
+      onHum([-0.05, 1, -0.1], 0.16),
+      onHum([0.35, 0.92, 0.04], 0.16),
+      onHum([0.62, 0.74, 0.16], 0.15),
+      onHum([0.8, 0.52, 0.26], 0.13),
+      onHum([0.88, 0.37, 0.3], 0.1),
     ],
     false,
     'centripetal'
   );
   {
-    const fp = onHum([0.96, 0.27, 0.3], -0.2);
-    footprint = sphere([fp.x, fp.y, fp.z], 0.31);
+    const fp = onHum([0.84, 0.44, 0.28], -0.2);
+    footprint = sphere([fp.x, fp.y, fp.z], 0.3);
   }
-  const smooth = (a, b, x) => {
-    const t = clamp((x - a) / (b - a), 0, 1);
-    return t * t * (3 - 2 * t);
-  };
+  const smooth = sstep;
   const T_TEN = 0.6; // unión musculotendinosa
-  const T_LES = 0.86; // zona lesionada (cerca de la inserción)
+  const T_LES = 0.82; // zona lesionada (cerca de la inserción)
   const tendonness = (t) => smooth(T_TEN - 0.08, T_TEN + 0.06, t);
-  const les = (t) => Math.exp(-(((t - T_LES) / 0.045) ** 2));
+  const les = (t) => Math.exp(-(((t - T_LES) / 0.075) ** 2)); // engrosamiento fusiforme largo y suave
+  const fan = (t) => smooth(0.9, 1, t); // abanico de inserción: más ancho y plano
   const startCap = (t) => Math.sqrt(1 - (1 - Math.min(1, t / 0.1)) ** 2);
-  const halfW = (t) => (0.56 * (1 - tendonness(t)) + 0.4 * tendonness(t) * (1 - 0.3 * smooth(0.9, 1, t))) * (0.15 + 0.85 * startCap(t)) + 0.04 * les(t);
-  const halfH = (t) => (0.42 * (1 - tendonness(t)) * (0.8 + 0.2 * Math.sin(Math.PI * clamp(t / T_TEN, 0, 1))) + 0.14 * tendonness(t) * (1 - 0.3 * smooth(0.93, 1, t))) * startCap(t) + 0.085 * les(t);
+  const endCap = (t) => Math.sqrt(Math.max(0, 1 - Math.max(0, (t - 0.965) / 0.035) ** 2));
+  const halfW = (t) => (0.64 * (1 - tendonness(t)) + 0.36 * tendonness(t) * (1 + 0.15 * fan(t))) * (0.15 + 0.85 * startCap(t)) * (0.35 + 0.65 * endCap(t)) + 0.04 * les(t);
+  const halfH = (t) => (0.34 * (1 - tendonness(t)) * (0.8 + 0.2 * Math.sin(Math.PI * clamp(t / T_TEN, 0, 1))) + 0.14 * tendonness(t) * (1 - 0.85 * fan(t))) * startCap(t) + 0.065 * les(t);
   const nref = (t, p) => {
     const radial = new V3(p.x - Hc[0], p.y - Hc[1], p.z - Hc[2]).normalize();
     return new V3(0, 1, 0).lerp(radial, smooth(0.45, 0.7, t)).normalize();
@@ -324,6 +371,17 @@ export default function build(L) {
     N.sub(T.clone().multiplyScalar(N.dot(T))).normalize();
     FR.push({ p, N, B: new V3().crossVectors(T, N) });
   }
+  // Suavizado de marcos: elimina quiebres de la curva en los puntos de control (si no, el tendón apoyado
+  // sobre el hueso se pliega en una arista)
+  for (let it = 0; it < 60; it++) {
+    const P0 = FR.map((f) => f.p.clone()), N0 = FR.map((f) => f.N.clone()), B0 = FR.map((f) => f.B.clone());
+    for (let s = 1; s < NT; s++) {
+      FR[s].p.copy(P0[s - 1]).add(P0[s + 1]).addScaledVector(P0[s], 2).multiplyScalar(0.25);
+      FR[s].N.copy(N0[s - 1]).add(N0[s + 1]).addScaledVector(N0[s], 2).normalize();
+      FR[s].B.copy(B0[s - 1]).add(B0[s + 1]).addScaledVector(B0[s], 2).normalize();
+    }
+  }
+  for (const f of FR) f.B.sub(f.N.clone().multiplyScalar(f.B.dot(f.N))).normalize();
   const frameAt = (t, out) => {
     const f = clamp(t, 0, 1) * NT;
     const i0 = Math.min(Math.floor(f), NT - 1);
@@ -349,39 +407,53 @@ export default function build(L) {
     }
     return d;
   };
-  // Color de hueso con oclusión ambiental aproximada; la parte inferior se desvanece (escápula y diáfisis sugeridas)
-  const boneBase = new THREE.Color('#e4d5bd');
-  const cartColor = new THREE.Color('#d9e0ea');
-  const humFade = (y) => sstep(-1.0, -0.3, y);
-  const fadeTint = new THREE.Color('#b9c6db');
-  const boneAO = (fade, tint, depth) => (x, y, z, g, c) => {
+  const occlusion = (sdf, x, y, z, g, k = 1.5) => {
     let occ = 0, sca = 1;
     for (let i = 1; i <= 5; i++) {
       const hh = 0.03 + 0.09 * i;
-      const d = Math.min(bones(x + g[0] * hh, y + g[1] * hh, z + g[2] * hh), cuffSDF(x + g[0] * hh, y + g[1] * hh, z + g[2] * hh));
-      occ += (hh - d) * sca;
+      occ += (hh - sdf(x + g[0] * hh, y + g[1] * hh, z + g[2] * hh)) * sca;
       sca *= 0.72;
     }
-    const ao = clamp(1 - 1.15 * occ, 0, 1);
+    return clamp(1 - k * occ, 0, 1);
+  };
+  const sceneSDF = (x, y, z) => Math.min(bones(x, y, z), cuffSDF(x, y, z));
+
+  // Hueso: color con oclusión ambiental; las partes alejadas se desvanecen solo en alfa (sin tinte)
+  const boneBase = new THREE.Color('#d8c4a6');
+  const cartColor = new THREE.Color('#d6dde8');
+  const boneAO = (fade, tint) => (x, y, z, g, c) => {
+    const ao = occlusion(sceneSDF, x, y, z, g, 1.5);
     c.copy(boneBase);
     if (tint) c.lerp(cartColor, 0.5 * tint(x, y, z));
-    c.multiplyScalar((0.6 + 0.4 * ao) * (0.84 + 0.16 * sstep(-1.1, 0.9, y)));
     const al = fade(x, y, z);
-    c.lerp(fadeTint, Math.min(1, (1 - al) * 0.75 + (depth ? depth(x, y, z) : 0)));
+    // lo que se desvanece también se apaga un poco (se aleja en sombra, sin halo lechoso sobre fondo oscuro)
+    c.multiplyScalar((0.56 + 0.44 * ao) * (0.86 + 0.14 * sstep(-1.6, 1.2, y)) * (0.76 + 0.24 * al));
     return al;
   };
   const boneMat = new THREE.MeshPhysicalMaterial({ color: '#ffffff', vertexColors: true, transparent: true, roughness: 0.5, clearcoat: 0.5, clearcoatRoughness: 0.28, sheen: 0.3, sheenColor: new THREE.Color('#fff4e6') });
-  const scapMesh = new THREE.Mesh(edgeShade(meshSDF(scapula, [-3.3, -1.05, -2.0], [2.4, 2.25, 1.1], 0.028, boneAO((x, y) => sstep(-1.0, -0.42, y), null, (x, y, z) => 0.32 * sstep(1.3, 3.3, Math.hypot(x - Hc[0], z - Hc[2])))), 0.3), boneMat);
-  const humMesh = new THREE.Mesh(edgeShade(meshSDF(humerus, [-0.2, -1.05, -1.1], [2.1, 1.05, 1.1], 0.024, boneAO((x, y) => humFade(y), cartilage)), 0.3), boneMat);
+  // Escápula: se ve la franja alta (bajo el supraespinoso) y la zona de la glena; se desvanece hacia abajo
+  // siguiendo una línea inclinada y, en el extremo medial, de forma breve
+  const scapFade = (x, y, z) => {
+    const s = (x - G[0]) * m[0] + (z - G[2]) * m[2], py = y - G[1];
+    const low = -0.42 + 0.3 * Math.max(s, 0);
+    return sstep(low - 0.28, low, py) * sstep(3.15, 2.8, s);
+  };
+  const humFade = (x, y, z) => sstep(-2.3, -1.55, toLocal(x, y, z)[1]); // a lo largo del eje de la diáfisis
+  const clavFade = (x, y, z) => sstep(3.0, 1.8, Math.hypot(x - CL[0][0], y - CL[0][1], z - CL[0][2]));
+  const scapMesh = new THREE.Mesh(edgeShade(meshSDF(scapula, [-3.4, -1.5, -2.2], [2.2, 1.85, 1.45], 0.03, boneAO(scapFade, null)), 0.5, 0.68), boneMat);
+  const humMesh = new THREE.Mesh(edgeShade(meshSDF(humerus, [-0.2, -2.6, -1.1], [3.1, 1.15, 1.25], 0.027, boneAO(humFade, cartilage)), 0.5, 0.68), boneMat);
+  const clavMesh = new THREE.Mesh(edgeShade(meshSDF(clavicle, [-2.05, 1.15, -0.05], [1.4, 1.9, 1.25], 0.026, boneAO(clavFade, null)), 0.5, 0.68), boneMat);
   scapMesh.renderOrder = 1;
   humMesh.renderOrder = 2;
-  root.add(scapMesh, humMesh);
+  clavMesh.renderOrder = 3;
+  root.add(scapMesh, humMesh, clavMesh);
 
+  // ------------------------------------------------------------ superficie del músculo y el tendón
   const cMuscle = new THREE.Color('#bb4b57');
   const cMuscleHi = new THREE.Color('#d8777c');
   const cTendon = new THREE.Color('#eef3fb');
   const cLesion = new THREE.Color('#f47a48');
-  const lesC = (t) => Math.exp(-(((t - T_LES) / 0.065) ** 2));
+  const lesC = (t) => Math.exp(-(((t - T_LES) / 0.07) ** 2));
   const colorAt = (t, shade, out) => {
     out.copy(cMuscle).lerp(cMuscleHi, shade).lerp(cTendon, tendonness(t));
     out.lerp(cLesion, lesC(t));
@@ -389,8 +461,7 @@ export default function build(L) {
   };
 
   // Generador de tubos (fibras) con transporte paralelo y extremos redondeados
-  const buf = { pos: [], col: [], idx: [] };
-  function tube(pts, rads, cols, radial, B = buf) {
+  function tube(pts, rads, cols, radial, B) {
     const nP = pts.length;
     const base = B.pos.length / 3;
     const T = [];
@@ -409,8 +480,7 @@ export default function build(L) {
         const a = (r / radial) * Math.PI * 2;
         dir.copy(Nv).multiplyScalar(Math.cos(a)).addScaledVector(Bv, Math.sin(a));
         B.pos.push(pts[i].x + dir.x * rads[i], pts[i].y + dir.y * rads[i], pts[i].z + dir.z * rads[i]);
-        if (B.alpha) B.col.push(cols[i].r, cols[i].g, cols[i].b, cols[i].a ?? 1);
-        else B.col.push(cols[i].r, cols[i].g, cols[i].b);
+        B.col.push(cols[i].r, cols[i].g, cols[i].b);
       }
     }
     for (let i = 0; i < nP - 1; i++)
@@ -445,14 +515,45 @@ export default function build(L) {
   const NR = 44;
   const ridgeAt = (a, t) => 0.5 - 0.5 * Math.cos(NR * a + 0.5 * Math.sin(a * 3 + t * 5));
   // Punto de la superficie para el parámetro t (a lo largo) y el ángulo a (alrededor)
-  const surf = (t, a, f, scale = 1) => {
+  // Sobre la cabeza el tendón se "apoya" en el hueso: sección en lente proyectada sobre la superficie del
+  // húmero (los bordes tocan el hueso y no quedan en el aire); antes, sección elíptica libre.
+  const drapeK = (t) => smooth(0.53, 0.66, t);
+  const gradHum = (x, y, z) => {
+    const e = 0.008;
+    return nrm(humBase(x + e, y, z) - humBase(x - e, y, z), humBase(x, y + e, z) - humBase(x, y - e, z), humBase(x, y, z + e) - humBase(x, y, z - e));
+  };
+  const surf = (t, a, f, scale = 1, lift = 0) => {
     const w = halfW(t), h = halfH(t);
     const tn = tendonness(t), l = les(t);
     const amp = 0.05 * (1 - tn) + 0.02 * tn;
-    let rr = (1 - amp * ridgeAt(a, t)) * scale;
-    rr += l * (0.06 * Math.sin(a * 9 + t * 120) + 0.04 * Math.sin(a * 17 - t * 80));
-    const cu = Math.cos(a) * rr * w, su = Math.sin(a) * rr * h;
-    return [f.p.x + f.B.x * cu + f.N.x * su, f.p.y + f.B.y * cu + f.N.y * su, f.p.z + f.B.z * cu + f.N.z * su];
+    let rr = (1 - amp * ridgeAt(a, t) * (1 - 0.7 * l)) * scale;
+    rr += l * 0.004 * Math.sin(a * 9 + t * 40); // engrosamiento casi liso
+    const cu = Math.cos(a) * rr * w;
+    const su = Math.sin(a) * rr * h;
+    const ex = f.p.x + f.B.x * cu + f.N.x * su, ey = f.p.y + f.B.y * cu + f.N.y * su, ez = f.p.z + f.B.z * cu + f.N.z * su;
+    const k = drapeK(t);
+    if (k <= 0) return [ex, ey, ez];
+    // base sobre el hueso: se baja en dirección radial desde el centro de la cabeza (dirección suave, sin
+    // saltos entre la cabeza y el troquíter) hasta tocar la superficie; la normal del hueso da el espesor
+    const u = nrm(f.p.x + f.B.x * cu - Hc[0], f.p.y + f.B.y * cu - Hc[1], f.p.z + f.B.z * cu - Hc[2]);
+    let r = 1.7;
+    for (let i = 0; i < 60; i++) {
+      const d = humBase(Hc[0] + u[0] * r, Hc[1] + u[1] * r, Hc[2] + u[2] * r);
+      if (Math.abs(d) < 3e-4) break;
+      r -= d * 0.9;
+    }
+    const px = Hc[0] + u[0] * r, py = Hc[1] + u[1] * r, pz = Hc[2] + u[2] * r;
+    const g = gradHum(px, py, pz);
+    const sa = Math.sin(a);
+    const off = lift + (sa > 0 ? -0.012 + (2 * h + 0.024) * Math.pow(sa, 0.85) * rr : -0.012 - 0.04 * -sa);
+    const dx = px + g[0] * off, dy = py + g[1] * off, dz = pz + g[2] * off;
+    return [ex + (dx - ex) * k, ey + (dy - ey) * k, ez + (dz - ez) * k];
+  };
+  // Normal aproximada de la sección elíptica (para la oclusión del manguito)
+  const surfN = (t, a, f) => {
+    const w = halfW(t), h = halfH(t);
+    const cu = Math.cos(a) / w, su = Math.sin(a) / h;
+    return nrm(f.B.x * cu + f.N.x * su, f.B.y * cu + f.N.y * su, f.B.z * cu + f.N.z * su);
   };
   const sweepGrid = (B, segs, radial, tA, tB, pointAt, colorOf) => {
     const base = B.pos.length / 3;
@@ -462,8 +563,9 @@ export default function build(L) {
       frameAt(t, fr);
       for (let r = 0; r < radial; r++) {
         const a = (r / radial) * Math.PI * 2;
-        B.pos.push(...pointAt(t, a));
-        B.col.push(...colorOf(t, a));
+        const p = pointAt(t, a);
+        B.pos.push(...p);
+        B.col.push(...colorOf(t, a, p));
       }
     }
     for (let k = 0; k < segs; k++)
@@ -473,60 +575,76 @@ export default function build(L) {
       }
   };
   {
+    const buf = { pos: [], col: [], idx: [] };
     const c = new THREE.Color();
-    sweepGrid(buf, 300, 176, 0, 1, (t, a) => surf(t, a, fr), (t, a) => {
+    sweepGrid(buf, 260, 136, 0, 1, (t, a) => surf(t, a, fr), (t, a, p) => {
       const ridge = ridgeAt(a, t), tn = tendonness(t);
       colorAt(t, 0.5 + 0.5 * Math.sin(a * 13.7 + 1.3 * Math.sin(a * 5)), c).multiplyScalar(1 - (0.2 * (1 - tn) + 0.08 * tn) * ridge);
+      // sombra de contacto: acromion por encima (espacio subacromial), hueso por debajo
+      const ao = occlusion(bones, p[0], p[1], p[2], surfN(t, a, fr), 1.6);
+      c.multiplyScalar(0.5 + 0.5 * ao);
       return [c.r, c.g, c.b];
     });
+    const fiberMat = new THREE.MeshPhysicalMaterial({ color: '#ffffff', vertexColors: true, roughness: 0.38, clearcoat: 0.8, clearcoatRoughness: 0.22, sheen: 0.35, sheenColor: new THREE.Color('#dfe6ff'), sheenRoughness: 0.45 });
+    root.add(new THREE.Mesh(edgeShade(toGeo(buf), 0.24, 0.5), fiberMat));
   }
-  const fiberMat = new THREE.MeshPhysicalMaterial({ color: '#ffffff', vertexColors: true, roughness: 0.38, clearcoat: 0.8, clearcoatRoughness: 0.22, sheen: 0.35, sheenColor: new THREE.Color('#dfe6ff'), sheenRoughness: 0.45 });
-  root.add(new THREE.Mesh(edgeShade(toGeo(buf), 0.22, 0.5), fiberMat));
 
-  // Zona lesionada: tendón engrosado, cálido y algo luminoso (capa que se funde con el tendón sano)
+  // Zona lesionada: engrosamiento fusiforme liso, cálido y algo luminoso (capa que se funde con el tendón sano)
   {
     const lb = { pos: [], col: [], idx: [], alpha: true };
-    const W2 = 0.11;
-    sweepGrid(lb, 90, 176, T_LES - W2, T_LES + W2, (t, a) => surf(t, a, fr, 1.012), (t) => [1, 1, 1, 0.92 * sstep(0, 0.5, lesC(t))]);
-    const lesMat = new THREE.MeshPhysicalMaterial({ color: '#f0743f', vertexColors: true, transparent: true, roughness: 0.38, clearcoat: 0.7, clearcoatRoughness: 0.2, emissive: new THREE.Color('#ff4d1f'), emissiveIntensity: 0.4 });
+    const W2 = 0.15;
+    sweepGrid(lb, 76, 136, T_LES - W2, T_LES + W2, (t, a) => surf(t, a, fr, 1.012, 0.008), (t, a, p) => {
+      const ao = 0.5 + 0.5 * occlusion(bones, p[0], p[1], p[2], surfN(t, a, fr), 1.6);
+      return [ao, ao, ao, 0.92 * sstep(0.02, 0.6, lesC(t))];
+    });
+    const lesMat = new THREE.MeshPhysicalMaterial({ color: '#f0743f', vertexColors: true, transparent: true, depthWrite: false, roughness: 0.36, clearcoat: 0.8, clearcoatRoughness: 0.18, emissive: new THREE.Color('#ff5a26'), emissiveIntensity: 0.38 });
     const lm = new THREE.Mesh(toGeo(lb), lesMat);
     lm.renderOrder = 4;
     root.add(lm);
-    // Algunas fibras deshilachadas que se levantan de la superficie
+    // Pocas fibras deshilachadas, finas y pegadas a la superficie
     reseed(77);
     const fb = { pos: [], col: [], idx: [] };
     const white = new THREE.Color('#ffffff');
-    for (let i = 0; i < 8; i++) {
-      const tc = T_LES + (rnd() - 0.5) * 0.08;
-      const span = 0.035 + rnd() * 0.03;
-      const ang = Math.PI * (0.18 + 0.64 * rnd());
+    for (let i = 0; i < 4; i++) {
+      const tc = T_LES + (rnd() - 0.5) * 0.05;
+      const span = 0.03 + rnd() * 0.02;
+      const ang = Math.PI * (0.32 + 0.12 * i);
       const ph = rnd() * 6.28;
       const pts = [], rads = [], cols = [];
       for (let k = 0; k <= 36; k++) {
         const sN = k / 36;
         const t = tc - span + 2 * span * sN;
         frameAt(t, fr);
-        const p = surf(t, ang + 0.08 * Math.sin(sN * 4 + ph), fr, 1.0 + 0.22 * Math.sin(sN * Math.PI));
+        const p = surf(t, ang, fr, 1.0 + 0.05 * Math.sin(sN * Math.PI), 0.01 + 0.025 * Math.sin(sN * Math.PI));
         pts.push(new V3(...p));
-        rads.push(0.022);
+        rads.push(0.013);
         cols.push(white);
       }
       roundEnds(pts, rads);
       tube(pts, rads, cols, 8, fb);
     }
-    const fMat = M.lesion();
-    fMat.emissiveIntensity = 0.55;
+    const fMat = new THREE.MeshPhysicalMaterial({ color: '#f2804f', vertexColors: true, roughness: 0.4, clearcoat: 0.4, emissive: new THREE.Color('#ff6a3d'), emissiveIntensity: 0.3 });
     root.add(new THREE.Mesh(toGeo(fb), fMat));
   }
 
-  // Halo cálido sobre la lesión
+  // Halo cálido centrado sobre la lesión (siempre visible, sin taparse con el hueso)
   frameAt(T_LES, fr);
-  const glow = halo('#ff9a6b', 1.7, 0.7);
-  glow.position.copy(fr.p).addScaledVector(fr.N, 0.12).add(new V3(0.12, 0.05, 0.3));
+  const glow = halo('#ff9a6b', 1.1, 0.45);
+  glow.position.copy(fr.p).addScaledVector(fr.N, 0.05);
+  glow.material.depthTest = false;
+  glow.renderOrder = 6;
   root.add(glow);
-  const core = halo('#ffb48a', 0.55, 0.55);
+  const core = halo('#ffb48a', 0.45, 0.6);
   core.position.copy(glow.position);
+  core.material.depthTest = false;
+  core.renderOrder = 7;
   root.add(core);
 
-  return { root, cam: CAM, look: LOOK, zoom: ZOOM, shadow: false };
+  // Giro leve del encuadre alrededor del eje de la cámara (el brazo cae en diagonal): composición apaisada
+  const pivot = new THREE.Group();
+  pivot.position.set(...LOOK);
+  root.position.set(-LOOK[0], -LOOK[1], -LOOK[2]);
+  pivot.add(root);
+  pivot.quaternion.setFromAxisAngle(new V3(...CAM).sub(new V3(...LOOK)).normalize(), ROLL);
+  return { root: pivot, cam: CAM, look: LOOK, zoom: ZOOM, shadow: false };
 }

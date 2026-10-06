@@ -1,13 +1,15 @@
-// Fascitis plantar — esqueleto del pie en vista medial, levemente desde abajo.
-// Calcáneo, astrágalo, escafoides, cuneiformes, cuboides, metatarsianos en abanico y falanges (huesos con
-// articulaciones encajadas), tibia y peroné que se desvanecen hacia arriba, y por debajo la fascia plantar:
-// banda fibrosa blanca aplanada desde la tuberosidad del calcáneo que se abre en cinco lengüetas hacia los dedos.
-// Lesión: origen de la fascia en el talón engrosado, con fibras desordenadas y acento cálido.
-// Contorno de la planta del pie en "vidrio" tenue.
+// Fascitis plantar — esqueleto del pie en vista medial, con la cámara casi a la altura del arco.
+// Calcáneo (tuberosidad con procesos plantares y sustentáculo), astrágalo, escafoides, cuñas, cuboides,
+// metatarsianos en abanico y dedos articulados que apoyan hacia el suelo; tibia y peroné que se desvanecen.
+// Por debajo, la fascia plantar: una sola lámina fibrosa aplanada (SDF) que nace en la tuberosidad medial
+// del calcáneo, tensa el arco como una cuerda y se abre en cinco lengüetas hasta la base de los dedos.
+// Lesión: origen engrosado en huso, con tinte cálido, algunas fibras abiertas y resplandor.
+// Contorno del pie en vidrio tenue, con los dedos modelados.
 export default function build(L) {
-  const { THREE, M, halo, rnd, reseed, mergeGeometries } = L;
+  const { THREE, M, halo, mergeGeometries } = L;
   const V = (x, y, z = 0) => new THREE.Vector3(x, y, z);
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
   const sstep = (e0, e1, x) => {
     const t = clamp((x - e0) / (e1 - e0), 0, 1);
     return t * t * (3 - 2 * t);
@@ -71,15 +73,20 @@ export default function build(L) {
     return Math.min(a, b) - h * h * k * 0.25;
   };
   const smax = (a, b, k) => -smin(-a, -b, k);
+  // Intersección con borde redondeado de radio r (para láminas)
+  const roundMax = (a, b, r) => Math.hypot(Math.max(a + r, 0), Math.max(b + r, 0)) + Math.min(Math.max(a + r, b + r), 0) - r;
 
-  // Surface nets: malla suave a partir de una SDF
-  function polygonize(sdf, bmin, bmax, h) {
-    const nx = Math.ceil((bmax[0] - bmin[0]) / h) + 1;
-    const ny = Math.ceil((bmax[1] - bmin[1]) / h) + 1;
-    const nz = Math.ceil((bmax[2] - bmin[2]) / h) + 1;
+  // Surface nets con proyección de vértices sobre la superficie (siluetas limpias, sin dientes).
+  // h puede ser un número o [hx, hy, hz] (rejilla anisótropa, p. ej. más fina en el espesor de la fascia).
+  function polygonize(sdf, bmin, bmax, hh, smooth = 0.3) {
+    const [hx, hy, hz] = Array.isArray(hh) ? hh : [hh, hh, hh];
+    const h = Math.min(hx, hy, hz);
+    const nx = Math.ceil((bmax[0] - bmin[0]) / hx) + 1;
+    const ny = Math.ceil((bmax[1] - bmin[1]) / hy) + 1;
+    const nz = Math.ceil((bmax[2] - bmin[2]) / hz) + 1;
     const F = new Float32Array(nx * ny * nz);
     let q = 0;
-    for (let k = 0; k < nz; k++) for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) F[q++] = sdf(bmin[0] + i * h, bmin[1] + j * h, bmin[2] + k * h);
+    for (let k = 0; k < nz; k++) for (let j = 0; j < ny; j++) for (let i = 0; i < nx; i++) F[q++] = sdf(bmin[0] + i * hx, bmin[1] + j * hy, bmin[2] + k * hz);
     const I = (i, j, k) => i + nx * (j + ny * k);
     const cx = nx - 1, cy = ny - 1, cz = nz - 1;
     const C = (i, j, k) => i + cx * (j + cy * k);
@@ -108,7 +115,7 @@ export default function build(L) {
             }
           }
           vid[C(i, j, k)] = pos.length / 3;
-          pos.push(bmin[0] + (i + sx / n) * h, bmin[1] + (j + sy / n) * h, bmin[2] + (k + sz / n) * h);
+          pos.push(bmin[0] + (i + sx / n) * hx, bmin[1] + (j + sy / n) * hy, bmin[2] + (k + sz / n) * hz);
         }
     const idx = [];
     const quad = (a, b, c, d, flip) => {
@@ -137,28 +144,44 @@ export default function build(L) {
           if (a === F[I(i, j, k + 1)] < 0) continue;
           quad(vid[C(i - 1, j - 1, k)], vid[C(i, j - 1, k)], vid[C(i, j, k)], vid[C(i - 1, j, k)], !a);
         }
+    // Proyección (un paso de Newton) y normales por gradiente
+    let e = h * 0.3;
+    const en = h * smooth;
+    const grad = (x, y, z) => [sdf(x + e, y, z) - sdf(x - e, y, z), sdf(x, y + e, z) - sdf(x, y - e, z), sdf(x, y, z + e) - sdf(x, y, z - e)];
     const nrm = new Float32Array(pos.length);
-    const e = h * 0.5;
     for (let p = 0; p < pos.length; p += 3) {
-      const x = pos[p], y = pos[p + 1], z = pos[p + 2];
-      const gx = sdf(x + e, y, z) - sdf(x - e, y, z);
-      const gy = sdf(x, y + e, z) - sdf(x, y - e, z);
-      const gz = sdf(x, y, z + e) - sdf(x, y, z - e);
-      const l = Math.hypot(gx, gy, gz) || 1;
-      nrm[p] = gx / l;
-      nrm[p + 1] = gy / l;
-      nrm[p + 2] = gz / l;
+      let x = pos[p], y = pos[p + 1], z = pos[p + 2];
+      let g = grad(x, y, z);
+      let l = Math.hypot(g[0], g[1], g[2]);
+      if (l > 1e-9) {
+        const d = sdf(x, y, z);
+        const step = clamp(d / (l / (2 * e)), -0.45 * h, 0.45 * h);
+        x -= (g[0] / l) * step;
+        y -= (g[1] / l) * step;
+        z -= (g[2] / l) * step;
+        pos[p] = x;
+        pos[p + 1] = y;
+        pos[p + 2] = z;
+        e = en;
+        g = grad(x, y, z);
+        e = h * 0.3;
+        l = Math.hypot(g[0], g[1], g[2]) || 1;
+      }
+      nrm[p] = g[0] / l;
+      nrm[p + 1] = g[1] / l;
+      nrm[p + 2] = g[2] / l;
     }
-    const g = new THREE.BufferGeometry();
-    g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-    g.setAttribute('normal', new THREE.BufferAttribute(nrm, 3));
-    g.setIndex(idx);
-    return g;
+    const geo = new THREE.BufferGeometry();
+    geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    geo.setAttribute('normal', new THREE.BufferAttribute(nrm, 3));
+    geo.setIndex(idx);
+    return geo;
   }
 
-  // Constructor de huesos: suma suave de primitivas con caja envolvente automática y cortes articulares
+  // Constructor de huesos: suma suave de primitivas, planos articulares y cortes por los huesos vecinos
   function shape() {
     const add = [];
+    const cuts = [];
     const sub = [];
     const lo = [1e9, 1e9, 1e9], hi = [-1e9, -1e9, -1e9];
     const grow = (c, r) => {
@@ -187,29 +210,37 @@ export default function build(L) {
         grow(c, [m, m, m]);
         return S;
       },
+      // Plano de faceta articular: conserva el lado dot(n, p) < off
+      cut(n, off, k = 0.06) {
+        const l = Math.hypot(n[0], n[1], n[2]);
+        const a = n[0] / l, b = n[1] / l, c = n[2] / l;
+        cuts.push([(x, y, z) => a * x + b * y + c * z - off, k]);
+        return S;
+      },
       // Resta otro hueso (dilatado por la luz articular) para que encajen sin fundirse
-      fit(other, gap = 0.035, k = 0.05) {
-        sub.push([(x, y, z) => other.raw(x, y, z) - gap, k]);
+      fit(other, gap = 0.03, k = 0.05) {
+        sub.push([(x, y, z) => other.body(x, y, z) - gap, k]);
         return S;
       },
       groove(fn, k = 0.05) {
         sub.push([fn, k]);
         return S;
       },
-      raw(x, y, z) {
+      body(x, y, z) {
         let d = add[0][0](x, y, z);
         for (let i = 1; i < add.length; i++) d = smin(d, add[i][0](x, y, z), add[i][1]);
+        for (const [f, k] of cuts) d = smax(d, f(x, y, z), k);
         return d;
       },
       sdf(x, y, z) {
-        let d = S.raw(x, y, z);
+        let d = S.body(x, y, z);
         for (const [f, k] of sub) d = smax(d, -f(x, y, z), k);
         return d;
       },
     };
     return S;
   }
-  const geoOf = (S, h) => polygonize(S.sdf, [S.lo[0] - 0.1, S.lo[1] - 0.1, S.lo[2] - 0.1], [S.hi[0] + 0.1, S.hi[1] + 0.1, S.hi[2] + 0.1], h);
+  const geoOf = (S, h) => polygonize(S.sdf, [S.lo[0] - 0.08, S.lo[1] - 0.08, S.lo[2] - 0.08], [S.hi[0] + 0.08, S.hi[1] + 0.08, S.hi[2] + 0.08], h);
 
   // ------------------------------------------------------------ Materiales propios
   const ghost = (color, { rim = 0.6, power = 2.4, base = 0.03, f0 = 6.0, f1 = 7.6 } = {}) =>
@@ -228,282 +259,517 @@ export default function build(L) {
       depthWrite: false,
     });
   // Desvanecido hacia arriba (y del objeto entre f0 y f1) para materiales físicos
+  // Oscurecimiento suave hacia la silueta: define volúmenes y separa piezas sobre fondo claro
+  const rimDark = (sh, k) => {
+    sh.fragmentShader = sh.fragmentShader.replace(
+      '#include <normal_fragment_maps>',
+      `#include <normal_fragment_maps>
+      diffuseColor.rgb *= mix(${k.toFixed(3)}, 1.0, smoothstep(0.0, 0.55, abs(dot(normal, normalize(vViewPosition)))));`
+    );
+  };
   const fadeTop = (mat, f0, f1) => {
     mat.transparent = true;
-    mat.onBeforeCompile = (sh) => {
+    const prev = mat.onBeforeCompile;
+    mat.onBeforeCompile = (sh, r) => {
+      if (prev) prev(sh, r);
       sh.uniforms.uF0 = { value: f0 };
       sh.uniforms.uF1 = { value: f1 };
       sh.vertexShader = 'varying float vOY;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n vOY = position.y;');
       sh.fragmentShader =
         'uniform float uF0; uniform float uF1; varying float vOY;\n' +
-        sh.fragmentShader.replace('#include <dithering_fragment>', '#include <dithering_fragment>\n gl_FragColor.a *= 1.0 - smoothstep(uF0, uF1, vOY);');
+        sh.fragmentShader.replace(
+          '#include <dithering_fragment>',
+          '#include <dithering_fragment>\n float ff = smoothstep(uF0, uF1, vOY);\n gl_FragColor.rgb *= mix(vec3(1.0), vec3(0.62, 0.69, 0.86), ff);\n gl_FragColor.a *= 1.0 - ff;'
+        );
     };
     return mat;
   };
-  const boneMat = () => new THREE.MeshPhysicalMaterial({ color: '#ede2cf', roughness: 0.46, clearcoat: 0.6, clearcoatRoughness: 0.22, sheen: 0.3, sheenColor: new THREE.Color('#ffffff') });
+  const boneMat = () => {
+    const m = new THREE.MeshPhysicalMaterial({ color: '#ffffff', vertexColors: true, roughness: 0.5, clearcoat: 0.45, clearcoatRoughness: 0.28, sheen: 0.25, sheenColor: new THREE.Color('#ffffff') });
+    m.onBeforeCompile = (sh) => rimDark(sh, 0.8);
+    return m;
+  };
 
   // ------------------------------------------------------------ Esqueleto (x+ = dedos, y+ = arriba, z+ = medial, hacia la cámara)
   const root = new THREE.Group();
   const foot = new THREE.Group();
   root.add(foot);
-  const GAP = 0.035;
+  const GAP = 0.03;
 
   const talus = shape()
-    .ell([-1.32, 1.5, 0.04], [0.5, 0.32, 0.4])
-    .ell([-1.28, 1.62, 0.04], [0.44, 0.24, 0.36], 0.15)
-    .cone([-0.95, 1.48, 0.12], [-0.62, 1.43, 0.26], 0.27, 0.25, 0.15)
-    .ell([-0.52, 1.4, 0.28], [0.2, 0.26, 0.3], 0.12)
-    .ell([-1.8, 1.3, -0.04], [0.16, 0.13, 0.15], 0.1)
-    .groove((x, y, z) => ell(x, y, z, -1.28, 1.98, 0.05, 0.6, 0.14, 0.07), 0.08);
+    .ell([-1.32, 1.52, 0.04], [0.5, 0.32, 0.4])
+    .ell([-1.28, 1.64, 0.04], [0.44, 0.24, 0.36], 0.15)
+    .cone([-0.95, 1.5, 0.12], [-0.62, 1.5, 0.26], 0.26, 0.24, 0.15)
+    .ell([-0.5, 1.48, 0.29], [0.2, 0.26, 0.3], 0.12)
+    .ell([-1.8, 1.32, -0.04], [0.16, 0.13, 0.15], 0.1)
+    .groove((x, y, z) => ell(x, y, z, -1.28, 2.0, 0.05, 0.6, 0.14, 0.07), 0.08);
 
+  // Calcáneo: tuberosidad alta con la cara posterior aplanada, procesos plantares medial y lateral
+  // (origen de la fascia), sustentáculo del astrágalo y apófisis anterior hacia el cuboides.
   const calc = shape()
-    .ell([-2.33, 0.72, -0.05], [0.4, 0.46, 0.38])
-    .box([-1.6, 0.78, -0.1], [0.72, 0.27, 0.3], 0.2, 0.12, 0, 0.3)
-    .ell([-1.52, 1.03, -0.08], [0.36, 0.15, 0.3], 0.18)
-    .ell([-0.82, 0.92, -0.3], [0.2, 0.24, 0.27], 0.2)
-    .ell([-2.15, 0.4, 0.0], [0.42, 0.15, 0.34], 0.22)
-    .ell([-2.2, 0.37, 0.2], [0.22, 0.12, 0.14], 0.12)
-    .ell([-1.3, 1.0, 0.3], [0.26, 0.08, 0.16], 0.24)
-    .groove((x, y, z) => ell(x, y, z, -1.4, 0.8, 0.5, 0.6, 0.13, 0.16), 0.1)
+    .ell([-2.28, 0.78, -0.05], [0.34, 0.48, 0.36])
+    .box([-1.62, 0.8, -0.1], [0.72, 0.26, 0.3], 0.2, 0.12, 0, 0.3)
+    .ell([-1.55, 1.05, -0.08], [0.36, 0.15, 0.3], 0.18)
+    .ell([-0.82, 0.93, -0.3], [0.2, 0.24, 0.27], 0.2)
+    .ell([-2.16, 0.5, -0.03], [0.3, 0.16, 0.3], 0.2)
+    .ell([-2.06, 0.33, 0.17], [0.2, 0.12, 0.14], 0.14)
+    .ell([-2.12, 0.34, -0.22], [0.15, 0.1, 0.11], 0.14)
+    .ell([-1.06, 0.6, -0.14], [0.13, 0.08, 0.13], 0.16)
+    .ell([-1.3, 1.06, 0.34], [0.28, 0.085, 0.2], 0.2)
+    .cut([-1, 0, 0], 2.55, 0.16)
+    .groove((x, y, z) => ell(x, y, z, -1.4, 0.88, 0.56, 0.62, 0.09, 0.12), 0.1)
     .fit(talus, GAP);
 
+  // Tibia con maléolo medial ancho y peroné con maléolo lateral (se desvanecen hacia arriba)
   const tibia = shape()
-    .ell([-1.28, 2.1, 0.06], [0.52, 0.28, 0.5])
-    .cone([-1.26, 2.2, 0.06], [-1.08, 4.6, 0.04], 0.46, 0.31, 0.3)
-    .cone([-1.24, 2.05, 0.5], [-1.22, 1.5, 0.52], 0.17, 0.1, 0.2)
+    .ell([-1.28, 2.12, 0.06], [0.52, 0.28, 0.5])
+    .cone([-1.26, 2.2, 0.06], [-1.14, 3.5, 0.04], 0.46, 0.33, 0.3)
+    .ell([-1.22, 1.76, 0.5], [0.22, 0.28, 0.1], 0.2)
     .fit(talus, GAP);
   const fibula = shape()
-    .cone([-1.52, 1.08, -0.56], [-1.5, 1.6, -0.58], 0.13, 0.19, 0.1)
-    .cone([-1.5, 1.6, -0.58], [-1.36, 4.6, -0.48], 0.19, 0.13, 0.1)
+    .cone([-1.52, 1.1, -0.56], [-1.5, 1.6, -0.58], 0.13, 0.19, 0.1)
+    .cone([-1.5, 1.6, -0.58], [-1.38, 3.5, -0.5], 0.19, 0.13, 0.1)
     .fit(talus, GAP)
     .fit(tibia, GAP);
 
+  // Mediopié elevado (arco): escafoides con su tuberosidad, cuñas en cuña y cuboides con surco peroneo
   const nav = shape()
-    .ell([-0.22, 1.32, 0.3], [0.16, 0.27, 0.42])
-    .ell([-0.2, 1.02, 0.66], [0.15, 0.14, 0.13], 0.12)
+    .ell([-0.2, 1.42, 0.3], [0.17, 0.27, 0.42])
+    .ell([-0.19, 1.18, 0.6], [0.15, 0.12, 0.13], 0.26)
     .fit(talus, GAP);
+  // Cuñas: caras articulares planas (delante y detrás) y perfil en cuña; la medial alta, ancha abajo,
+  // la intermedia y la lateral más anchas en el dorso
+  const cunM = shape()
+    .cone([0.19, 1.56, 0.56], [0.21, 1.02, 0.61], 0.12, 0.2, 0.1)
+    .ell([0.2, 0.92, 0.64], [0.17, 0.1, 0.14], 0.14)
+    .cut([1, 0, 0], 0.42, 0.07)
+    .cut([-1, 0, 0], 0.03, 0.07)
+    .fit(nav, GAP);
+  const cunI = shape()
+    .cone([0.14, 1.5, 0.3], [0.14, 1.2, 0.3], 0.15, 0.08, 0.1)
+    .cut([1, 0, 0], 0.3, 0.06)
+    .cut([-1, 0, 0], 0.0, 0.06)
+    .fit(nav, GAP)
+    .fit(cunM, GAP);
+  const cunL = shape()
+    .cone([0.16, 1.4, -0.03], [0.16, 1.05, -0.03], 0.17, 0.1, 0.1)
+    .cut([1, 0, 0], 0.36, 0.06)
+    .cut([-1, 0, 0], 0.02, 0.06)
+    .fit(nav, GAP)
+    .fit(cunI, GAP);
+  const cuboid = shape()
+    .ell([-0.3, 0.88, -0.48], [0.32, 0.26, 0.29])
+    .ell([-0.36, 0.7, -0.5], [0.14, 0.09, 0.24], 0.12)
+    .cut([0.97, 0, 0.243], -0.155, 0.08)
+    .groove((x, y, z) => ell(x, y, z, -0.17, 0.66, -0.5, 0.075, 0.075, 0.7), 0.05)
+    .fit(calc, GAP)
+    .fit(nav, GAP)
+    .fit(cunL, GAP);
 
-  const cuboid = shape().box([-0.32, 0.84, -0.46], [0.31, 0.24, 0.27], 0.12, -0.12).fit(calc, GAP).fit(nav, GAP);
-  const cunM = shape().box([0.22, 1.12, 0.58], [0.22, 0.32, 0.14], 0.11, -0.08).fit(nav, GAP);
-  const cunI = shape().box([0.16, 1.36, 0.28], [0.15, 0.17, 0.12], 0.1, -0.05).fit(nav, GAP).fit(cunM, GAP);
-  const cunL = shape().box([0.18, 1.24, -0.02], [0.2, 0.2, 0.14], 0.1, -0.08).fit(nav, GAP).fit(cunI, GAP).fit(cuboid, GAP);
-
-  // Rayos: base y cabeza del metatarsiano, radios y falanges [largo, radio base, radio cabeza]
+  // Rayos: base y cabeza del metatarsiano, radios, falanges [largo, radio base, radio cabeza] y flexión de cada falange
   const RAYS = [
-    { b: [0.6, 1.02, 0.62], h: [1.98, 0.42, 0.8], rb: 0.2, rs: 0.12, rh: 0.19, ph: [[0.66, 0.15, 0.125], [0.5, 0.125, 0.085]], prox: cunM },
-    { b: [0.48, 1.26, 0.3], h: [2.14, 0.4, 0.4], rb: 0.14, rs: 0.085, rh: 0.135, ph: [[0.5, 0.09, 0.075], [0.27, 0.075, 0.065], [0.2, 0.065, 0.05]], prox: cunI },
-    { b: [0.52, 1.14, 0.0], h: [2.06, 0.38, 0.0], rb: 0.13, rs: 0.082, rh: 0.13, ph: [[0.45, 0.087, 0.072], [0.24, 0.072, 0.062], [0.18, 0.062, 0.048]], prox: cunL },
-    { b: [0.12, 0.98, -0.32], h: [1.86, 0.36, -0.42], rb: 0.13, rs: 0.08, rh: 0.125, ph: [[0.4, 0.083, 0.07], [0.21, 0.07, 0.06], [0.17, 0.06, 0.046]], prox: cuboid },
-    { b: [0.04, 0.8, -0.6], h: [1.62, 0.33, -0.8], rb: 0.13, rs: 0.08, rh: 0.125, ph: [[0.34, 0.08, 0.066], [0.17, 0.066, 0.056], [0.14, 0.056, 0.044]], prox: cuboid },
+    { b: [0.6, 1.1, 0.62], h: [1.98, 0.42, 0.8], rb: 0.2, rby: 1.5, rs: 0.12, rh: 0.19, prox: [cunM], ph: [[0.66, 0.162, 0.135], [0.5, 0.135, 0.095]], pitch: [-0.05, -0.15] },
+    { b: [0.48, 1.33, 0.3], h: [2.14, 0.4, 0.4], rb: 0.14, rby: 1.35, rs: 0.085, rh: 0.135, prox: [cunI, cunM, cunL], ph: [[0.5, 0.11, 0.092], [0.23, 0.092, 0.078], [0.17, 0.078, 0.06]], pitch: [-0.1, -0.52, -0.38] },
+    { b: [0.52, 1.2, 0.0], h: [2.06, 0.38, 0.0], rb: 0.13, rby: 1.35, rs: 0.082, rh: 0.13, prox: [cunL], ph: [[0.45, 0.106, 0.088], [0.2, 0.088, 0.076], [0.15, 0.076, 0.058]], pitch: [-0.11, -0.52, -0.38] },
+    { b: [0.12, 1.02, -0.32], h: [1.86, 0.36, -0.42], rb: 0.13, rby: 1.35, rs: 0.08, rh: 0.125, prox: [cuboid, cunL], ph: [[0.4, 0.1, 0.085], [0.18, 0.085, 0.073], [0.145, 0.073, 0.056]], pitch: [-0.12, -0.5, -0.36] },
+    { b: [0.04, 0.82, -0.6], h: [1.62, 0.33, -0.8], rb: 0.13, rby: 1.35, rs: 0.08, rh: 0.125, prox: [cuboid], ph: [[0.34, 0.097, 0.08], [0.145, 0.08, 0.068], [0.12, 0.068, 0.054]], pitch: [-0.12, -0.48, -0.34] },
   ];
-  const bones = [talus, nav, cuboid, cunM, cunI, cunL];
-  const toeTips = [];
+  const MTS = [];
+  const PHS = [];
+  const TOE = []; // nodos de piel de cada dedo
   let prevMT = null;
   RAYS.forEach((r, j) => {
     const { b, h } = r;
     const m = [(b[0] + h[0]) / 2, (b[1] + h[1]) / 2 + 0.06, (b[2] + h[2]) / 2];
     const mt = shape()
-      .ell(b, [r.rb * 1.05, r.rb * 1.35, r.rb * 1.05])
+      .ell(b, [r.rb * 1.05, r.rb * r.rby, r.rb * 1.05])
       .cone(b, m, r.rb * 0.8, r.rs, 0.14)
       .cone(m, h, r.rs, r.rs * 1.1, 0.1)
-      .ell([h[0] - 0.02, h[1], h[2]], [r.rh * 1.05, r.rh * 1.15, r.rh * 0.92], 0.12)
-      .fit(r.prox, GAP);
-    if (j === 1) mt.fit(cunM, GAP).fit(cunL, GAP);
-    if (j === 4) mt.ell([-0.08, 0.72, -0.8], [0.16, 0.12, 0.12], 0.12);
+      .ell([h[0] - 0.02, h[1], h[2]], [r.rh * 1.05, r.rh * 1.15, r.rh * 0.92], 0.12);
+    for (const p of r.prox) mt.fit(p, GAP);
+    if (j === 4) mt.ell([-0.08, 0.74, -0.8], [0.16, 0.12, 0.12], 0.12);
     if (prevMT) mt.fit(prevMT, 0.02);
-    bones.push(mt);
+    MTS.push(mt);
     prevMT = mt;
-    // Dirección del dedo: abanico del metatarsiano, enderezado a medias
+    // Dedo: dirección del abanico enderezada a medias, cada falange con su flexión hacia el suelo
     const dx = h[0] - b[0], dz = h[2] - b[2];
     const l = Math.hypot(dx, dz);
     const d = V(dx / l + 1, 0, dz / l).normalize();
     let prev = mt;
-    let p = V(h[0], h[1], h[2]).addScaledVector(d, r.rh * 0.8);
-    const dy = [0.03, -0.05, -0.07];
-    const TS = j === 0 ? 1.08 : 1.22;
-    r.ph.forEach(([len, ra0, rb0], k) => {
-      const ra = ra0 * TS, rb2 = rb0 * TS;
-      const a = p.clone().addScaledVector(d, ra * 0.55);
-      const e = a.clone().addScaledVector(d, len - ra * 0.5);
-      e.y += dy[k] * (len / 0.3);
+    let c = V(h[0] - 0.02, h[1], h[2]);
+    let cR = r.rh * 1.05;
+    const nodes = [[c.x, c.y, c.z, r.rh + 0.13]];
+    let dir = null, rbL = 0;
+    r.ph.forEach(([len, ra, rb], k) => {
+      const p = r.pitch[k];
+      dir = V(d.x * Math.cos(p), Math.sin(p), d.z * Math.cos(p));
+      const a = c.clone().addScaledVector(dir, cR * 0.9 + ra * 0.55);
+      const e = a.clone().addScaledVector(dir, Math.max(len - ra * 0.6 - rb * 0.6, 0.05));
+      const last = k === r.ph.length - 1;
       const ph = shape()
-        .ell([a.x, a.y, a.z], [ra * 0.85, ra * 0.95, ra * 1.12])
-        .cone([a.x, a.y, a.z], [e.x, e.y, e.z], ra * 0.68, rb2 * 0.62, 0.08)
-        .ell([e.x, e.y, e.z], [rb2 * 0.8, rb2 * 0.82, rb2 * 1.05], 0.06)
-        .fit(prev, 0.03);
-      bones.push(ph);
+        .ell([a.x, a.y, a.z], [ra, ra * 0.96, ra * 1.12])
+        .cone([a.x, a.y, a.z], [e.x, e.y, e.z], ra * 0.6, rb * 0.58, 0.07)
+        .ell([e.x, e.y, e.z], last ? [rb * 0.85, rb * 0.6, rb * 1.08] : [rb * 0.78, rb * 0.82, rb * 1.06], 0.06)
+        .fit(prev, 0.018);
+      if (k === 0) r.plate = V(a.x - dir.x * ra * 0.1, a.y - ra * 0.72, a.z);
+      PHS.push(ph);
       prev = ph;
-      p = e.clone().addScaledVector(d, rb2 * 0.5);
+      nodes.push([a.x, a.y, a.z, ra + (j === 0 ? 0.085 : 0.075)]);
+      c = e;
+      cR = rb * 0.78;
+      rbL = rb;
     });
-    toeTips.push(p.clone());
+    const tip = c.clone().addScaledVector(dir, rbL * 0.85);
+    nodes.push([c.x, c.y - 0.012, c.z, rbL + 0.07]);
+    nodes.push([tip.x, tip.y - 0.02, tip.z, rbL * 0.7 + 0.065]);
+    TOE.push(nodes);
   });
-  // Sesamoideos bajo la cabeza del primer metatarsiano
-  const ses = shape().ell([1.86, 0.2, 0.71], [0.08, 0.06, 0.06]).ell([1.86, 0.2, 0.9], [0.08, 0.06, 0.06], 0);
+  // Sesamoideos alojados bajo la cabeza del primer metatarsiano
+  const ses = shape().ell([1.9, 0.2, 0.71], [0.085, 0.055, 0.065]).ell([1.9, 0.2, 0.89], [0.085, 0.055, 0.065], 0).fit(MTS[0], 0.012);
 
-  const bm = boneMat();
-  for (const s of [...bones, ses]) foot.add(new THREE.Mesh(geoOf(s, s.hi[0] - s.lo[0] > 1 ? 0.03 : 0.022), bm));
-
-  // Calcáneo con tinte cálido alrededor de la inserción de la fascia
-  const O = V(-2.12, 0.24, 0.16);
-  const calcGeo = geoOf(calc, 0.028);
-  {
-    const p = calcGeo.attributes.position;
+  // Oclusión ambiental horneada (entre todos los huesos) + leve enfriado de las piezas laterales (profundidad)
+  const ALL = [talus, calc, tibia, fibula, nav, cuboid, cunM, cunI, cunL, ...MTS, ...PHS, ses];
+  const world = (x, y, z) => {
+    let d = 1e9;
+    for (const S of ALL) {
+      if (x < S.lo[0] - 0.2 || x > S.hi[0] + 0.2 || y < S.lo[1] - 0.2 || y > S.hi[1] + 0.2 || z < S.lo[2] - 0.2 || z > S.hi[2] + 0.2) continue;
+      d = Math.min(d, S.sdf(x, y, z));
+    }
+    return d;
+  };
+  const aoAt = (x, y, z, nx, ny, nz) => {
+    let occ = 0, sc = 1;
+    for (let i = 1; i <= 4; i++) {
+      const hr = 0.035 * i;
+      occ += (hr - world(x + nx * hr, y + ny * hr, z + nz * hr)) * sc;
+      sc *= 0.75;
+    }
+    return clamp(1 - 3.0 * occ, 0, 1);
+  };
+  const O = V(-2.04, 0.27, 0.19); // origen de la fascia: tuberosidad medial del calcáneo
+  const BASE = new THREE.Color('#e9d8bc'), SHADE = new THREE.Color('#917b5b'), COOL = new THREE.Color('#bfc8d8'), WARMB = new THREE.Color('#ff8f5e');
+  const paint = (geo, warm = 0) => {
+    const p = geo.attributes.position, n = geo.attributes.normal;
     const col = new Float32Array(p.count * 3);
-    const base = new THREE.Color('#ede2cf'), warm = new THREE.Color('#ffb48c'), c = new THREE.Color();
+    const c = new THREE.Color();
     for (let i = 0; i < p.count; i++) {
-      const d = Math.hypot(p.getX(i) - O.x, (p.getY(i) - O.y) * 1.3, p.getZ(i) - O.z);
-      c.copy(base).lerp(warm, 0.9 * Math.exp(-Math.pow(d / 0.5, 2)));
+      const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
+      const ao = aoAt(x, y, z, n.getX(i), n.getY(i), n.getZ(i));
+      c.copy(BASE).lerp(COOL, 0.32 * sstep(0.15, -0.85, z)).lerp(SHADE, (1 - ao) * 0.85);
+      if (warm) {
+        const dd = Math.hypot(x - O.x, (y - O.y) * 1.25, (z - O.z) * 0.9);
+        c.lerp(WARMB, warm * Math.exp(-Math.pow(dd / 0.6, 2)));
+      }
       col[i * 3] = c.r;
       col[i * 3 + 1] = c.g;
       col[i * 3 + 2] = c.b;
     }
-    calcGeo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    return geo;
+  };
+  const bm = boneMat();
+  for (const S of [talus, nav, cuboid, cunM, cunI, cunL, ...MTS, ...PHS, ses]) foot.add(new THREE.Mesh(paint(geoOf(S, S.hi[0] - S.lo[0] > 0.6 ? 0.026 : 0.018)), bm));
+  foot.add(new THREE.Mesh(paint(geoOf(calc, 0.026), 1.0), bm));
+  const legMat = fadeTop(boneMat(), 1.95, 2.62);
+  legMat.clearcoat = 0.15;
+  legMat.sheen = 0;
+  for (const S of [tibia, fibula]) foot.add(new THREE.Mesh(paint(geoOf(S, 0.03)), legMat));
+
+  // ------------------------------------------------------------ Fascia plantar: una lámina SDF que se divide en 5 lengüetas
+  const xA = -2.36;
+  const lesG = (x) => Math.exp(-Math.pow((x + 1.86) / 0.3, 2));
+  const lineY = (x) => {
+    const s = clamp((x - xA) / (1.9 - xA), 0, 1);
+    return lerp(0.25, 0.205, s) - 0.018 * Math.sin(Math.PI * s);
+  };
+  const Ycom = (x) => lineY(x) + 0.15 * sstep(-1.95, -2.36, x) - 0.012 * lesG(x);
+  const Tof = (x) => {
+    const s = (x - xA) / (2.0 - xA);
+    return 0.07 - 0.022 * sstep(0.05, 0.35, s) - 0.014 * sstep(0.45, 0.85, s) - 0.004 * sstep(0.85, 1.05, s) + 0.075 * lesG(x);
+  };
+  const SW = [0.1, 0.08, 0.077, 0.073, 0.068];
+  const SL = RAYS.map((r, j) => ({
+    H: V(r.h[0] - 0.02, r.h[1], r.h[2]),
+    YH: (j === 0 ? 0.145 : r.h[1] - r.rh * 1.15) - 0.028,
+    E: r.plate,
+    zO: 0.1 + (2 - j) * 0.075,
+    sw: SW[j],
+  }));
+  // [z del eje, pendiente dz/dx, semiancho, y del eje] de la lengüeta j en x
+  const slip = (j, x) => {
+    const S = SL[j];
+    let zc, sl, w, Y;
+    if (x <= S.H.x) {
+      const s = (x - xA) / (S.H.x - xA);
+      zc = S.zO + (S.H.z - S.zO) * s;
+      sl = (S.H.z - S.zO) / (S.H.x - xA);
+      const sp = lerp(0.075, 0.31, clamp(s, 0, 1));
+      w = lerp(sp * 0.5 + 0.035, S.sw, sstep(0.52, 0.82, s));
+      Y = Ycom(x) + (S.YH - Ycom(S.H.x)) * sstep(S.H.x - 1.3, S.H.x, x);
+    } else {
+      const u = (x - S.H.x) / (S.E.x - S.H.x);
+      zc = S.H.z + (S.E.z - S.H.z) * u;
+      sl = (S.E.z - S.H.z) / (S.E.x - S.H.x);
+      w = S.sw * lerp(1, 0.72, clamp(u, 0, 1));
+      Y = S.YH + (S.E.y + 0.01 - S.YH) * sstep(0, 1, u);
+    }
+    // El origen se angosta y se mete en la tuberosidad (sin asomar detrás del hueso)
+    w *= lerp(1, 0.55, sstep(-2.02, -2.36, x));
+    return [zc, sl, w + 0.03 * lesG(x), Y];
+  };
+  const dj = new Float64Array(5), yj = new Float64Array(5);
+  const field = (x, z) => {
+    let dmin = 1e9;
+    for (let j = 0; j < 5; j++) {
+      const [zc, sl, w, Y] = slip(j, x);
+      const lat = (Math.abs(z - zc) - w) / Math.sqrt(1 + sl * sl);
+      dj[j] = roundMax(lat, x - SL[j].E.x - 0.03, SL[j].sw * 0.6);
+      yj[j] = Y;
+      dmin = Math.min(dmin, dj[j]);
+    }
+    let D = dj[0];
+    for (let j = 1; j < 5; j++) D = smin(D, dj[j], 0.07);
+    D = Math.max(D, xA - x);
+    let ws = 0, ys = 0;
+    for (let j = 0; j < 5; j++) {
+      const wt = Math.exp(-(dj[j] - dmin) / 0.03);
+      ws += wt;
+      ys += wt * yj[j];
+    }
+    return [D, ys / ws, Tof(x)];
+  };
+  const FB0 = [-2.42, 0.0, -1.1], FB1 = [Math.max(...SL.map((s) => s.E.x)) + 0.12, 0.52, 1.2], FH = 0.014;
+  const gx = Math.ceil((FB1[0] - FB0[0]) / FH) + 2, gz = Math.ceil((FB1[2] - FB0[2]) / FH) + 2;
+  const GD = new Float32Array(gx * gz), GY = new Float32Array(gx * gz), GT = new Float32Array(gx * gz);
+  for (let k = 0; k < gz; k++)
+    for (let i = 0; i < gx; i++) {
+      const [d, y, t] = field(FB0[0] + i * FH, FB0[2] + k * FH);
+      GD[i + gx * k] = d;
+      GY[i + gx * k] = y;
+      GT[i + gx * k] = t;
+    }
+  const samp = (A, x, z) => {
+    const fx = clamp((x - FB0[0]) / FH, 0, gx - 1.001), fz = clamp((z - FB0[2]) / FH, 0, gz - 1.001);
+    const i = fx | 0, k = fz | 0, tx = fx - i, tz = fz - k, o = i + gx * k;
+    return lerp(lerp(A[o], A[o + 1], tx), lerp(A[o + gx], A[o + gx + 1], tx), tz);
+  };
+  // Placas plantares bajo cada articulación metatarsofalángica: la lengüeta termina en un cojinete redondeado
+  const PLATES = SL.map((S, j) => {
+    const cx = (S.H.x + S.E.x) / 2 + 0.02;
+    return [cx, (S.YH + S.E.y) / 2 + 0.012, (S.H.z + S.E.z) / 2, Math.max(0.12, (S.E.x - S.H.x) * 0.62), j === 0 ? 0.06 : 0.048, S.sw * 1.05];
+  });
+  const fasciaSDF = (x, y, z) => {
+    let dp = 1e9;
+    if (x > 1.3) for (const P of PLATES) dp = Math.min(dp, ell(x, y, z, P[0], P[1], P[2], P[3], P[4], P[5]));
+    const d2 = samp(GD, x, z);
+    if (d2 > 0.1) return Math.min(d2, dp);
+    const T = samp(GT, x, z);
+    return smin(roundMax(d2, Math.abs(y - samp(GY, x, z)) - T / 2, T * 0.45), dp, 0.05);
+  };
+  const fGeo = polygonize(fasciaSDF, [FB0[0], 0.06, FB0[2]], [FB1[0], 0.47, FB1[2]], [FH, 0.006, FH], 1.6);
+  {
+    const p = fGeo.attributes.position;
+    const fu = new Float32Array(p.count), wa = new Float32Array(p.count), col = new Float32Array(p.count * 3);
+    const zc = [0, 0, 0, 0, 0];
+    const cool = new THREE.Color('#d3e1f6'), hot = new THREE.Color('#ff7c48'), c = new THREE.Color();
+    for (let i = 0; i < p.count; i++) {
+      const x = p.getX(i), z = p.getZ(i);
+      for (let j = 0; j < 5; j++) zc[j] = slip(j, x)[0];
+      let u;
+      if (z >= zc[0]) u = -(z - zc[0]) / Math.max(zc[0] - zc[1], 0.02);
+      else if (z <= zc[4]) u = 4 + (zc[4] - z) / Math.max(zc[3] - zc[4], 0.02);
+      else {
+        let j = 0;
+        while (j < 3 && z < zc[j + 1]) j++;
+        u = j + (zc[j] - z) / Math.max(zc[j] - zc[j + 1], 1e-4);
+      }
+      fu[i] = u;
+      const w = 1 - sstep(-2.0, -1.3, x);
+      wa[i] = w;
+      c.copy(cool).lerp(hot, Math.pow(w, 0.85));
+      col[i * 3] = c.r;
+      col[i * 3 + 1] = c.g;
+      col[i * 3 + 2] = c.b;
+    }
+    fGeo.setAttribute('fu', new THREE.BufferAttribute(fu, 1));
+    fGeo.setAttribute('warm', new THREE.BufferAttribute(wa, 1));
+    fGeo.setAttribute('color', new THREE.BufferAttribute(col, 3));
   }
-  const calcMat = boneMat();
-  calcMat.color.set('#ffffff');
-  calcMat.vertexColors = true;
-  foot.add(new THREE.Mesh(calcGeo, calcMat));
+  // Material: blanco frío con brillo azulado, estriado fino por relieve (normal) y emisión cálida en la lesión
+  const fMat = new THREE.MeshPhysicalMaterial({ color: '#ffffff', vertexColors: true, roughness: 0.3, clearcoat: 1, clearcoatRoughness: 0.18, sheen: 1, sheenColor: new THREE.Color('#b4cdff'), sheenRoughness: 0.4 });
+  fMat.onBeforeCompile = (sh) => {
+    sh.uniforms.uFreq = { value: 9.0 };
+    sh.uniforms.uBump = { value: 0.35 };
+    sh.uniforms.uWarmE = { value: new THREE.Color('#ff6a3d').multiplyScalar(0.6) };
+    sh.vertexShader =
+      'attribute float fu;\nattribute float warm;\nvarying float vFu;\nvarying float vWarm;\nvarying float vNy;\n' +
+      sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n vFu = fu; vWarm = warm; vNy = normal.y;');
+    sh.fragmentShader =
+      'uniform float uFreq; uniform float uBump; uniform vec3 uWarmE; varying float vFu; varying float vWarm; varying float vNy;\n' +
+      sh.fragmentShader
+        .replace(
+          '#include <normal_fragment_maps>',
+          `#include <normal_fragment_maps>
+          diffuseColor.rgb *= mix(0.74, 1.0, smoothstep(0.0, 0.5, abs(dot(normal, normalize(vViewPosition)))));
+          {
+            float ph = vFu * uFreq;
+            float fw = fwidth(ph);
+            float H = 0.5 + 0.5 * sin(ph * 6.2831853);
+            float amp = uBump * (1.0 - smoothstep(0.25, 0.6, fw)) * (1.0 - 0.7 * vWarm) * smoothstep(0.55, 0.9, abs(vNy));
+            vec2 dH = vec2(dFdx(H), dFdy(H)) * amp;
+            vec3 sx = normalize(dFdx(-vViewPosition));
+            vec3 sy = normalize(dFdy(-vViewPosition));
+            vec3 R1 = cross(sy, normal);
+            vec3 R2 = cross(normal, sx);
+            float det = dot(sx, R1) * faceDirection;
+            normal = normalize(abs(det) * normal - sign(det) * (dH.x * R1 + dH.y * R2));
+          }`
+        )
+        .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\n totalEmissiveRadiance += uWarmE * vWarm;');
+  };
+  foot.add(new THREE.Mesh(fGeo, fMat));
 
-  // Tibia y peroné: se desvanecen hacia arriba
-  const legMat = fadeTop(boneMat(), 2.35, 3.3);
-  for (const s of [tibia, fibula]) foot.add(new THREE.Mesh(geoOf(s, 0.032), legMat));
-
-  // ------------------------------------------------------------ Fascia plantar
-  const les = (s) => Math.exp(-Math.pow(s / 0.17, 2));
-  const ends = RAYS.map((r) => V(r.h[0] + 0.16, r.h[1] - r.rh - 0.08, r.h[2]));
-  const slipHW = [0.12, 0.09, 0.085, 0.08, 0.075];
-  const W0 = 0.24, WM = 0.7, ZC = 0.04;
-  const white = new THREE.Color('#ffffff'), warmF = new THREE.Color('#ff9466'), col = new THREE.Color();
-  reseed(501);
-  const fibGeos = [];
-  const NF = 136, SAMP = 46, SEG = 56, RAD = 6;
-  for (let i = 0; i < NF; i++) {
-    const q = (i + rnd()) / NF; // 0 = medial … 1 = lateral
-    const u = 1 - 2 * q;
-    const jf = q * 5;
-    const j = Math.min(4, Math.floor(jf));
-    const ul = jf - j - 0.5;
-    const v = rnd() * 2 - 1;
-    const E = ends[j];
-    const Ez = E.z - ul * 2 * slipHW[j];
-    const Zm = ZC + u * WM;
-    const Az = O.z + u * W0;
-    const ph = rnd() * 10, jit = rnd();
+  // ------------------------------------------------------------ Lesión: fibras abiertas en el origen engrosado
+  const band = (x) => {
+    const m = slip(0, x), l = slip(4, x);
+    return { Y: Ycom(x), T: Tof(x), zMed: m[0] + m[2], zLat: l[0] - l[2] };
+  };
+  const taperTube = (pts, r0, seg = 40, rad = 8) => {
+    const curve = new THREE.CatmullRomCurve3(pts);
+    const fr = curve.computeFrenetFrames(seg, false);
+    const pos = [], nor = [], idx = [];
+    for (let i = 0; i <= seg; i++) {
+      const t = i / seg;
+      const P = curve.getPointAt(t);
+      const r = r0 * (0.12 + 0.88 * Math.pow(Math.sin(Math.PI * t), 0.6));
+      for (let k = 0; k <= rad; k++) {
+        const a = (k / rad) * Math.PI * 2;
+        const cs = -Math.cos(a), sn = Math.sin(a);
+        const nx = fr.normals[i].x * cs + fr.binormals[i].x * sn;
+        const ny = fr.normals[i].y * cs + fr.binormals[i].y * sn;
+        const nz = fr.normals[i].z * cs + fr.binormals[i].z * sn;
+        pos.push(P.x + nx * r, P.y + ny * r, P.z + nz * r);
+        nor.push(nx, ny, nz);
+      }
+    }
+    for (let i = 0; i < seg; i++)
+      for (let k = 0; k < rad; k++) {
+        const a = i * (rad + 1) + k, b = a + rad + 1;
+        idx.push(a, b, a + 1, b, b + 1, a + 1);
+      }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    g.setAttribute('normal', new THREE.Float32BufferAttribute(nor, 3));
+    g.setIndex(idx);
+    return g;
+  };
+  // [x0, x1, desplazamiento z desde el borde medial, lado (-1 abajo, 0 borde, 1 arriba), separación, radio, fase]
+  const LOOSE = [
+    [-2.06, -1.52, -0.04, -1, 0.022, 0.014, 0.3],
+    [-2.0, -1.6, 0.0, 0, 0.026, 0.013, 1.7],
+    [-2.1, -1.64, -0.13, -1, 0.017, 0.012, 2.9],
+    [-1.98, -1.48, -0.07, 1, 0.02, 0.012, 4.1],
+    [-2.04, -1.72, -0.22, -1, 0.014, 0.011, 5.3],
+  ];
+  const looseGeos = LOOSE.map(([x0, x1, zo, side, lift, r, ph]) => {
     const pts = [];
-    for (let k = 0; k <= SAMP; k++) {
-      const s = k / SAMP;
-      const x = O.x + (E.x - O.x) * s;
-      const zf = Az + (Zm - Az) * sstep(0, 0.6, s);
-      let z = zf + (Ez - zf) * sstep(0.48, 0.95, s);
-      const th = 0.055 + 0.09 * les(s);
-      let y = O.y + (E.y - O.y) * s + 0.07 * Math.sin(Math.PI * s) + v * th;
-      const l = les(s);
-      y += Math.sin(ph + s * 40 * (0.7 + jit)) * 0.03 * l;
-      z += Math.cos(ph * 1.3 + s * 34 * (0.6 + jit)) * 0.05 * l;
+    for (let k = 0; k <= 14; k++) {
+      const t = k / 14;
+      const x = lerp(x0, x1, t);
+      const B = band(x);
+      const bump = Math.pow(Math.sin(Math.PI * t), 1.4);
+      let y, z;
+      if (side === 0) {
+        z = B.zMed + zo + lift * bump - 0.012;
+        y = B.Y + 0.01 * Math.sin(ph + t * 7);
+      } else {
+        z = B.zMed + zo + 0.02 * Math.sin(ph + t * 6) * bump;
+        y = B.Y + side * (B.T / 2 - 0.012 + (lift + 0.012) * bump) + 0.01 * Math.sin(ph * 1.3 + t * 8) * bump;
+      }
       pts.push(V(x, y, z));
     }
-    const g = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), SEG, 0.029 * (0.75 + 0.5 * jit), RAD, false);
-    const n = g.attributes.position.count;
-    const arr = new Float32Array(n * 3);
-    for (let vtx = 0; vtx < n; vtx++) {
-      const s = Math.floor(vtx / (RAD + 1)) / SEG;
-      col.copy(white).lerp(warmF, 1 - sstep(0.1, 0.32, s));
-      arr[vtx * 3] = col.r;
-      arr[vtx * 3 + 1] = col.g;
-      arr[vtx * 3 + 2] = col.b;
-    }
-    g.setAttribute('color', new THREE.BufferAttribute(arr, 3));
-    fibGeos.push(g);
-  }
-  const fMat = M.tendon();
-  fMat.vertexColors = true;
-  foot.add(new THREE.Mesh(mergeGeometries(fibGeos), fMat));
+    return taperTube(pts, r);
+  });
+  const lesMat = M.lesion();
+  lesMat.color.set('#ff9a6a');
+  foot.add(new THREE.Mesh(mergeGeometries(looseGeos), lesMat));
 
-  // Fibras desorganizadas en el origen (lesión)
-  reseed(521);
-  const loose = [];
-  for (let i = 0; i < 10; i++) {
-    const u = rnd() * 2 - 1;
-    const side = i % 2 ? 1 : -1;
-    const ph = rnd() * 10;
-    const pts = [];
-    const sA = 0.01 + rnd() * 0.04, sB = 0.2 + rnd() * 0.08;
-    for (let k = 0; k <= 20; k++) {
-      const s = sA + ((sB - sA) * k) / 20;
-      const E = ends[2];
-      const x = O.x + (E.x - O.x) * s;
-      const z = O.z + u * W0 * (1 + 0.6 * s) + Math.sin(ph + k * 0.9) * 0.05;
-      const y = O.y + (E.y - O.y) * s + 0.07 * Math.sin(Math.PI * s) + side * (0.055 + 0.09 * les(s) + 0.02) + Math.sin(ph * 1.7 + k * 1.3) * 0.025;
-      pts.push(V(x, y, z));
-    }
-    loose.push(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 50, 0.022 + rnd() * 0.01, 6, false));
-  }
-  foot.add(new THREE.Mesh(mergeGeometries(loose), M.lesion()));
-
-  // Resplandor cálido sobre el origen de la fascia
-  const h1 = halo('#ff9a6b', 1.9, 0.5);
-  h1.position.set(O.x + 0.35, O.y + 0.02, O.z + 0.45);
-  foot.add(h1);
-  const h2 = halo('#ffc2a0', 0.9, 0.5);
-  h2.position.set(O.x + 0.32, O.y - 0.02, O.z + 0.4);
-  foot.add(h2);
-  // Envoltura cálida (fresnel) que dibuja el engrosamiento fusiforme del origen
-  const Ec = ends[2];
+  // Envoltura tenue (fresnel) del engrosamiento fusiforme, sin borde duro
   const spindle = [];
-  for (let k = 0; k <= 8; k++) {
-    const s = 0.34 * (k / 8);
-    const r = 0.1 + 0.17 * Math.exp(-Math.pow((s - 0.06) / 0.11, 2));
-    spindle.push([O.x + (Ec.x - O.x) * s, O.y + (Ec.y - O.y) * s + 0.07 * Math.sin(Math.PI * s), 0, r]);
+  for (let k = 0; k <= 10; k++) {
+    const x = lerp(-2.14, -1.45, k / 10);
+    spindle.push([x, band(x).Y, 0, 0.045 + 0.1 * lesG(x)]);
   }
+  const zMid = (x) => {
+    const B = band(x);
+    return (B.zMed + B.zLat) / 2;
+  };
   const env = new THREE.Mesh(
-    polygonize((x, y, z) => chain(x, y, (z - O.z) * 0.62, spindle), [O.x - 0.5, O.y - 0.45, O.z - 0.75], [O.x + 2.6, O.y + 0.5, O.z + 0.75], 0.035),
-    ghost('#ff8a55', { rim: 0.75, power: 2.2, base: 0.07, f0: 50, f1: 60 })
+    polygonize((x, y, z) => chain(x, y, (z - zMid(x)) * 0.48, spindle), [-2.35, -0.1, -0.6], [-1.2, 0.6, 0.9], 0.03),
+    ghost('#ff8a55', { rim: 0.35, power: 3.2, base: 0.0, f0: 50, f1: 60 })
   );
   env.renderOrder = 3;
   foot.add(env);
 
-  // ------------------------------------------------------------ Contorno del pie (vidrio tenue)
-  // Piel "loft": perfil a lo largo del pie [x, y inferior, y superior, semiancho, centro z]
+  // Resplandor cálido: delante del origen y un aura saturada detrás del talón (se ve sobre fondo claro)
+  const h1 = halo('#ff9a6b', 1.3, 0.75);
+  h1.position.set(-1.8, 0.32, 0.7);
+  const h2 = halo('#ffc2a0', 0.7, 0.5);
+  h2.position.set(-1.86, 0.27, 0.62);
+  const h3 = halo('#ff7a45', 1.2, 0.6);
+  h3.position.set(-1.95, 0.32, -0.4);
+  foot.add(h1, h2, h3);
+
+  // ------------------------------------------------------------ Contorno del pie (vidrio tenue) con dedos
+  // Perfil a lo largo del pie [x, y inferior, y superior, semiancho, centro z, inclinación medial]
   const KS = [
-    [-2.9, 0.3, 1.2, 0.42, -0.03],
-    [-2.55, 0.03, 1.3, 0.54, -0.03],
-    [-2.0, 0.0, 1.55, 0.6, -0.02],
-    [-1.3, 0.04, 2.05, 0.66, 0.0],
-    [-0.5, 0.1, 1.82, 0.76, 0.02],
-    [0.3, 0.08, 1.62, 0.9, 0.02],
-    [1.1, 0.03, 1.2, 1.04, 0.02],
-    [1.9, 0.0, 0.78, 1.12, 0.03],
-    [2.5, 0.02, 0.6, 1.1, 0.06],
-    [3.1, 0.07, 0.52, 0.98, 0.1],
-    [3.5, 0.12, 0.45, 0.8, 0.14],
+    [-2.92, 0.34, 1.12, 0.4, -0.03, 0],
+    [-2.62, -0.03, 1.3, 0.52, -0.03, 0],
+    [-2.1, -0.07, 1.62, 0.6, -0.02, 0.04],
+    [-1.4, 0.02, 2.15, 0.68, 0, 0.1],
+    [-0.6, 0.06, 2.02, 0.82, -0.04, 0.18],
+    [-0.1, 0.05, 1.92, 0.94, -0.07, 0.19],
+    [0.3, 0.04, 1.8, 0.96, -0.02, 0.2],
+    [1.1, 0.03, 1.32, 1.02, 0.02, 0.12],
+    [1.9, -0.01, 0.86, 1.1, 0.03, 0.04],
+    [2.5, 0.04, 0.76, 1.06, 0.06, 0],
   ];
-  const X0 = -2.9, X1 = 3.58, CAPB = 0.42, CAPF = 0.5;
+  const X0 = -2.92, X1 = 2.62, CAPB = 0.42, CAPF = 0.42;
   const prof = (x) => {
     let i = 0;
     while (i < KS.length - 2 && x > KS[i + 1][0]) i++;
     const A = KS[i], B = KS[i + 1];
     let t = clamp((x - A[0]) / (B[0] - A[0]), 0, 1);
     t = t * t * (3 - 2 * t);
-    return [A[1] + (B[1] - A[1]) * t, A[2] + (B[2] - A[2]) * t, A[3] + (B[3] - A[3]) * t, A[4] + (B[4] - A[4]) * t];
+    return [1, 2, 3, 4, 5].map((q) => A[q] + (B[q] - A[q]) * t);
   };
   const footSDF = (x, y, z) => {
-    if (x < X0 - 0.02 || x > X1 + 0.02) return Math.max(X0 - x, x - X1) + 0.02;
+    // Fuera de los extremos: distancia que crece con x (sin paredes falsas al fundir con los dedos)
+    const xc = clamp(x, X0, X1);
+    const dx = Math.max(X0 - x, x - X1, 0);
     let cap = 1;
-    if (x < X0 + CAPB) cap = Math.sqrt(Math.max(0, 1 - Math.pow((X0 + CAPB - x) / CAPB, 2)));
-    if (x > X1 - CAPF) cap = Math.sqrt(Math.max(0, 1 - Math.pow((x - (X1 - CAPF)) / CAPF, 2)));
-    if (cap < 0.03) return 0.03;
-    const [yb, yt, hw, zc] = prof(x);
-    const ry = ((yt - yb) / 2) * cap, rz = hw * cap;
-    const yc = (yb + yt) / 2;
+    if (xc < X0 + CAPB) cap = Math.sqrt(Math.max(0, 1 - Math.pow((X0 + CAPB - xc) / CAPB, 2)));
+    if (xc > X1 - CAPF) cap = Math.sqrt(Math.max(0, 1 - Math.pow((xc - (X1 - CAPF)) / CAPF, 2)));
+    cap = Math.max(cap, 0.06);
+    const [yb, yt, hw, zc, tl] = prof(xc);
+    // El dorso sube del lado medial (arco); la planta queda casi plana (sección más cuadrada abajo)
+    const ytz = yt + tl * (z - zc);
+    const ry = ((ytz - yb) / 2) * cap, rz = hw * cap;
+    const yc = (yb + ytz) / 2;
+    const pw = y < yc ? 4 : 3;
     const ny = Math.abs((y - yc) / ry), nz = Math.abs((z - zc) / rz);
-    return (Math.pow(Math.pow(ny, 2.6) + Math.pow(nz, 2.6), 1 / 2.6) - 1) * Math.min(ry, rz);
+    const ds = (Math.pow(Math.pow(ny, pw) + Math.pow(nz, pw), 1 / pw) - 1) * Math.min(ry, rz);
+    return dx > 0 ? Math.hypot(dx, Math.max(ds, 0)) : ds;
   };
-  const skinSDF = (x, y, z) => {
-    const f = footSDF(x, y, z);
-    const leg = chain(x, y, z * 1.08, [[-1.32, 1.7, 0, 0.74], [-1.26, 2.6, 0, 0.64], [-1.12, 4.6, 0, 0.6]]);
-    return smax(smin(f, leg, 0.5), -y, 0.1);
+  const toeSDF = (x, y, z) => {
+    if (x < 1.0) return 1.0;
+    let d = 1e9;
+    for (const t of TOE) d = smin(d, chain(x, y, z, t), 0.1);
+    return d;
   };
-  const skin = new THREE.Mesh(polygonize(skinSDF, [-3.1, -0.2, -1.4], [3.8, 3.7, 1.5], 0.06), ghost('#86aaf0', { rim: 0.65, power: 2.6, base: 0.016, f0: 2.6, f1: 3.6 }));
+  const legSDF = (x, y, z) => chain(x, y, z, [[-1.32, 1.7, -0.04, 0.76], [-1.27, 2.6, -0.05, 0.68], [-1.18, 3.7, -0.05, 0.62]]);
+  const skinSDF = (x, y, z) => smax(smin(smin(footSDF(x, y, z), toeSDF(x, y, z), 0.3), legSDF(x, y, z), 0.5), -y - 0.12, 0.1);
+  const skin = new THREE.Mesh(polygonize(skinSDF, [-3.1, -0.2, -1.4], [3.7, 3.6, 1.5], 0.058), ghost('#86aaf0', { rim: 0.65, power: 2.6, base: 0.016, f0: 2.6, f1: 3.5 }));
   skin.renderOrder = 2;
   foot.add(skin);
 
@@ -514,10 +780,11 @@ export default function build(L) {
 
   // Sombra de contacto
   const sh = halo('#0a1530', 1, 0.22);
-  sh.scale.set(6.4, 0.55, 1);
-  sh.position.set(0.3, -0.25, -0.4);
+  sh.scale.set(6.0, 0.48, 1);
+  sh.position.set(0.3, -0.22, -0.3);
   root.add(sh);
 
-  const look = [0.3, 1.25, 0];
-  return { root, cam: [look[0] + 4.4, look[1] - 2.9, 9.3], look, zoom: 1.0, shadow: false };
+  root.userData.debug = { skinSDF, fasciaSDF, ALL, world };
+  const look = [0.45, 1.15, 0];
+  return { root, cam: [look[0] + 4.4, look[1] - 2.35, 9.3], look, zoom: 1.0, shadow: false };
 }

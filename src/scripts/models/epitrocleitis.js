@@ -1,18 +1,35 @@
-// Epitrocleítis (codo de golfista): codo derecho en vista MEDIAL (interna).
-// Húmero distal con la epitróclea (epicóndilo medial) prominente, tróclea, cúbito con olécranon y apófisis coronoides.
-// De la epitróclea nace el tendón común de flexores-pronadores, que se continúa en los flexores del antebrazo
-// (pronador redondo, palmar mayor, palmar menor, flexor superficial de los dedos, cubital anterior).
-// El nervio cubital baja por detrás de la epitróclea (canal epitrócleo-olecraneano) y entra al antebrazo bajo el cubital anterior.
-// La lesión (acento cálido) está en el origen flexor sobre la epitróclea.
+// Epitrocleítis (codo de golfista): codo derecho en vista POSTEROMEDIAL (cara interna, algo desde atrás).
+// Húmero distal en "pala" con la epitróclea (epicóndilo medial) como apófisis saliente, tróclea visible,
+// cúbito con el olécranon en gancho y su borde posterior subcutáneo a lo largo del antebrazo.
+// El nervio cubital (cordón amarillo) baja por detrás de la epitróclea (túnel cubital) y entra al antebrazo bajo el cubital anterior.
+// De la cara anterior de la epitróclea nace el tendón común flexor-pronador (corto y grueso) que se abre en abanico
+// en los flexores del antebrazo. La lesión (acento cálido, fibras nítidas) está en ese origen, sobre el hueso.
 //
 // Coordenadas locales (antes de girar la escena 180° en Y): plano sagital = XY, eje de flexión = Z,
 // lateral = +Z y MEDIAL = −Z. La escena se gira para que la cara medial mire a la cámara
 // (brazo hacia arriba a la derecha, antebrazo hacia la izquierda; extremos desvanecidos en vez de cortes duros).
 export default function build(L) {
-  const { THREE, M, halo, rnd, reseed } = L;
+  const { THREE, rnd, reseed } = L;
   const V3 = (a) => new THREE.Vector3(a[0], a[1], a[2]);
   const QS = typeof location !== 'undefined' ? new URLSearchParams(location.search) : new URLSearchParams();
-  const DBG = QS.get('dbg');
+  const num = (k, d) => (QS.get(k) !== null && QS.get(k) !== '' ? Number(QS.get(k)) : d);
+  const arr = (k, d) => (QS.get(k) ? QS.get(k).split(',').map(Number) : d);
+  const DBG = QS.get('dbg') || '';
+
+  // ------------------------------------------------------------------ Vista
+  const CAM = arr('cam', [3.2, 1.2, 6.6]);
+  const LOOK = arr('look', [-0.55, 0.3, 0]);
+  const ZOOM = num('zoom', 1.35);
+  const wrap = new THREE.Group();
+  wrap.rotation.set(num('rx', -0.12), num('ry', -0.2), num('rz', -0.22));
+  const root = new THREE.Group();
+  root.rotation.y = Math.PI; // cara medial hacia la cámara
+  wrap.add(root);
+  wrap.updateMatrixWorld(true);
+  const invQ = root.getWorldQuaternion(new THREE.Quaternion()).invert();
+  const toLocalDir = (v) => V3(v).normalize().applyQuaternion(invQ);
+  const VIEW = toLocalDir([CAM[0] - LOOK[0], CAM[1] - LOOK[1], CAM[2] - LOOK[2]]); // hacia la cámara (local)
+  const LD = toLocalDir([0.25, 0.9, 0.4]); // luz cenital horneada (local)
 
   // ------------------------------------------------------------------ Marcos anatómicos
   // Húmero: s → proximal, q → anterior. Antebrazo: s → distal, q → anterior.
@@ -21,8 +38,8 @@ export default function build(L) {
     const sx = Math.cos(ang), sy = Math.sin(ang);
     return { sx, sy, qx: ccw ? -sy : sy, qy: ccw ? sx : -sx };
   };
-  const FH = frame(rad(QS.get("ah") ? Number(QS.get("ah")) : 132), false);
-  const FF = frame(rad(QS.get("af") ? Number(QS.get("af")) : -10), true);
+  const FH = frame(rad(num('ah', 114)), false);
+  const FF = frame(rad(num('af', -8)), true);
   const toW = (fr, s, q, z) => [s * fr.sx + q * fr.qx, s * fr.sy + q * fr.qy, z];
   const toL = (fr, x, y, z) => [x * fr.sx + y * fr.sy, x * fr.qx + y * fr.qy, z];
   const Hp = (s, q, z) => toW(FH, s, q, z);
@@ -73,72 +90,85 @@ export default function build(L) {
   const CAP_H = [0.0, 0.09, 0.25];
   const capW = Hp(CAP_H[0], CAP_H[1], CAP_H[2]);
   const CAP_F = toL(FF, capW[0], capW[1], capW[2]);
-  const CUT_H = 2.35; // corte proximal del húmero (se desvanece antes)
-  const CUT_F = 2.9; // corte del antebrazo (se desvanece antes)
-  const FADE_H = [1.55, 2.3];
-  const FADE_F = [1.95, 2.85];
+  const CUT_H = num('cuth', 1.6); // fin del húmero (dentro del desvanecido)
+  const CUT_F = 2.45; // fin del antebrazo (ídem)
+  const FADE_H = [num('fh0', 1.0), num('fh1', 1.5)], FADE_F = [1.7, 2.4];
+  const sstep = (a, b, x) => {
+    const t = clamp((x - a) / (b - a), 0, 1);
+    return t * t * (3 - 2 * t);
+  };
+  const fadeW = (x, y) => (1 - sstep(FADE_H[0], FADE_H[1], x * FH.sx + y * FH.sy)) * (1 - sstep(FADE_F[0], FADE_F[1], x * FF.sx + y * FF.sy));
+  const dim = (f) => 0.3 + 0.7 * f; // los extremos se apagan al desvanecerse (sin "haz" claro sobre fondo oscuro)
 
-  // Epitróclea (epicóndilo medial): grande y saliente hacia medial y un poco hacia atrás
-  const EPI_H = [0.3, -0.07, -0.74];
+  // Epitróclea (epicóndilo medial): apófisis en lágrima, saliente hacia medial y algo hacia atrás
+  const EPI_H = [0.32, -0.08, -0.88];
 
-  // Húmero distal
+  // Tróclea (coordenadas del húmero); también talla la escotadura troclear del cúbito (articulación congruente)
+  const trM = cylZ(0.0, 0.02, 0.295, -0.54, -0.3, 0.08);
+  const trG = cylZ(0.0, 0.02, 0.235, -0.36, -0.06, 0.05);
+  const trL = cylZ(0.0, 0.02, 0.25, -0.1, 0.06, 0.05);
+  const troch = (x, y, z) => smin(smin(trM(x, y, z), trG(x, y, z), 0.06), trL(x, y, z), 0.06);
+
+  // Húmero distal: pala triangular (cresta supracondílea medial → epitróclea), tróclea y capítulo
   const humerus = (() => {
-    const shaft = rcone(0.5, 0.0, -0.02, 3.4, 0.03, 0.0, 0.265, 0.225);
-    const flare = ell(0.42, -0.04, -0.1, 0.45, 0.2, 0.58);
+    const shaft = rcone(0.55, 0.0, -0.04, 3.4, 0.03, 0.0, 0.25, 0.215);
+    const flare = ell(0.42, -0.04, -0.12, 0.5, 0.2, 0.72);
     const latRidge = rcone(0.2, -0.08, 0.44, 1.3, -0.04, 0.16, 0.075, 0.045);
-    const medRidge = rcone(0.25, -0.05, -0.62, 1.25, 0.0, -0.2, 0.1, 0.05);
+    const medRidge = rcone(0.25, -0.05, -0.66, 1.3, 0.0, -0.18, 0.12, 0.06);
     const latEpi = ell(0.24, -0.09, 0.45, 0.15, 0.14, 0.13);
-    const medEpi = ell(EPI_H[0] + 0.02, EPI_H[1], EPI_H[2] + 0.06, 0.25, 0.17, 0.2);
-    const medTip = rcone(EPI_H[0] + 0.05, EPI_H[1], EPI_H[2] + 0.1, EPI_H[0] - 0.03, EPI_H[1] - 0.05, EPI_H[2] - 0.1, 0.15, 0.12);
+    const medEpi = ell(EPI_H[0] + 0.02, EPI_H[1], EPI_H[2] + 0.06, 0.28, 0.18, 0.24);
+    const medTip = rcone(EPI_H[0] + 0.05, EPI_H[1], EPI_H[2] + 0.08, EPI_H[0] - 0.05, EPI_H[1] - 0.04, EPI_H[2] - 0.12, 0.15, 0.12);
     const capit = sph(CAP_H[0], CAP_H[1], CAP_H[2], 0.205);
-    const trM = cylZ(0.0, 0.02, 0.295, -0.52, -0.3, 0.08);
-    const trG = cylZ(0.0, 0.02, 0.235, -0.36, -0.06, 0.05);
-    const trL = cylZ(0.0, 0.02, 0.25, -0.1, 0.06, 0.05);
-    const fossa = sph(0.5, -0.32, -0.2, 0.19);
-    // Surco del nervio cubital por detrás de la epitróclea
-    const groove = rcone(0.75, -0.36, -0.6, -0.05, -0.36, -0.62, 0.075, 0.075);
+    const fossa = sph(0.52, -0.33, -0.18, 0.2); // fosa olecraneana
+    const coroF = sph(0.42, 0.3, -0.2, 0.15); // fosa coronoidea
+    const groove = rcone(0.8, -0.4, -0.64, -0.1, -0.38, -0.66, 0.085, 0.085); // canal del nervio cubital
     return (x, y, z) => {
       let d = smin(shaft(x, y, z), flare(x, y, z), 0.25);
       d = smin(d, latRidge(x, y, z), 0.12);
       d = smin(d, medRidge(x, y, z), 0.14);
       d = smin(d, latEpi(x, y, z), 0.1);
-      d = smin(d, medEpi(x, y, z), 0.2);
-      d = smin(d, medTip(x, y, z), 0.12);
-      let t = smin(trM(x, y, z), trG(x, y, z), 0.06);
-      t = smin(t, trL(x, y, z), 0.06);
-      d = smin(d, t, 0.08);
+      d = smin(d, medEpi(x, y, z), 0.1);
+      d = smin(d, medTip(x, y, z), 0.07);
+      d = smin(d, troch(x, y, z), 0.07);
       d = smin(d, capit(x, y, z), 0.07);
       d = smax(d, -fossa(x, y, z), 0.08);
+      d = smax(d, -coroF(x, y, z), 0.08);
       d = smax(d, -groove(x, y, z), 0.05);
       return smax(d, x - CUT_H, 0.035);
     };
   })();
 
-  // Cúbito (coordenadas del antebrazo); tubérculo coronoideo medial (inserción del ligamento colateral)
+  // Cúbito (coordenadas del antebrazo): olécranon en gancho, coronoides, tubérculo sublime y diáfisis
   const ulna = (() => {
-    const olec = rcone(-0.33, -0.25, -0.17, 0.3, -0.3, -0.16, 0.2, 0.19);
-    const beak = sph(-0.36, -0.13, -0.17, 0.12);
+    const olec = rcone(-0.5, -0.3, -0.17, 0.35, -0.33, -0.15, 0.17, 0.19);
+    const olecB = ell(-0.22, -0.36, -0.18, 0.38, 0.13, 0.2); // cara posterior (subcutánea) ancha
+    const beak = rcone(-0.56, -0.3, -0.17, -0.5, -0.05, -0.17, 0.1, 0.07);
     const coro = rcone(0.45, -0.08, -0.17, 0.2, 0.25, -0.2, 0.13, 0.06);
-    const sublime = ell(0.36, 0.03, -0.33, 0.12, 0.08, 0.08);
-    const shaft = rcone(0.3, -0.27, -0.15, 3.95, -0.3, -0.08, 0.18, 0.105);
-    const notch = cylZ(0, 0, 0.3, -0.9, 0.5, 0);
-    const radNotch = cylX(0.25, 0.55, 0.055, 0.25, 0.235, 0);
+    const sublime = ell(0.36, 0.03, -0.34, 0.12, 0.08, 0.08);
+    const shaft = rcone(0.3, -0.29, -0.15, 3.95, -0.3, -0.08, 0.21, 0.11);
+    const radNotch = cylX(0.25, 0.55, 0.055, 0.27, 0.24, 0);
+    const notch = (x, y, z) => {
+      const w = toW(FF, x, y, z), h = toL(FH, w[0], w[1], w[2]);
+      return troch(h[0], h[1], h[2]) - 0.022;
+    };
     return (x, y, z) => {
-      let d = smin(olec(x, y, z), beak(x, y, z), 0.12);
+      let d = smin(olec(x, y, z), beak(x, y, z), 0.08);
+      d = smin(d, olecB(x, y, z), 0.1);
       d = smin(d, shaft(x, y, z), 0.2);
       d = smin(d, coro(x, y, z), 0.1);
       d = smin(d, sublime(x, y, z), 0.08);
-      d = smax(d, -notch(x, y, z), 0.035);
+      d = smax(d, -(x + 0.66), 0.06); // cara proximal del olécranon (inserción del tríceps)
+      d = smax(d, -notch(x, y, z), 0.03);
       d = smax(d, -radNotch(x, y, z), 0.03);
       return smax(d, x - CUT_F, 0.035);
     };
   })();
 
-  // Radio (queda del lado lateral, casi oculto)
+  // Radio (lado lateral, casi oculto)
   const radius = (() => {
-    const head = cylX(0.3, 0.47, 0.055, 0.25, 0.2, 0.045);
+    const head = cylX(0.29, 0.47, 0.055, 0.27, 0.21, 0.045);
     const dish = sph(CAP_F[0], CAP_F[1], CAP_F[2], 0.245);
-    const neck = rcone(0.42, 0.055, 0.25, 0.85, 0.035, 0.22, 0.1, 0.095);
+    const neck = rcone(0.42, 0.055, 0.27, 0.85, 0.035, 0.22, 0.1, 0.095);
     const tub = ell(0.88, 0.0, 0.12, 0.13, 0.09, 0.09);
     const sh1 = rcone(0.8, 0.035, 0.22, 2.2, 0.0, 0.29, 0.1, 0.12);
     const sh2 = rcone(2.2, 0.0, 0.29, 3.95, -0.02, 0.24, 0.12, 0.15);
@@ -230,22 +260,19 @@ export default function build(L) {
     return { pos, nrm, idx };
   }
 
-  // Zona lesionada: origen flexor común, cara anterior-distal de la epitróclea (lado medial)
+  // ------------------------------------------------------------------ Origen flexor común y zona lesionada
   const E = H2F(EPI_H[0], EPI_H[1], EPI_H[2]); // epitróclea en coordenadas del antebrazo
   const O = (ds, dq, dz) => Fp(E[0] + ds, E[1] + dq, E[2] + dz);
-  const LES = O(0.24, 0.03, -0.1);
-  const heatAt = (x, y, z, r = 0.24) => {
-    const d = len(x - LES[0], y - LES[1], z - LES[2]);
-    return Math.exp(-Math.pow(d / r, 2));
-  };
+  const T0 = O(-0.02, 0.04, -0.04), T1 = O(0.2, 0.08, -0.15), T2 = O(0.46, 0.1, -0.15), SPLIT = O(0.64, 0.1, -0.11);
+  const LES = O(0.1, 0.08, -0.16); // centro de la lesión (sobre la inserción)
 
+  // Malla ósea con oclusión ambiental, luz horneada, contorno y tinte cálido en la inserción
   function boneMesh(f, fr, bmin, bmax, mat) {
     const { pos, nrm, idx } = surfaceNets(f, bmin, bmax, 0.02);
     const n = pos.length / 3;
-    const P = new Float32Array(n * 3), N = new Float32Array(n * 3), Col = new Float32Array(n * 3);
-    const shadeC = [0.42, 0.46, 0.6];
-    const hot = [1.0, 0.55, 0.38];
-    const Ld = [-0.25, 0.85, -0.46]; // luz cenital horneada (la escena se gira 180°)
+    const P = new Float32Array(n * 3), N = new Float32Array(n * 3), Col = new Float32Array(n * 4), Heat = new Float32Array(n);
+    const shadeC = [0.36, 0.4, 0.55];
+    const hot = [1.0, 0.52, 0.34];
     for (let v = 0; v < n; v++) {
       const w = toW(fr, pos[v * 3], pos[v * 3 + 1], pos[v * 3 + 2]);
       const wn = toW(fr, nrm[v * 3], nrm[v * 3 + 1], nrm[v * 3 + 2]);
@@ -257,14 +284,33 @@ export default function build(L) {
         occ += (hh - sceneSDF(w[0] + wn[0] * hh, w[1] + wn[1] * hh, w[2] + wn[2] * hh)) * sca;
         sca *= 0.72;
       }
-      const ao = clamp(1 - 1.7 * occ, 0, 1);
-      const lam = 0.5 + 0.5 * (wn[0] * Ld[0] + wn[1] * Ld[1] + wn[2] * Ld[2]);
-      const lit = ao * (0.62 + 0.38 * lam);
-      const heat = heatAt(w[0], w[1], w[2], 0.27) * 0.6;
-      for (let c = 0; c < 3; c++) {
-        const base = shadeC[c] + (1 - shadeC[c]) * lit;
-        Col[v * 3 + c] = base * (1 - heat) + hot[c] * heat;
+      const ao = clamp(1 - 2.2 * occ, 0, 1);
+      const lam = 0.5 + 0.5 * (wn[0] * LD.x + wn[1] * LD.y + wn[2] * LD.z);
+      let shd = 0;
+      for (let k = 0; k < OCC.length; k++) {
+        const o = OCC[k], dx = o[0] - w[0], dy = o[1] - w[1], dz = o[2] - w[2];
+        if (Math.abs(dx) > o[3] + 0.7 || Math.abs(dy) > o[3] + 0.7) continue;
+        const dd = Math.max(len(dx, dy, dz) - o[3], 0);
+        shd = Math.max(shd, Math.exp(-Math.pow(dd / 0.17, 2)));
+        const along = dx * LD.x + dy * LD.y + dz * LD.z;
+        if (along > 0 && along < 0.8) {
+          const px = dx - LD.x * along, py = dy - LD.y * along, pz = dz - LD.z * along;
+          const perp = Math.max(len(px, py, pz) - o[3] * 0.85, 0);
+          shd = Math.max(shd, Math.exp(-Math.pow(perp / (0.035 + 0.08 * along), 2)) * (1 - along / 0.8) * 0.9);
+        }
       }
+      const lit = ao * (0.45 + 0.55 * lam) * (1 - 0.42 * shd);
+      const g = Math.exp(-Math.pow(len(w[0] - LES[0], w[1] - LES[1], w[2] - LES[2]) / 0.22, 2));
+      const heat = g * 0.45;
+      const fw = fadeW(w[0], w[1]);
+      const nv = Math.abs(wn[0] * VIEW.x + wn[1] * VIEW.y + wn[2] * VIEW.z);
+      const edge = 1 - 0.24 * Math.pow(1 - nv, 2.2);
+      for (let c = 0; c < 3; c++) {
+        const base = (shadeC[c] + (1 - shadeC[c]) * lit) * edge;
+        Col[v * 4 + c] = (base * (1 - heat) + hot[c] * heat) * dim(fw);
+      }
+      Col[v * 4 + 3] = fw;
+      Heat[v] = g * 0.3;
     }
     const det = fr.sx * fr.qy - fr.sy * fr.qx;
     const I = idx.slice();
@@ -272,37 +318,43 @@ export default function build(L) {
     const g = new THREE.BufferGeometry();
     g.setAttribute('position', new THREE.BufferAttribute(P, 3));
     g.setAttribute('normal', new THREE.BufferAttribute(N, 3));
-    g.setAttribute('color', new THREE.BufferAttribute(Col, 3));
+    g.setAttribute('color', new THREE.BufferAttribute(Col, 4));
+    g.setAttribute('heat', new THREE.BufferAttribute(Heat, 1));
     g.setIndex(I);
     return new THREE.Mesh(g, mat);
   }
 
-  // ------------------------------------------------------------------ Tubos de radio variable (con color por vértice opcional)
+  // ------------------------------------------------------------------ Tubos de radio variable (color RGBA + calor por anillo)
   class Tubes {
-    constructor(tint = null) {
+    constructor() {
       this.p = [];
       this.n = [];
       this.c = [];
+      this.h = [];
       this.i = [];
-      this.tint = tint;
     }
-    add(P, R, up, radial = 6) {
+    add(P, R, up, radial = 6, C = null, edge = 0) {
       const base = this.p.length / 3, m = P.length;
       const T = new THREE.Vector3(), Nn = new THREE.Vector3(), B = new THREE.Vector3();
       for (let a = 0; a < m; a++) {
+        const U = Array.isArray(up) ? up[a] : up;
         T.subVectors(P[Math.min(a + 1, m - 1)], P[Math.max(a - 1, 0)]).normalize();
-        Nn.copy(up).addScaledVector(T, -up.dot(T)).normalize();
+        Nn.copy(U).addScaledVector(T, -U.dot(T)).normalize();
         B.crossVectors(T, Nn);
         const [rx, ry] = R[a];
-        const col = this.tint ? this.tint(P[a]) : null;
+        const col = C ? C[a] : [1, 1, 1, 0];
         for (let r = 0; r < radial; r++) {
           const an = (r / radial) * Math.PI * 2, c = Math.cos(an), s = Math.sin(an);
-          this.p.push(P[a].x + B.x * c * rx + Nn.x * s * ry, P[a].y + B.y * c * rx + Nn.y * s * ry, P[a].z + B.z * c * rx + Nn.z * s * ry);
+          const x = P[a].x + B.x * c * rx + Nn.x * s * ry, y = P[a].y + B.y * c * rx + Nn.y * s * ry, z = P[a].z + B.z * c * rx + Nn.z * s * ry;
+          this.p.push(x, y, z);
           const ex = c / Math.max(rx, 1e-4), ey = s / Math.max(ry, 1e-4);
           const nx = B.x * ex + Nn.x * ey, ny = B.y * ex + Nn.y * ey, nz = B.z * ex + Nn.z * ey;
           const l = Math.hypot(nx, ny, nz) || 1;
           this.n.push(nx / l, ny / l, nz / l);
-          if (col) this.c.push(col[0], col[1], col[2]);
+          const fw = fadeW(x, y);
+          const ed = edge ? 1 - edge * Math.pow(Math.abs(c), 5) * (s < 0.2 ? 1 : 0.6) : 1;
+          this.c.push(col[0] * dim(fw) * ed, col[1] * dim(fw) * ed, col[2] * dim(fw) * ed, fw);
+          this.h.push(col[3] * fw);
         }
       }
       for (let a = 0; a < m - 1; a++)
@@ -315,223 +367,266 @@ export default function build(L) {
       const g = new THREE.BufferGeometry();
       g.setAttribute('position', new THREE.Float32BufferAttribute(this.p, 3));
       g.setAttribute('normal', new THREE.Float32BufferAttribute(this.n, 3));
-      if (this.tint) g.setAttribute('color', new THREE.Float32BufferAttribute(this.c, 3));
+      g.setAttribute('color', new THREE.Float32BufferAttribute(this.c, 4));
+      g.setAttribute('heat', new THREE.Float32BufferAttribute(this.h, 1));
       g.setIndex(this.i);
       return g;
     }
   }
+  const OCC = []; // [x, y, z, r]: tubos que sombrean el hueso (nervio, vientres)
+  const deepT = new Tubes(), bellyT = new Tubes(), striaT = new Tubes(), tendonT = new Tubes(), tcoreT = new Tubes(), nerveT = new Tubes();
 
-  // Tinte cálido (lesión) para tendones y vientres cerca del origen flexor
-  const warmTendon = [1.0, 0.46, 0.28];
-  const warmBelly = [1.25, 0.95, 0.75];
-  const tintWith = (warm, r, k) => (p) => {
-    const h = heatAt(p.x, p.y, p.z, r) * k;
-    return [1 + (warm[0] - 1) * h, 1 + (warm[1] - 1) * h, 1 + (warm[2] - 1) * h];
+  const col = (h) => new THREE.Color(h);
+  const PINK = col('#c95d66'), PINK_D = col('#b8505b'), PINK_L = col('#cf6870'), TWHITE = col('#e9eef8');
+  const CORE = col('#ff5a2a'), AMBER = col('#ffae6a'), WHITE = col('#ffffff');
+  // Degradado de la lesión a lo largo del tendón común (u = 0 en el hueso): núcleo → ámbar → blanco
+  const lesionCol = (u) => {
+    const h = 1 - sstep(0.3, 0.6, u);
+    const c = h > 0.5 ? AMBER.clone().lerp(CORE, (h - 0.5) * 2) : WHITE.clone().lerp(AMBER, h * 2);
+    return [c.r, c.g, c.b, h * 1.35];
   };
-  const bellyT = new Tubes(tintWith(warmBelly, 0.3, 0.6)), striaT = new Tubes(tintWith(warmBelly, 0.3, 0.6));
-  const tendonT = new Tubes(tintWith(warmTendon, 0.4, 1)), tcoreT = new Tubes(tintWith(warmTendon, 0.4, 1));
-  const lesionT = new Tubes(), nerveT = new Tubes(), nerveFT = new Tubes();
 
-  // Músculo: tendón proximal → vientre con estrías → tendón distal, a lo largo de una curva
-  function muscle({ pts, up, b0, b1, wM, tM, wA = 0.085, tA = 0.045, wB = 0.06, tB = 0.026, nF = 26, nT = 10, seed, lesion = 0, peak = 0.42, rF = 0.014, rT = 0.012, fleshy = false, tendonEnd = 1 }) {
-    reseed(seed);
-    const curve = new THREE.CatmullRomCurve3(pts.map(V3), false, 'centripetal');
-    const fr = (t) => {
-      const p = curve.getPointAt(t), T = curve.getTangentAt(t);
-      const N = up.clone().addScaledVector(T, -up.dot(T)).normalize();
-      return { p, N, B: new THREE.Vector3().crossVectors(T, N) };
-    };
-    const ex = Math.log(0.5) / Math.log(peak);
-    const shape = (t) => {
-      const u = (t - b0) / (b1 - b0);
-      return u <= 0 || u >= 1 ? 0 : Math.pow(Math.sin(Math.PI * Math.pow(u, ex)), 0.6);
-    };
-    const bw = (t) => wM * shape(t), bt = (t) => tM * shape(t);
-    const L0 = b0 + (b1 - b0) * 0.3, L1 = b1 - (b1 - b0) * 0.3;
-    const bulge = (t) => (lesion && t < lesion ? 1 + 0.6 * Math.sin((Math.PI * t) / lesion) : 1);
-    const tw = (t) => (t < L0 ? wA * bulge(t) : t > L1 ? wB : 0);
-    const tt = (t) => (t < L0 ? tA * bulge(t) : t > L1 ? tB : 0);
-    const W = (t) => Math.max(bw(t), tw(t)), Th = (t) => Math.max(bt(t), tt(t));
-    const endCap = (a, n, k = 3) => Math.sqrt(clamp(Math.min(a, n - a) / k, 0.08, 1));
-
-    {
-      const P = [], R = [], n = 64, s0 = Math.max(b0, 0), s1 = Math.min(b1, tendonEnd);
-      for (let a = 0; a <= n; a++) {
-        const t = s0 + ((s1 - s0) * a) / n, f = fr(t), e = fleshy ? endCap(a, n * 2, 3) : 1;
-        P.push(f.p);
-        R.push([Math.max(bw(t) * e, 0.004), Math.max(bt(t) * e, 0.004)]);
-      }
-      bellyT.add(P, R, up, 26);
-    }
-    const solid = (ta, tb, tubes, n) => {
-      const P = [], R = [];
-      for (let a = 0; a <= n; a++) {
-        const t = ta + ((tb - ta) * a) / n, f = fr(t), e = endCap(a, n, 2);
-        P.push(f.p);
-        R.push([Math.max((t < L0 ? wA * bulge(t) : wB) * e * 0.92, 0.003), Math.max((t < L0 ? tA * bulge(t) : tB) * e * 0.92, 0.003)]);
-      }
-      tubes.add(P, R, up, 18);
-    };
-    if (lesion) {
-      solid(0, lesion * 1.05, lesionT, 24);
-      solid(lesion * 0.9, L0, tcoreT, 36);
-    } else if (!fleshy) solid(0, L0, tcoreT, 40);
-    if (tendonEnd > L1) solid(L1, tendonEnd, tcoreT, 40);
-
-    for (let j = 0; j < nF; j++) {
-      const phi = -0.3 * Math.PI + (1.6 * Math.PI * (j + 0.2 + rnd() * 0.6)) / nF;
-      const ua = Math.max(b0 + (b1 - b0) * (0.02 + rnd() * 0.08), 0.01), ub = Math.min(b1 - (b1 - b0) * (0.02 + rnd() * 0.08), tendonEnd);
-      const P = [], R = [], n = 46, wob = rnd() * 6;
-      for (let a = 0; a <= n; a++) {
-        const t = ua + ((ub - ua) * a) / n, f = fr(t), ph = phi + 0.06 * Math.sin(t * 9 + wob);
-        P.push(f.p.clone().addScaledVector(f.B, Math.cos(ph) * bw(t) * 0.99).addScaledVector(f.N, Math.sin(ph) * bt(t) * 0.99));
-        const r = rF * endCap(a, n, 6);
-        R.push([r, r]);
-      }
-      striaT.add(P, R, up, 5);
-    }
-    const tfib = (ta, tb, fromTendon, mat, frayK, nn = nT, emb = 0.93) => {
-      for (let j = 0; j < nn; j++) {
-        const phi = (2 * Math.PI * (j + rnd() * 0.5)) / nn;
-        const sp = rnd();
-        const P = [], R = [], n = 40, wob = rnd() * 6;
-        const a0 = fromTendon ? ta : ta + (tb - ta) * sp * 0.35, a1 = fromTendon ? tb - (tb - ta) * sp * 0.35 : tb;
-        for (let a = 0; a <= n; a++) {
-          const t = a0 + ((a1 - a0) * a) / n, f = fr(t), ph = phi + 0.05 * Math.sin(t * 11 + wob);
-          const p = f.p.clone().addScaledVector(f.B, Math.cos(ph) * W(t) * emb).addScaledVector(f.N, Math.sin(ph) * Th(t) * emb);
-          if (frayK) {
-            const k = frayK * Math.max(0, 1 - t / (lesion * 1.1));
-            p.addScaledVector(f.B, Math.sin(j * 1.7 + t * 50 + wob) * k).addScaledVector(f.N, Math.cos(j * 2.3 + t * 41 + wob) * k * 0.8);
-          }
-          P.push(p);
-          const r = rT * endCap(a, n, 4);
-          R.push([r, r]);
-        }
-        mat.add(P, R, up, 5);
-      }
-    };
-    if (lesion) {
-      tfib(0, lesion, true, lesionT, 0.03);
-      tfib(lesion * 0.85, L0 + (b1 - b0) * 0.05, true, tendonT, 0);
-    } else if (!fleshy) tfib(0, L0 + (b1 - b0) * 0.05, true, tendonT, 0);
-    if (tendonEnd > L1) tfib(L1 - (b1 - b0) * 0.05, tendonEnd, false, tendonT, 0, 6, 0.86);
-  }
-
-  // ------------------------------------------------------------------ Materiales
-  const boneMat = new THREE.MeshPhysicalMaterial({ color: '#eadcc5', roughness: 0.45, clearcoat: 0.5, clearcoatRoughness: 0.3, sheen: 0.35, sheenColor: new THREE.Color('#fff4e2'), vertexColors: true });
-  const tendonMat = M.tendon();
-  tendonMat.vertexColors = true;
-  const tendonCoreMat = new THREE.MeshPhysicalMaterial({ color: '#c9d7ee', roughness: 0.3, clearcoat: 1, clearcoatRoughness: 0.15, sheen: 0.8, sheenColor: new THREE.Color('#a9c7ff'), sheenRoughness: 0.4, vertexColors: true });
-  const bellyMat = new THREE.MeshPhysicalMaterial({ color: '#c95d66', roughness: 0.42, clearcoat: 0.75, clearcoatRoughness: 0.22, sheen: 0.25, sheenColor: new THREE.Color('#ffb0b0'), vertexColors: true });
-  const lesionMat = M.lesion();
-  const nerveMat = M.nerve();
-  nerveMat.color.set('#f9b53a');
-  nerveMat.emissive.set('#ff9a1f');
-  nerveMat.emissiveIntensity = 0.2;
-
-  // Desvanecido suave de los extremos (brazo y antebrazo) en lugar de cortes duros.
-  // Se calcula en coordenadas del objeto con la proyección sobre el eje de cada segmento.
-  const FADE_GLSL = `float sH_ = dot(vOP.xy, uFH.xy); float sF_ = dot(vOP.xy, uFF.xy);
-    float fade_ = (1.0 - smoothstep(uFH.z, uFH.w, sH_)) * (1.0 - smoothstep(uFF.z, uFF.w, sF_)); fade_ *= fade_;`;
-  const fadeUniforms = () => ({ uFH: { value: new THREE.Vector4(FH.sx, FH.sy, FADE_H[0], FADE_H[1]) }, uFF: { value: new THREE.Vector4(FF.sx, FF.sy, FADE_F[0], FADE_F[1]) } });
-  const fadeEnds = (mat) => {
-    mat.transparent = true;
-    mat.onBeforeCompile = (sh) => {
-      Object.assign(sh.uniforms, fadeUniforms());
-      sh.vertexShader = 'varying vec3 vOP;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n vOP = position;');
-      sh.fragmentShader =
-        'uniform vec4 uFH; uniform vec4 uFF; varying vec3 vOP;\n' +
-        sh.fragmentShader.replace('#include <dithering_fragment>', `#include <dithering_fragment>\n ${FADE_GLSL}\n gl_FragColor.a *= fade_;`);
-    };
-    return mat;
-  };
-  [boneMat, tendonMat, tendonCoreMat, bellyMat, lesionMat, nerveMat].forEach(fadeEnds);
-
-  // ------------------------------------------------------------------ Escena
-  const root = new THREE.Group();
-  const bones = new THREE.Group();
-  bones.add(boneMesh(humerus, FH, [-0.42, -0.5, -1.02], [CUT_H + 0.08, 0.45, 0.66], boneMat));
-  bones.add(boneMesh(ulna, FF, [-0.72, -0.62, -0.48], [CUT_F + 0.08, 0.46, 0.16], boneMat));
-  bones.add(boneMesh(radius, FF, [0.18, -0.26, -0.06], [CUT_F + 0.08, 0.34, 0.53], boneMat));
-  root.add(bones);
-
-  // Flexores-pronadores (lado medial = −Z)
+  // ------------------------------------------------------------------ Tendón común flexor-pronador (corto, grueso, nacarado)
   const Z = new THREE.Vector3(0, 0, 1);
   const MZ = new THREE.Vector3(0, 0, -1);
   const Q = V3(toW(FF, 0, 1, 0));
-  const upMed = MZ.clone();
-  const upAntMed = MZ.clone().addScaledVector(Q, 0.7).normalize();
-  const upAnt = MZ.clone().addScaledVector(Q, 1.6).normalize();
-  const upPostMed = MZ.clone().addScaledVector(Q, -0.45).normalize();
-  const endS = CUT_F - 0.03;
-
-  // Pronador redondo: el más proximal y anterior, cruza en diagonal hacia el radio
-  muscle({ pts: [O(-0.2, 0.16, 0.02), O(0.1, 0.22, -0.06), O(0.55, 0.32, 0.04), O(1.05, 0.4, 0.22), Fp(1.55, 0.5, -0.15), Fp(2.0, 0.42, 0.12)], up: upAnt, b0: 0.12, b1: 0.86, wM: 0.15, tM: 0.12, seed: 401, peak: 0.42, wA: 0.07, tA: 0.04, tendonEnd: 0.97 });
-  // Palmar mayor (flexor radial del carpo)
-  muscle({ pts: [O(-0.02, 0.07, -0.06), O(0.3, 0.14, -0.1), O(0.8, 0.22, 0.0), Fp(1.4, 0.4, -0.52), Fp(2.1, 0.42, -0.42), Fp(endS, 0.4, -0.32)], up: upAntMed, b0: 0.17, b1: 0.78, wM: 0.14, tM: 0.1, seed: 402, lesion: 0.14 });
-  // Palmar menor
-  muscle({ pts: [O(0.0, 0.0, -0.1), O(0.32, 0.05, -0.12), O(0.85, 0.08, -0.05), Fp(1.45, 0.24, -0.66), Fp(2.2, 0.27, -0.6), Fp(endS, 0.28, -0.55)], up: upMed, b0: 0.18, b1: 0.68, wM: 0.09, tM: 0.07, seed: 403, rF: 0.012, nF: 18, lesion: 0.13 });
-  // Flexor superficial de los dedos (más ancho, por debajo)
-  muscle({ pts: [O(0.0, -0.06, -0.02), O(0.35, -0.06, -0.04), O(0.9, -0.05, 0.04), Fp(1.5, 0.08, -0.62), Fp(2.2, 0.1, -0.58), Fp(endS, 0.12, -0.54)], up: upMed, b0: 0.2, b1: 0.84, wM: 0.17, tM: 0.11, seed: 404, lesion: 0.12 });
-  // Cubital anterior (flexor cubital del carpo): el más posterior, sobre el cúbito
-  muscle({ pts: [O(-0.06, -0.14, -0.02), O(0.3, -0.2, 0.0), O(0.85, -0.28, 0.12), Fp(1.5, -0.16, -0.55), Fp(2.2, -0.15, -0.5), Fp(endS, -0.13, -0.46)], up: upPostMed, b0: 0.16, b1: 0.86, wM: 0.15, tM: 0.11, seed: 405, nF: 24 });
-
-  if (DBG !== 'bones') {
-    root.add(new THREE.Mesh(bellyT.geo(), bellyMat));
-    root.add(new THREE.Mesh(striaT.geo(), bellyMat));
-    root.add(new THREE.Mesh(tcoreT.geo(), tendonCoreMat));
-    root.add(new THREE.Mesh(tendonT.geo(), tendonMat));
-    root.add(new THREE.Mesh(lesionT.geo(), lesionMat));
+  const tilt = (k) => MZ.clone().addScaledVector(Q, k).normalize(); // normal hacia medial, inclinada hacia anterior
+  {
+    const curve = new THREE.CatmullRomCurve3([T0, T1, T2, SPLIT].map(V3), false, 'centripetal');
+    const up = tilt(0.35);
+    const wA = 0.14, tA = 0.08;
+    const bul = (u) => 1 + 0.18 * Math.sin(Math.PI * clamp(u / 0.5, 0, 1)); // engrosamiento (tendinosis)
+    const fr = (u) => {
+      const p = curve.getPointAt(u), T = curve.getTangentAt(u);
+      const N = up.clone().addScaledVector(T, -up.dot(T)).normalize();
+      return { p, N, B: new THREE.Vector3().crossVectors(T, N) };
+    };
+    // Núcleo macizo
+    {
+      const P = [], R = [], C = [], n = 40;
+      for (let a = 0; a <= n; a++) {
+        const u = a / n, f = fr(u), widen = 1 + 0.25 * (1 - sstep(0, 0.2, u)) + 0.12 * sstep(0.7, 1, u);
+        P.push(f.p);
+        R.push([wA * bul(u) * widen * 0.93, tA * bul(u) * 0.93]);
+        C.push(lesionCol(u));
+      }
+      tcoreT.add(P, R, up, 26, C);
+    }
+    // Fibras en la superficie (deshilachadas en la zona lesionada)
+    reseed(511);
+    const nn = 16;
+    for (let j = 0; j < nn; j++) {
+      const phi = (2 * Math.PI * (j + rnd() * 0.5)) / nn, wob = rnd() * 6, sp = rnd();
+      const P = [], R = [], C = [], n = 36, u1 = 1.0 - sp * 0.06;
+      for (let a = 0; a <= n; a++) {
+        const u = (u1 * a) / n, f = fr(u), ph = phi + 0.05 * Math.sin(u * 11 + wob);
+        const widen = 1 + 0.25 * (1 - sstep(0, 0.2, u)) + 0.12 * sstep(0.7, 1, u);
+        const p = f.p.clone().addScaledVector(f.B, Math.cos(ph) * wA * bul(u) * widen * 0.97).addScaledVector(f.N, Math.sin(ph) * tA * bul(u) * 0.97);
+        const k = 0.022 * Math.max(0, 1 - u / 0.45);
+        p.addScaledVector(f.B, Math.sin(j * 1.7 + u * 38 + wob) * k).addScaledVector(f.N, Math.cos(j * 2.3 + u * 31 + wob) * k * 0.8);
+        P.push(p);
+        const r = 0.015 * Math.sqrt(clamp(Math.min(a, n - a) / 4, 0.08, 1));
+        R.push([r, r]);
+        C.push(lesionCol(u));
+      }
+      tendonT.add(P, R, up, 5, C);
+    }
   }
 
-  // ------------------------------------------------------------------ Nervio cubital
-  {
-    const pts = [Hp(CUT_H - 0.04, -0.27, -0.2), Hp(1.4, -0.3, -0.32), Hp(0.9, -0.35, -0.5), Hp(0.48, -0.37, -0.6), Hp(0.1, -0.36, -0.63), Fp(0.15, -0.16, -0.56), Fp(0.8, -0.05, -0.5), Fp(1.6, 0.0, -0.46), Fp(2.4, 0.02, -0.46), Fp(endS, 0.03, -0.46)].map(V3);
-    const curve = new THREE.CatmullRomCurve3(pts, false, 'centripetal');
-    const n = 160, R0 = 0.066;
-    const P = [], R = [];
-    for (let a = 0; a <= n; a++) {
-      const t = a / n, e = Math.sqrt(clamp(Math.min(a, n - a) / 2, 0.1, 1));
-      P.push(curve.getPointAt(t));
-      R.push([R0 * e, R0 * e]);
+  // ------------------------------------------------------------------ Vientres flexores en abanico desde el tendón común
+  // pts: curva (empieza dentro del extremo del tendón). w0/t0: semiancho/semiespesor al salir del tendón.
+  // wM/tM: máximos. endW: fracción del ancho que conserva al final (dentro del desvanecido). insert: termina en tendón plano.
+  function belly({ pts, up, wM, tM, peak = 0.28, w0 = 0.06, t0 = 0.04, endW = 0.55, rise = 1.0, seed, nF = 26, tint = PINK, mtj = 0.1, insert = false, cap = 3 }) {
+    reseed(seed);
+    const curve = new THREE.CatmullRomCurve3(pts.map(V3), false, 'centripetal');
+    const upAt = typeof up === 'function' ? up : () => up;
+    const fr = (t) => {
+      const p = curve.getPointAt(t), T = curve.getTangentAt(t), U = upAt(t);
+      const N = U.clone().addScaledVector(T, -U.dot(T)).normalize();
+      return { p, N, B: new THREE.Vector3().crossVectors(T, N), U };
+    };
+    const S = (t) => (t < peak ? Math.pow(Math.sin((0.5 * Math.PI * t) / peak), rise) : endW + (1 - endW) * Math.pow(Math.cos((0.5 * Math.PI * (t - peak)) / (1 - peak)), 1.3));
+    const ins = (t) => (insert ? sstep(0.7, 0.95, t) : 0);
+    const bw = (t) => Math.max(w0 + (wM - w0) * S(t) * (1 - ins(t)), insert ? 0.06 : 0) ;
+    const bt = (t) => Math.max(t0 + (tM - t0) * S(t) * (1 - ins(t)), insert ? 0.025 : 0);
+    const bellyCol = (t) => {
+      const m = Math.max(1 - sstep(0.0, mtj, t), insert ? sstep(0.8, 0.95, t) : 0);
+      const c = tint.clone().lerp(TWHITE, m);
+      return [c.r, c.g, c.b, 0];
+    };
+    {
+      const P = [], R = [], Up = [], C = [], n = 90;
+      for (let a = 0; a <= n; a++) {
+        const t = a / n, f = fr(t), e = Math.sqrt(clamp((n - a) / cap, 0.05, 1));
+        P.push(f.p);
+        Up.push(f.U);
+        R.push([Math.max(bw(t) * e, 0.004), Math.max(bt(t) * e, 0.004)]);
+        C.push(bellyCol(t));
+        if (a % 4 === 0) OCC.push([f.p.x, f.p.y, f.p.z, (bw(t) + bt(t)) * 0.5 * e]);
+      }
+      bellyT.add(P, R, Up, 30, C, 0.42);
     }
-    nerveT.add(P, R, Z, 20);
-    // Fascículos en espiral sobre la superficie
-    reseed(77);
-    for (let j = 0; j < 9; j++) {
-      const ph0 = (j / 9) * Math.PI * 2, F = [], FR = [];
+    // Estrías del vientre
+    for (let j = 0; j < nF; j++) {
+      const phi = -0.3 * Math.PI + (1.6 * Math.PI * (j + 0.2 + rnd() * 0.6)) / nF;
+      const ua = 0.04 + rnd() * 0.06, ub = (insert ? 0.7 : 0.93) - rnd() * 0.08;
+      const P = [], R = [], Up = [], C = [], n = 60, wob = rnd() * 6;
+      for (let a = 0; a <= n; a++) {
+        const t = ua + ((ub - ua) * a) / n, f = fr(t), ph = phi + 0.06 * Math.sin(t * 9 + wob);
+        P.push(f.p.clone().addScaledVector(f.B, Math.cos(ph) * bw(t) * 0.982).addScaledVector(f.N, Math.sin(ph) * bt(t) * 0.982));
+        Up.push(f.U);
+        const r = 0.0095 * Math.min(1, 0.15 + Math.min(a, n - a) / 8);
+        R.push([r, r]);
+        const bc = bellyCol(t), ek = 1 - 0.38 * Math.pow(Math.abs(Math.cos(ph)), 5);
+        C.push([bc[0] * ek, bc[1] * ek, bc[2] * ek, 0]);
+      }
+      striaT.add(P, R, Up, 5, C);
+    }
+    // Fibras tendinosas que continúan el tendón común sobre el inicio del vientre
+    for (let j = 0; j < 3; j++) {
+      const phi = -0.25 * Math.PI + (1.5 * Math.PI * (j + rnd() * 0.6)) / 3;
+      const ub = 0.06 + rnd() * 0.05;
+      const P = [], R = [], Up = [], C = [], n = 30, wob = rnd() * 6;
+      for (let a = 0; a <= n; a++) {
+        const t = (ub * a) / n, f = fr(t), ph = phi + 0.05 * Math.sin(t * 11 + wob);
+        P.push(f.p.clone().addScaledVector(f.B, Math.cos(ph) * bw(t) * 0.99).addScaledVector(f.N, Math.sin(ph) * bt(t) * 0.99));
+        Up.push(f.U);
+        const r = 0.011 * Math.sqrt(clamp((n - a) / 6, 0.05, 1));
+        R.push([r, r]);
+        C.push([1, 1, 1, 0]);
+      }
+      tendonT.add(P, R, Up, 5, C);
+    }
+  }
+
+  // Plano profundo (flexor profundo de los dedos): rellena el abanico, sin huecos entre vientres
+  {
+    const P = [], R = [], C = [], n = 50;
+    for (let a = 0; a <= n; a++) {
+      const u = a / n, s = 0.45 + 2.0 * u;
+      P.push(V3(Fp(s, 0.12 + 0.06 * Math.sin(Math.PI * u), -0.46 + 0.06 * u)));
+      const k = Math.sqrt(clamp(Math.min(a / 1.5, (n - a) * 2) / 5, 0.1, 1));
+      R.push([(0.36 - 0.04 * u) * k, (0.22 - 0.04 * u) * k]);
+      C.push([1, 1, 1, 0]);
+    }
+    deepT.add(P, R, tilt(0.2), 28, C);
+  }
+
+  const SF = toL(FF, SPLIT[0], SPLIT[1], SPLIT[2]); // fin del tendón común en coordenadas del antebrazo
+  const Sf = (ds, dq, dz) => Fp(SF[0] + ds, SF[1] + dq, SF[2] + dz);
+  const fan = { peak: 0.55, w0: 0.085, t0: 0.06, rise: 1.3 };
+  // Flexor superficial de los dedos (ancho, algo más profundo)
+  belly({ ...fan, pts: [Sf(-0.16, -0.02, 0.04), Sf(0.3, -0.06, 0.12), Fp(1.25, 0.1, -0.66), Fp(1.85, 0.08, -0.58), Fp(CUT_F, 0.08, -0.52)], up: tilt(0.05), wM: 0.24, tM: 0.13, endW: 0.75, seed: 404, tint: PINK_D });
+  // Cubital anterior (cabeza humeral): el más posterior, desciende hacia el borde del cúbito
+  belly({ ...fan, pts: [Sf(-0.18, -0.1, 0.03), Fp(0.55, 0.06, -0.88), Fp(1.15, -0.1, -0.77), Fp(1.75, -0.2, -0.65), Fp(CUT_F, -0.23, -0.56)], up: tilt(-0.1), wM: 0.2, tM: 0.13, endW: 0.75, seed: 405 });
+  // Palmar menor (delgado y superficial)
+  belly({ ...fan, pts: [Sf(-0.16, 0.0, -0.01), Sf(0.3, 0.06, -0.02), Fp(1.25, 0.32, -0.86), Fp(1.85, 0.33, -0.76), Fp(CUT_F, 0.33, -0.67)], up: tilt(0.2), wM: 0.12, tM: 0.07, w0: 0.06, endW: 0.6, seed: 403, nF: 16, tint: PINK_L });
+  // Palmar mayor (flexor radial del carpo)
+  belly({ ...fan, pts: [Sf(-0.16, 0.03, 0.02), Sf(0.3, 0.12, 0.02), Fp(1.25, 0.5, -0.76), Fp(1.85, 0.5, -0.66), Fp(CUT_F, 0.48, -0.58)], up: tilt(0.5), wM: 0.19, tM: 0.12, endW: 0.6, seed: 402 });
+  // Pronador redondo: cabeza humeral carnosa desde la cresta supracondílea medial; cruza en diagonal por delante hacia el radio
+  belly({ ...fan, peak: 0.4, w0: 0.1, t0: 0.05, mtj: 0.03, pts: [Hp(0.82, 0.02, -0.46), Hp(0.5, 0.2, -0.72), Fp(0.35, 0.5, -0.78), Fp(1.0, 0.62, -0.68), Fp(1.5, 0.7, -0.42), Fp(1.9, 0.62, -0.06), Fp(2.15, 0.45, 0.2)], up: (t) => tilt(0.5 + 1.6 * t), wM: 0.19, tM: 0.1, endW: 0.5, seed: 401, tint: PINK, insert: true });
+
+  // ------------------------------------------------------------------ Nervio cubital: cordón redondo con fascículos helicoidales
+  const NERVE = [Hp(CUT_H - 0.02, -0.42, -0.36), Hp(1.4, -0.45, -0.46), Hp(0.9, -0.45, -0.58), Hp(0.45, -0.42, -0.66), Hp(0.12, -0.4, -0.66), Fp(0.15, -0.28, -0.55), Fp(0.55, -0.2, -0.47), Fp(1.1, -0.15, -0.44), Fp(1.6, -0.12, -0.44)];
+  {
+    const curve = new THREE.CatmullRomCurve3(NERVE.map(V3), false, 'centripetal');
+    const n = 180, R0 = 0.075;
+    const P = [], R = [], C = [];
+    const NC = col('#f9b53a');
+    for (let a = 0; a <= n; a++) {
+      const e = Math.sqrt(clamp(Math.min(a, n - a) / 2, 0.1, 1));
+      P.push(curve.getPointAt(a / n));
+      R.push([R0 * e, R0 * e]);
+      if (a % 3 === 0) OCC.push([P[a].x, P[a].y, P[a].z, R0]);
+      C.push([NC.r, NC.g, NC.b, 0]);
+    }
+    nerveT.add(P, R, Z, 28, C);
+    const FC = col('#fcc251');
+    for (let j = 0; j < 5; j++) {
+      const ph0 = (j / 5) * Math.PI * 2, F = [], FR = [], FCs = [];
       for (let a = 0; a <= n; a++) {
         const t = a / n, p = curve.getPointAt(t), T = curve.getTangentAt(t);
         const N = Z.clone().addScaledVector(T, -Z.dot(T)).normalize();
         const B = new THREE.Vector3().crossVectors(T, N);
-        const ph = ph0 + t * 9;
+        const ph = ph0 + t * 11;
         const e = Math.sqrt(clamp(Math.min(a, n - a) / 3, 0.1, 1));
-        F.push(p.clone().addScaledVector(N, Math.cos(ph) * R0 * 0.82 * e).addScaledVector(B, Math.sin(ph) * R0 * 0.82 * e));
-        FR.push([0.018 * e, 0.018 * e]);
+        F.push(p.clone().addScaledVector(N, Math.cos(ph) * R0 * 0.7 * e).addScaledVector(B, Math.sin(ph) * R0 * 0.7 * e));
+        FR.push([0.024 * e, 0.024 * e]);
+        FCs.push([FC.r, FC.g, FC.b, 0]);
       }
-      nerveFT.add(F, FR, Z, 6);
-    }
-    if (DBG !== 'nonerve') {
-      root.add(new THREE.Mesh(nerveT.geo(), nerveMat));
-      root.add(new THREE.Mesh(nerveFT.geo(), nerveMat));
+      nerveT.add(F, FR, Z, 8, FCs);
     }
   }
 
-  // Brillo cálido de la lesión (del lado medial, hacia la cámara)
-  const h1 = halo('#ff9a6b', 1.3, 0.68);
-  h1.position.set(LES[0], LES[1], LES[2] - 0.3);
-  const h2 = halo('#ff9466', 0.55, 0.85);
-  h2.position.set(LES[0], LES[1], LES[2] - 0.2);
-  root.add(h1, h2);
+  // ------------------------------------------------------------------ Materiales
+  const HOT = new THREE.Color('#ff4a1a');
+  const patch = (mat, hotK = 1) => {
+    mat.vertexColors = true;
+    mat.transparent = true;
+    mat.onBeforeCompile = (sh) => {
+      sh.uniforms.uHot = { value: HOT.clone().multiplyScalar(hotK) };
+      sh.vertexShader = 'attribute float heat;\nvarying float vHeat;\n' + sh.vertexShader.replace('#include <begin_vertex>', '#include <begin_vertex>\n vHeat = heat;');
+      sh.fragmentShader =
+        'uniform vec3 uHot;\nvarying float vHeat;\n' +
+        sh.fragmentShader
+          .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\n totalEmissiveRadiance += uHot * vHeat;')
+          .replace(
+            '#include <lights_physical_fragment>',
+            `#include <lights_physical_fragment>
+            #ifdef USE_SHEEN
+              material.sheenColor *= (1.0 - min(vHeat, 1.0)) * vColor.a;
+            #endif
+            #ifdef USE_CLEARCOAT
+              material.clearcoat *= mix(0.25, 1.0, vColor.a);
+            #endif`
+          );
+    };
+    return mat;
+  };
+  const boneMat = patch(new THREE.MeshPhysicalMaterial({ color: '#eadcc5', roughness: 0.45, clearcoat: 0.35, clearcoatRoughness: 0.3, sheen: 0.3, sheenColor: new THREE.Color('#fff4e2') }), 0.6);
+  const tendonMat = patch(L.M.tendon(), 0.9);
+  const tendonCoreMat = patch(new THREE.MeshPhysicalMaterial({ color: '#d2def2', roughness: 0.3, clearcoat: 1, clearcoatRoughness: 0.15, sheen: 0.8, sheenColor: new THREE.Color('#a9c7ff'), sheenRoughness: 0.4 }), 0.9);
+  const bellyMat = patch(new THREE.MeshPhysicalMaterial({ color: '#ffffff', roughness: 0.42, clearcoat: 0.75, clearcoatRoughness: 0.22, sheen: 0.25, sheenColor: new THREE.Color('#ffc0c0') }), 0.9);
+  const deepMat = patch(new THREE.MeshPhysicalMaterial({ color: '#a44955', roughness: 0.45, clearcoat: 0.5, clearcoatRoughness: 0.3 }));
+  const nerveMat = patch(new THREE.MeshPhysicalMaterial({ color: '#ffffff', roughness: 0.32, clearcoat: 1, clearcoatRoughness: 0.18, emissive: new THREE.Color('#ff9a1f'), emissiveIntensity: 0.1 }));
 
-  // Girar 180° para que la cara medial mire a la cámara (antebrazo hacia la izquierda)
-  root.rotation.y = Math.PI;
-  const wrap = new THREE.Group();
-  wrap.add(root);
-  if (QS.get('rx')) wrap.rotation.x = Number(QS.get('rx'));
-  if (QS.get('ry')) wrap.rotation.y = Number(QS.get('ry'));
-  wrap.rotation.z = QS.get('rz') ? Number(QS.get('rz')) : 0;
+  // ------------------------------------------------------------------ Escena
+  root.add(boneMesh(humerus, FH, [-0.42, -0.62, -1.12], [CUT_H + 0.06, 0.45, 0.68], boneMat));
+  root.add(boneMesh(ulna, FF, [-0.74, -0.62, -0.48], [CUT_F + 0.06, 0.46, 0.16], boneMat));
+  root.add(boneMesh(radius, FF, [0.18, -0.26, -0.06], [CUT_F + 0.06, 0.36, 0.53], boneMat));
+  if (!DBG.includes('nomus')) {
+    root.add(new THREE.Mesh(deepT.geo(), deepMat));
+    root.add(new THREE.Mesh(bellyT.geo(), bellyMat));
+    root.add(new THREE.Mesh(striaT.geo(), bellyMat));
+    root.add(new THREE.Mesh(tcoreT.geo(), tendonCoreMat));
+    root.add(new THREE.Mesh(tendonT.geo(), tendonMat));
+  }
+  if (!DBG.includes('nonerve')) root.add(new THREE.Mesh(nerveT.geo(), nerveMat));
 
-  const arr = (k, d) => (QS.get(k) ? QS.get(k).split(',').map(Number) : d);
-  return { root: wrap, cam: arr('cam', [4.2, 1.8, 6.0]), look: arr('look', [-0.7, 0.4, -0.2]), zoom: QS.get('zoom') ? Number(QS.get('zoom')) : 1.2 };
+  // Brillo cálido de la lesión, pequeño y centrado en la inserción
+  const glow = (color, size, opacity) => {
+    const c = document.createElement('canvas');
+    c.width = c.height = 128;
+    const x = c.getContext('2d');
+    const gr = x.createRadialGradient(64, 64, 0, 64, 64, 64);
+    gr.addColorStop(0, 'rgba(255,255,255,0.75)');
+    gr.addColorStop(0.35, 'rgba(255,255,255,0.42)');
+    gr.addColorStop(0.7, 'rgba(255,255,255,0.12)');
+    gr.addColorStop(1, 'rgba(255,255,255,0)');
+    x.fillStyle = gr;
+    x.fillRect(0, 0, 128, 128);
+    const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: new THREE.CanvasTexture(c), color, transparent: true, opacity, depthWrite: false, depthTest: false }));
+    s.scale.setScalar(size);
+    s.renderOrder = 10;
+    return s;
+  };
+  if (!DBG.includes('noglow')) {
+    const h1 = glow('#ff9a6b', 0.6, 0.5);
+    h1.position.copy(V3(LES)).addScaledVector(VIEW, 0.15);
+    const h2 = glow('#ff6a35', 0.4, 0.45);
+    h2.position.copy(V3(T0).lerp(V3(T1), 0.5)).addScaledVector(VIEW, 0.2);
+    root.add(h1, h2);
+  }
+
+  return { root: wrap, cam: CAM, look: LOOK, zoom: ZOOM, shadow: false };
 }
