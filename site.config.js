@@ -21,9 +21,9 @@ export default {
   professional: {
     name: '[NOMBRE PROFESIONAL]',
     // Ej: 'Lic. en Kinesiología y Fisiatría'
-    title: '[TÍTULO]',
+    title: 'Kinesiólogo',
     // 'kinesiólogo' o 'kinesióloga' (textos de revisión de contenido y presentación)
-    role: '[KINESIÓLOGO / KINESIÓLOGA]',
+    role: 'kinesiólogo',
     license: '[MATRÍCULA]',
     // Formación de grado y posgrado. Un ítem por línea.
     education: ['[FORMACIÓN]'],
@@ -50,9 +50,9 @@ export default {
 
   contact: {
     // Como se muestra en la web (igual que en Google Business Profile).
-    phoneDisplay: '[TELÉFONO / WHATSAPP]',
+    phoneDisplay: '+54 9 261 213-0504',
     // Solo dígitos, formato internacional para wa.me. Ej Argentina: 5493511234567
-    whatsapp: '',
+    whatsapp: '5492612130504',
     email: '',
     instagram: '[INSTAGRAM]', // URL completa: https://www.instagram.com/usuario/
   },
