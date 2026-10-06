@@ -18,7 +18,7 @@ export const HOME_FAQS = [
   },
   {
     q: '¿Qué diferencia existe entre EPI y punción seca?',
-    a: 'La EPI aplica corriente galvánica sobre el tejido lesionado —con frecuencia el tendón— para estimular su reparación. La punción seca no utiliza corriente y se dirige sobre todo a puntos gatillo musculares. Tienen objetivos distintos y pueden combinarse.',
+    a: 'La EPI aplica corriente galvánica sobre el tejido lesionado, con frecuencia el tendón, para estimular su reparación. La punción seca no utiliza corriente y se dirige sobre todo a puntos gatillo musculares. Tienen objetivos distintos y pueden combinarse.',
   },
   {
     q: '¿Puedo entrenar después del tratamiento?',

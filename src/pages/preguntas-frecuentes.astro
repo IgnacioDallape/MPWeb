@@ -4,7 +4,6 @@ import PageHero from '../components/PageHero.astro';
 import Icon from '../components/Icon.astro';
 import Toc from '../components/Toc.astro';
 import Faq from '../components/Faq.astro';
-import Reviewed from '../components/Reviewed.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { config } from '../lib/site.js';
 import { pillar, treatments } from '../data/index.js';
@@ -31,7 +30,7 @@ const schema = [
 ---
 <Base
   title="Preguntas frecuentes: fisioterapia invasiva, EPI y punción seca"
-  description="¿Duele la fisioterapia invasiva? ¿Cuántas sesiones de EPI se necesitan? ¿Puedo entrenar después? Respuestas claras de un kinesiólogo especializado."
+  description="¿Duele la fisioterapia invasiva? ¿Cuántas sesiones de EPI se necesitan? ¿Puedo entrenar después? Respuestas claras de MP Studio, Mendoza."
   schema={schema}
 >
   <PageHero
@@ -52,7 +51,6 @@ const schema = [
           <a href={g.link[0]} class="mt-5 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-navy-950">{g.link[1]}<Icon name="arrow" size={16} /></a>
         </section>
       ))}
-      <Reviewed updated={config.launchDate} />
     </div>
   </div>
   <CtaBand title="¿Tu pregunta no está acá?" text="Escribinos por WhatsApp y te respondemos. Si es necesario, coordinamos una evaluación." />

@@ -51,10 +51,10 @@ const schema = [
         <Fragment set:html={picture('profesional', `${config.business.name}: evaluación ecográfica`, { sizes: '(min-width: 1024px) 360px, 100vw' }) || '<span>[PENDIENTE: foto profesional con el ecógrafo]</span>'} />
       </div>
       <div>
-        <SectionHead id="forma" eyebrow="Mi forma de trabajar" title='Tecnología al servicio de <span class="text-gradient-navy">una buena evaluación</span>' />
+        <SectionHead id="forma" eyebrow="Nuestra forma de trabajar" title='Tecnología al servicio de <span class="text-gradient-navy">una buena evaluación</span>' />
         <div class="-mt-4 space-y-5 text-[1.08rem] text-zinc-600" data-reveal>
-          <p>Me especializo en el tratamiento de lesiones musculoesqueléticas combinando <strong class="text-navy-950">kinesiología, ecografía musculoesquelética, fisioterapia invasiva y ejercicio terapéutico</strong>. La ecografía me permite ver la estructura que genera el problema y, cuando está indicado, intervenir sobre ella con precisión.</p>
-          <p>Pero ningún tratamiento invasivo funciona solo. Cada plan empieza con una evaluación completa y continúa con un plan de readaptación para que vuelvas a tu actividad con un tejido capaz de tolerar la carga. Si un tratamiento invasivo no es la mejor opción para tu caso, te lo voy a decir.</p>
+          <p>Nos especializamos en el tratamiento de lesiones musculoesqueléticas combinando <strong class="text-navy-950">kinesiología, ecografía musculoesquelética, fisioterapia invasiva y ejercicio terapéutico</strong>. La ecografía nos permite ver la estructura que genera el problema y, cuando está indicado, intervenir sobre ella con precisión.</p>
+          <p>Pero ningún tratamiento invasivo funciona solo. Cada plan empieza con una evaluación completa y continúa con un plan de readaptación para que vuelvas a tu actividad con un tejido capaz de tolerar la carga. Si un tratamiento invasivo no es la mejor opción para tu caso, te lo vamos a decir.</p>
           <p>{p.experience}</p>
         </div>
       </div>
@@ -99,23 +99,14 @@ const schema = [
   </section>
 
   <section class="bg-white py-20 md:py-28" aria-labelledby="areas">
-    <div class="mx-auto grid max-w-[1240px] gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-16">
+    <div class="mx-auto max-w-3xl px-5 sm:px-8">
       <div>
-        <SectionHead id="areas" eyebrow="Áreas de trabajo" title="En qué me especializo" />
+        <SectionHead id="areas" eyebrow="Áreas de trabajo" title="En qué nos especializamos" />
         <ul class="-mt-4 grid gap-2">
           {areas.map(([href, label]) => (
             <li data-reveal><a href={href} class="group flex items-center justify-between rounded-2xl border border-zinc-200 px-5 py-4 font-semibold text-navy-900 no-underline transition hover:border-navy-700/30 hover:bg-navy-50">{label}<Icon name="arrow" size={18} class="text-navy-500 transition group-hover:translate-x-1" /></a></li>
           ))}
         </ul>
-      </div>
-      <div data-reveal>
-        <p class="eyebrow mb-4">Política editorial</p>
-        <h2 id="politica-editorial" class="text-[clamp(1.6rem,3vw,2.2rem)] font-semibold text-navy-950">Revisión del contenido</h2>
-        <div class="mt-5 space-y-4 text-zinc-600">
-          <p>Todo el contenido clínico de este sitio —páginas de tratamientos, lesiones y artículos del blog— es redactado o revisado por el equipo profesional de <strong class="text-navy-950">{config.business.name}</strong>.</p>
-          <p>Cada página indica su fecha de revisión. El contenido se actualiza cuando cambian las recomendaciones o la práctica clínica, utiliza un lenguaje prudente y evita promesas de resultados. Es información educativa: <strong class="text-navy-950">no reemplaza una consulta</strong> ni un diagnóstico médico.</p>
-          <p>Si encontrás un error o una información desactualizada, podés escribir a través de la <a href="/contacto/" class="font-semibold text-navy-600">página de contacto</a>.</p>
-        </div>
       </div>
     </div>
   </section>

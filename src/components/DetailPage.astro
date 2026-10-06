@@ -5,7 +5,6 @@ import PageHero from './PageHero.astro';
 import Icon from './Icon.astro';
 import Toc from './Toc.astro';
 import Faq from './Faq.astro';
-import Reviewed from './Reviewed.astro';
 import Related from './Related.astro';
 import Cards from './Cards.astro';
 import CtaBand from './CtaBand.astro';
@@ -64,9 +63,7 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
   <PageHero crumbs={crumbs} eyebrow={eyebrow} h1={item.h1} lead={item.lead} facts={item.facts}>
     {kind === 'blog' ? (
       <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.86rem] text-white/70">
-        <span class="flex items-center gap-2"><Icon name="user" size={16} class="text-ice-400" />Por <a href="/sobre-mi/" class="text-white/85">{brand}</a></span>
         <span class="flex items-center gap-2"><Icon name="calendar" size={16} class="text-ice-400" /><time datetime={published}>{formatDate(published)}</time></span>
-        {updated !== published && <span>Actualizado: <time datetime={updated}>{formatDate(updated)}</time></span>}
         <span class="flex items-center gap-2"><Icon name="clock" size={16} class="text-ice-400" />{minutes} min de lectura</span>
       </p>
     ) : (
@@ -75,10 +72,6 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
           <a href={waLink(waMessage)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />{kind === 'lesiones' ? 'Consultar por mi lesión' : 'Solicitar una evaluación'}</a>
           <a href={kind === 'lesiones' ? '#tratamientos-relacionados' : '#lesiones-relacionadas'} class="btn btn-outline-dark">{kind === 'lesiones' ? 'Ver tratamientos' : 'Ver lesiones que aborda'}<Icon name="arrow" size={18} /></a>
         </div>
-        <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.86rem] text-white/70">
-          <span class="flex items-center gap-2"><Icon name="shield" size={16} class="text-ice-400" />Revisado por el equipo de {brand}</span>
-          <span class="flex items-center gap-2"><Icon name="calendar" size={16} class="text-ice-400" />Actualizado: <time datetime={updated}>{formatDate(updated)}</time></span>
-        </p>
         {cert && <CertRow cert={cert} dark />}
       </>
     )}
@@ -102,7 +95,6 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
           <Faq faqs={item.faqs} />
         </section>
       )}
-      <Reviewed updated={updated} published={kind === 'blog' ? published : undefined} />
     </article>
   </div>
 

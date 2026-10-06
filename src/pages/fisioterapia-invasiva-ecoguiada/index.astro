@@ -4,7 +4,6 @@ import PageHero from '../../components/PageHero.astro';
 import Icon from '../../components/Icon.astro';
 import Toc from '../../components/Toc.astro';
 import Faq from '../../components/Faq.astro';
-import Reviewed from '../../components/Reviewed.astro';
 import Related from '../../components/Related.astro';
 import Cards from '../../components/Cards.astro';
 import CtaBand from '../../components/CtaBand.astro';
@@ -43,10 +42,6 @@ const schema = [
       <a href={waLink(pillar.waMessage)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />Solicitar una evaluación</a>
       <a href="#tratamientos-relacionados" class="btn btn-outline-dark">Ver tratamientos<Icon name="arrow" size={18} /></a>
     </div>
-    <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.86rem] text-white/70">
-      <span class="flex items-center gap-2"><Icon name="shield" size={16} class="text-ice-400" />Revisado por el equipo de {config.business.name}</span>
-      <span class="flex items-center gap-2"><Icon name="calendar" size={16} class="text-ice-400" />Actualizado: <time datetime={pillar.updated}>{formatDate(pillar.updated)}</time></span>
-    </p>
   </PageHero>
 
   <div class="mx-auto grid max-w-[1240px] gap-10 px-5 py-14 sm:px-8 md:py-20 lg:grid-cols-[minmax(0,1fr)_290px] lg:gap-16">
@@ -67,7 +62,6 @@ const schema = [
         <h2 id="preguntas-frecuentes" class="mb-6 font-display text-[1.75rem] font-semibold tracking-tight text-navy-950">Preguntas frecuentes</h2>
         <Faq faqs={pillar.faqs} />
       </section>
-      <Reviewed updated={pillar.updated} />
     </article>
   </div>
 

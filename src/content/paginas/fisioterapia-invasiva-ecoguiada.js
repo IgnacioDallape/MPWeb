@@ -6,7 +6,7 @@ export default {
     'Tratamientos de fisioterapia invasiva guiados por ecografía: EPI, neuromodulación percutánea, MEP y punción seca. Evaluación personalizada en {{CIUDAD}}.',
   h1: 'Fisioterapia invasiva ecoguiada',
   lead:
-    'Tratamientos que utilizan agujas ultrafinas para actuar directamente sobre la estructura afectada —tendón, músculo, ligamento o nervio periférico— con guía ecográfica en tiempo real, como parte de un plan de rehabilitación individual.',
+    'Tratamientos que utilizan agujas ultrafinas para actuar directamente sobre la estructura afectada (tendón, músculo, ligamento o nervio periférico) con guía ecográfica en tiempo real, como parte de un plan de rehabilitación individual.',
   updated: '2026-10-02',
   seo: {
     primary: 'fisioterapia invasiva ecoguiada',
@@ -25,7 +25,7 @@ export default {
   body: `
 ## ¿Qué es la fisioterapia invasiva ecoguiada?
 
-La **fisioterapia invasiva ecoguiada** —también llamada kinesiología invasiva ecoguiada— engloba un conjunto de tratamientos que utilizan **agujas ultrafinas** para actuar directamente sobre la estructura afectada, siempre con la guía de un **ecógrafo**.
+La **fisioterapia invasiva ecoguiada**, también llamada kinesiología invasiva ecoguiada, engloba un conjunto de tratamientos que utilizan **agujas ultrafinas** para actuar directamente sobre la estructura afectada, siempre con la guía de un **ecógrafo**.
 
 A diferencia de los tratamientos que trabajan "desde afuera" (terapia manual, aparatología de superficie), estas intervenciones llegan al tejido que origina el problema: una zona alterada de un tendón, un punto gatillo en un músculo profundo, una cicatriz fibrosa o un nervio periférico relacionado con el dolor.
 
@@ -108,7 +108,7 @@ Antes de cualquier intervención se revisan las situaciones en las que no se apl
 
 ## Un abordaje integral, no un tratamiento aislado
 
-El objetivo no es "pinchar" una lesión, sino que vuelvas a hacer lo que necesitás —trabajar, entrenar, competir, caminar sin dolor— con un tejido que tolere la carga. Por eso cada intervención se acompaña de:
+El objetivo no es "pinchar" una lesión, sino que vuelvas a hacer lo que necesitás (trabajar, entrenar, competir, caminar sin dolor) con un tejido que tolere la carga. Por eso cada intervención se acompaña de:
 
 - **Educación** sobre la lesión y sobre cómo gestionar la carga diaria.
 - **Ejercicio terapéutico** específico y progresivo.
