@@ -6,7 +6,8 @@
 <body><canvas id="c" width="1200" height="900"></canvas>
 <script>
   import * as THREE from 'three';
-  import { studio, SCENES } from '../scripts/lab3d.js';
+  import { studio, SCENES, LIB } from '../scripts/lab3d.js';
+  const MODELS = import.meta.glob('../scripts/models/*.js');
   const name = new URLSearchParams(location.search).get('scene') || 'epi';
   const canvas = document.getElementById('c');
   const { renderer, scene, camera } = studio(canvas);
@@ -14,7 +15,8 @@
   renderer.setSize(1200, 900, false);
   camera.aspect = 1200 / 900;
   camera.updateProjectionMatrix();
-  const def = SCENES[name]();
+  const key = `../scripts/models/${name}.js`;
+  const def = MODELS[key] ? (await MODELS[key]()).default(LIB) : SCENES[name]();
   scene.add(def.root);
   if (def.shadow !== false) {
     const box = new THREE.Box3().setFromObject(def.root);

@@ -11,6 +11,7 @@ import { picture } from '../lib/components.js';
 import { config, known, waLink, tokens } from '../lib/site.js';
 import { treatments, lesions, CATEGORIES, homePosts } from '../data/index.js';
 import { HOME_FAQS } from '../data/faqs.js';
+import { CATEGORY_RENDER } from '../data/renders.js';
 import * as S from '../lib/schema.js';
 
 const p = config.professional;
@@ -193,11 +194,11 @@ const schema = [
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {groups.map((g) => (
           <div class="card card-hover spotlight group p-6" data-reveal data-spotlight>
-            <div class="-mx-2 -mt-2 mb-2 grid aspect-[16/9] place-items-center overflow-hidden rounded-2xl bg-gradient-to-b from-navy-50 to-white"><img src={`/img/3d/${g.key}-sm.webp`} alt={`Ilustración 3D: ${g.label}`} width="480" height="270" loading="lazy" decoding="async" class="h-full w-full object-contain p-3 transition-transform duration-700 ease-out-expo group-hover:scale-[1.06]" /></div>
+            <div class="-mx-2 -mt-2 mb-2 grid aspect-[16/9] place-items-center overflow-hidden rounded-2xl bg-gradient-to-b from-navy-50 to-white"><img src={`/img/3d/${CATEGORY_RENDER[g.key]}-sm.webp`} alt={`Ilustración 3D: ${g.label}`} width="480" height="270" loading="lazy" decoding="async" class="h-full w-full object-contain p-3 transition-transform duration-700 ease-out-expo group-hover:scale-[1.06]" /></div>
             <h3 class="mb-1 flex items-center gap-3 text-[1.1rem] font-semibold text-navy-950"><span class="grid size-10 place-items-center rounded-xl bg-navy-950 text-ice-300"><Icon name={g.icon} size={20} /></span>{g.label}</h3>
             <ul class="divide-y divide-zinc-200">
               {g.items.map((l) => (
-                <li><a href={`/lesiones/${l.slug}/`} class="group relative z-10 flex items-center justify-between gap-3 py-3 text-[0.96rem] font-medium text-zinc-700 no-underline transition hover:text-navy-900">{l.name}<Icon name="arrow" size={16} class="text-zinc-300 transition group-hover:translate-x-1 group-hover:text-navy-600" /></a></li>
+                <li><a href={`/lesiones/${l.slug}/`} class="group/item relative z-10 flex items-center gap-3 py-2.5 text-[0.96rem] font-medium text-zinc-700 no-underline transition hover:text-navy-900"><span class="grid size-12 flex-none place-items-center rounded-xl bg-gradient-to-b from-navy-50 to-white ring-1 ring-navy-700/5"><img src={`/img/3d/${l.slug}-sm.webp`} alt="" width="48" height="48" loading="lazy" decoding="async" class="size-11 object-contain transition-transform duration-500 group-hover/item:scale-110" /></span><span class="flex-1">{l.name}</span><Icon name="arrow" size={16} class="text-zinc-300 transition group-hover/item:translate-x-1 group-hover/item:text-navy-600" /></a></li>
               ))}
             </ul>
           </div>

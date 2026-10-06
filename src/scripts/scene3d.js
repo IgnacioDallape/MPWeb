@@ -8,6 +8,7 @@ import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js'
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
+import { probe as labProbe } from './lab3d.js';
 
 const ICE = new THREE.Color('#a9c7ff');
 const ICE_DEEP = new THREE.Color('#5d8bea');
@@ -149,23 +150,11 @@ function createSheath() {
 // ---------------------------------------------------------------- Sonda + plano de ultrasonido
 function createProbe() {
   const group = new THREE.Group();
-  const body = new THREE.Mesh(
-    new RoundedBoxGeometry(0.34, 0.95, 1.2, 6, 0.14),
-    new THREE.MeshPhysicalMaterial({ color: '#1b2b4b', metalness: 0.35, roughness: 0.28, clearcoat: 1, clearcoatRoughness: 0.15 })
-  );
-  body.position.y = 1.32;
+  // Mismo transductor que en los renders (cabezal con lente, cuello, mango y cable), cara de contacto en y = 0.78
+  const body = labProbe({ gel: false });
+  body.scale.setScalar(0.72);
+  body.position.y = 0.78;
   group.add(body);
-  const face = new THREE.Mesh(new RoundedBoxGeometry(0.26, 0.12, 1.08, 4, 0.05), new THREE.MeshStandardMaterial({ color: '#0a1220', roughness: 0.6 }));
-  face.position.y = 0.82;
-  group.add(face);
-  const ring = new THREE.Mesh(new THREE.BoxGeometry(0.355, 0.035, 1.215), new THREE.MeshBasicMaterial({ color: ICE }));
-  ring.position.y = 1.02;
-  group.add(ring);
-  const cable = new THREE.Mesh(
-    new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(0, 1.75, 0), new THREE.Vector3(0.1, 2.3, -0.2), new THREE.Vector3(0.6, 2.9, -0.9), new THREE.Vector3(1.4, 3.4, -1.8)]), 40, 0.05, 12),
-    new THREE.MeshStandardMaterial({ color: '#2a3a5c', roughness: 0.5 })
-  );
-  group.add(cable);
 
   // Plano de escaneo (trapecio) con líneas de barrido
   const shape = new THREE.Shape();

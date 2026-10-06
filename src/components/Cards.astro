@@ -3,7 +3,7 @@
 import Card from './Card.astro';
 import { CATEGORIES } from '../data/index.js';
 import { certBadge, TREATMENT_CERT } from '../lib/components.js';
-import { TREATMENT_RENDER, CATEGORY_RENDER } from '../data/renders.js';
+import { TREATMENT_RENDER, lesionRender } from '../data/renders.js';
 interface Props { kind: 'tratamientos' | 'lesiones' | 'blog'; items: any[]; dark?: boolean }
 const { kind, items, dark = false } = Astro.props;
 ---
@@ -11,7 +11,7 @@ const { kind, items, dark = false } = Astro.props;
   kind === 'tratamientos' ? (
     <Card dark={dark} href={`/tratamientos/${it.slug}/`} title={it.name} text={it.cardText} icon={it.icon} badge={TREATMENT_CERT[it.slug] && certBadge(TREATMENT_CERT[it.slug], 52)} render={TREATMENT_RENDER[it.slug]} renderAlt={`Ilustración 3D: ${it.name}`} tag={it.shortName} more="Conocer el tratamiento" />
   ) : kind === 'lesiones' ? (
-    <Card dark={dark} href={`/lesiones/${it.slug}/`} title={it.name} text={it.cardText} icon={it.icon} render={CATEGORY_RENDER[it.category]} renderAlt={`Ilustración 3D: ${CATEGORIES[it.category]?.label}`} tag={CATEGORIES[it.category]?.label} more="Ver tratamiento" />
+    <Card dark={dark} href={`/lesiones/${it.slug}/`} title={it.name} text={it.cardText} icon={it.icon} render={lesionRender(it.slug)} renderAlt={`Ilustración 3D: ${it.name}`} tag={CATEGORIES[it.category]?.label} more="Ver tratamiento" />
   ) : (
     <Card dark={dark} href={`/blog/${it.slug}/`} title={it.h1} text={it.description} tag={it.category} more="Leer artículo" />
   )

@@ -83,21 +83,55 @@ export function aim(obj, tip, dir) {
   return obj;
 }
 
-export function probe() {
+// Transductor lineal de ecografía, con la cara de contacto apoyada en y = 0.
+// Cabezal ancho con lente convexa, cuello que se angosta, mango ergonómico, alivio de cable y gel.
+export function probe({ gel = true } = {}) {
   const g = new THREE.Group();
-  const body = new THREE.Mesh(new RoundedBoxGeometry(0.42, 1.15, 1.3, 8, 0.16), M.navy());
-  body.position.y = 0.72;
-  const grip = new THREE.Mesh(new RoundedBoxGeometry(0.36, 0.5, 0.9, 6, 0.12), M.navy());
-  grip.position.y = 1.55;
-  const face = new THREE.Mesh(new RoundedBoxGeometry(0.34, 0.16, 1.2, 4, 0.06), new THREE.MeshPhysicalMaterial({ color: '#0b1220', roughness: 0.6 }));
-  face.position.y = 0.1;
-  const band = new THREE.Mesh(new RoundedBoxGeometry(0.44, 0.05, 1.32, 4, 0.02), M.glow('#a9c7ff'));
-  band.position.y = 0.32;
+  const shell = M.navy();
+  const lensMat = new THREE.MeshPhysicalMaterial({ color: '#2b3546', roughness: 0.42, clearcoat: 0.5 });
+  // Lente acústica (ligeramente convexa, cilindro aplastado a lo largo del cabezal)
+  const lens = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 1.18, 40), lensMat);
+  lens.rotation.x = Math.PI / 2;
+  lens.scale.set(1, 1, 0.42);
+  lens.position.y = 0.072;
+  const frame = new THREE.Mesh(new RoundedBoxGeometry(0.42, 0.16, 1.26, 6, 0.06), lensMat);
+  frame.position.y = 0.13;
+  // Cabezal
+  const head = new THREE.Mesh(new RoundedBoxGeometry(0.5, 0.62, 1.36, 10, 0.2), shell);
+  head.position.y = 0.48;
+  // Banda de estado (luz)
+  const band = new THREE.Mesh(new RoundedBoxGeometry(0.515, 0.04, 1.375, 6, 0.018), M.glow('#a9c7ff'));
+  band.position.y = 0.26;
+  // Cuello: transición del cabezal al mango (perfil torneado y aplastado)
+  const neckPts = [];
+  for (let i = 0; i <= 12; i++) {
+    const t = i / 12;
+    neckPts.push(new THREE.Vector2(0.6 - 0.32 * Math.pow(t, 0.8), 0.7 + t * 0.55));
+  }
+  const neck = new THREE.Mesh(new THREE.LatheGeometry(neckPts, 48), shell);
+  neck.scale.set(0.42, 1, 1.05);
+  // Mango
+  const grip = new THREE.Mesh(new THREE.CapsuleGeometry(0.2, 0.75, 12, 32), shell);
+  grip.scale.set(0.95, 1, 1.35);
+  grip.position.y = 1.62;
+  const gripLine = new THREE.Mesh(new THREE.TorusGeometry(0.205, 0.012, 10, 48), M.glow('#7ea8f5'));
+  gripLine.rotation.x = Math.PI / 2;
+  gripLine.scale.set(0.95, 1.35, 1);
+  gripLine.position.y = 1.3;
+  // Alivio de cable y cable
+  const relief = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.12, 0.42, 24), new THREE.MeshPhysicalMaterial({ color: '#2d3a55', roughness: 0.5 }));
+  relief.position.y = 2.18;
   const cable = new THREE.Mesh(
-    new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(0, 1.8, 0), new THREE.Vector3(0.05, 2.3, -0.1), new THREE.Vector3(0.4, 2.8, -0.6), new THREE.Vector3(1.1, 3.1, -1.4)]), 48, 0.06, 14),
+    new THREE.TubeGeometry(new THREE.CatmullRomCurve3([new THREE.Vector3(0, 2.35, 0), new THREE.Vector3(0.02, 2.8, -0.05), new THREE.Vector3(0.35, 3.25, -0.5), new THREE.Vector3(1.0, 3.55, -1.3), new THREE.Vector3(1.8, 3.65, -2.2)]), 64, 0.055, 14),
     new THREE.MeshPhysicalMaterial({ color: '#2d3a55', roughness: 0.45, clearcoat: 0.6 })
   );
-  g.add(body, grip, face, band, cable);
+  g.add(frame, lens, head, band, neck, grip, gripLine, relief, cable);
+  if (gel) {
+    const blob = new THREE.Mesh(new THREE.SphereGeometry(0.5, 40, 20, 0, Math.PI * 2, 0, Math.PI / 2), M.glass('#dfeaff'));
+    blob.scale.set(0.62, 0.09, 1.45);
+    blob.position.y = -0.005;
+    g.add(blob);
+  }
   return g;
 }
 
@@ -130,7 +164,7 @@ export function halo(color = '#a9c7ff', size = 1, opacity = 0.9) {
   return s;
 }
 
-function rings(color = '#ffd68f', n = 3) {
+export function rings(color = '#ffd68f', n = 3) {
   const g = new THREE.Group();
   for (let i = 0; i < n; i++) {
     const r = new THREE.Mesh(new THREE.TorusGeometry(0.32 + i * 0.2, 0.012, 10, 64), new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.85 - i * 0.22, toneMapped: false }));
@@ -139,7 +173,7 @@ function rings(color = '#ffd68f', n = 3) {
   return g;
 }
 
-function capsule(r, len, mat) {
+export function capsule(r, len, mat) {
   return new THREE.Mesh(new THREE.CapsuleGeometry(r, len, 12, 32), mat);
 }
 
@@ -419,12 +453,12 @@ export function tissueSlab() {
   target.position.set(0.6, tendonY, D / 2 + 0.1);
   groups[3].add(target);
   target.position.y = 0;
-  // Sonda sobre la piel
+  // Sonda apoyada sobre la piel, encima de la zona objetivo; viaja con la capa de piel
   const p = probe();
-  p.scale.setScalar(0.55);
-  p.position.set(0.9, 0.12, 0.2);
+  p.scale.setScalar(0.62);
+  p.position.set(0.6, layers[0].h / 2 + 0.004, D / 2 - 0.62);
   p.rotation.y = Math.PI / 2;
-  root.add(p);
+  groups[0].add(p);
   // Aguja hacia la zona objetivo
   const tip = new THREE.Vector3(0.6, tendonY, D / 2 + 0.04);
   const nd = needle({ length: 3.2 });
@@ -455,3 +489,6 @@ export function studio(canvas, { alpha = true, exposure = 1.05 } = {}) {
   const camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
   return { renderer, scene, camera, THREE };
 }
+
+// Paquete de herramientas para los modelos de src/scripts/models/*.js
+export const LIB = { THREE, M, fiberBundle, needle, aim, probe, sparks, halo, rings, capsule, rnd, reseed, RoundedBoxGeometry, mergeGeometries };
