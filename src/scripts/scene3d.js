@@ -281,7 +281,7 @@ export function createScene(canvas, { mobile = false } = {}) {
   renderer.toneMappingExposure = 0.9;
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2('#060d1c', 0.055);
+  scene.fog = new THREE.FogExp2('#1a2233', 0.05);
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
