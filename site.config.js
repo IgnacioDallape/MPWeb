@@ -19,7 +19,7 @@ export default {
   locale: 'es_AR',
 
   professional: {
-    name: '[NOMBRE PROFESIONAL]',
+    name: 'Marcos Porretta',
     // Ej: 'Lic. en Kinesiología y Fisiatría'
     title: 'Kinesiólogo',
     // 'kinesiólogo' o 'kinesióloga' (textos de revisión de contenido y presentación)
