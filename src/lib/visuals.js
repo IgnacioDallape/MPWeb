@@ -15,8 +15,8 @@ function fibers({ x1, x2, yTop, yBottom, n, seed = 1 }) {
   return out.join('');
 }
 
-export function ultrasoundHero() {
-  return `<svg viewBox="0 0 560 470" role="img" aria-labelledby="us-title us-desc" preserveAspectRatio="xMidYMid slice">
+export function ultrasoundHero({ live = false } = {}) {
+  const svg = `<svg viewBox="0 0 560 470" role="img" aria-labelledby="us-title us-desc" preserveAspectRatio="xMidYMid slice">
 <title id="us-title">Fisioterapia invasiva ecoguiada</title>
 <desc id="us-desc">Ilustración de una imagen de ecografía musculoesquelética: una aguja se dirige en tiempo real hacia una zona alterada dentro del tendón.</desc>
 <defs>
@@ -64,6 +64,44 @@ export function ultrasoundHero() {
   <line x1="268" y1="288" x2="284" y2="252" stroke="#d6d9dc" stroke-opacity=".7"/>
   <g data-us-label fill="#a7abaf"><text x="60" y="398">Superficie ósea</text></g>
 </g>
+</svg>`;
+  if (!live) return svg;
+  // Versión animada: la aguja, la punta, el barrido y el punto REC se dibujan en una capa aparte (ultrasoundLive)
+  return svg
+    .replace(/<line data-needle[^>]*\/>/, '')
+    .replace(/<line x1="44" y1="74"[^>]*\/>/, '')
+    .replace(/<circle data-tip[^>]*\/>/, '')
+    .replace(/<rect data-sweep[^>]*\/>/, '')
+    .replace('● GUÍA EN TIEMPO REAL', 'GUÍA EN TIEMPO REAL');
+}
+
+// Capa animada (solo CSS, sin JS) que se superpone a ultrasoundHero({ live: true }).
+// Va en un SVG separado para que el ruido ecográfico (filtro costoso) se pinte una sola vez.
+export function ultrasoundLive() {
+  const sparks = Array.from({ length: 10 }, (_, i) => {
+    const a = (i / 10) * Math.PI * 2;
+    return `<circle class="us-spark" cx="285" cy="225" r="${(1 + (i % 3) * 0.6).toFixed(1)}" style="--dx:${(Math.cos(a) * 26).toFixed(1)}px;--dy:${(Math.sin(a) * 18 - 6).toFixed(1)}px;animation-delay:${(i * 0.17).toFixed(2)}s"/>`;
+  }).join('');
+  const flows = [196, 213, 232, 249, 262]
+    .map((y, i) => `<path class="us-flow" d="M36 ${y} C 156 ${y - 3}, 280 ${y + 3}, 440 ${y - 1}" style="animation-delay:${(i * 0.9).toFixed(1)}s"/>`)
+    .join('');
+  return `<svg class="us-live" viewBox="0 0 560 470" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice">
+<defs>
+  <clipPath id="usl-clip"><rect x="36" y="58" width="404" height="376" rx="6"/></clipPath>
+  <radialGradient id="usl-tip" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#cfe0ff" stop-opacity=".95"/><stop offset=".45" stop-color="#7ea8f5" stop-opacity=".45"/><stop offset="1" stop-color="#7ea8f5" stop-opacity="0"/></radialGradient>
+  <radialGradient id="usl-lesion" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#7ea8f5" stop-opacity=".22"/><stop offset="1" stop-color="#7ea8f5" stop-opacity="0"/></radialGradient>
+  <linearGradient id="usl-sweep" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9c7ff" stop-opacity="0"/><stop offset=".85" stop-color="#a9c7ff" stop-opacity=".14"/><stop offset="1" stop-color="#cfe0ff" stop-opacity=".35"/></linearGradient>
+</defs>
+<g clip-path="url(#usl-clip)">
+  <g class="us-fibers">${flows}</g>
+  <ellipse class="us-lesion" cx="292" cy="228" rx="70" ry="30" fill="url(#usl-lesion)"/>
+  <line class="us-needle-ghost" x1="44" y1="74" x2="276" y2="226" stroke="#ffffff" stroke-opacity=".16" stroke-width="1.5"/>
+  <line class="us-needle" x1="44" y1="66" x2="284" y2="224" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
+  <g class="us-tipwrap"><circle class="us-tip" cx="285" cy="225" r="18" fill="url(#usl-tip)"/>${sparks}</g>
+  <rect class="us-sweep" x="36" y="18" width="404" height="44" fill="url(#usl-sweep)"/>
+  <rect class="us-flicker" x="36" y="58" width="404" height="376" fill="#a9c7ff"/>
+</g>
+<circle class="us-rec" cx="279" cy="34.5" r="3" fill="#7ea8f5"/>
 </svg>`;
 }
 

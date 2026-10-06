@@ -256,3 +256,37 @@
 [data-hero-title] { animation: heroIn 1.1s var(--ease-out-expo) both; }
 @keyframes heroIn { from { transform: translateY(22px); } to { transform: none; } }
 [data-magnetic] { transition: transform 0.35s var(--ease-out-expo), background-color 0.3s, color 0.3s; }
+
+/* =========================================================================
+   Ecografía animada del hero (capa .us-live). Solo CSS: aguja que entra y sale,
+   punta pulsante con chispas, barrido de la sonda, fibras con flujo y parpadeo REC.
+   Se declara con !important para que siga activa (suave) aun con "reducir movimiento".
+   ========================================================================= */
+.us-live { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.us-live * { transform-box: fill-box; transform-origin: center; }
+.us-live .us-needle { stroke-dasharray: 290; stroke-dashoffset: 290; animation: usNeedle 9s cubic-bezier(.65,0,.35,1) infinite !important; }
+.us-live .us-needle-ghost { stroke-dasharray: 290; stroke-dashoffset: 290; animation: usNeedle 9s cubic-bezier(.65,0,.35,1) infinite !important; animation-delay: .08s !important; }
+.us-live .us-tipwrap { opacity: 0; animation: usTipShow 9s linear infinite !important; }
+.us-live .us-tip { animation: usPulse 1.1s ease-in-out infinite alternate !important; }
+.us-live .us-spark { fill: #e3ecff; opacity: 0; animation: usSpark 1.7s ease-out infinite !important; }
+.us-live .us-lesion { animation: usBreath 3.2s ease-in-out infinite alternate !important; }
+.us-live .us-sweep { animation: usSweep 4.6s linear infinite !important; }
+.us-live .us-flow { fill: none; stroke: #e8f0ff; stroke-opacity: .55; stroke-width: 1.3; stroke-dasharray: 70 560; stroke-dashoffset: 630; animation: usFlow 6.5s linear infinite !important; }
+.us-live .us-fibers { animation: usWave 4.2s ease-in-out infinite alternate !important; }
+.us-live .us-flicker { opacity: 0; animation: usFlicker 2.4s steps(6) infinite !important; }
+.us-live .us-rec { animation: usRec 1.4s ease-in-out infinite !important; }
+@keyframes usNeedle { 0%, 4% { stroke-dashoffset: 290; } 24%, 76% { stroke-dashoffset: 0; } 92%, 100% { stroke-dashoffset: 290; } }
+@keyframes usTipShow { 0%, 21% { opacity: 0; } 25%, 76% { opacity: 1; } 81%, 100% { opacity: 0; } }
+@keyframes usPulse { from { transform: scale(.75); } to { transform: scale(1.25); } }
+@keyframes usSpark { 0% { opacity: 0; transform: translate(0, 0); } 15% { opacity: .95; } 100% { opacity: 0; transform: translate(var(--dx), var(--dy)); } }
+@keyframes usBreath { from { opacity: .35; transform: scale(.92); } to { opacity: 1; transform: scale(1.08); } }
+@keyframes usSweep { from { transform: translateY(0); } to { transform: translateY(400px); } }
+@keyframes usFlow { to { stroke-dashoffset: 0; } }
+@keyframes usWave { from { transform: translateY(-1.5px) skewY(-.35deg); } to { transform: translateY(1.5px) skewY(.35deg); } }
+@keyframes usFlicker { 0% { opacity: 0; } 30% { opacity: .025; } 60% { opacity: 0; } 80% { opacity: .04; } 100% { opacity: 0; } }
+@keyframes usRec { 0%, 100% { opacity: 1; } 50% { opacity: .2; } }
+@media (prefers-reduced-motion: reduce) {
+  .us-live .us-needle, .us-live .us-needle-ghost, .us-live .us-tipwrap { animation-duration: 14s !important; }
+  .us-live .us-sweep { animation-duration: 8s !important; }
+  .us-live .us-flow { animation-duration: 11s !important; }
+}

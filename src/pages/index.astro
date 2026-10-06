@@ -6,7 +6,7 @@ import Cards from '../components/Cards.astro';
 import Faq from '../components/Faq.astro';
 import CertRow from '../components/CertRow.astro';
 import CertStrip from '../components/CertStrip.astro';
-import { ultrasoundHero, layersFigure } from '../lib/visuals.js';
+import { ultrasoundHero, ultrasoundLive, layersFigure } from '../lib/visuals.js';
 import { picture } from '../lib/components.js';
 import { config, known, waLink, tokens } from '../lib/site.js';
 import { treatments, lesions, CATEGORIES, homePosts } from '../data/index.js';
@@ -92,8 +92,8 @@ const schema = [
           </p>
         </div>
         <!-- Vista ecográfica 2D (HUD) -->
-        <div class="glass absolute right-8 bottom-10 hidden w-[330px] rounded-2xl bg-navy-950/60 p-2 2xl:block" data-ultrasound>
-          <div class="overflow-hidden rounded-xl [aspect-ratio:560/470]" set:html={ultrasoundHero()} />
+        <div class="glass absolute right-8 bottom-24 hidden w-[330px] rounded-2xl bg-navy-950/60 p-2 2xl:block" data-ultrasound>
+          <div class="relative overflow-hidden rounded-xl [aspect-ratio:560/470]"><Fragment set:html={ultrasoundHero({ live: true })} /><Fragment set:html={ultrasoundLive()} /></div>
           <p class="flex items-center gap-2 px-2 pt-2 pb-1 text-[0.72rem] font-semibold tracking-[0.14em] text-ice-300/80 uppercase"><span class="pulse-dot relative size-1.5 rounded-full bg-ice-400"></span>Vista ecográfica en tiempo real</p>
         </div>
         <a href="#xp-historia" class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[0.72rem] tracking-[0.2em] text-white/40 uppercase no-underline md:flex">Así funciona<span class="block h-10 w-px animate-pulse bg-gradient-to-b from-ice-300 to-transparent"></span></a>
