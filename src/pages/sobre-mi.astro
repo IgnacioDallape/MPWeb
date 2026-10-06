@@ -41,7 +41,7 @@ const schema = [
   description="Cómo trabaja {{NOMBRE}}: evaluación, ecografía, fisioterapia invasiva ecoguiada y readaptación. Formación, certificaciones y matrícula en {{CIUDAD}}."
   schema={schema}
 >
-  <PageHero crumbs={crumbs} eyebrow="Metodología" h1={`${p.name}, ${p.role} especialista en fisioterapia invasiva ecoguiada`} lead={`${p.title} · Matrícula ${p.license}. Consultorio en {{LOCALIDAD}}, con atención para todo {{PROVINCIA}}.`}>
+  <PageHero crumbs={crumbs} eyebrow="Metodología" h1={`${config.business.name}: fisioterapia invasiva ecoguiada con método`} lead={`Profesional a cargo: ${p.name}, ${p.role} · Matrícula ${p.license}. Consultorio en {{LOCALIDAD}}, con atención para todo {{PROVINCIA}}.`}>
     <div class="mt-9"><a href={waLink()} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />Solicitar una evaluación</a></div>
   </PageHero>
 

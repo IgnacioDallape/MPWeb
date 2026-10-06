@@ -33,7 +33,8 @@ export default {
   },
 
   business: {
-    name: '[NOMBRE CONSULTORIO]',
+    // Marca bajo la que se presenta todo el sitio (header, títulos, schema, footer).
+    name: 'MP Studio',
     specialty: 'Fisioterapia Invasiva Ecoguiada',
     // Localidad real del consultorio (NAP, dirección y schema).
     city: 'Luján de Cuyo',
