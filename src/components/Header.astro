@@ -6,7 +6,7 @@ import { config, known, waLink } from '../lib/site.js';
 interface Props { waMessage?: string }
 const { waMessage } = Astro.props;
 const current = Astro.url.pathname;
-const brand = known(config.business.name) || config.professional.name;
+const brand = config.business.name;
 const isActive = (p: string) => (current === p ? 'page' : p !== '/' && current.startsWith(p) ? 'true' : undefined);
 ---
 <header id="site-header" class="no-print fixed inset-x-0 top-0 z-50 px-3 pt-3 transition-all duration-500 sm:px-5">

@@ -31,7 +31,7 @@ export function organization() {
   return {
     '@type': 'Physiotherapy', // subtipo de MedicalBusiness → LocalBusiness
     '@id': ORG_ID(),
-    name: known(b.name) || known(config.professional.name) || b.specialty,
+    name: known(b.name) || b.specialty,
     description: tokens(
       'Consultorio de kinesiología especializado en fisioterapia invasiva ecoguiada: EPI, neuromodulación percutánea, MEP y punción seca guiadas por ecografía, integradas con rehabilitación y ejercicio terapéutico.'
     ),
@@ -62,8 +62,6 @@ export function organization() {
       known(b.province) ? { '@type': 'AdministrativeArea', name: `Provincia de ${b.province}` } : undefined,
     ],
     sameAs: [known(c.instagram)],
-    founder: { '@id': PERSON_ID() },
-    employee: { '@id': PERSON_ID() },
     availableService: [
       { '@id': abs('/tratamientos/epi-electrolisis-percutanea/#procedimiento') },
       { '@id': abs('/tratamientos/neuromodulacion-percutanea-ecoguiada/#procedimiento') },
@@ -151,7 +149,7 @@ export function webPage({ path, type = 'WebPage', title, description, updated, p
     datePublished: published,
     dateModified: updated,
     lastReviewed: medical ? updated : undefined,
-    reviewedBy: medical ? { '@id': PERSON_ID() } : undefined,
+    reviewedBy: medical ? { '@id': ORG_ID() } : undefined,
     about,
     breadcrumb: path === '/' ? undefined : { '@id': abs(path + '#breadcrumbs') },
     ...extra,
@@ -199,7 +197,7 @@ export function article(path, post, image) {
     dateModified: post.updated || post.date,
     inLanguage: config.lang,
     mainEntityOfPage: { '@id': abs(path + '#webpage') },
-    author: { '@id': PERSON_ID() },
+    author: { '@id': ORG_ID() },
     publisher: { '@id': ORG_ID() },
     articleSection: post.category,
     keywords: post.seo?.secondary?.join(', '),

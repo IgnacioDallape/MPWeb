@@ -33,7 +33,7 @@ const areas = [
 ];
 const schema = [
   S.breadcrumbs(crumbs),
-  S.webPage({ path, type: 'ProfilePage', title: 'Metodología y profesional', description: 'Perfil profesional y forma de trabajo.', updated: config.launchDate, extra: { mainEntity: { '@id': S.ids.PERSON_ID() } } }),
+  S.webPage({ path, type: 'AboutPage', title: 'Metodología y profesional', description: 'Perfil profesional y forma de trabajo.', updated: config.launchDate, extra: { about: { '@id': S.ids.ORG_ID() } } }),
 ];
 ---
 <Base
@@ -41,14 +41,14 @@ const schema = [
   description="Cómo trabaja {{NOMBRE}}: evaluación, ecografía, fisioterapia invasiva ecoguiada y readaptación. Formación, certificaciones y matrícula en {{CIUDAD}}."
   schema={schema}
 >
-  <PageHero crumbs={crumbs} eyebrow="Metodología" h1={`${config.business.name}: fisioterapia invasiva ecoguiada con método`} lead={`Profesional a cargo: ${p.name}, ${p.role} · Matrícula ${p.license}. Consultorio en {{LOCALIDAD}}, con atención para todo {{PROVINCIA}}.`}>
+  <PageHero crumbs={crumbs} eyebrow="Metodología" h1={`${config.business.name}: fisioterapia invasiva ecoguiada con método`} lead={`Kinesiología especializada en tratamientos ecoguiados. Consultorio en {{LOCALIDAD}}, con atención para todo {{PROVINCIA}}.`}>
     <div class="mt-9"><a href={waLink()} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />Solicitar una evaluación</a></div>
   </PageHero>
 
   <section class="bg-white py-20 md:py-28" aria-labelledby="forma">
     <div class="mx-auto grid max-w-[1240px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-[360px_1fr] lg:gap-16">
       <div class="grid aspect-[4/5] place-items-center overflow-hidden rounded-[2rem] bg-gradient-to-br from-navy-900 to-navy-700 p-6 text-center text-[0.85rem] text-white/70" data-reveal>
-        <Fragment set:html={picture('profesional', `${p.name} realizando una evaluación ecográfica`, { sizes: '(min-width: 1024px) 360px, 100vw' }) || '<span>[PENDIENTE: foto profesional con el ecógrafo]</span>'} />
+        <Fragment set:html={picture('profesional', `${config.business.name}: evaluación ecográfica`, { sizes: '(min-width: 1024px) 360px, 100vw' }) || '<span>[PENDIENTE: foto profesional con el ecógrafo]</span>'} />
       </div>
       <div>
         <SectionHead id="forma" eyebrow="Mi forma de trabajar" title='Tecnología al servicio de <span class="text-gradient-navy">una buena evaluación</span>' />
@@ -95,7 +95,6 @@ const schema = [
           </div>
         ))}
       </div>
-      <p class="mt-6 text-zinc-500">Matrícula profesional: <strong class="text-navy-950">{p.license}</strong>.</p>
     </div>
   </section>
 
@@ -113,7 +112,7 @@ const schema = [
         <p class="eyebrow mb-4">Política editorial</p>
         <h2 id="politica-editorial" class="text-[clamp(1.6rem,3vw,2.2rem)] font-semibold text-navy-950">Revisión del contenido</h2>
         <div class="mt-5 space-y-4 text-zinc-600">
-          <p>Todo el contenido clínico de este sitio —páginas de tratamientos, lesiones y artículos del blog— es redactado o revisado por <strong class="text-navy-950">{p.name}</strong>, {p.role}, matrícula {p.license}.</p>
+          <p>Todo el contenido clínico de este sitio —páginas de tratamientos, lesiones y artículos del blog— es redactado o revisado por el equipo profesional de <strong class="text-navy-950">{config.business.name}</strong>.</p>
           <p>Cada página indica su fecha de revisión. El contenido se actualiza cuando cambian las recomendaciones o la práctica clínica, utiliza un lenguaje prudente y evita promesas de resultados. Es información educativa: <strong class="text-navy-950">no reemplaza una consulta</strong> ni un diagnóstico médico.</p>
           <p>Si encontrás un error o una información desactualizada, podés escribir a través de la <a href="/contacto/" class="font-semibold text-navy-600">página de contacto</a>.</p>
         </div>

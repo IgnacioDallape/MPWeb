@@ -19,12 +19,13 @@ export default {
   locale: 'es_AR',
 
   professional: {
-    name: 'Marcos Porretta',
+    // Sin nombre personal: el sitio se presenta solo como MP Studio (pedido del cliente).
+    name: '',
     // Ej: 'Lic. en Kinesiología y Fisiatría'
     title: 'Kinesiólogo',
     // 'kinesiólogo' o 'kinesióloga' (textos de revisión de contenido y presentación)
     role: 'kinesiólogo',
-    license: '[MATRÍCULA]',
+    license: '',
     // Formación de grado y posgrado. Un ítem por línea.
     education: ['[FORMACIÓN]'],
     specializations: ['[ESPECIALIZACIONES]'],

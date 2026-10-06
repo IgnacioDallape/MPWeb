@@ -27,7 +27,7 @@ const rel = relatedOf(kind, item.slug);
 const updated = item.updated || item.date;
 const published = item.date || config.launchDate;
 const p = config.professional;
-const brand = known(config.business.name) || p.name;
+const brand = config.business.name;
 const crumbs = [
   { name: 'Inicio', path: '/' },
   { name: { tratamientos: 'Tratamientos', lesiones: 'Patologías', blog: 'Blog' }[kind], path: `/${kind}/` },
@@ -64,7 +64,7 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
   <PageHero crumbs={crumbs} eyebrow={eyebrow} h1={item.h1} lead={item.lead} facts={item.facts}>
     {kind === 'blog' ? (
       <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.86rem] text-white/70">
-        <span class="flex items-center gap-2"><Icon name="user" size={16} class="text-ice-400" />Por <a href="/sobre-mi/" class="text-white/85">{brand}</a> · revisado por {p.name}</span>
+        <span class="flex items-center gap-2"><Icon name="user" size={16} class="text-ice-400" />Por <a href="/sobre-mi/" class="text-white/85">{brand}</a></span>
         <span class="flex items-center gap-2"><Icon name="calendar" size={16} class="text-ice-400" /><time datetime={published}>{formatDate(published)}</time></span>
         {updated !== published && <span>Actualizado: <time datetime={updated}>{formatDate(updated)}</time></span>}
         <span class="flex items-center gap-2"><Icon name="clock" size={16} class="text-ice-400" />{minutes} min de lectura</span>
@@ -76,7 +76,7 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
           <a href={kind === 'lesiones' ? '#tratamientos-relacionados' : '#lesiones-relacionadas'} class="btn btn-outline-dark">{kind === 'lesiones' ? 'Ver tratamientos' : 'Ver lesiones que aborda'}<Icon name="arrow" size={18} /></a>
         </div>
         <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.86rem] text-white/70">
-          <span class="flex items-center gap-2"><Icon name="shield" size={16} class="text-ice-400" />Revisado por {p.name} · Mat. {p.license}</span>
+          <span class="flex items-center gap-2"><Icon name="shield" size={16} class="text-ice-400" />Revisado por el equipo de {brand}</span>
           <span class="flex items-center gap-2"><Icon name="calendar" size={16} class="text-ice-400" />Actualizado: <time datetime={updated}>{formatDate(updated)}</time></span>
         </p>
         {cert && <CertRow cert={cert} dark />}

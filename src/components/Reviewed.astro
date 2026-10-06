@@ -7,6 +7,6 @@ const p = config.professional;
 ---
 <div class="not-prose mt-14 flex gap-4 rounded-2xl border border-zinc-200 bg-zinc-50 p-5 text-[0.92rem] text-zinc-600">
   <Icon name="shield" class="mt-0.5 flex-none text-navy-600" />
-  <p class="m-0">Contenido revisado por <strong class="text-navy-950">{p.name}</strong>, {p.role}, matrícula {p.license}. {published && <>Publicado el <time datetime={published}>{formatDate(published)}</time>. </>}Última actualización: <time datetime={updated}>{formatDate(updated)}</time>. <a href="/sobre-mi/" class="font-semibold text-navy-600">Conocé la formación del profesional</a>.</p>
+  <p class="m-0">Contenido revisado por el equipo profesional de <strong class="text-navy-950">{config.business.name}</strong>. {published && <>Publicado el <time datetime={published}>{formatDate(published)}</time>. </>}Última actualización: <time datetime={updated}>{formatDate(updated)}</time>. <a href="/sobre-mi/" class="font-semibold text-navy-600">Conocé nuestra metodología</a>.</p>
 </div>
 <p class="not-prose mt-4 text-[0.84rem] text-zinc-500">Esta información es educativa y no reemplaza una consulta. Ante dolor intenso, fiebre, pérdida de fuerza súbita, traumatismo importante o síntomas que empeoran, consultá con un médico.</p>

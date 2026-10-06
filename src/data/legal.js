@@ -1,6 +1,6 @@
 import { config, known } from '../lib/site.js';
 
-const name = known(config.business.name) || config.professional.name;
+const name = config.business.name;
 const b = config.business;
 const p = config.professional;
 
@@ -13,7 +13,7 @@ export const LEGAL = [
     body: `
 ## Titular del sitio
 
-Este sitio web es titularidad de **${name}** (${p.name}, ${p.title}, matrícula ${p.license}), con domicilio profesional en ${b.address}, ${b.city}, ${b.province}. CUIT: [PENDIENTE].
+Este sitio web es titularidad de **${name}**, con domicilio profesional en ${b.address}, ${b.city}, ${b.province}. CUIT: [PENDIENTE].
 
 ## Alcance de la información
 

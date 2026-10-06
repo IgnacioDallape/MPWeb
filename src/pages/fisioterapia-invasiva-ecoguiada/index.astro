@@ -44,7 +44,7 @@ const schema = [
       <a href="#tratamientos-relacionados" class="btn btn-outline-dark">Ver tratamientos<Icon name="arrow" size={18} /></a>
     </div>
     <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.86rem] text-white/70">
-      <span class="flex items-center gap-2"><Icon name="shield" size={16} class="text-ice-400" />Revisado por {p.name} · Mat. {p.license}</span>
+      <span class="flex items-center gap-2"><Icon name="shield" size={16} class="text-ice-400" />Revisado por el equipo de {config.business.name}</span>
       <span class="flex items-center gap-2"><Icon name="calendar" size={16} class="text-ice-400" />Actualizado: <time datetime={pillar.updated}>{formatDate(pillar.updated)}</time></span>
     </p>
   </PageHero>

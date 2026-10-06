@@ -25,8 +25,8 @@ const t = tokens(title);
 const d = tokens(description);
 const canonical = abs(path === '/404/' ? '/404.html' : path);
 const ogImage = abs('/img/og-default.jpg');
-const siteName = known(config.business.name) || config.professional.name;
-const jsonld = tokens(graph([organization(), person(), website(), ...schema]));
+const siteName = config.business.name;
+const jsonld = tokens(graph([organization(), website(), ...schema]));
 const ga = known(config.gaId);
 ---
 <!doctype html>

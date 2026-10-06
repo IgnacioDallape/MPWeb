@@ -38,7 +38,6 @@ const schema = [S.breadcrumbs(crumbs), S.webPage({ path, type: 'ContactPage', ti
             ['clock', 'Horarios', config.hoursText, null],
             ['instagram', 'Instagram', ig ? ig.replace(/^https?:\/\/(www\.)?instagram\.com\//, '@').replace(/\/$/, '') : c.instagram, ig || null],
             ...(known(c.email) ? [['book', 'Email', c.email, `mailto:${c.email}`]] : []),
-            ['shield', 'Profesional', `${config.professional.name} · Mat. ${config.professional.license}`, null],
           ].map(([ic, label, value, href]) => (
             <li class="flex gap-4 rounded-2xl border border-zinc-200 bg-white p-4">
               <span class="grid size-11 flex-none place-items-center rounded-xl bg-navy-950 text-ice-300"><Icon name={ic as string} size={20} /></span>

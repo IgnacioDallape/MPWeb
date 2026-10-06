@@ -6,7 +6,7 @@ import { treatments, featuredLesions } from '../data/index.js';
 const b = config.business;
 const c = config.contact;
 const p = config.professional;
-const brand = known(b.name) || p.name;
+const brand = b.name;
 const ig = known(c.instagram);
 const year = new Date().getFullYear();
 const linkCls = 'text-white/70 no-underline transition hover:text-white';
@@ -18,7 +18,7 @@ const linkCls = 'text-white/70 no-underline transition hover:text-white';
     <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
       <div>
         <a href="/" class="flex items-center gap-3 text-white no-underline"><BrandMark class="size-10" /><span class="font-display text-lg font-semibold">{brand}</span></a>
-        <p class="mt-5 max-w-sm">Profesional a cargo: {p.name} · {p.title}<br />Kinesiología especializada en <strong class="text-white/90">fisioterapia invasiva ecoguiada</strong> y rehabilitación musculoesquelética.<br />Matrícula: {p.license}</p>
+        <p class="mt-5 max-w-sm">Kinesiología especializada en <strong class="text-white/90">fisioterapia invasiva ecoguiada</strong> y rehabilitación musculoesquelética.</p>
         <address class="mt-6 grid gap-2.5 not-italic">
           <span class="flex gap-3"><Icon name="pin" size={18} class="mt-1 text-ice-400" /><span>{b.address}, {b.city}, {b.province}</span></span>
           <span class="flex gap-3"><Icon name="whatsapp" size={18} class="mt-1 text-ice-400" /><a class={linkCls} href={waLink()}>{c.phoneDisplay}</a></span>

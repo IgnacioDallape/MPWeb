@@ -15,12 +15,10 @@ export const TOKENS = {
   CIUDAD: config.business.seoArea || config.business.city,
   LOCALIDAD: config.business.city,
   PROVINCIA: config.business.province,
-  // {{NOMBRE}} = marca (MP Studio). El nombre del profesional va en {{PROFESIONAL}}.
-  NOMBRE: isPending(config.business.name) ? config.professional.name : config.business.name,
-  PROFESIONAL: config.professional.name,
+  // {{NOMBRE}} = marca (MP Studio).
+  NOMBRE: config.business.name,
   TITULO: config.professional.title,
   ROL: config.professional.role,
-  MATRICULA: config.professional.license,
   CONSULTORIO: config.business.name,
   DIRECCION: config.business.address,
   TELEFONO: config.contact.phoneDisplay,
