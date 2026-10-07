@@ -1,5 +1,5 @@
 // Experiencias 3D en vivo (Three.js), cargadas sin frenar la página:
-//  - Portada (#xp): escena ambiental (sonda escaneando, aguja con energía).
+//  - Portada (#xp): tejido tendinoso animado (sin sonda ni aguja).
 //  - Metodología (#metodo): la misma escena cuenta los 4 pasos con el scroll.
 // Se cargan con la primera interacción del usuario; mientras tanto se ve un render fijo.
 // Solo se dibuja la escena que está en pantalla.
@@ -42,10 +42,13 @@ async function startHero() {
   const m = await mount(wrap, document.getElementById('xp-canvas'), '[data-xp-poster]');
   if (!m) return;
   const s = m.xp.state;
-  s.offsetX = mobile ? 0 : 1.7;
-  if (mobile) Object.assign(s.cam, { x: 0, y: 1.1, z: 10.5 });
+  // La portada muestra solo el tejido tendinoso (fibras animadas): la sonda y la aguja
+  // aparecen recién en la sección Metodología.
+  Object.assign(s, { insert: 0, energy: 0, scanOn: 0, scanAuto: 0, offsetX: mobile ? 0 : 1.5 });
+  Object.assign(s.cam, mobile ? { x: 0, y: 1.0, z: 9.5 } : { x: -0.6, y: 0.9, z: 8.2 });
+  Object.assign(s.look, { x: 0.4, y: 0, z: 0 });
   // Al salir de la portada la cámara se acerca levemente
-  m.gsap.to(s.cam, { z: mobile ? 9 : 9.5, y: 1.6, ease: 'none', scrollTrigger: { trigger: wrap, start: 'top top', end: 'bottom top', scrub: 1 } });
+  m.gsap.to(s.cam, { z: mobile ? 8.5 : 7.2, y: 1.3, ease: 'none', scrollTrigger: { trigger: wrap, start: 'top top', end: 'bottom top', scrub: 1 } });
 }
 
 // ---------------------------------------------------------------- Metodología (historia por scroll)

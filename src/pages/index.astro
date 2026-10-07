@@ -90,11 +90,6 @@ const schema = [
             <span><strong class="text-white/85">{b.name}</strong> · Kinesiología y fisioterapia invasiva ecoguiada<br />Consultorio en {b.city} · Atención en todo {b.province}</span>
           </p>
         </div>
-        <!-- Vista ecográfica 2D (HUD) -->
-        <div class="glass absolute right-8 bottom-24 hidden w-[330px] rounded-2xl bg-navy-950/60 p-2 2xl:block" data-ultrasound>
-          <div class="relative overflow-hidden rounded-xl [aspect-ratio:560/470]"><Fragment set:html={ultrasoundHero({ live: true })} /><Fragment set:html={ultrasoundLive()} /></div>
-          <p class="flex items-center gap-2 px-2 pt-2 pb-1 text-[0.72rem] font-semibold tracking-[0.14em] text-ice-300/80 uppercase"><span class="pulse-dot relative size-1.5 rounded-full bg-ice-400"></span>Vista ecográfica en tiempo real</p>
-        </div>
         <a href="#que-es" class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-[0.72rem] tracking-[0.2em] text-white/40 uppercase no-underline md:flex">Descubrí más<span class="block h-10 w-px animate-pulse bg-gradient-to-b from-ice-300 to-transparent"></span></a>
       </section>
 
@@ -228,6 +223,11 @@ const schema = [
           <source type="image/webp" srcset="/img/hero-3d.webp" />
           <img src="/img/hero-3d.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async" class="h-full w-full object-cover opacity-80" />
         </picture>
+        <!-- Vista ecográfica 2D (HUD) en tiempo real -->
+        <div class="glass absolute right-16 bottom-28 z-10 hidden w-[330px] rounded-2xl bg-navy-950/60 p-2 2xl:block" data-ultrasound>
+          <div class="relative overflow-hidden rounded-xl [aspect-ratio:560/470]"><Fragment set:html={ultrasoundHero({ live: true })} /><Fragment set:html={ultrasoundLive()} /></div>
+          <p class="flex items-center gap-2 px-2 pt-2 pb-1 text-[0.72rem] font-semibold tracking-[0.14em] text-ice-300/80 uppercase"><span class="pulse-dot relative size-1.5 rounded-full bg-ice-400"></span>Vista ecográfica en tiempo real</p>
+        </div>
         <canvas id="metodo-canvas" class="absolute inset-0 h-full w-full opacity-0 transition-opacity duration-1000"></canvas>
         <div class="absolute inset-0 bg-gradient-to-b from-navy-950/40 via-navy-950/70 to-navy-950 lg:bg-gradient-to-r lg:from-navy-950/90 lg:via-navy-950/30 lg:to-transparent"></div>
         <ol class="absolute top-1/2 right-6 z-10 hidden -translate-y-1/2 flex-col gap-3 lg:flex">
