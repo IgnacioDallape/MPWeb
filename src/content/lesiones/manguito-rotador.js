@@ -12,6 +12,8 @@ export default {
   h1: 'Tratamiento del manguito rotador: dolor de hombro al elevar el brazo',
   lead:
     'Cuando el hombro duele al peinarte, al alcanzar un estante alto o al acostarte de ese lado, muchas veces el origen está en el manguito rotador. El tratamiento empieza por entender qué tendón está comprometido y cuánto, y sigue con un plan de ejercicio que devuelva fuerza y control al hombro.',
+  answer:
+    'El dolor de manguito rotador aparece al elevar el brazo, peinarse o acostarse de ese lado, y muchas veces se relaciona con una tendinopatía del supraespinoso. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), se evalúa el hombro con ecografía y se trata con ajuste de cargas, ejercicio para el manguito y la escápula y, si hace falta, tratamientos ecoguiados.',
   updated: '2026-10-02',
 
   seo: {
@@ -88,7 +90,7 @@ El programa suele combinar:
 - **Trabajo de cadena cinética** en deportistas: integrar piernas y tronco en el lanzamiento o en el golpe.
 - **Readaptación del gesto** deportivo o laboral en las fases finales.
 
-Las cargas y repeticiones se definen en la consulta y se ajustan según la respuesta.
+Las cargas y repeticiones se definen en la consulta y se ajustan según la respuesta. Este programa es parte de la [kinesiología traumatológica](/kinesiologia-mendoza/traumatologica/) que hacemos en {{CIUDAD}}, y la misma base se usa cuando el hombro viene de una cirugía.
 
 ### Tratamientos ecoguiados como complemento
 
@@ -127,6 +129,7 @@ Es importante una valoración médica si después de una **caída o un tirón** 
   ],
 
   related: {
+    kinesiologia: ['traumatologica', 'postquirurgica', 'deportiva'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada', 'puncion-seca-ecoguiada'],
     lesiones: ['bursopatias', 'dolor-miofascial'],
     blog: ['epi-para-tendinopatias'],

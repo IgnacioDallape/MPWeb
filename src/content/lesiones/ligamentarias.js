@@ -12,6 +12,8 @@ export default {
   h1: 'Rehabilitación de lesiones ligamentarias y esguinces',
   lead:
     'Un esguince de tobillo parece una lesión menor hasta que el tobillo empieza a doblarse una y otra vez. Rehabilitar bien un ligamento lesionado reduce ese riesgo y te permite volver a moverte con seguridad.',
+  answer:
+    'Un esguince se rehabilita protegiendo el ligamento los primeros días, recuperando movilidad y fuerza, y entrenando la propiocepción para que la articulación no vuelva a doblarse. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), la ecografía ayuda a valorar el ligamento y la vuelta al deporte se decide con pruebas de fuerza, equilibrio y saltos.',
   updated: '2026-10-02',
 
   seo: {
@@ -81,7 +83,7 @@ Se trabaja la movilidad del tobillo (en especial la flexión dorsal, que suele q
 
 ### Propiocepción y control
 
-La **propiocepción** es la capacidad del cuerpo de percibir la posición de la articulación y reaccionar a tiempo. Se entrena con ejercicios de equilibrio en una pierna, superficies inestables, cambios de dirección, saltos con aterrizajes controlados y tareas con estímulos imprevistos. Es probablemente el componente más importante para prevenir recaídas.
+La **propiocepción** es la capacidad del cuerpo de percibir la posición de la articulación y reaccionar a tiempo. Se entrena con ejercicios de equilibrio en una pierna, superficies inestables, cambios de dirección, saltos con aterrizajes controlados y tareas con estímulos imprevistos. Es probablemente el componente más importante para prevenir recaídas. Si querés ver cómo encaramos el tobillo y la rodilla etapa por etapa, mirá la página de [kinesiología para esguinces](/kinesiologia-mendoza/esguinces/) en {{CIUDAD}}.
 
 ### Tratamientos ecoguiados en casos persistentes
 
@@ -134,6 +136,7 @@ Si querés conocer cómo se integra la ecografía en todas estas decisiones, pod
   ],
 
   related: {
+    kinesiologia: ['esguinces', 'deportiva', 'traumatologica'],
     tratamientos: ['microelectrolisis-percutanea-mep', 'epi-electrolisis-percutanea'],
     lesiones: ['tendinopatia-aquiles', 'bursopatias'],
     blog: ['ecografia-en-fisioterapia'],

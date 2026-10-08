@@ -1,0 +1,72 @@
+---
+// Pilar de kinesiología: la URL principal para "kinesiología en Mendoza".
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import Toc from '../../components/Toc.astro';
+import Faq from '../../components/Faq.astro';
+import Related from '../../components/Related.astro';
+import Cards from '../../components/Cards.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { markdown } from '../../lib/md.js';
+import { config, waLink, abs, tokens } from '../../lib/site.js';
+import { ctaInline } from '../../lib/components.js';
+import { kinePillar as page, services, treatments, posts } from '../../data/index.js';
+import * as S from '../../lib/schema.js';
+
+const path = page.path;
+const crumbs = [{ name: 'Inicio', path: '/' }, { name: 'Kinesiología en Mendoza', path }];
+const { html, toc } = markdown(tokens(page.body));
+const body = html.replace(/<p>\{\{CTA\}\}<\/p>/g, ctaInline({ waMessage: page.waMessage }));
+const answer = tokens(page.answer);
+const guides = posts.filter((p) => p.category === 'Kinesiología' || p.category === 'Guías para pacientes').slice(0, 6);
+const schema = [
+  S.breadcrumbs(crumbs),
+  S.webPage({
+    path,
+    title: tokens(page.h1),
+    description: tokens(page.description),
+    updated: page.updated,
+    published: page.updated,
+    medical: true,
+    abstract: answer,
+    about: { '@type': 'PhysicalTherapy', name: 'Kinesiología', alternateName: ['Fisioterapia', 'Kinesiología y fisiatría'], provider: { '@id': S.ids.ORG_ID() } },
+    extra: { hasPart: services.map((s) => ({ '@id': abs(`${path}${s.slug}/#servicio`) })) },
+  }),
+  { '@type': 'ItemList', '@id': abs(path + '#servicios'), name: 'Servicios de kinesiología', itemListElement: services.map((s, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(`${path}${s.slug}/`), name: s.name })) },
+  S.faqPage(path, page.faqs),
+];
+---
+<Base title={page.title} description={page.description} schema={schema} waMessage={page.waMessage} updated={page.updated}>
+  <PageHero crumbs={crumbs} eyebrow="Kinesiología" h1={page.h1} lead={page.lead} facts={page.facts} render="probe" renderAlt="Ilustración 3D de una sonda de ecografía musculoesquelética">
+    <div class="mt-9 flex flex-wrap gap-3">
+      <a href={waLink(page.waMessage)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />Solicitar una evaluación</a>
+      <a href="#servicios-kinesiologia" class="btn btn-outline-dark">Ver servicios<Icon name="arrow" size={18} /></a>
+    </div>
+  </PageHero>
+
+  <div class="mx-auto grid max-w-[1240px] gap-10 px-5 py-14 sm:px-8 md:py-20 lg:grid-cols-[minmax(0,1fr)_290px] lg:gap-16">
+    <aside class="grid content-start gap-4 lg:sticky lg:top-28 lg:order-2 lg:self-start">
+      <Toc items={[...toc, { id: 'preguntas-frecuentes', text: 'Preguntas frecuentes' }]} />
+      <div class="on-dark relative hidden overflow-hidden rounded-2xl bg-navy-950 p-5 text-[0.9rem] text-white/65 lg:block">
+        <div class="glow -top-20 -right-20 size-56 opacity-60" aria-hidden="true"></div>
+        <strong class="relative mb-1.5 block font-display text-[1.02rem] text-white">Evaluación individual</strong>
+        <span class="relative">Antes de armar el plan se evalúa tu caso con exploración y ecografía.</span>
+        <a href={waLink(page.waMessage)} class="btn btn-glow btn-sm relative mt-4 w-full"><Icon name="whatsapp" size={18} />Consultar por WhatsApp</a>
+      </div>
+    </aside>
+    <article class="prose-site min-w-0">
+      <p class="lede-answer">{answer}</p>
+      <Fragment set:html={body} />
+      <section aria-labelledby="preguntas-frecuentes" class="not-prose mt-16">
+        <h2 id="preguntas-frecuentes" class="mb-6 font-display text-[1.75rem] font-semibold tracking-tight text-navy-950">Preguntas frecuentes</h2>
+        <Faq faqs={page.faqs} />
+      </section>
+    </article>
+  </div>
+
+  <Related id="servicios-kinesiologia" title="Servicios de kinesiología" intro="Cada servicio parte de la misma base: evaluación con ecografía y un plan de ejercicio a tu medida." count={services.length}><Cards kind="kinesiologia" items={services} /></Related>
+  <Related id="tratamientos-relacionados" title="Fisioterapia invasiva ecoguiada" intro="Tratamientos que se suman al plan de kinesiología cuando la evaluación lo indica." cols={4} count={treatments.length}><Cards kind="tratamientos" items={treatments} /></Related>
+  <Related id="articulos-relacionados" title="Guías para pacientes" count={guides.length}><Cards kind="blog" items={guides} /></Related>
+  <CtaBand waMessage={page.waMessage} />
+</Base>

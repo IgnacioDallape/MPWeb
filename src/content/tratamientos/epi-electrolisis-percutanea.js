@@ -12,6 +12,8 @@ export default {
   h1: 'Electrólisis Percutánea Intratisular (EPI) guiada por ecografía',
   lead:
     'La EPI es un tratamiento de fisioterapia invasiva que aplica una corriente galvánica a través de una aguja ultrafina directamente sobre el tejido afectado. Se utiliza principalmente en tendinopatías y lesiones de partes blandas, siempre con guía ecográfica y como parte de un plan de rehabilitación.',
+  answer:
+    'La EPI, o electrólisis percutánea intratisular, es un tratamiento de fisioterapia invasiva que aplica corriente galvánica con una aguja ultrafina sobre el tejido lesionado para estimular su reparación. Se usa sobre todo en tendinopatías persistentes. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), se hace siempre con guía ecográfica y junto a ejercicio terapéutico progresivo.',
   updated: '2026-10-02',
 
   seo: {
@@ -99,7 +101,7 @@ Es esperable una sensación de molestia o "agujetas" en la zona durante las hora
 
 La EPI generalmente **no obliga a hacer reposo absoluto**. En la mayoría de los casos se puede continuar con las actividades diarias y se ajusta temporalmente el volumen o la intensidad del entrenamiento.
 
-El número de sesiones varía según la lesión, su antigüedad y la respuesta del tejido. Suelen espaciarse en el tiempo para dar margen a la adaptación y combinarse con un programa de **ejercicio terapéutico progresivo**, que es el que consolida la recuperación funcional del tendón.
+El número de sesiones varía según la lesión, su antigüedad y la respuesta del tejido. Suelen espaciarse en el tiempo para dar margen a la adaptación y combinarse con un programa de **ejercicio terapéutico progresivo**, que es el que consolida la recuperación funcional del tendón. Esa parte activa la trabajamos dentro de la [kinesiología deportiva](/kinesiologia-mendoza/deportiva/) en {{CIUDAD}}, con la vuelta a correr, saltar o competir como objetivo.
 
 ## Contraindicaciones y precauciones
 
@@ -144,6 +146,7 @@ Si querés comparar en detalle, leé [diferencias entre EPI y punción seca](/bl
   ],
 
   related: {
+    kinesiologia: ['deportiva', 'traumatologica'],
     tratamientos: ['microelectrolisis-percutanea-mep', 'puncion-seca-ecoguiada'],
     lesiones: ['tendinopatia-aquiles', 'tendinopatia-rotuliana', 'manguito-rotador', 'epicondilitis', 'epitrocleitis', 'fascitis-plantar', 'fibrosis-muscular'],
     blog: ['como-actua-la-epi-en-el-tendon', 'epi-para-tendinopatias', 'diferencias-entre-epi-y-puncion-seca'],

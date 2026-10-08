@@ -6,6 +6,8 @@ export default {
   h1: 'Diferencias entre EPI y punción seca',
   lead:
     'La diferencia principal es que la EPI aplica corriente galvánica sobre el tejido lesionado, sobre todo el tendón, para estimular su reparación, mientras que la punción seca no usa corriente y se dirige al músculo, en especial a los puntos gatillo, para modular el dolor y la tensión. Comparten la aguja y la guía ecográfica, pero tienen objetivos, sensaciones e indicaciones distintas.',
+  answer:
+    'La EPI aplica corriente galvánica sobre el tejido lesionado, sobre todo el tendón, para estimular su reparación. La punción seca no usa corriente y se dirige al músculo, en especial a los puntos gatillo, para modular el dolor y la tensión. Ambas usan aguja fina y guía ecográfica, pero tienen objetivos e indicaciones distintas.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Tratamientos',

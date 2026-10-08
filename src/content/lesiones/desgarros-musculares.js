@@ -12,6 +12,8 @@ export default {
   h1: 'Rehabilitación de desgarros musculares y roturas fibrilares',
   lead:
     'Sentiste un pinchazo en el muslo o en la pantorrilla y tuviste que frenar. Un desgarro muscular bien rehabilitado suele permitir volver a la actividad con confianza; para eso hacen falta una buena evaluación, una progresión ordenada y criterios objetivos antes del alta.',
+  answer:
+    'Un desgarro muscular se rehabilita por etapas: proteger sin inmovilizar, recuperar fuerza y rango con trabajo excéntrico, y readaptar al deporte con carrera, cambios de dirección y gestos específicos. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), la ecografía ayuda a ver la lesión y el alta se da con criterios objetivos, no solo cuando deja de doler.',
   updated: '2026-10-02',
 
   seo: {
@@ -81,7 +83,7 @@ Se progresa hacia ejercicios con más recorrido y más carga. Algunos ejemplos s
 
 ### Fase final: readaptación al deporte
 
-Se suman carrera progresiva, aceleraciones, cambios de dirección, saltos y gestos específicos (patear, arrancar, frenar). Las cargas se ajustan según la respuesta del músculo al día siguiente.
+Se suman carrera progresiva, aceleraciones, cambios de dirección, saltos y gestos específicos (patear, arrancar, frenar). Las cargas se ajustan según la respuesta del músculo al día siguiente. Es la misma lógica de la [kinesiología deportiva](/kinesiologia-mendoza/deportiva/) que aplicamos en {{CIUDAD}} con futbolistas, corredores y ciclistas amateurs.
 
 {{CTA}}
 
@@ -152,6 +154,7 @@ Si querés entender qué tratamientos se usan en la consulta y en qué casos, la
   ],
 
   related: {
+    kinesiologia: ['deportiva', 'traumatologica'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada', 'puncion-seca-ecoguiada'],
     lesiones: ['fibrosis-muscular', 'dolor-miofascial'],
     blog: ['ecografia-en-fisioterapia'],

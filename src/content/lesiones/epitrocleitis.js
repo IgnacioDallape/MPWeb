@@ -12,6 +12,8 @@ export default {
   h1: 'Tratamiento de la epitrocleitis (codo de golfista)',
   lead:
     'Si el dolor está en la parte interna del codo y aparece al apretar, al colgarte de una presa o al lanzar, probablemente se trate de una epitrocleitis. Es menos frecuente que el codo de tenista, pero tiene sus propias particularidades, entre ellas la cercanía del nervio cubital.',
+  answer:
+    'La epitrocleitis, o codo de golfista, es una tendinopatía del grupo flexor-pronador que duele en la cara interna del codo al apretar, colgarse o lanzar. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), la ecografía permite revisar el tendón y el nervio cubital, y el tratamiento combina ajuste de cargas, ejercicio progresivo y, si hace falta, EPI ecoguiada.',
   updated: '2026-10-02',
 
   seo: {
@@ -83,7 +85,7 @@ Si estos síntomas están presentes, el abordaje cambia, y en algunos casos se n
 
 ### Reorganizar la carga
 
-Se ajusta lo que hoy irrita el tendón: en escaladores, el tipo de presa, los días de muro y el trabajo en tabla; en golfistas, el volumen de golpes y la técnica; en el trabajo, las herramientas y la forma de agarrar. Si el nervio cubital está sensible, se suma una pauta para evitar posiciones prolongadas con el codo muy flexionado, incluso durante el sueño.
+Se ajusta lo que hoy irrita el tendón: en escaladores, el tipo de presa, los días de muro y el trabajo en tabla; en golfistas, el volumen de golpes y el gesto; en el trabajo, las herramientas y la forma de agarrar. Si el nervio cubital está sensible, se suma una pauta para evitar posiciones prolongadas con el codo muy flexionado, incluso durante el sueño.
 
 ### Ejercicio para el grupo flexor-pronador
 
@@ -95,7 +97,7 @@ Una progresión habitual:
 4. **Fortalecimiento de hombro, escápula y tronco,** clave en lanzadores y golfistas para repartir la carga del gesto.
 5. **Retorno específico:** colgarse de presas, swing o lanzamiento, de menor a mayor intensidad.
 
-Las cargas se adaptan a cada persona; si hay síntomas del nervio, se ajustan también las posiciones de trabajo.
+Las cargas se adaptan a cada persona; si hay síntomas del nervio, se ajustan también las posiciones de trabajo. En escaladores, golfistas y lanzadores, este plan se apoya en la [kinesiología deportiva](/kinesiologia-mendoza/deportiva/) que hacemos en {{CIUDAD}}, con el gesto del deporte como meta final.
 
 ### Tratamientos ecoguiados indicados
 
@@ -130,6 +132,7 @@ Pedí una valoración médica si sentiste un **chasquido con dolor súbito** en 
   ],
 
   related: {
+    kinesiologia: ['deportiva', 'traumatologica'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada'],
     lesiones: ['epicondilitis', 'manguito-rotador'],
     blog: ['epicondilitis-sintomas-y-causas'],

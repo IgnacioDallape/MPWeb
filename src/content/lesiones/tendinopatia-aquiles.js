@@ -12,6 +12,8 @@ export default {
   h1: 'Tratamiento de la tendinopatía de Aquiles (tendinitis aquílea)',
   lead:
     'Si te duele el tendón de Aquiles al correr, al subir escaleras o con los primeros pasos de la mañana, no estás solo: es una de las consultas más frecuentes en corredores. El tratamiento de la tendinopatía de Aquiles combina una evaluación precisa con ecografía y un plan de carga pensado para tu tendón.',
+  answer:
+    'La tendinopatía de Aquiles es una sobrecarga del tendón que duele al correr, al subir escaleras o con los primeros pasos de la mañana. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), se trata con evaluación ecográfica, gestión de la carga y ejercicio progresivo de pantorrilla, sumando EPI o MEP ecoguiada cuando el tendón no evoluciona como se espera.',
   updated: '2026-10-02',
 
   seo: {
@@ -97,7 +99,7 @@ El ejercicio es la base del tratamiento. Suele progresar por etapas:
 3. **Trabajo de almacenamiento de energía:** saltos suaves, skipping y pliometría progresiva, que preparan al tendón para la carrera.
 4. **Retorno gradual a correr,** con criterios claros para avanzar.
 
-En la forma insercional se evita, al principio, bajar el talón por debajo del nivel del escalón, para no comprimir el tendón contra el hueso. Las cargas concretas se definen en la consulta según tu caso.
+En la forma insercional se evita, al principio, bajar el talón por debajo del nivel del escalón, para no comprimir el tendón contra el hueso. Las cargas concretas se definen en la consulta según tu caso. Este plan de carga es el corazón de la [kinesiología deportiva](/kinesiologia-mendoza/deportiva/) que hacemos en {{CIUDAD}} con corredores de calle y de montaña.
 
 ### Tratamientos ecoguiados cuando están indicados
 
@@ -140,6 +142,7 @@ Consultá de forma urgente si notaste un **golpe o chasquido en la pantorrilla**
   ],
 
   related: {
+    kinesiologia: ['deportiva', 'traumatologica'],
     tratamientos: ['epi-electrolisis-percutanea', 'microelectrolisis-percutanea-mep'],
     lesiones: ['tendinopatia-rotuliana', 'fascitis-plantar'],
     blog: ['epi-para-tendinopatias', 'tendinopatia-de-aquiles-guia-de-rehabilitacion'],

@@ -15,7 +15,7 @@ const isActive = (p: string) => (current === p ? 'page' : p !== '/' && current.s
       <BrandMark />
       <span class="flex min-w-0 flex-col leading-tight">
         <span class="truncate font-display text-[0.98rem] font-semibold tracking-tight">{brand}</span>
-        <span class="text-[0.7rem] font-medium tracking-[0.14em] text-ice-300/80 uppercase">Fisioterapia ecoguiada</span>
+        <span class="text-[0.7rem] font-medium tracking-[0.14em] text-ice-300/80 uppercase">Kinesiología ecoguiada</span>
       </span>
     </a>
 
@@ -23,7 +23,7 @@ const isActive = (p: string) => (current === p ? 'page' : p !== '/' && current.s
       <ul class="flex items-center gap-0.5">
         {NAV.filter((n) => !n.mobileOnly).map((n) => (
           <li>
-            <a href={n.path} aria-current={isActive(n.path)} class="relative rounded-xl px-3 py-2 text-[0.86rem] font-medium whitespace-nowrap text-white/70 no-underline transition hover:bg-white/5 hover:text-white aria-[current]:bg-white/10 aria-[current]:text-white">{n.label}</a>
+            <a href={n.path} aria-current={isActive(n.path)} class="relative rounded-xl px-2.5 py-2 text-[0.85rem] font-medium whitespace-nowrap text-white/70 no-underline transition hover:bg-white/5 hover:text-white aria-[current]:bg-white/10 aria-[current]:text-white">{n.label}</a>
           </li>
         ))}
       </ul>

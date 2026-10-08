@@ -12,6 +12,8 @@ export default {
   h1: 'Tratamiento de la epicondilitis (codo de tenista)',
   lead:
     'Cuando agarrar una taza, abrir un frasco o estrechar una mano te provoca un pinchazo en la parte de afuera del codo, lo más probable es una epicondilitis. Y no hace falta jugar al tenis para tenerla: la mayoría de los casos aparecen en personas que usan mucho las manos en el trabajo o en casa.',
+  answer:
+    'La epicondilitis, o codo de tenista, es una tendinopatía de los extensores del antebrazo que duele en la cara externa del codo al agarrar o girar la muñeca. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), se trata con evaluación ecográfica, ajuste de gestos y herramientas, ejercicio progresivo y, en casos persistentes, EPI u otros tratamientos ecoguiados.',
   updated: '2026-10-02',
 
   seo: {
@@ -97,7 +99,7 @@ El ejercicio es el núcleo del tratamiento. Una progresión habitual incluye:
 4. **Fortalecimiento del hombro y la escápula,** porque un brazo proximal débil traslada más carga a la mano.
 5. **Vuelta al gesto específico:** herramientas del trabajo o golpes de raqueta.
 
-Las cargas se ajustan en cada sesión según la respuesta del codo.
+Las cargas se ajustan en cada sesión según la respuesta del codo. Es un caso típico de la [kinesiología traumatológica](/kinesiologia-mendoza/traumatologica/) que hacemos en {{CIUDAD}} para lesiones por sobreuso en el trabajo y el deporte.
 
 ### Tratamientos ecoguiados cuando el caso lo pide
 
@@ -136,6 +138,7 @@ Consultá con un médico si el dolor apareció tras una caída o un golpe, si ha
   ],
 
   related: {
+    kinesiologia: ['traumatologica', 'deportiva'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada', 'puncion-seca-ecoguiada'],
     lesiones: ['epitrocleitis', 'dolor-miofascial'],
     blog: ['epicondilitis-sintomas-y-causas', 'epi-para-tendinopatias'],

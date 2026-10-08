@@ -12,6 +12,8 @@ export default {
   h1: 'Tratamiento del dolor musculoesquelético persistente o crónico',
   lead:
     'Cuando el dolor lleva meses y ya probaste varias cosas, es fácil sentir que nada funciona. El dolor persistente se puede entender mejor y abordar desde varios frentes, con objetivos realistas y un plan que vos también conducís.',
+  answer:
+    'El dolor musculoesquelético persistente, el que dura más de tres meses, se aborda desde varios frentes: educación en dolor, ejercicio gradual, sueño y rutina, y tratamientos complementarios cuando suman. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), la evaluación clínica y ecográfica orienta un plan con objetivos realistas, centrado en recuperar actividad y no solo en bajar el dolor.',
   updated: '2026-10-02',
 
   seo: {
@@ -79,7 +81,7 @@ El ejercicio es la herramienta con mejor respaldo en el dolor musculoesquelétic
 
 ### Sueño, actividad y rutina
 
-Se trabaja sobre el descanso, la distribución de la actividad durante la semana (evitando el ciclo de hacer mucho un día bueno y pagarlo después) y la retoma de actividades con sentido para vos.
+Se trabaja sobre el descanso, la distribución de la actividad durante la semana (evitando el ciclo de hacer mucho un día bueno y pagarlo después) y la retoma de actividades con sentido para vos. Cuando el dolor está en la espalda baja, este enfoque es la base de nuestra [kinesiología para el dolor lumbar](/kinesiologia-mendoza/dolor-lumbar/) en {{CIUDAD}}.
 
 {{CTA}}
 
@@ -136,6 +138,7 @@ Consultá a un médico si el dolor se acompaña de:
   ],
 
   related: {
+    kinesiologia: ['dolor-lumbar', 'dolor-cervical', 'traumatologica'],
     tratamientos: ['neuromodulacion-percutanea-ecoguiada', 'puncion-seca-ecoguiada'],
     lesiones: ['dolor-miofascial'],
     blog: ['neuromodulacion-percutanea-nervio-y-dolor', 'cuando-se-recomienda-fisioterapia-invasiva'],

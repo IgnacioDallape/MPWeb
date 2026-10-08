@@ -12,6 +12,8 @@ export default {
   h1: 'Microelectrólisis percutánea (MEP) guiada por ecografía',
   lead:
     'La microelectrólisis percutánea (MEP) aplica una corriente galvánica de muy baja intensidad, medida en microamperios, a través de una aguja fina guiada por ecografía. Suele tolerarse mejor que otros tratamientos con corriente y se utiliza en tejidos blandos sensibles, superficiales o con fibrosis.',
+  answer:
+    'La microelectrólisis percutánea (MEP) aplica una corriente galvánica de muy baja intensidad, en microamperios, mediante una aguja fina guiada por ecografía. Suele tolerarse mejor que la EPI y se usa en tejidos sensibles, superficiales o con fibrosis. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), se indica tras una evaluación y se combina con ejercicio.',
   updated: '2026-10-02',
 
   seo: {
@@ -102,6 +104,8 @@ Al trabajar con intensidades tan bajas, la MEP **suele dejar menos molestia post
 - Se indican ejercicios de movilidad, deslizamiento de tejidos o fortalecimiento, según el caso.
 - Las sesiones pueden ser algo más frecuentes o numerosas que con tratamientos más intensos, siempre en función de la respuesta.
 
+En ligamentos de tobillo o rodilla con dolor persistente, la MEP se integra a la [kinesiología para esguinces](/kinesiologia-mendoza/esguinces/) que hacemos en {{CIUDAD}}, donde la fuerza y la propiocepción siguen siendo la base.
+
 Consultá si aparece enrojecimiento que se extiende, calor, secreción en el punto de punción o fiebre: son poco habituales, pero requieren valoración.
 
 ## Contraindicaciones y precauciones
@@ -155,6 +159,7 @@ En algunos planes se empieza con MEP y, según la respuesta, se progresa a otro 
   ],
 
   related: {
+    kinesiologia: ['esguinces', 'traumatologica', 'deportiva'],
     tratamientos: ['epi-electrolisis-percutanea', 'puncion-seca-ecoguiada'],
     lesiones: ['fibrosis-muscular', 'fascitis-plantar', 'ligamentarias', 'bursopatias', 'tendinopatia-aquiles'],
     blog: ['fascitis-plantar-abordaje-desde-fisioterapia', 'ecografia-en-fisioterapia', 'primera-sesion-fisioterapia-invasiva'],

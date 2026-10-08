@@ -9,7 +9,7 @@ import CertStrip from '../components/CertStrip.astro';
 import { ultrasoundHero, ultrasoundLive } from '../lib/visuals.js';
 import { picture } from '../lib/components.js';
 import { config, known, waLink, tokens } from '../lib/site.js';
-import { treatments, lesions, CATEGORIES, homePosts } from '../data/index.js';
+import { treatments, lesions, services, CATEGORIES, homePosts } from '../data/index.js';
 import { HOME_FAQS } from '../data/faqs.js';
 import { CATEGORY_RENDER } from '../data/renders.js';
 import * as S from '../lib/schema.js';
@@ -39,13 +39,14 @@ const xpSteps = [
   { tag: 'Readaptación', title: 'Un tejido que vuelve a tolerar carga', text: 'El ejercicio terapéutico y la progresión de cargas acompañan la recuperación para que vuelvas a entrenar, trabajar o competir.', link: ['/sobre-mi/', 'Ver la metodología'] },
 ];
 const schema = [
-  S.webPage({ path: '/', title: 'Fisioterapia Invasiva Ecoguiada', description: 'Kinesiología especializada en fisioterapia invasiva ecoguiada.', updated: config.launchDate, extra: { about: { '@id': S.ids.ORG_ID() }, mainEntity: { '@id': S.ids.ORG_ID() } } }),
+  S.webPage({ path: '/', title: tokens('Kinesiología y fisioterapia invasiva ecoguiada en {{CIUDAD}}'), description: S.ENTITY, abstract: S.ENTITY, updated: '2026-10-07', extra: { about: { '@id': S.ids.ORG_ID() }, mainEntity: { '@id': S.ids.ORG_ID() } } }),
   S.faqPage('/', HOME_FAQS),
 ];
 ---
 <Base
-  title="Fisioterapia Invasiva Ecoguiada en {{CIUDAD}} | {{NOMBRE}}"
-  description="Fisioterapia invasiva ecoguiada en {{CIUDAD}}: EPI, neuromodulación percutánea, MEP y punción seca para tendinopatías y lesiones deportivas."
+  title="Kinesiología y Fisioterapia Invasiva en {{CIUDAD}} | {{NOMBRE}}"
+  description="Kinesiología y fisioterapia invasiva ecoguiada en {{LOCALIDAD}}, {{CIUDAD}}: lesiones deportivas, dolor lumbar y cervical, tendinopatías, EPI y punción seca."
+  updated="2026-10-07"
   schema={schema}
   waMessage={wa}
 >
@@ -209,6 +210,21 @@ const schema = [
       <SectionHead id="tratamientos" eyebrow="Tratamientos" title='Tratamientos de fisioterapia invasiva <span class="text-gradient-navy">guiados por ecografía</span>' lead="Cada tratamiento tiene un objetivo distinto. La elección depende del tejido afectado, de la fase de la lesión y de tu actividad." />
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"><Cards kind="tratamientos" items={treatments} /></div>
       <a href="/tratamientos/" class="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-navy-950" data-reveal>Comparar todos los tratamientos<Icon name="arrow" size={18} /></a>
+
+      <!-- Kinesiología general: complementa los tratamientos ecoguiados -->
+      <div class="mt-16 grid gap-8 rounded-[1.75rem] border border-zinc-200 bg-zinc-50 p-7 md:p-10 lg:grid-cols-[1fr_1.4fr] lg:items-center" data-reveal>
+        <div>
+          <p class="eyebrow mb-3">Kinesiología en {tokens('{{CIUDAD}}')}</p>
+          <h3 class="text-[clamp(1.4rem,2.6vw,1.9rem)] leading-tight font-semibold text-navy-950">También hacemos kinesiología, con la misma evaluación ecográfica</h3>
+          <p class="mt-3 text-zinc-600">Lesiones deportivas, rehabilitación después de una cirugía, dolor de espalda o de cuello y esguinces, en nuestro consultorio de {tokens('{{LOCALIDAD}}')}.</p>
+          <a href="/kinesiologia-mendoza/" class="mt-5 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-navy-950">Kinesiología en {tokens('{{CIUDAD}}')}<Icon name="arrow" size={18} /></a>
+        </div>
+        <ul class="grid gap-3 sm:grid-cols-2">
+          {services.map((x) => (
+            <li><a href={`/kinesiologia-mendoza/${x.slug}/`} class="group flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white px-4 py-3.5 font-semibold text-navy-900 no-underline transition hover:border-navy-300 hover:shadow-sm"><span class="grid size-9 shrink-0 place-items-center rounded-xl bg-navy-50 text-navy-700"><Icon name={x.icon} size={18} /></span>{x.name}<Icon name="arrow" size={16} class="ml-auto text-navy-400 transition-transform group-hover:translate-x-1" /></a></li>
+          ))}
+        </ul>
+      </div>
     </div>
   </section>
 

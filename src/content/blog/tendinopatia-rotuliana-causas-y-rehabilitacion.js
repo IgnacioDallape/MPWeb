@@ -6,6 +6,8 @@ export default {
   h1: 'Tendinopatía rotuliana: por qué aparece y cómo se rehabilita',
   lead:
     'La tendinopatía rotuliana suele aparecer cuando el tendón recibe más carga de la que puede tolerar, sobre todo por aumentos bruscos en el volumen de saltos, cambios de dirección o frenadas. Su rehabilitación se basa en recuperar progresivamente la capacidad del tendón con ejercicio dosificado, en fases, hasta volver a los gestos explosivos del deporte.',
+  answer:
+    'La tendinopatía rotuliana suele aparecer cuando el tendón recibe más carga de la que tolera, sobre todo por aumentos bruscos de saltos, frenadas o cambios de dirección. Se rehabilita por fases: calmar el dolor con isométricos, recuperar fuerza, devolver la capacidad de resorte con saltos y volver al deporte según criterios, no por fechas.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Lesiones',

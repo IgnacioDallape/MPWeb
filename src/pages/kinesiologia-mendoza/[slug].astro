@@ -1,0 +1,9 @@
+---
+import DetailPage from '../../components/DetailPage.astro';
+import { services } from '../../data/index.js';
+export function getStaticPaths() {
+  return services.map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+const { item } = Astro.props;
+---
+<DetailPage item={item} kind="kinesiologia" />

@@ -12,6 +12,8 @@ export default {
   h1: 'Tratamiento de la fascitis plantar: dolor en el talón al levantarte',
   lead:
     'Apoyar el pie al bajar de la cama y sentir un pinchazo en el talón es la forma en que muchas personas descubren la fascitis plantar. El dolor suele aflojar al caminar un rato, pero vuelve después de estar sentado. Con una evaluación precisa y un plan constante, es un cuadro que suele responder bien al tratamiento conservador.',
+  answer:
+    'La fascitis plantar produce dolor en el talón con los primeros pasos de la mañana o después de estar sentado, y suele responder bien al tratamiento conservador. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), se combina evaluación con ecografía, educación, revisión del calzado y ejercicio progresivo para el pie y la pantorrilla; EPI o MEP solo en casos seleccionados.',
   updated: '2026-10-02',
 
   seo: {
@@ -99,7 +101,7 @@ El programa de ejercicio suele incluir:
 - **Estiramientos** de la fascia y de la pantorrilla, útiles sobre todo antes de los primeros pasos de la mañana.
 - **Trabajo de la musculatura intrínseca del pie** para mejorar el control del arco.
 
-Las plantillas o los vendajes pueden aliviar durante un tiempo en algunas personas; se indican como apoyo, no como solución única. La dosificación de cada ejercicio se adapta en la consulta.
+Las plantillas o los vendajes pueden aliviar durante un tiempo en algunas personas; se indican como apoyo, no como solución única. La dosificación de cada ejercicio se adapta en la consulta. Este trabajo forma parte de la [kinesiología traumatológica](/kinesiologia-mendoza/traumatologica/) que ofrecemos en {{CIUDAD}}, tanto para quien pasa muchas horas de pie como para quien sale a correr.
 
 ### Tratamientos ecoguiados en casos seleccionados
 
@@ -138,6 +140,7 @@ Consultá con un médico si el dolor comenzó con un **chasquido** en la planta 
   ],
 
   related: {
+    kinesiologia: ['traumatologica', 'deportiva'],
     tratamientos: ['epi-electrolisis-percutanea', 'microelectrolisis-percutanea-mep', 'puncion-seca-ecoguiada'],
     lesiones: ['tendinopatia-aquiles', 'dolor-miofascial'],
     blog: ['fascitis-plantar-abordaje-desde-fisioterapia'],

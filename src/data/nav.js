@@ -1,6 +1,7 @@
 // Menú principal: sigue el embudo de la home.
 export const NAV = [
   { label: 'Inicio', path: '/', mobileOnly: true },
+  { label: 'Kinesiología', path: '/kinesiologia-mendoza/' },
   { label: 'Fisioterapia invasiva', path: '/fisioterapia-invasiva-ecoguiada/' },
   { label: 'Patologías', path: '/lesiones/' },
   { label: 'Tratamientos', path: '/tratamientos/' },

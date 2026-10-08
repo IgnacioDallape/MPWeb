@@ -12,6 +12,8 @@ export default {
   h1: 'Tratamiento del dolor miofascial y los puntos gatillo',
   lead:
     'Ese "nudo" en el trapecio que te da dolor de cabeza o la contractura en la cola que baja por la pierna pueden tener un origen miofascial. Entender de dónde viene el dolor es el primer paso para tratarlo con criterio y no solo aliviarlo por unos días.',
+  answer:
+    'El dolor miofascial nace en puntos gatillo, zonas sensibles dentro de un músculo que pueden doler en el lugar o a distancia, como el trapecio que da dolor de cabeza. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), se trata con educación, ejercicio terapéutico y, cuando conviene, punción seca o neuromodulación percutánea con guía ecográfica.',
   updated: '2026-10-02',
 
   seo: {
@@ -89,7 +91,7 @@ Entender por qué aparece el dolor reduce la incertidumbre. Se revisan pausas ac
 
 ### Ejercicio terapéutico
 
-El ejercicio es el que sostiene los cambios a mediano plazo. Según la zona, puede incluir fortalecimiento de la musculatura escapular y cervical profunda, trabajo de glúteos y estabilidad de cadera, ejercicios de movilidad y actividad aeróbica general, que tiene un efecto positivo sobre la sensibilidad al dolor.
+El ejercicio es el que sostiene los cambios a mediano plazo. Según la zona, puede incluir fortalecimiento de la musculatura escapular y cervical profunda, trabajo de glúteos y estabilidad de cadera, ejercicios de movilidad y actividad aeróbica general, que tiene un efecto positivo sobre la sensibilidad al dolor. Si el foco está en el cuello y los hombros, este trabajo se integra a la [kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/) que hacemos en {{CIUDAD}}.
 
 {{CTA}}
 
@@ -139,6 +141,7 @@ Pedí una consulta médica si el dolor se acompaña de:
   ],
 
   related: {
+    kinesiologia: ['dolor-cervical', 'dolor-lumbar'],
     tratamientos: ['puncion-seca-ecoguiada', 'neuromodulacion-percutanea-ecoguiada'],
     lesiones: ['dolor-cronico-musculoesqueletico', 'desgarros-musculares'],
     blog: ['puncion-seca-con-ecografia-que-cambia', 'diferencias-entre-epi-y-puncion-seca'],

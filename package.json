@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "images": "node scripts/images.js",
-    "check": "node scripts/check-content.js"
+    "check": "node scripts/check-content.js",
+    "indexnow": "node scripts/indexnow.mjs"
   },
   "engines": {
     "node": ">=22.12.0"

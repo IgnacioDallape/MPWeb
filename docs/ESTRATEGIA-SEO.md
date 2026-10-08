@@ -230,3 +230,52 @@ Formato: **KW primaria** · secundarias · intención · entidades relacionadas 
 3. Alta en Google Search Console + envío de `sitemap.xml`.
 4. Publicar 2 artículos por mes siguiendo la tabla de clusters; actualizar `updated` al revisar contenido.
 5. Pedir reseñas reales en Google Business Profile (nunca incorporarlas como schema propio).
+
+---
+
+## 8. Ampliación: kinesiología en Mendoza y SEO para IA (octubre 2026)
+
+El sitio deja de posicionar solo por "fisioterapia invasiva ecoguiada" y apunta también a **kinesiología en Mendoza** en general. Lo hecho para tratamientos y patologías se mantiene: cada URL conserva su keyword y suma enlaces hacia y desde la nueva sección.
+
+### 8.1 Mapa de keywords (una URL por grupo, sin canibalización)
+
+| Grupo | Keywords | Intención | URL |
+|---|---|---|---|
+| Marca + principal | kinesiología y fisioterapia invasiva Mendoza, MP Studio | navegacional / local | `/` |
+| Kinesiología local | kinesiología Mendoza, kinesiólogo en Mendoza, kinesiología Luján de Cuyo, kinesiólogo Chacras de Coria, centro de kinesiología Mendoza, fisioterapia Mendoza | local / transaccional | `/kinesiologia-mendoza/` |
+| Deportiva | kinesiología deportiva Mendoza, kinesiólogo deportivo, readaptación deportiva, lesiones deportivas | local / transaccional | `/kinesiologia-mendoza/deportiva/` |
+| Traumatológica | kinesiología traumatológica, rehabilitación de fracturas, tendinitis, dolor de hombro o rodilla | local / transaccional | `/kinesiologia-mendoza/traumatologica/` |
+| Postquirúrgica | rehabilitación postquirúrgica, kinesiología después de una operación, LCA, menisco, hombro | local / transaccional | `/kinesiologia-mendoza/postquirurgica/` |
+| Lumbar | kinesiología dolor lumbar, lumbalgia, dolor de espalda baja, ciática | local / transaccional | `/kinesiologia-mendoza/dolor-lumbar/` |
+| Cervical | kinesiología cervical, dolor de cuello, contractura cervical, cervicalgia | local / transaccional | `/kinesiologia-mendoza/dolor-cervical/` |
+| Esguinces | rehabilitación esguince de tobillo, esguince de rodilla o muñeca | local / transaccional | `/kinesiologia-mendoza/esguinces/` |
+| Fisioterapia invasiva | fisioterapia / kinesiología invasiva ecoguiada (sin cambios) | informacional-comercial | `/fisioterapia-invasiva-ecoguiada/` |
+| Tratamientos y patologías | EPI, NMP-e, MEP, punción seca; 12 patologías (sin cambios) | comercial local | `/tratamientos/*`, `/lesiones/*` |
+| Sesiones | cuántas sesiones de kinesiología, cada cuánto ir al kinesiólogo | informacional | `/blog/cuantas-sesiones-de-kinesiologia/` |
+| A quién consultar | kinesiólogo o traumatólogo primero | comparativa | `/blog/kinesiologo-o-traumatologo/` |
+| Cobertura | orden médica kinesiología, obra social kinesiología Mendoza | informacional | `/blog/obra-social-y-orden-medica-kinesiologia/` |
+| Primera sesión | qué llevar al kinesiólogo, primera sesión de kinesiología | informacional | `/blog/que-llevar-a-la-primera-sesion-de-kinesiologia/` |
+| Términos | kinesiología o fisioterapia, kinesiólogo o fisioterapeuta | comparativa | `/blog/kinesiologia-o-fisioterapia/` |
+| Frío o calor | frío o calor en una lesión, hielo o calor contractura | informacional | `/blog/frio-o-calor-en-una-lesion/` |
+| Vuelta al deporte | cuándo volver a entrenar después de una lesión | informacional | `/blog/volver-a-entrenar-despues-de-una-lesion/` |
+| LCA | rehabilitación ligamento cruzado anterior, etapas y tiempos | informacional | `/blog/rehabilitacion-ligamento-cruzado-anterior/` |
+| Rodilla del corredor | dolor de rodilla al correr | informacional | `/blog/dolor-de-rodilla-al-correr/` |
+
+**Páginas por localidad:** no se crean todavía. Sin dirección no tendrían contenido propio (cómo llegar, referencias de la zona) y serían clones con otro nombre de ciudad. La pilar `/kinesiologia-mendoza/` tiene una sección de zonas atendidas. Con la dirección cargada, evaluar `/kinesiologia-mendoza/lujan-de-cuyo/` y `/kinesiologia-mendoza/chacras-de-coria/` con contenido real.
+
+### 8.2 SEO para buscadores con IA (GEO / AEO)
+
+- **Respuesta directa (`answer`)** de 40 a 60 palabras al inicio de cada pilar, servicio, tratamiento, patología y artículo. Se muestra como primer párrafo y va al schema como `abstract`.
+- **H2 formulados como preguntas** reales y tablas citables (plazos orientativos, comparativas, etapas).
+- **Entidad consistente:** la misma descripción (`ENTITY` en `src/lib/schema.js`) en el schema, `llms.txt`, home y footer. Repetir esa frase en Google Business Profile, Instagram y directorios.
+- **Schema.org:** `Physiotherapy` (MedicalBusiness) con `knowsAbout`, `hasOfferCatalog` (kinesiología + fisioterapia invasiva), `availableService`, `areaServed` por localidad y provincia, `medicalSpecialty` e `isAcceptingNewPatients`. Cada servicio es `PhysicalTherapy` con `indication` hacia las patologías. `FAQPage` en todas las páginas con preguntas. `sameAs` se completa solo al cargar Instagram; sumar la URL de Google Business Profile cuando exista.
+- **`/llms.txt` y `/llms-full.txt`:** se generan en cada build desde los mismos datos que las páginas (`src/lib/llms.js`).
+- **robots.txt:** permite explícitamente GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-SearchBot, PerplexityBot, Google-Extended, Bingbot, Applebot-Extended y otros.
+- **IndexNow:** clave en `public/<clave>.txt`. Después de cada deploy con dominio definitivo: `npm run build && npm run indexnow`. Bing alimenta a ChatGPT y Copilot.
+- **Sitemap** con `lastmod` tomado de la fecha `updated` de cada página.
+
+### 8.3 Validación
+
+`node scripts/check-content.js src/content/*/*.js` valida campos, enlaces internos, `answer` (40 a 60 palabras), rayas, uso de "técnica" y lenguaje prohibido. El postbuild valida H1 único, títulos y descripciones duplicados, enlaces rotos y alt.
+
+Lo que hay que hacer fuera del sitio está en [CHECKLIST-SEO-LOCAL.md](CHECKLIST-SEO-LOCAL.md).

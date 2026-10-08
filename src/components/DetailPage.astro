@@ -1,5 +1,5 @@
 ---
-// Plantilla compartida: tratamiento, lesión o artículo.
+// Plantilla compartida: servicio de kinesiología, tratamiento, lesión o artículo.
 import Base from '../layouts/Base.astro';
 import PageHero from './PageHero.astro';
 import Icon from './Icon.astro';
@@ -12,14 +12,15 @@ import CertRow from './CertRow.astro';
 import { markdown, wordCount } from '../lib/md.js';
 import { config, waLink, formatDate, abs, tokens, known } from '../lib/site.js';
 import { ctaInline, TREATMENT_CERT } from '../lib/components.js';
-import { relatedOf, CATEGORIES } from '../data/index.js';
-import { TREATMENT_RENDER, lesionRender } from '../data/renders.js';
+import { relatedOf, CATEGORIES, urlOf, BASE } from '../data/index.js';
+import { TREATMENT_RENDER, SERVICE_RENDER, lesionRender } from '../data/renders.js';
 import * as S from '../lib/schema.js';
 
-interface Props { item: any; kind: 'tratamientos' | 'lesiones' | 'blog' }
+interface Props { item: any; kind: 'kinesiologia' | 'tratamientos' | 'lesiones' | 'blog' }
 const { item, kind } = Astro.props;
 
-const path = `/${kind}/${item.slug}/`;
+const path = urlOf(kind, item.slug);
+const answer = item.answer ? tokens(item.answer) : undefined;
 const { html, toc } = markdown(tokens(item.body));
 const waMessage = item.waMessage || `Hola, leí el artículo "${item.h1}" y quería hacer una consulta.`;
 const body = html.replace(/<p>\{\{CTA\}\}<\/p>/g, ctaInline({ waMessage }));
@@ -30,25 +31,28 @@ const p = config.professional;
 const brand = config.business.name;
 const crumbs = [
   { name: 'Inicio', path: '/' },
-  { name: { tratamientos: 'Tratamientos', lesiones: 'Patologías', blog: 'Blog' }[kind], path: `/${kind}/` },
+  { name: { kinesiologia: 'Kinesiología en Mendoza', tratamientos: 'Tratamientos', lesiones: 'Patologías', blog: 'Blog' }[kind], path: BASE[kind] },
   { name: item.name || item.h1, path },
 ];
-const eyebrow = kind === 'tratamientos' ? 'Tratamiento ecoguiado' : kind === 'lesiones' ? CATEGORIES[item.category]?.label : item.category;
+const eyebrow = kind === 'kinesiologia' ? 'Kinesiología' : kind === 'tratamientos' ? 'Tratamiento ecoguiado' : kind === 'lesiones' ? CATEGORIES[item.category]?.label : item.category;
 const minutes = Math.max(3, Math.round(wordCount(item.body) / 210));
 const cert = kind === 'tratamientos' ? TREATMENT_CERT[item.slug] : undefined;
 const hasFaq = item.faqs?.length > 0;
 const tocItems = [...toc, ...(hasFaq ? [{ id: 'preguntas-frecuentes', text: 'Preguntas frecuentes' }] : [])];
 
 const schema: object[] = [S.breadcrumbs(crumbs)];
-if (kind === 'tratamientos') {
+if (kind === 'kinesiologia') {
+  schema.push(S.therapy(path, item.therapy, rel.lesiones.map((l) => urlOf('lesiones', l.slug))));
+  schema.push(S.webPage({ path, title: item.h1, description: item.description, updated, published, medical: true, abstract: answer, about: { '@id': abs(path + '#servicio') } }));
+} else if (kind === 'tratamientos') {
   schema.push(S.procedure(path, item.procedure));
-  schema.push(S.webPage({ path, title: item.h1, description: item.description, updated, published, medical: true, about: { '@id': abs(path + '#procedimiento') } }));
+  schema.push(S.webPage({ path, title: item.h1, description: item.description, updated, published, medical: true, abstract: answer, about: { '@id': abs(path + '#procedimiento') } }));
 } else if (kind === 'lesiones') {
   schema.push(S.condition(path, item.condition, rel.tratamientos.map((t) => `/tratamientos/${t.slug}/`)));
-  schema.push(S.webPage({ path, title: item.h1, description: item.description, updated, published, medical: true, about: { '@id': abs(path + '#condicion') } }));
+  schema.push(S.webPage({ path, title: item.h1, description: item.description, updated, published, medical: true, abstract: answer, about: { '@id': abs(path + '#condicion') } }));
 } else {
   schema.push(S.article(path, item, abs('/img/og-default.jpg')));
-  schema.push(S.webPage({ path, title: item.h1, description: item.description, updated, published, medical: true }));
+  schema.push(S.webPage({ path, title: item.h1, description: item.description, updated, published, medical: true, abstract: answer }));
 }
 if (hasFaq) schema.push(S.faqPage(path, item.faqs));
 ---
@@ -61,7 +65,7 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
   published={kind === 'blog' ? published : undefined}
   updated={updated}
 >
-  <PageHero crumbs={crumbs} eyebrow={eyebrow} h1={item.h1} lead={item.lead} facts={item.facts} render={kind === 'tratamientos' ? TREATMENT_RENDER[item.slug] : kind === 'lesiones' ? lesionRender(item.slug) : undefined} renderAlt={`Ilustración 3D: ${item.name || item.h1}`}>
+  <PageHero crumbs={crumbs} eyebrow={eyebrow} h1={item.h1} lead={item.lead} facts={item.facts} render={kind === 'kinesiologia' ? SERVICE_RENDER[item.slug] : kind === 'tratamientos' ? TREATMENT_RENDER[item.slug] : kind === 'lesiones' ? lesionRender(item.slug) : undefined} renderAlt={`Ilustración 3D: ${item.name || item.h1}`}>
     {kind === 'blog' ? (
       <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-[0.86rem] text-white/70">
         <span class="flex items-center gap-2"><Icon name="calendar" size={16} class="text-ice-400" /><time datetime={published}>{formatDate(published)}</time></span>
@@ -71,7 +75,7 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
       <>
         <div class="mt-9 flex flex-wrap gap-3">
           <a href={waLink(waMessage)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />{kind === 'lesiones' ? 'Consultar por mi lesión' : 'Solicitar una evaluación'}</a>
-          <a href={kind === 'lesiones' ? '#tratamientos-relacionados' : '#lesiones-relacionadas'} class="btn btn-outline-dark">{kind === 'lesiones' ? 'Ver tratamientos' : 'Ver lesiones que aborda'}<Icon name="arrow" size={18} /></a>
+          <a href={kind === 'lesiones' ? '#tratamientos-relacionados' : '#lesiones-relacionadas'} class="btn btn-outline-dark">{kind === 'lesiones' ? 'Ver tratamientos' : kind === 'kinesiologia' ? 'Ver patologías frecuentes' : 'Ver lesiones que aborda'}<Icon name="arrow" size={18} /></a>
         </div>
         {cert && <CertRow cert={cert} dark />}
       </>
@@ -89,6 +93,7 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
       </div>
     </aside>
     <article class="prose-site min-w-0">
+      {answer && <p class="lede-answer">{answer}</p>}
       <Fragment set:html={body} />
       {hasFaq && (
         <section aria-labelledby="preguntas-frecuentes" class="not-prose mt-16">
@@ -99,10 +104,19 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
     </article>
   </div>
 
+  {kind === 'kinesiologia' && (
+    <>
+      <Related id="lesiones-relacionadas" title="Patologías que vemos con frecuencia" intro="Cada caso se evalúa de forma individual, con exploración y ecografía." count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
+      <Related id="tratamientos-relacionados" title="Tratamientos ecoguiados que pueden sumarse al plan" intro="Se indican solo cuando la evaluación lo justifica, siempre junto con el ejercicio." count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
+      <Related id="kinesiologia-relacionada" title="Otros servicios de kinesiología" count={rel.kinesiologia.length}><Cards kind="kinesiologia" items={rel.kinesiologia} /></Related>
+      <Related id="articulos-relacionados" title="Para profundizar" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
+    </>
+  )}
   {kind === 'tratamientos' && (
     <>
       <Related id="lesiones-relacionadas" title="Lesiones en las que suele indicarse" intro="La indicación siempre depende de la evaluación individual." count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
       <Related id="tratamientos-relacionados" title="Otros tratamientos de fisioterapia invasiva ecoguiada" count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
+      <Related id="kinesiologia-relacionada" title="Kinesiología en Mendoza" count={rel.kinesiologia.length}><Cards kind="kinesiologia" items={rel.kinesiologia} /></Related>
       <Related id="articulos-relacionados" title="Para profundizar" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
     </>
   )}
@@ -110,6 +124,7 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
     <>
       <Related id="tratamientos-relacionados" title="Tratamientos que pueden formar parte del plan" intro="Se combinan con ejercicio terapéutico y progresión de cargas cuando la evaluación lo indica." count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
       <Related id="lesiones-relacionadas" title="Lesiones relacionadas" count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
+      <Related id="kinesiologia-relacionada" title="Kinesiología relacionada" count={rel.kinesiologia.length}><Cards kind="kinesiologia" items={rel.kinesiologia} /></Related>
       <Related id="articulos-relacionados" title="Artículos sobre esta lesión" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
     </>
   )}
@@ -117,6 +132,7 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
     <>
       <Related id="lesiones-relacionadas" title="Lesiones relacionadas" count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
       <Related id="tratamientos-relacionados" title="Tratamientos mencionados" count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
+      <Related id="kinesiologia-relacionada" title="Servicios de kinesiología" count={rel.kinesiologia.length}><Cards kind="kinesiologia" items={rel.kinesiologia} /></Related>
       <Related id="articulos-relacionados" title="Seguí leyendo" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
     </>
   )}

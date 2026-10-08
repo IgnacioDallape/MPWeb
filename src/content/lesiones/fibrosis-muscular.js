@@ -12,6 +12,8 @@ export default {
   h1: 'Tratamiento de la fibrosis muscular y la cicatriz post desgarro',
   lead:
     'Te desgarraste hace meses, ya no duele como al principio, pero el músculo sigue tirante y cada tanto "avisa" en el mismo punto. Puede tratarse de una cicatriz que quedó mal adaptada. Se puede evaluar y trabajar para que el tejido recupere función.',
+  answer:
+    'La fibrosis muscular es una cicatriz que quedó mal adaptada después de un desgarro o una contusión, y suele dar tirantez y molestias recurrentes en el mismo punto. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), se identifica con ecografía y se trata con ejercicio de carga progresiva, movilidad y, si limita la función, EPI, MEP o punción seca ecoguiadas.',
   updated: '2026-10-02',
 
   seo: {
@@ -82,7 +84,7 @@ El colágeno de una cicatriz responde a la tensión mecánica. Por eso el eje de
 
 ### Movilidad y tejido vecino
 
-Se trabaja la movilidad del músculo y de la fascia que lo rodea, y se atienden los músculos que compensaron durante la lesión, que muchas veces están sobrecargados.
+Se trabaja la movilidad del músculo y de la fascia que lo rodea, y se atienden los músculos que compensaron durante la lesión, que muchas veces están sobrecargados. Todo esto se enmarca en la [kinesiología deportiva](/kinesiologia-mendoza/deportiva/) que hacemos en {{CIUDAD}}, porque la meta es que el músculo vuelva a rendir en tu deporte y no solo que deje de molestar.
 
 {{CTA}}
 
@@ -136,6 +138,7 @@ Para conocer el resto de lesiones que se abordan en la consulta, podés ver el l
   ],
 
   related: {
+    kinesiologia: ['deportiva', 'traumatologica'],
     tratamientos: ['epi-electrolisis-percutanea', 'microelectrolisis-percutanea-mep', 'puncion-seca-ecoguiada'],
     lesiones: ['desgarros-musculares', 'dolor-miofascial'],
     blog: ['como-actua-la-epi-en-el-tendon'],

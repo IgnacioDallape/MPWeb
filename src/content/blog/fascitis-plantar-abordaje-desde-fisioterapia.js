@@ -6,6 +6,8 @@ export default {
   h1: 'Fascitis plantar: cómo se aborda desde la fisioterapia',
   lead:
     'Desde la fisioterapia, la fascitis plantar se aborda combinando educación, ajuste de la carga diaria y deportiva, revisión del calzado y un programa de ejercicio progresivo para el pie y la pantorrilla. Los tratamientos invasivos ecoguiados solo se consideran tras una evaluación, cuando el cuadro se prolonga pese a un plan bien llevado.',
+  answer:
+    'Desde la fisioterapia, la fascitis plantar se aborda con educación, ajuste de la carga diaria y deportiva, revisión del calzado y ejercicio progresivo para el pie y la pantorrilla. El reposo total y las plantillas solas no suelen alcanzar. Los tratamientos ecoguiados se consideran solo tras una evaluación, cuando el dolor se prolonga pese a un buen plan.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Lesiones',

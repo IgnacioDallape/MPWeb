@@ -6,6 +6,8 @@ export default {
   h1: 'Epicondilitis: síntomas, causas y cuándo consultar',
   lead:
     'La epicondilitis, o codo de tenista, se manifiesta como dolor en la cara externa del codo que aumenta al agarrar objetos, girar el antebrazo o extender la muñeca contra resistencia. Suele aparecer por sobrecarga de los tendones extensores del antebrazo en tareas repetitivas o con agarre sostenido, y conviene consultar si el dolor persiste más de unas semanas o limita tu trabajo o tu deporte.',
+  answer:
+    'La epicondilitis, o codo de tenista, da dolor en la cara externa del codo que aumenta al agarrar objetos, girar el antebrazo o extender la muñeca contra resistencia. Suele deberse a la sobrecarga de los tendones extensores por tareas repetitivas o agarre sostenido. Conviene consultar si dura más de unas semanas o limita tu trabajo o deporte.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Lesiones',

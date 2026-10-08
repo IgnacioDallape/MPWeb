@@ -1,6 +1,7 @@
 // Schema.org en un único @graph por página. Los datos pendientes se omiten.
 import { config, known, abs, tokens } from './site.js';
 import { imagePath } from './components.js';
+import { services, treatments } from '../data/index.js';
 
 const ORG_ID = () => abs('/#consultorio');
 const PERSON_ID = () => abs('/#profesional');
@@ -25,6 +26,30 @@ const clean = (o) => {
   return o;
 };
 
+export const ENTITY = tokens(
+  '{{NOMBRE}} es un consultorio de kinesiología y fisioterapia invasiva ecoguiada en {{LOCALIDAD}}, {{PROVINCIA}} (Argentina). Atiende kinesiología deportiva, traumatológica y postquirúrgica, dolor lumbar y cervical, esguinces y tendinopatías, con evaluación ecográfica y tratamientos como EPI, neuromodulación percutánea, MEP y punción seca ecoguiada, siempre integrados con ejercicio terapéutico.'
+);
+
+export const KNOWS_ABOUT = [
+  'Kinesiología',
+  'Kinesiología deportiva',
+  'Kinesiología traumatológica',
+  'Rehabilitación postquirúrgica',
+  'Dolor lumbar',
+  'Dolor cervical',
+  'Rehabilitación de esguinces',
+  'Fisioterapia invasiva ecoguiada',
+  'Ecografía musculoesquelética',
+  'Electrólisis percutánea intratisular (EPI)',
+  'Microelectrólisis percutánea (MEP)',
+  'Neuromodulación percutánea ecoguiada',
+  'Punción seca',
+  'Tendinopatías',
+  'Lesiones musculares',
+  'Ejercicio terapéutico',
+  'Readaptación deportiva',
+];
+
 export function organization() {
   const b = config.business;
   const c = config.contact;
@@ -32,15 +57,17 @@ export function organization() {
     '@type': 'Physiotherapy', // subtipo de MedicalBusiness → LocalBusiness
     '@id': ORG_ID(),
     name: known(b.name) || b.specialty,
-    description: tokens(
-      'Consultorio de kinesiología especializado en fisioterapia invasiva ecoguiada: EPI, neuromodulación percutánea, MEP y punción seca guiadas por ecografía, integradas con rehabilitación y ejercicio terapéutico.'
-    ),
+    // Descripción de la entidad: la misma frase en todo el sitio, llms.txt y perfiles externos.
+    description: ENTITY,
+    slogan: tokens('Kinesiología y fisioterapia invasiva ecoguiada en {{LOCALIDAD}}, {{PROVINCIA}}'),
+    knowsAbout: KNOWS_ABOUT,
     url: abs('/'),
     image: abs('/img/og-default.jpg'),
     logo: abs('/favicon.svg'),
     telephone: known(c.phoneDisplay),
     email: known(c.email),
-    medicalSpecialty: 'https://schema.org/Physiotherapy',
+    medicalSpecialty: ['https://schema.org/Physiotherapy', 'https://schema.org/Musculoskeletal'],
+    isAcceptingNewPatients: true,
     address: {
       '@type': 'PostalAddress',
       streetAddress: known(b.address),
@@ -63,11 +90,25 @@ export function organization() {
     ],
     sameAs: [known(c.instagram)],
     availableService: [
-      { '@id': abs('/tratamientos/epi-electrolisis-percutanea/#procedimiento') },
-      { '@id': abs('/tratamientos/neuromodulacion-percutanea-ecoguiada/#procedimiento') },
-      { '@id': abs('/tratamientos/microelectrolisis-percutanea-mep/#procedimiento') },
-      { '@id': abs('/tratamientos/puncion-seca-ecoguiada/#procedimiento') },
+      ...services.map((x) => ({ '@id': abs(`/kinesiologia-mendoza/${x.slug}/#servicio`) })),
+      ...treatments.map((t) => ({ '@id': abs(`/tratamientos/${t.slug}/#procedimiento`) })),
     ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Kinesiología y fisioterapia invasiva ecoguiada',
+      itemListElement: [
+        {
+          '@type': 'OfferCatalog',
+          name: 'Kinesiología',
+          itemListElement: services.map((x) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: x.name, url: abs(`/kinesiologia-mendoza/${x.slug}/`) } })),
+        },
+        {
+          '@type': 'OfferCatalog',
+          name: 'Fisioterapia invasiva ecoguiada',
+          itemListElement: treatments.map((t) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name: t.name, url: abs(`/tratamientos/${t.slug}/`) } })),
+        },
+      ],
+    },
   };
 }
 
@@ -137,7 +178,7 @@ export function faqPage(path, faqs) {
   };
 }
 
-export function webPage({ path, type = 'WebPage', title, description, updated, published, medical = false, about, extra = {} }) {
+export function webPage({ path, type = 'WebPage', title, description, updated, published, medical = false, about, abstract, extra = {} }) {
   return {
     '@type': medical ? 'MedicalWebPage' : type,
     '@id': abs(path + '#webpage'),
@@ -151,8 +192,25 @@ export function webPage({ path, type = 'WebPage', title, description, updated, p
     lastReviewed: medical ? updated : undefined,
     reviewedBy: medical ? { '@id': ORG_ID() } : undefined,
     about,
+    abstract,
     breadcrumb: path === '/' ? undefined : { '@id': abs(path + '#breadcrumbs') },
     ...extra,
+  };
+}
+
+// Servicio de kinesiología (PhysicalTherapy: subtipo de MedicalTherapy).
+export function therapy(path, t, conditionPaths = []) {
+  return {
+    '@type': 'PhysicalTherapy',
+    '@id': abs(path + '#servicio'),
+    name: t.name,
+    alternateName: t.alternateName,
+    url: abs(path),
+    description: tokens(t.description),
+    bodyLocation: t.bodyLocation,
+    relevantSpecialty: 'https://schema.org/Physiotherapy',
+    indication: conditionPaths.map((c) => ({ '@id': abs(c + '#condicion') })),
+    provider: { '@id': ORG_ID() },
   };
 }
 

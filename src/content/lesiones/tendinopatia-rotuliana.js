@@ -12,6 +12,8 @@ export default {
   h1: 'Tratamiento de la tendinopatía rotuliana (rodilla de saltador)',
   lead:
     'Ese dolor puntual debajo de la rótula que aparece al saltar, al aterrizar o al bajar en sentadilla tiene nombre: tendinopatía rotuliana. Su tratamiento busca que el tendón vuelva a tolerar los saltos de tu deporte, con un plan progresivo y una evaluación ecográfica que muestra cómo está el tejido.',
+  answer:
+    'La tendinopatía rotuliana, o rodilla de saltador, es un dolor puntual debajo de la rótula que aparece al saltar, aterrizar o hacer sentadillas. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), se trata con evaluación ecográfica y un programa de carga por etapas, de isométricos a saltos, sumando EPI ecoguiada si el tendón no responde.',
   updated: '2026-10-02',
 
   seo: {
@@ -92,7 +94,7 @@ El ejercicio terapéutico es el eje del tratamiento. La secuencia habitual es:
 3. **Trabajo de almacenamiento y liberación de energía:** saltos progresivos, primero bilaterales y después a una pierna, con aterrizajes controlados.
 4. **Readaptación al gesto deportivo:** saltos específicos del deporte, cambios de dirección y vuelta gradual a entrenamientos y partidos.
 
-Se avanza de fase según criterios de dolor y de rendimiento, no por calendario. Las series, cargas y frecuencias se ajustan a cada persona en la consulta.
+Se avanza de fase según criterios de dolor y de rendimiento, no por calendario. Las series, cargas y frecuencias se ajustan a cada persona en la consulta. Esta progresión forma parte de la [kinesiología deportiva](/kinesiologia-mendoza/deportiva/) que hacemos en {{CIUDAD}} para jugadores de vóley, básquet, fútbol y pádel.
 
 ### Cuándo suman los tratamientos ecoguiados
 
@@ -131,6 +133,7 @@ Pedí una valoración médica si la rodilla se hincha de forma marcada, si se bl
   ],
 
   related: {
+    kinesiologia: ['deportiva', 'traumatologica'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada'],
     lesiones: ['tendinopatia-aquiles', 'ligamentarias'],
     blog: ['epi-para-tendinopatias', 'tendinopatia-rotuliana-causas-y-rehabilitacion'],

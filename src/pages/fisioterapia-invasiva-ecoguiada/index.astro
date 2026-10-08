@@ -30,6 +30,7 @@ const schema = [
     updated: pillar.updated,
     published: config.launchDate,
     medical: true,
+    abstract: pillar.answer ? tokens(pillar.answer) : undefined,
     about: { '@type': 'MedicalTherapy', name: 'Fisioterapia invasiva ecoguiada', alternateName: ['Kinesiología invasiva ecoguiada', 'Fisioterapia ecoguiada'] },
     extra: { hasPart: treatments.map((t) => ({ '@id': abs(`/tratamientos/${t.slug}/#procedimiento`) })) },
   }),
@@ -53,6 +54,7 @@ const schema = [
       </div>
     </aside>
     <article class="prose-site min-w-0">
+      {pillar.answer && <p class="lede-answer">{tokens(pillar.answer)}</p>}
       <figure class="not-prose glass-light mb-12 overflow-hidden rounded-[1.75rem] p-2">
         <div class="overflow-hidden rounded-[1.3rem]" set:html={layersFigure()} />
         <figcaption class="px-4 py-3 text-[0.82rem] text-zinc-500">Esquema: la sonda ecográfica permite seguir la aguja hasta la estructura objetivo.</figcaption>

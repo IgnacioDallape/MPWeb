@@ -6,6 +6,8 @@ export default {
   h1: 'Neuromodulación percutánea: cómo actúa sobre el nervio, el músculo y el dolor',
   lead:
     'La neuromodulación percutánea funciona estimulando eléctricamente un nervio periférico con una aguja fina colocada cerca de él bajo guía ecográfica. Ese estímulo genera respuestas motoras y sensitivas que pueden ayudar a reactivar músculos inhibidos y a modificar cómo el sistema nervioso procesa el dolor. No actúa sobre el tejido lesionado, sino sobre la vía que lo controla y lo informa.',
+  answer:
+    'La neuromodulación percutánea estimula eléctricamente un nervio periférico con una aguja fina colocada cerca de él bajo guía ecográfica. Las respuestas motoras y sensitivas que genera pueden ayudar a reactivar músculos inhibidos y a cambiar cómo el sistema nervioso procesa el dolor. No actúa sobre la lesión en sí, sino sobre la vía que la controla.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Tratamientos',

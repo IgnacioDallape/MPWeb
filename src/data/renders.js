@@ -5,6 +5,15 @@ export const TREATMENT_RENDER = {
   'neuromodulacion-percutanea-ecoguiada': 'nmp',
   'puncion-seca-ecoguiada': 'puncion',
 };
+// Servicios de kinesiología: reutilizan el render anatómico más cercano.
+export const SERVICE_RENDER = {
+  deportiva: 'musculares',
+  traumatologica: 'manguito-rotador',
+  postquirurgica: 'tendinopatia-rotuliana',
+  'dolor-lumbar': 'dolor',
+  'dolor-cervical': 'dolor-miofascial',
+  esguinces: 'ligamentarias',
+};
 // Cada patología tiene su propio render, con el mismo nombre que su slug.
 export const lesionRender = (slug) => slug;
 // Render representativo de cada categoría (fichas de la home).

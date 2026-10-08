@@ -21,7 +21,7 @@ function highlightPending(html) {
   return head + body;
 }
 
-const PRIORITY = (p) => (p === '/' ? '1.0' : /^\/(fisioterapia-invasiva-ecoguiada|tratamientos|lesiones)\/$/.test(p) ? '0.9' : p.startsWith('/tratamientos/') ? '0.9' : p.startsWith('/lesiones/') ? '0.8' : p.startsWith('/blog/') && p !== '/blog/' ? '0.6' : '0.7');
+const PRIORITY = (p) => (p === '/' ? '1.0' : /^\/(kinesiologia-mendoza|fisioterapia-invasiva-ecoguiada|tratamientos|lesiones)\/$/.test(p) ? '0.9' : p.startsWith('/tratamientos/') || p.startsWith('/kinesiologia-mendoza/') ? '0.9' : p.startsWith('/lesiones/') ? '0.8' : p.startsWith('/blog/') && p !== '/blog/' ? '0.6' : '0.7');
 
 export default function postbuild() {
   return {
@@ -79,7 +79,12 @@ export default function postbuild() {
             .map((p) => `  <url><loc>${abs(p.path)}</loc><lastmod>${p.lastmod.slice(0, 10)}</lastmod><priority>${PRIORITY(p.path)}</priority></url>`)
             .join('\n')}\n</urlset>\n`
         );
-        writeFileSync(join(out, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${abs('/sitemap.xml')}\n`);
+        // Buscadores y asistentes de IA habilitados de forma explícita (indexación y citas en respuestas).
+        const bots = ['Googlebot', 'Bingbot', 'GPTBot', 'OAI-SearchBot', 'ChatGPT-User', 'ClaudeBot', 'Claude-SearchBot', 'Claude-User', 'PerplexityBot', 'Perplexity-User', 'Google-Extended', 'Applebot', 'Applebot-Extended', 'DuckAssistBot', 'meta-externalagent'];
+        writeFileSync(
+          join(out, 'robots.txt'),
+          `User-agent: *\nAllow: /\n\n${bots.map((b) => `User-agent: ${b}\nAllow: /`).join('\n\n')}\n\nSitemap: ${abs('/sitemap.xml')}\n# Resumen del sitio para asistentes de IA: ${abs('/llms.txt')}\n`
+        );
 
         logger.info(`${pages.length} páginas · ${indexable.length} URLs en sitemap.xml`);
         const pend = pendingReport();

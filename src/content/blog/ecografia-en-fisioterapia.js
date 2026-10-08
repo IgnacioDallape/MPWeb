@@ -6,6 +6,8 @@ export default {
   h1: '¿Para qué sirve la ecografía en fisioterapia?',
   lead:
     'En fisioterapia, la ecografía sirve para complementar la evaluación clínica, observar tejidos en movimiento, guiar con precisión los tratamientos con aguja y seguir la evolución de una lesión. No reemplaza el diagnóstico médico ni explica por sí sola el dolor: es una herramienta que se interpreta junto con la entrevista y la exploración física.',
+  answer:
+    'En fisioterapia, la ecografía musculoesquelética sirve para complementar la evaluación clínica, ver tendones, músculos y ligamentos en movimiento, guiar con precisión los tratamientos con aguja y seguir la evolución de una lesión. No reemplaza el diagnóstico médico ni explica sola el dolor: se interpreta junto con la entrevista y la exploración física.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Tratamientos',

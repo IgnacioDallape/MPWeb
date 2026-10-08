@@ -6,6 +6,8 @@ export default {
   h1: 'EPI para tendinopatías: cuándo se considera y cómo se combina con el ejercicio',
   lead:
     'La EPI suele considerarse en tendinopatías persistentes que no evolucionan bien con un programa de ejercicio bien dosificado y en las que la ecografía muestra una alteración localizada del tendón. No se plantea como primera opción aislada: se suma a un plan de carga progresiva que va de ejercicios isométricos a fortalecimiento pesado y, al final, a gestos rápidos y específicos.',
+  answer:
+    'La EPI se considera en tendinopatías persistentes que no mejoran con un programa de ejercicio bien dosificado y en las que la ecografía muestra una alteración localizada del tendón. No es una primera opción aislada: se suma a un plan de carga que avanza de isométricos a fortalecimiento pesado y, al final, a gestos rápidos del deporte.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Tratamientos',

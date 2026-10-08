@@ -6,6 +6,8 @@ export default {
   h1: 'Punción seca con y sin ecografía: qué cambia',
   lead:
     'La diferencia principal es que, con ecografía, el fisioterapeuta ve en tiempo real la aguja, el músculo objetivo y las estructuras que debe evitar, mientras que sin ella se guía solo por la palpación y el conocimiento anatómico. La guía ecográfica aporta más precisión y seguridad, sobre todo en músculos profundos o cercanos a la pleura, vasos y nervios; en músculos superficiales y bien palpables, la palpación puede ser suficiente en manos entrenadas.',
+  answer:
+    'Con ecografía, quien hace la punción seca ve en tiempo real la aguja, el músculo objetivo y las estructuras que debe evitar; sin ella, se guía solo por la palpación y la anatomía. La guía ecográfica suma precisión y seguridad, sobre todo en músculos profundos o cercanos a pleura, vasos y nervios.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Tratamientos',

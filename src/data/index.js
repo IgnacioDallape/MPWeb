@@ -19,9 +19,15 @@ export const lesions = load(import.meta.glob('../content/lesiones/*.js', { eager
   (a, b) => catOrder.indexOf(a.category) - catOrder.indexOf(b.category) || a.order - b.order
 );
 export const posts = load(import.meta.glob('../content/blog/*.js', { eager: true })).sort((a, b) => b.date.localeCompare(a.date));
+export const services = load(import.meta.glob('../content/kinesiologia/*.js', { eager: true })).sort((a, b) => a.order - b.order);
 export { default as pillar } from '../content/paginas/fisioterapia-invasiva-ecoguiada.js';
+export { default as kinePillar } from '../content/paginas/kinesiologia-mendoza.js';
 
-export const collections = { tratamientos: treatments, lesiones: lesions, blog: posts };
+export const collections = { kinesiologia: services, tratamientos: treatments, lesiones: lesions, blog: posts };
+
+// Ruta base de cada colección (la de kinesiología cuelga de la pilar /kinesiologia-mendoza/).
+export const BASE = { kinesiologia: '/kinesiologia-mendoza/', tratamientos: '/tratamientos/', lesiones: '/lesiones/', blog: '/blog/' };
+export const urlOf = (kind, slug) => BASE[kind] + slug + '/';
 
 export function bySlug(kind, slug) {
   const it = collections[kind].find((x) => x.slug === slug);
@@ -30,7 +36,7 @@ export function bySlug(kind, slug) {
 }
 
 // Red bidireccional: relaciones declaradas + inversas (quién me declara a mí).
-const LIMITS = { tratamientos: 4, lesiones: 9, blog: 6 };
+const LIMITS = { kinesiologia: 3, tratamientos: 4, lesiones: 9, blog: 6 };
 export function relatedOf(kind, slug) {
   const self = bySlug(kind, slug);
   const out = {};

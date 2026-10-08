@@ -12,6 +12,8 @@ export default {
   h1: 'Tratamiento de bursopatías: bursitis de cadera, hombro, rodilla y talón',
   lead:
     'Te dijeron que tenés bursitis, pero el dolor no termina de irse. En muchos casos la bursa no es la única protagonista: identificar qué estructura duele de verdad cambia el tratamiento.',
+  answer:
+    'Una bursopatía es la irritación de una bursa, la pequeña bolsa que reduce el roce entre tendón y hueso, y muchas veces convive con una tendinopatía. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), se evalúa con ecografía qué estructura duele y se trata con ajuste de cargas, fortalecimiento progresivo y, si el cuadro persiste, tratamientos ecoguiados.',
   updated: '2026-10-02',
 
   seo: {
@@ -98,7 +100,7 @@ Si el cuadro persiste pese a un programa bien llevado, pueden considerarse trata
 - La [electrólisis percutánea intratisular (EPI)](/tratamientos/epi-electrolisis-percutanea/) se orienta sobre todo al **tendón** cuando la ecografía muestra una tendinopatía asociada, como ocurre a menudo en la cadera.
 - La [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) puede ayudar a mejorar la activación de los glúteos o del manguito cuando el dolor inhibe la musculatura.
 
-La elección depende de lo que se observe en la evaluación, y siempre se combina con el plan de ejercicio.
+La elección depende de lo que se observe en la evaluación, y siempre se combina con el plan de ejercicio. Todo este abordaje forma parte de la [kinesiología traumatológica](/kinesiologia-mendoza/traumatologica/) que hacemos en {{CIUDAD}}, donde la fuerza y el manejo de la carga siguen siendo el centro.
 
 ## Tiempos y evolución
 
@@ -140,6 +142,7 @@ En esos casos no corresponde iniciar fisioterapia hasta contar con una valoraci�
   ],
 
   related: {
+    kinesiologia: ['traumatologica', 'deportiva'],
     tratamientos: ['microelectrolisis-percutanea-mep', 'epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada'],
     lesiones: ['manguito-rotador', 'tendinopatia-aquiles'],
     blog: ['ecografia-en-fisioterapia'],

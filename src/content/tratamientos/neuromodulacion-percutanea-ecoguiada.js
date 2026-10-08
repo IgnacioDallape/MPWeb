@@ -12,6 +12,8 @@ export default {
   h1: 'Neuromodulación percutánea ecoguiada (NMP-e)',
   lead:
     'La neuromodulación percutánea ecoguiada es un tratamiento que estimula un nervio periférico con una corriente eléctrica de baja frecuencia, aplicada mediante una aguja fina ubicada junto al nervio bajo control ecográfico. No busca actuar sobre el tejido lesionado, sino sobre la forma en que el sistema nervioso procesa el dolor y activa los músculos.',
+  answer:
+    'La neuromodulación percutánea ecoguiada (NMP-e) estimula un nervio periférico con corriente de baja frecuencia, aplicada con una aguja fina ubicada junto al nervio bajo control ecográfico. Busca modular el dolor y mejorar la activación muscular. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), se indica tras una evaluación y siempre acompañada de ejercicio terapéutico.',
   updated: '2026-10-02',
 
   seo: {
@@ -105,6 +107,8 @@ Como la NMP-e no busca provocar una reacción inflamatoria en el tejido, **la mo
 - Se recomienda seguir el programa de ejercicios indicado, que es lo que da continuidad al efecto buscado.
 - El número de sesiones varía según el caso y se ajusta a la evolución del dolor y de la función.
 
+Cuando la espalda baja duele hace tiempo y el ejercicio no termina de avanzar, la NMP-e puede sumarse a la [kinesiología para el dolor lumbar](/kinesiologia-mendoza/dolor-lumbar/) que hacemos en {{CIUDAD}}, como apoyo para retomar el movimiento.
+
 Consultá de inmediato si después de una sesión notás **adormecimiento o debilidad que no ceden en pocas horas**, dolor que aumenta de forma marcada, enrojecimiento o calor en la zona, o fiebre. Son situaciones poco frecuentes, pero requieren revisión profesional o médica.
 
 ## Contraindicaciones y precauciones
@@ -160,6 +164,7 @@ En algunos casos se combinan: por ejemplo, un tratamiento orientado al tejido y 
   ],
 
   related: {
+    kinesiologia: ['dolor-lumbar', 'dolor-cervical', 'deportiva'],
     tratamientos: ['epi-electrolisis-percutanea', 'puncion-seca-ecoguiada'],
     lesiones: ['dolor-cronico-musculoesqueletico', 'dolor-miofascial', 'epicondilitis', 'tendinopatia-rotuliana', 'manguito-rotador', 'desgarros-musculares'],
     blog: ['neuromodulacion-percutanea-nervio-y-dolor', 'ecografia-en-fisioterapia'],

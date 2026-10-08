@@ -7,6 +7,8 @@ export default {
   h1: 'Fisioterapia invasiva ecoguiada',
   lead:
     'Tratamientos que utilizan agujas ultrafinas para actuar directamente sobre la estructura afectada (tendón, músculo, ligamento o nervio periférico) con guía ecográfica en tiempo real, como parte de un plan de rehabilitación individual.',
+  answer:
+    'La fisioterapia invasiva ecoguiada reúne tratamientos con agujas ultrafinas, como la EPI, la neuromodulación percutánea, la MEP y la punción seca, que actúan sobre el tendón, músculo, ligamento o nervio afectado con guía ecográfica en tiempo real. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), siempre se indica tras una evaluación y se combina con ejercicio terapéutico.',
   updated: '2026-10-02',
   seo: {
     primary: 'fisioterapia invasiva ecoguiada',
@@ -114,6 +116,8 @@ El objetivo no es "pinchar" una lesión, sino que vuelvas a hacer lo que necesit
 - **Ejercicio terapéutico** específico y progresivo.
 - **Readaptación** a la actividad o al gesto deportivo.
 - **Reevaluaciones** periódicas para ajustar el plan.
+
+La fisioterapia invasiva no es una disciplina aparte: es una parte más de la [kinesiología en {{CIUDAD}}](/kinesiologia-mendoza/) que hacemos en {{NOMBRE}}, donde la evaluación clínica y el ejercicio son la base y las agujas se suman solo cuando aportan.
 `,
 
   faqs: [

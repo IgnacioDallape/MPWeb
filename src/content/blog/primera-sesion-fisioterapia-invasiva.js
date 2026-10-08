@@ -6,6 +6,8 @@ export default {
   h1: 'Primera sesión de fisioterapia invasiva ecoguiada: qué esperar paso a paso',
   lead:
     'En una primera sesión de fisioterapia invasiva ecoguiada primero se evalúa tu caso con entrevista, exploración física y ecografía, y solo después se decide si corresponde aplicar un tratamiento con aguja. Si se aplica, el procedimiento suele ser breve, se adapta a tu tolerancia y termina con pautas claras de actividad y ejercicio para los días siguientes.',
+  answer:
+    'En la primera sesión de fisioterapia invasiva ecoguiada primero se evalúa: entrevista, exploración física y ecografía. Solo después se decide si corresponde usar una aguja y cuál tratamiento. Si se aplica, el procedimiento suele ser breve, se adapta a tu tolerancia y termina con pautas de actividad y ejercicio para los días siguientes.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Guías para pacientes',

@@ -12,6 +12,8 @@ export default {
   h1: 'Punción seca ecoguiada para el dolor miofascial',
   lead:
     'La punción seca ecoguiada es un tratamiento en el que se introduce una aguja fina en un músculo, sobre un punto gatillo, sin inyectar ninguna sustancia. Realizarla con ecografía permite ver el músculo, la punta de la aguja y las estructuras vecinas, algo especialmente valioso en músculos profundos o cercanos al tórax.',
+  answer:
+    'La punción seca ecoguiada consiste en introducir una aguja fina en un punto gatillo muscular, sin inyectar sustancias, viendo con ecografía el músculo, la aguja y las estructuras vecinas. Se usa sobre todo en el dolor miofascial. En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), se indica tras una evaluación y se combina con ejercicio y cambios de hábitos.',
   updated: '2026-10-02',
 
   seo: {
@@ -104,6 +106,8 @@ Lo más frecuente es el **dolor post-punción**: una sensación de músculo cans
 - Puede aparecer un pequeño hematoma en el punto de punción, que se resuelve solo.
 - Se indican ejercicios de movilidad, estiramiento o fuerza para consolidar el cambio.
 
+Cuando los puntos gatillo están en el trapecio, el cuello o la cintura escapular, este trabajo se integra a la [kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/) que hacemos en {{CIUDAD}}.
+
 **Consultá de urgencia** si después de una punción en la región del tórax, la espalda alta o el cuello aparece falta de aire, dolor en el pecho que aumenta al respirar o tos persistente. Es una complicación poco frecuente, precisamente la que la guía ecográfica ayuda a prevenir, pero requiere atención médica inmediata.
 
 ## Contraindicaciones y precauciones
@@ -158,6 +162,7 @@ Es habitual que se combinen: por ejemplo, tratar un tendón con EPI y, en la mis
   ],
 
   related: {
+    kinesiologia: ['dolor-cervical', 'dolor-lumbar', 'deportiva'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada'],
     lesiones: ['dolor-miofascial', 'desgarros-musculares', 'fibrosis-muscular', 'dolor-cronico-musculoesqueletico', 'manguito-rotador'],
     blog: ['diferencias-entre-epi-y-puncion-seca', 'puncion-seca-con-ecografia-que-cambia'],

@@ -6,6 +6,8 @@ export default {
   h1: '¿Cuándo se recomienda la fisioterapia invasiva?',
   lead:
     'La fisioterapia invasiva se recomienda, tras una evaluación, cuando una lesión musculoesquelética persiste o se estanca pese a un programa de ejercicio bien llevado, y especialmente cuando hay una alteración localizada del tejido que puede identificarse con ecografía. No suele ser la primera opción: se integra dentro de un plan de rehabilitación y no todas las personas son candidatas.',
+  answer:
+    'La fisioterapia invasiva se recomienda, tras una evaluación, cuando una lesión musculoesquelética persiste o se estanca pese a un programa de ejercicio bien llevado, sobre todo si la ecografía muestra una alteración localizada del tejido. No suele ser la primera opción, no todas las personas son candidatas y siempre se integra en un plan de rehabilitación.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Guías para pacientes',

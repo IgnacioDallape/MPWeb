@@ -6,6 +6,8 @@ export default {
   h1: 'Cómo actúa la EPI sobre el tendón',
   lead:
     'La EPI actúa aplicando una corriente galvánica muy localizada que genera una reacción electroquímica en la zona alterada del tendón. Esa reacción provoca una respuesta inflamatoria controlada que busca reactivar un proceso de reparación que, en la tendinopatía, suele estar estancado. Para que el tejido nuevo se organice y gane resistencia, después necesita recibir carga progresiva.',
+  answer:
+    'La EPI aplica una corriente galvánica muy localizada, a través de una aguja guiada por ecografía, que genera una reacción electroquímica en la zona alterada del tendón. Esa reacción provoca una inflamación controlada que busca reactivar una reparación estancada. Para que el tejido nuevo gane resistencia, después necesita ejercicio con carga progresiva.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Tratamientos',

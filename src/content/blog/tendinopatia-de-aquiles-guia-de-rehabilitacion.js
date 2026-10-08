@@ -6,6 +6,8 @@ export default {
   h1: 'Tendinopatía de Aquiles: guía de rehabilitación paso a paso',
   lead:
     'La rehabilitación de la tendinopatía de Aquiles se apoya en recuperar la capacidad de la pantorrilla y del tendón con ejercicio de carga progresiva, usando el dolor como guía para ajustar la exigencia. No es lo mismo una molestia en la porción media del tendón que en su inserción en el talón, y el regreso a correr se planifica por etapas y criterios, no por fechas.',
+  answer:
+    'La tendinopatía de Aquiles se rehabilita con ejercicio de carga progresiva para la pantorrilla y el tendón, usando el dolor como guía para ajustar la exigencia. Las etapas van de reducir la irritación a ganar fuerza, recuperar elasticidad y volver a correr. Una molestia en la porción media no se trata igual que una insercional.',
   date: '2026-10-02',
   updated: '2026-10-02',
   category: 'Lesiones',

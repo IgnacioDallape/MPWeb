@@ -6,7 +6,7 @@ import Toc from '../components/Toc.astro';
 import Faq from '../components/Faq.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { config } from '../lib/site.js';
-import { pillar, treatments } from '../data/index.js';
+import { pillar, kinePillar, treatments } from '../data/index.js';
 import { HOME_FAQS, PROCESS_FAQS } from '../data/faqs.js';
 import * as S from '../lib/schema.js';
 
@@ -18,19 +18,20 @@ const take = (faqs: { q: string; a: string }[], n = 99) =>
   faqs.filter((f) => (seen.has(norm(f.q)) ? false : (seen.add(norm(f.q)), true))).slice(0, n);
 const about = { 'EPI': 'la EPI', 'NMP-e': 'la neuromodulación percutánea', 'MEP': 'la MEP', 'Punción seca': 'la punción seca' };
 const groups = [
+  { id: 'kinesiologia', title: 'Sobre la kinesiología en MP Studio', link: ['/kinesiologia-mendoza/', 'Kinesiología en Mendoza'], faqs: take([...HOME_FAQS.slice(0, 2), ...kinePillar.faqs]) },
   { id: 'general', title: 'Sobre la fisioterapia invasiva ecoguiada', link: ['/fisioterapia-invasiva-ecoguiada/', 'Guía completa de fisioterapia invasiva ecoguiada'], faqs: take([...HOME_FAQS, ...pillar.faqs]) },
   ...treatments.map((t) => ({ id: t.slug, title: `Sobre ${about[t.shortName] || t.shortName}`, link: [`/tratamientos/${t.slug}/`, `Ver la página de ${t.name}`], faqs: take(t.faqs, 4) })),
   { id: 'evaluacion', title: 'Sobre la evaluación, las sesiones y la recuperación', link: ['/contacto/', 'Solicitar una evaluación'], faqs: take(PROCESS_FAQS) },
 ];
 const schema = [
   S.breadcrumbs(crumbs),
-  S.webPage({ path, title: 'Preguntas frecuentes', description: 'Preguntas frecuentes sobre fisioterapia invasiva ecoguiada.', updated: config.launchDate, medical: true }),
+  S.webPage({ path, title: 'Preguntas frecuentes', description: 'Preguntas frecuentes sobre kinesiología y fisioterapia invasiva ecoguiada en Mendoza.', updated: config.launchDate, medical: true }),
   S.faqPage(path, groups.flatMap((g) => g.faqs)),
 ];
 ---
 <Base
-  title="Preguntas frecuentes: fisioterapia invasiva, EPI y punción seca"
-  description="¿Duele la fisioterapia invasiva? ¿Cuántas sesiones de EPI se necesitan? ¿Puedo entrenar después? Respuestas claras de MP Studio, Mendoza."
+  title="Preguntas frecuentes: kinesiología, EPI y punción seca | {{NOMBRE}}"
+  description="¿Dónde hacer kinesiología en Mendoza? ¿Duele la fisioterapia invasiva? ¿Cuántas sesiones de EPI se necesitan? Respuestas claras de MP Studio."
   schema={schema}
 >
   <PageHero
