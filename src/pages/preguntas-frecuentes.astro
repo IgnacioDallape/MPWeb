@@ -18,7 +18,7 @@ const take = (faqs: { q: string; a: string }[], n = 99) =>
   faqs.filter((f) => (seen.has(norm(f.q)) ? false : (seen.add(norm(f.q)), true))).slice(0, n);
 const about = { 'EPI': 'la EPI', 'NMP-e': 'la neuromodulación percutánea', 'MEP': 'la MEP', 'Punción seca': 'la punción seca' };
 const groups = [
-  { id: 'kinesiologia', title: 'Sobre la kinesiología en MP Studio', link: ['/kinesiologia-mendoza/', 'Kinesiología en Mendoza'], faqs: take([...HOME_FAQS.slice(0, 2), ...kinePillar.faqs]) },
+  { id: 'kinesiologia', title: 'Sobre la kinesiología en MP Studio', link: ['/kinesiologia-mendoza/', 'Kinesiología en Mendoza'], faqs: take(kinePillar.faqs) },
   { id: 'general', title: 'Sobre la fisioterapia invasiva ecoguiada', link: ['/fisioterapia-invasiva-ecoguiada/', 'Guía completa de fisioterapia invasiva ecoguiada'], faqs: take([...HOME_FAQS, ...pillar.faqs]) },
   ...treatments.map((t) => ({ id: t.slug, title: `Sobre ${about[t.shortName] || t.shortName}`, link: [`/tratamientos/${t.slug}/`, `Ver la página de ${t.name}`], faqs: take(t.faqs, 4) })),
   { id: 'evaluacion', title: 'Sobre la evaluación, las sesiones y la recuperación', link: ['/contacto/', 'Solicitar una evaluación'], faqs: take(PROCESS_FAQS) },

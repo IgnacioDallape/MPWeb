@@ -1,18 +1,6 @@
 // Preguntas de la home (también se reutilizan en /preguntas-frecuentes/).
 export const HOME_FAQS = [
   {
-    q: '¿Dónde hacer kinesiología en Mendoza?',
-    a: '{{NOMBRE}} es un consultorio de kinesiología y fisioterapia invasiva ecoguiada en {{LOCALIDAD}}, {{CIUDAD}}. Recibimos pacientes de Chacras de Coria, Godoy Cruz, Ciudad de Mendoza, Maipú, Guaymallén y Las Heras. Cada tratamiento empieza con una evaluación clínica y ecográfica. Podés pedir turno por WhatsApp.',
-  },
-  {
-    q: '¿Tratan contracturas, tendinitis y dolores del día a día?',
-    a: 'Sí. Evaluamos y tratamos [contracturas](/lesiones/contractura-muscular/), [tendinitis](/lesiones/tendinitis/), desgarros, esguinces y dolor de [rodilla](/lesiones/dolor-de-rodilla/), [hombro](/lesiones/dolor-de-hombro/), cadera, espalda o cuello. Cada caso empieza con una evaluación clínica y ecográfica para entender qué estructura está afectada y armar el plan de recuperación.',
-  },
-  {
-    q: '¿Hacen kinesiología general o solo fisioterapia invasiva?',
-    a: 'Las dos. Hacemos [kinesiología](/kinesiologia-mendoza/) deportiva, traumatológica y postquirúrgica, y tratamos dolor lumbar, dolor cervical y esguinces. La fisioterapia invasiva ecoguiada se suma solo cuando la evaluación lo indica, siempre junto con ejercicio terapéutico.',
-  },
-  {
     q: '¿Qué es la fisioterapia invasiva ecoguiada?',
     a: 'Es un conjunto de tratamientos que utilizan agujas ultrafinas para actuar directamente sobre la estructura afectada (tendón, músculo, ligamento o nervio periférico), guiadas en todo momento por ecografía. Forma parte de un tratamiento integral con ejercicio terapéutico.',
   },

@@ -89,7 +89,7 @@ La fisioterapia invasiva ecoguiada puede formar parte del tratamiento de:
 - **[Fascitis plantar](/lesiones/fascitis-plantar/)** de evolución prolongada.
 - **Lesiones musculares:** [desgarros](/lesiones/desgarros-musculares/), [dolor miofascial](/lesiones/dolor-miofascial/) y [fibrosis](/lesiones/fibrosis-muscular/).
 - **[Lesiones ligamentarias](/lesiones/ligamentarias/)** con dolor o engrosamiento persistente.
-- **[Bursopatías](/lesiones/bursopatias/)** de hombro, cadera, rodilla o talón.
+- **Bursopatías** de hombro, cadera, rodilla o talón.
 - **[Dolor musculoesquelético persistente](/lesiones/dolor-cronico-musculoesqueletico/)**, como parte de un abordaje integral.
 
 Podés ver todas en la sección de [lesiones](/lesiones/).

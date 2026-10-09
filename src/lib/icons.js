@@ -1,7 +1,7 @@
 // Iconografía lineal (stroke 1.6, 24x24). Decorativa por defecto (aria-hidden).
 const P = {
   probe: '<path d="M9 3h6l1 7H8l1-7Z"/><path d="M8 10c0 3 1.5 5 4 5s4-2 4-5"/><path d="M12 15v6"/><path d="M5 18c2-1.2 4.5-1.8 7-1.8s5 .6 7 1.8"/>',
-  needle: '<path d="m4 20 8.5-8.5"/><path d="m12.5 11.5 5-5"/><path d="m15 4 5 5"/><path d="m16.5 5.5-2 2"/><path d="M12.5 11.5 14 13"/>',
+  needle: '<rect x="14.6" y="2.9" width="4.2" height="7.6" rx="1.4" transform="rotate(45 16.7 6.7)"/><path d="m15.1 5.4 2.9 2.9"/><path d="M13.6 9.8 4.6 18.8"/><path d="m4.6 18.8-1.6 2.2 2.2-1.6"/><path d="M2.5 15.6c1.6-.9 3.2-.9 4.8 0s3.2.9 4.8 0" opacity=".6"/>',
   target: '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".9" fill="currentColor"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/>',
   evaluation: '<rect x="5" y="3.5" width="14" height="17" rx="2.5"/><path d="M9 3.5h6v2.5H9z"/><path d="M8.5 11h7M8.5 14.5h7M8.5 18h4"/>',
   activity: '<path d="M3 12h4l2.5-6 4 12 2.5-6H21"/>',

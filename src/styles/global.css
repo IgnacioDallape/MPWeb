@@ -201,6 +201,9 @@
   .faq .answer p { @apply m-0; }
   .faq h3 { @apply m-0 font-display text-[1rem] leading-snug tracking-normal; }
 
+  /* Fondos grises: degradé perla suave en lugar de gris plano */
+  .bg-zinc-50 { background-image: linear-gradient(180deg, #f8f9fb 0%, #eceef2 55%, #e2e6ec 100%); }
+
   /* Tarjetas: carrusel deslizable en el celular, grilla desde tablet */
   .carousel {
     @apply -mx-5 flex snap-x snap-mandatory scroll-px-5 gap-4 overflow-x-auto px-5 pt-1 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:scroll-px-0 sm:px-0 sm:pt-0 sm:pb-0;

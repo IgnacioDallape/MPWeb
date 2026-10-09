@@ -156,7 +156,7 @@ Atendemos en nuestro consultorio de {{LOCALIDAD}} y recibimos pacientes de Chacr
   related: {
     kinesiologia: ['dolor-lumbar', 'dolor-cervical', 'postquirurgica'],
     tratamientos: ['neuromodulacion-percutanea-ecoguiada', 'puncion-seca-ecoguiada'],
-    lesiones: ['ciatica', 'dolor-de-espalda', 'torticolis', 'escoliosis'],
+    lesiones: ['ciatica', 'dolor-de-espalda', 'escoliosis'],
     blog: ['kinesiologo-o-traumatologo', 'cuantas-sesiones-de-kinesiologia', 'obra-social-y-orden-medica-kinesiologia'],
   },
 

@@ -44,8 +44,8 @@ Esta tabla es una orientación, no un diagnóstico. Cada causa tiene su propia p
 | Dónde duele y cuándo | Causa probable | Más información |
 |---|---|---|
 | Cara lateral del brazo, al levantarlo entre la altura del hombro y la cabeza | Tendinopatía del manguito rotador | [Manguito rotador](/lesiones/manguito-rotador/) |
-| Cara lateral, dolor nocturno al acostarte de ese lado | Bursitis subacromial, a menudo junto al manguito | [Bursopatías](/lesiones/bursopatias/) |
-| Todo el hombro, con rigidez progresiva y pérdida de rotación | Hombro congelado o capsulitis adhesiva | [Hombro congelado](/lesiones/hombro-congelado/) |
+| Cara lateral, dolor nocturno al acostarte de ese lado | Bursitis subacromial, a menudo junto al manguito | [Manguito rotador](/lesiones/manguito-rotador/) |
+| Todo el hombro, con rigidez progresiva y pérdida de rotación | Hombro congelado o capsulitis adhesiva | [Kinesiología traumatológica](/kinesiologia-mendoza/traumatologica/) |
 | Parte de arriba del hombro, sobre la clavícula, tras una caída | Lesión acromioclavicular | [Lesiones ligamentarias](/lesiones/ligamentarias/) |
 | Cara anterior, al cargar peso con el codo doblado | Tendón largo del bíceps | Ver más abajo |
 | Desde el cuello hasta el hombro, a veces con hormigueos en el brazo | Dolor de origen cervical | [Kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/) |
@@ -65,7 +65,7 @@ Duele en la parte de adelante del hombro, al cargar bolsas con el codo flexionad
 
 ### Dolor que viene del cuello
 
-Si el dolor empieza en el cuello, baja por el trapecio y empeora al girar la cabeza, o si hay hormigueos en la mano, el origen puede ser cervical. En ese caso tratar solo el hombro no alcanza. Si además el cuello se traba de golpe, mirá la página de [tortícolis](/lesiones/torticolis/).
+Si el dolor empieza en el cuello, baja por el trapecio y empeora al girar la cabeza, o si hay hormigueos en la mano, el origen puede ser cervical. En ese caso tratar solo el hombro no alcanza.
 
 ## ¿Cómo se siente?
 
@@ -159,7 +159,7 @@ Atendemos en nuestro consultorio de {{LOCALIDAD}} a pacientes de Chacras de Cori
   related: {
     kinesiologia: ['traumatologica', 'dolor-cervical', 'postquirurgica'],
     tratamientos: ['epi-electrolisis-percutanea', 'puncion-seca-ecoguiada'],
-    lesiones: ['manguito-rotador', 'hombro-congelado', 'bursopatias', 'tendinitis'],
+    lesiones: ['manguito-rotador', 'tendinitis'],
     blog: ['ecografia-en-fisioterapia', 'epi-para-tendinopatias', 'cuantas-sesiones-de-kinesiologia'],
   },
 

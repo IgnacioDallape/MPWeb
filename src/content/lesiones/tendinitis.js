@@ -78,7 +78,7 @@ Duele en el borde de la muñeca del lado del pulgar, al levantar a un bebé, ret
 
 ### La cadera: tendinopatía glútea
 
-Es una causa muy frecuente de dolor en el costado de la cadera, sobre todo en personas que corren o que pasan mucho tiempo de pie. Muchas veces se la llama bursitis, aunque el tendón suele estar implicado. Lo explicamos en la página de [bursopatías](/lesiones/bursopatias/).
+Es una causa muy frecuente de dolor en el costado de la cadera, sobre todo en personas que corren o que pasan mucho tiempo de pie. Muchas veces se la llama bursitis, aunque el tendón suele estar implicado.
 
 ## ¿Por qué aparece?
 

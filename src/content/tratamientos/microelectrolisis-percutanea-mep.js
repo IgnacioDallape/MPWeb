@@ -59,7 +59,7 @@ La microelectrólisis suele considerarse en lesiones de tejido blando donde la t
 - [Fibrosis muscular](/lesiones/fibrosis-muscular/) y cicatrices que quedan tras una lesión o una cirugía y limitan el deslizamiento entre tejidos.
 - [Fascitis plantar](/lesiones/fascitis-plantar/), en la que la fascia del pie puede estar engrosada y muy sensible.
 - [Lesiones ligamentarias](/lesiones/ligamentarias/) de evolución lenta, como algunos esguinces de tobillo que siguen molestando meses después.
-- [Bursopatías](/lesiones/bursopatias/) persistentes, actuando sobre los tejidos engrosados que rodean la bursa.
+- Bursopatías persistentes, actuando sobre los tejidos engrosados que rodean la bursa.
 - Algunas [tendinopatías, como la de Aquiles](/lesiones/tendinopatia-aquiles/), en personas que no toleran bien estímulos más intensos o en fases iniciales del tratamiento.
 
 Que el tratamiento sea suave no significa que esté indicado para todos. En la evaluación se define si la MEP aporta algo en tu caso o si conviene otro enfoque.
@@ -161,7 +161,7 @@ En algunos planes se empieza con MEP y, según la respuesta, se progresa a otro 
   related: {
     kinesiologia: ['esguinces', 'traumatologica', 'deportiva'],
     tratamientos: ['epi-electrolisis-percutanea', 'puncion-seca-ecoguiada'],
-    lesiones: ['fibrosis-muscular', 'fascitis-plantar', 'ligamentarias', 'bursopatias', 'tendinopatia-aquiles'],
+    lesiones: ['fibrosis-muscular', 'fascitis-plantar', 'ligamentarias', 'tendinopatia-aquiles'],
     blog: ['fascitis-plantar-abordaje-desde-fisioterapia', 'ecografia-en-fisioterapia', 'primera-sesion-fisioterapia-invasiva'],
   },
 

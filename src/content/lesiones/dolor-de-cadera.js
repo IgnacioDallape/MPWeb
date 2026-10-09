@@ -41,7 +41,7 @@ La articulación de la cadera en sí, donde la cabeza del fémur encaja en la pe
 
 | Zona del dolor | Causa probable | Para leer más |
 |---|---|---|
-| Cara externa, sobre el hueso del costado | Tendinopatía del glúteo medio o bursitis trocantérea | [Bursopatías](/lesiones/bursopatias/) |
+| Cara externa, sobre el hueso del costado | Tendinopatía del glúteo medio o bursitis trocantérea | [Tendinitis](/lesiones/tendinitis/) |
 | Ingle, al patear o al girar | Pubalgia (aductores, pared abdominal) | [Pubalgia](/lesiones/pubalgia/) |
 | Ingle profunda, con rigidez o "clic" | Articulación de la cadera: artrosis, choque o labrum | Evaluación médica |
 | Glúteo, con o sin dolor que baja por la pierna | Origen lumbar o de la articulación sacroilíaca | [Dolor lumbar](/kinesiologia-mendoza/dolor-lumbar/) |
@@ -51,7 +51,7 @@ La tabla es una orientación. Muchas veces se combinan, por ejemplo una cadera r
 
 ### Por fuera: glúteo medio y bursitis trocantérea
 
-Es el dolor de cadera más frecuente en consulta, sobre todo en mujeres a partir de los 40 años y en corredores. Duele al **acostarte sobre ese lado**, al subir escaleras, al pararte después de estar sentado o al cruzar las piernas. Durante años se lo llamó bursitis trocantérea, pero en la mayoría de los casos el problema principal está en los tendones del **glúteo medio y menor**, y la bursa acompaña. Lo desarrollamos en [bursopatías](/lesiones/bursopatias/) y en la guía general de [tendinitis](/lesiones/tendinitis/).
+Es el dolor de cadera más frecuente en consulta, sobre todo en mujeres a partir de los 40 años y en corredores. Duele al **acostarte sobre ese lado**, al subir escaleras, al pararte después de estar sentado o al cruzar las piernas. Durante años se lo llamó bursitis trocantérea, pero en la mayoría de los casos el problema principal está en los tendones del **glúteo medio y menor**, y la bursa acompaña. Lo desarrollamos en la guía general de [tendinitis](/lesiones/tendinitis/).
 
 ### En la ingle: pubalgia o articulación de la cadera
 
@@ -145,7 +145,7 @@ Atendemos en nuestro consultorio de {{LOCALIDAD}} y recibimos pacientes de Chacr
   related: {
     kinesiologia: ['traumatologica', 'dolor-lumbar', 'deportiva'],
     tratamientos: ['epi-electrolisis-percutanea', 'puncion-seca-ecoguiada', 'neuromodulacion-percutanea-ecoguiada'],
-    lesiones: ['bursopatias', 'pubalgia', 'tendinitis', 'dolor-miofascial'],
+    lesiones: ['pubalgia', 'tendinitis', 'dolor-miofascial'],
     blog: ['ecografia-en-fisioterapia', 'volver-a-entrenar-despues-de-una-lesion', 'kinesiologo-o-traumatologo'],
   },
 

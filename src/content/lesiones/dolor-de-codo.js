@@ -47,7 +47,7 @@ Esta tabla es una orientación, no un diagnóstico. Cada causa tiene su propia p
 |---|---|---|
 | Cara externa, al agarrar, levantar con la palma hacia abajo o dar la mano | Epicondilitis o codo de tenista | [Epicondilitis](/lesiones/epicondilitis/) |
 | Cara interna, al apretar, cerrar el puño con fuerza o tirar | Epitrocleitis o codo de golfista | [Epitrocleitis](/lesiones/epitrocleitis/) |
-| Parte posterior, con un bulto blando sobre la punta del codo | Bursitis olecraneana | [Bursopatías](/lesiones/bursopatias/) |
+| Parte posterior, con un bulto blando sobre la punta del codo | Bursitis olecraneana | [Kinesiología traumatológica](/kinesiologia-mendoza/traumatologica/) |
 | Cara interna con hormigueo en los dedos anular y meñique | Irritación del nervio cubital | Ver más abajo |
 | Todo el codo, con rigidez después de una caída o fractura | Secuela traumática | [Kinesiología traumatológica](/kinesiologia-mendoza/traumatologica/) |
 
@@ -137,7 +137,7 @@ Atendemos en nuestro consultorio de {{LOCALIDAD}} a pacientes de Chacras de Cori
     },
     {
       q: '¿Qué es el bulto blando en la punta del codo?',
-      a: 'Suele ser una bursitis olecraneana, la inflamación de la bursa que hay detrás del codo, por apoyo repetido o un golpe. Si está roja, caliente o tenés fiebre, consultá al médico porque puede estar infectada. Más información en [bursopatías](/lesiones/bursopatias/).',
+      a: 'Suele ser una bursitis olecraneana, la inflamación de la bursa que hay detrás del codo, por apoyo repetido o un golpe. Si está roja, caliente o tenés fiebre, consultá al médico porque puede estar infectada.',
     },
     {
       q: '¿Por qué se me duermen el anular y el meñique?',
@@ -152,7 +152,7 @@ Atendemos en nuestro consultorio de {{LOCALIDAD}} a pacientes de Chacras de Cori
   related: {
     kinesiologia: ['traumatologica', 'deportiva', 'dolor-cervical'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada'],
-    lesiones: ['epicondilitis', 'epitrocleitis', 'bursopatias', 'tendinitis'],
+    lesiones: ['epicondilitis', 'epitrocleitis', 'tendinitis'],
     blog: ['epicondilitis-sintomas-y-causas', 'epi-para-tendinopatias', 'ecografia-en-fisioterapia'],
   },
 

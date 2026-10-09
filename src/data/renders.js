@@ -18,15 +18,12 @@ export const SERVICE_RENDER = {
 // Las patologías sin render propio usan el más cercano.
 const LESION_FALLBACK = {
   'contractura-muscular': 'dolor-miofascial',
-  torticolis: 'dolor-miofascial',
   tendinitis: 'tendinosas',
   'dolor-de-hombro': 'manguito-rotador',
   'dolor-de-rodilla': 'tendinopatia-rotuliana',
   'dolor-de-cadera': 'bursas',
   pubalgia: 'musculares',
   'periostitis-tibial': 'fibrosis-muscular',
-  'lesion-de-menisco': 'ligamentarias',
-  'hombro-congelado': 'manguito-rotador',
   'sindrome-del-tunel-carpiano': 'nmp',
   ciatica: 'nmp',
   'hernia-de-disco': 'dolor',
@@ -35,9 +32,6 @@ const LESION_FALLBACK = {
   'dolor-de-codo': 'epicondilitis',
   'dolor-de-muneca': 'epitrocleitis',
   'dolor-de-tobillo': 'ligamentarias',
-  'artrosis-de-rodilla': 'tendinopatia-rotuliana',
-  'dolor-patelofemoral': 'tendinopatia-rotuliana',
-  'espolon-calcaneo': 'fascitis-plantar',
 };
 export const lesionRender = (slug) => LESION_FALLBACK[slug] || slug;
 // Render representativo de cada categoría (fichas de la home).
@@ -48,7 +42,6 @@ export const CATEGORY_RENDER = {
   columna: 'dolor',
   zonas: 'manguito-rotador',
   sobrecarga: 'fascitis-plantar',
-  articulares: 'bursopatias',
   nerviosas: 'nmp',
   dolor: 'dolor-cronico-musculoesqueletico',
 };

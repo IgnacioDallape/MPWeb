@@ -47,7 +47,7 @@ A diferencia de un desgarro, en una contractura **no hay fibras rotas**. Es una 
 
 ### Contractura en el cuello y el trapecio
 
-Es la más común en personas que pasan muchas horas frente a la computadora o manejando. El **trapecio** y el **elevador de la escápula** se cargan, el cuello se pone rígido y a veces aparece dolor de cabeza en la nuca. Cuando el cuello se traba de golpe y no podés girarlo, el cuadro se parece más a una [tortícolis](/lesiones/torticolis/). Si las molestias son frecuentes, mirá también nuestra página de [kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/).
+Es la más común en personas que pasan muchas horas frente a la computadora o manejando. El **trapecio** y el **elevador de la escápula** se cargan, el cuello se pone rígido y a veces aparece dolor de cabeza en la nuca. Cuando el cuello se traba de golpe y no podés girarlo, el cuadro se parece más a una tortícolis, que también se aborda desde la [kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/). Si las molestias son frecuentes, mirá también nuestra página de [kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/).
 
 ### Contractura en la espalda
 
@@ -160,7 +160,7 @@ Atendemos en nuestro consultorio de {{LOCALIDAD}} y recibimos pacientes de Chacr
   related: {
     kinesiologia: ['dolor-cervical', 'dolor-lumbar', 'deportiva'],
     tratamientos: ['puncion-seca-ecoguiada'],
-    lesiones: ['desgarros-musculares', 'dolor-miofascial', 'torticolis', 'fibrosis-muscular'],
+    lesiones: ['desgarros-musculares', 'dolor-miofascial', 'fibrosis-muscular'],
     blog: ['contractura-o-desgarro', 'frio-o-calor-en-una-lesion', 'cuanto-tarda-en-recuperarse-una-lesion-muscular'],
   },
 

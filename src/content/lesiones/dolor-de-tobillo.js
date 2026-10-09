@@ -51,7 +51,7 @@ Esta tabla es una orientación, no un diagnóstico. Cada causa tiene su propia p
 | Cara externa del tobillo, después de una torcedura | Esguince de tobillo | [Kinesiología para esguinces](/kinesiologia-mendoza/esguinces/) y [lesiones ligamentarias](/lesiones/ligamentarias/) |
 | Atrás, en el tendón, unos centímetros arriba del talón | Tendinopatía de Aquiles | [Tendinopatía de Aquiles](/lesiones/tendinopatia-aquiles/) |
 | Planta del pie y talón, en los primeros pasos de la mañana | Fascitis plantar | [Fascitis plantar](/lesiones/fascitis-plantar/) |
-| Debajo del talón, con un espolón visto en la radiografía | Espolón calcáneo, casi siempre junto a la fascia | [Espolón calcáneo](/lesiones/espolon-calcaneo/) |
+| Debajo del talón, con un espolón visto en la radiografía | Espolón calcáneo, casi siempre junto a la fascia | [Fascitis plantar](/lesiones/fascitis-plantar/) |
 | Borde interno de la canilla, al correr o saltar | Periostitis tibial | [Periostitis tibial](/lesiones/periostitis-tibial/) |
 | Tobillo que se tuerce seguido, con sensación de que falla | Inestabilidad tras esguinces previos | [Lesiones ligamentarias](/lesiones/ligamentarias/) |
 

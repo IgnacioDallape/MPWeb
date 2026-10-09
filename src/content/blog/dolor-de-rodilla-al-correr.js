@@ -57,7 +57,7 @@ Suele relacionarse con aumentos de volumen, muchas bajadas seguidas y poca fuerz
 
 ## ¿Y en la cara interna de la rodilla?
 
-En la cara interna, unos centímetros por debajo de la línea articular, se insertan tres tendones que forman la **pata de ganso**. Su sobrecarga, a veces con una bursitis asociada, da dolor localizado al correr, al subir escaleras o incluso de noche al apoyar una rodilla contra la otra. Podés leer más sobre las [bursopatías](/lesiones/bursopatias/).
+En la cara interna, unos centímetros por debajo de la línea articular, se insertan tres tendones que forman la **pata de ganso**. Su sobrecarga, a veces con una bursitis asociada, da dolor localizado al correr, al subir escaleras o incluso de noche al apoyar una rodilla contra la otra. Se evalúa con ecografía en la [kinesiología traumatológica](/kinesiologia-mendoza/traumatologica/).
 
 {{CTA}}
 
@@ -131,7 +131,7 @@ Si no hay señales de alarma pero el dolor no mejora en dos o tres semanas de aj
   related: {
     kinesiologia: ['deportiva', 'traumatologica'],
     tratamientos: ['epi-electrolisis-percutanea', 'puncion-seca-ecoguiada', 'neuromodulacion-percutanea-ecoguiada'],
-    lesiones: ['tendinopatia-rotuliana', 'bursopatias', 'ligamentarias'],
+    lesiones: ['tendinopatia-rotuliana', 'ligamentarias'],
     blog: ['tendinopatia-rotuliana-causas-y-rehabilitacion', 'volver-a-entrenar-despues-de-una-lesion', 'frio-o-calor-en-una-lesion'],
   },
 };

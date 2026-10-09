@@ -4,7 +4,6 @@ import Icon from '../components/Icon.astro';
 import SectionHead from '../components/SectionHead.astro';
 import Cards from '../components/Cards.astro';
 import Faq from '../components/Faq.astro';
-import CertRow from '../components/CertRow.astro';
 import { ultrasoundHero, ultrasoundLive } from '../lib/visuals.js';
 import { picture } from '../lib/components.js';
 import { config, known, waLink, tokens } from '../lib/site.js';
@@ -74,7 +73,7 @@ const schema = [
             <span class="mt-2 block text-[0.52em] font-medium tracking-[-0.02em] text-white/70">{tokens('en {{CIUDAD}}')}</span>
           </h1>
           <p class="mt-7 max-w-xl text-[clamp(1.08rem,1.9vw,1.28rem)] leading-relaxed text-white/75">
-            Tratamientos de alta precisión guiados por ecografía para lesiones musculares, tendinosas y del sistema nervioso periférico, integrados con rehabilitación y ejercicio terapéutico.
+            Tratamientos de alta precisión guiados por ecografía para lesiones tendinosas, musculares y afectaciones del sistema nervioso periférico, integrados con rehabilitación y ejercicio terapéutico.
           </p>
           <div class="mt-10 flex flex-wrap gap-3">
             <a href={waLink(wa)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />Solicitar evaluación</a>
@@ -120,7 +119,6 @@ const schema = [
           <p>Tras una evaluación y anamnesis completa se identifica la estructura implicada y se determina el tratamiento más adecuado. Estas intervenciones forman parte de un abordaje integral que se complementa con readaptación, ejercicio terapéutico y cargas progresivas.</p>
         </div>
         <a href="/fisioterapia-invasiva-ecoguiada/" class="btn btn-outline mt-8" data-reveal>Guía completa de fisioterapia invasiva ecoguiada<Icon name="arrow" size={18} /></a>
-        <div data-reveal><CertRow cert="ecografia" /></div>
       </div>
       <figure class="relative m-0" data-reveal>
         <div id="slab" class="relative aspect-[4/3] cursor-grab overflow-hidden rounded-[2rem] bg-gradient-to-br from-navy-50 via-white to-zinc-100 ring-1 ring-navy-700/10 active:cursor-grabbing">
@@ -172,8 +170,10 @@ const schema = [
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {groups.map((g, gi) => (
           <details class="card card-hover spotlight group group/acc p-5 not-open:gap-0 sm:p-6" open data-acc={gi === 0 ? 'first' : ''} data-reveal data-spotlight>
-            <div class="-mx-2 -mt-2 mb-2 hidden aspect-[16/9] place-items-center overflow-hidden rounded-2xl bg-gradient-to-b from-navy-50 to-white sm:grid"><img src={`/img/3d/${CATEGORY_RENDER[g.key]}-sm.webp`} alt={`Ilustración 3D: ${g.label}`} width="480" height="270" loading="lazy" decoding="async" class="h-full w-full object-contain p-3 transition-transform duration-700 ease-out-expo group-hover:scale-[1.06]" /></div>
-            <summary class="flex cursor-pointer list-none items-center gap-3 sm:pointer-events-none [&::-webkit-details-marker]:hidden"><h3 class="m-0 flex flex-1 items-center gap-3 text-[1.1rem] font-semibold text-navy-950"><span class="grid size-10 shrink-0 place-items-center rounded-xl bg-navy-950 text-ice-300"><Icon name={g.icon} size={20} /></span>{g.label}</h3><span class="text-[0.85rem] text-zinc-400 sm:hidden">{g.items.length}</span><Icon name="arrow" size={16} class="rotate-90 text-zinc-400 transition-transform group-open/acc:-rotate-90 sm:hidden" /></summary>
+            <summary class="block cursor-pointer list-none sm:pointer-events-none [&::-webkit-details-marker]:hidden">
+  <div class="-mx-2 -mt-2 mb-4 hidden aspect-[16/9] place-items-center overflow-hidden rounded-2xl bg-gradient-to-b from-navy-50 to-white sm:grid"><img src={`/img/3d/${CATEGORY_RENDER[g.key]}-sm.webp`} alt={`Ilustración 3D: ${g.label}`} width="480" height="270" loading="lazy" decoding="async" class="h-full w-full object-contain p-3 transition-transform duration-700 ease-out-expo group-hover:scale-[1.06]" /></div>
+              <div class="flex items-center gap-3"><h3 class="m-0 flex flex-1 items-center gap-3 text-[1.1rem] font-semibold text-navy-950"><span class="grid size-10 shrink-0 place-items-center rounded-xl bg-navy-950 text-ice-300"><Icon name={g.icon} size={20} /></span>{g.label}</h3><span class="text-[0.85rem] text-zinc-400 sm:hidden">{g.items.length}</span><Icon name="arrow" size={16} class="rotate-90 text-zinc-400 transition-transform group-open/acc:-rotate-90 sm:hidden" /></div>
+            </summary>
             <ul class="divide-y divide-zinc-200">
               {g.items.map((l) => (
                 <li><a href={`/lesiones/${l.slug}/`} class="group/item relative z-10 flex items-center gap-3 py-2.5 text-[0.96rem] font-medium text-zinc-700 no-underline transition hover:text-navy-900"><span class="grid size-12 flex-none place-items-center rounded-xl bg-gradient-to-b from-navy-50 to-white ring-1 ring-navy-700/5"><img src={`/img/3d/${lesionRender(l.slug)}-sm.webp`} alt="" width="48" height="48" loading="lazy" decoding="async" class="size-11 object-contain transition-transform duration-500 group-hover/item:scale-110" /></span><span class="flex-1">{l.name}</span><Icon name="arrow" size={16} class="text-zinc-300 transition group-hover/item:translate-x-1 group-hover/item:text-navy-600" /></a></li>

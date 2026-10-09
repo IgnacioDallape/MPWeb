@@ -1,6 +1,6 @@
 ---
-// Monograma M/P de MP Studio sobre placa clara (public/img/logo/mp-mark.svg).
+// Logo MP Studio (M/P + Studio.) sobre placa clara: public/img/logo/mp-mark-studio.svg
 interface Props { class?: string }
-const { class: cls = 'size-11' } = Astro.props;
+const { class: cls = 'h-[60px]' } = Astro.props;
 ---
-<img src="/img/logo/mp-mark.svg" alt="" width="44" height="44" class:list={['block shrink-0 rounded-[10px] shadow-[0_6px_18px_-8px_rgba(0,0,0,.6)] ring-1 ring-white/20', cls]} decoding="async" />
+<img src="/img/logo/mp-mark-studio.svg" alt="" width="55" height="60" class:list={['block w-auto shrink-0 rounded-[12px] shadow-[0_8px_22px_-10px_rgba(0,0,0,.7)] ring-1 ring-white/25', cls]} decoding="async" />

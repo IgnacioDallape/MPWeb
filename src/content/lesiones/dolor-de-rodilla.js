@@ -50,8 +50,8 @@ Esta página es una guía general para orientarte. Si corrés y el dolor apareci
 |---|---|---|
 | Adelante, alrededor o detrás de la rótula | Dolor patelofemoral | [Dolor de rodilla al correr](/blog/dolor-de-rodilla-al-correr/) |
 | Justo debajo de la rótula | Tendinopatía rotuliana | [Tendinopatía rotuliana](/lesiones/tendinopatia-rotuliana/) |
-| Cara interna, a la altura de la articulación | Menisco interno o ligamento colateral medial | [Lesión de menisco](/lesiones/lesion-de-menisco/) y [lesiones ligamentarias](/lesiones/ligamentarias/) |
-| Cara interna, unos centímetros más abajo | Bursitis o tendinopatía de la pata de ganso | [Bursopatías](/lesiones/bursopatias/) |
+| Cara interna, a la altura de la articulación | Menisco interno o ligamento colateral medial | [Lesiones ligamentarias](/lesiones/ligamentarias/) |
+| Cara interna, unos centímetros más abajo | Bursitis o tendinopatía de la pata de ganso | [Tendinitis](/lesiones/tendinitis/) |
 | Cara externa | Cintilla iliotibial o menisco externo | [Dolor de rodilla al correr](/blog/dolor-de-rodilla-al-correr/) |
 | Atrás, en el hueco de la rodilla | Quiste de Baker, isquiotibiales o gemelos | Evaluación clínica y ecográfica |
 | Toda la rodilla, hinchada tras un giro | Ligamento cruzado o menisco | [Rehabilitación del ligamento cruzado anterior](/blog/rehabilitacion-ligamento-cruzado-anterior/) |
@@ -161,7 +161,7 @@ Atendemos en nuestro consultorio de {{LOCALIDAD}} y recibimos pacientes de Chacr
   related: {
     kinesiologia: ['traumatologica', 'deportiva', 'postquirurgica'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada'],
-    lesiones: ['tendinopatia-rotuliana', 'lesion-de-menisco', 'ligamentarias', 'bursopatias'],
+    lesiones: ['tendinopatia-rotuliana', 'ligamentarias'],
     blog: ['dolor-de-rodilla-al-correr', 'rehabilitacion-ligamento-cruzado-anterior', 'tendinopatia-rotuliana-causas-y-rehabilitacion'],
   },
 

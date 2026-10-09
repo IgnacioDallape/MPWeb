@@ -138,7 +138,7 @@ Si querés conocer cómo se integra la ecografía en todas estas decisiones, pod
   related: {
     kinesiologia: ['esguinces', 'deportiva', 'traumatologica'],
     tratamientos: ['microelectrolisis-percutanea-mep', 'epi-electrolisis-percutanea'],
-    lesiones: ['tendinopatia-aquiles', 'bursopatias'],
+    lesiones: ['tendinopatia-aquiles'],
     blog: ['ecografia-en-fisioterapia'],
   },
 

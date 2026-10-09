@@ -8,7 +8,6 @@ import Faq from './Faq.astro';
 import Related from './Related.astro';
 import Cards from './Cards.astro';
 import CtaBand from './CtaBand.astro';
-import CertRow from './CertRow.astro';
 import { markdown, wordCount } from '../lib/md.js';
 import { config, waLink, formatDate, abs, tokens, known } from '../lib/site.js';
 import { ctaInline, TREATMENT_CERT } from '../lib/components.js';
@@ -77,7 +76,6 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
           <a href={waLink(waMessage)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />{kind === 'lesiones' ? 'Consultar por mi lesión' : 'Solicitar una evaluación'}</a>
           <a href={kind === 'lesiones' ? '#tratamientos-relacionados' : '#lesiones-relacionadas'} class="btn btn-outline-dark">{kind === 'lesiones' ? 'Ver tratamientos' : kind === 'kinesiologia' ? 'Ver patologías frecuentes' : 'Ver lesiones que aborda'}<Icon name="arrow" size={18} /></a>
         </div>
-        {cert && <CertRow cert={cert} dark />}
       </>
     )}
   </PageHero>

@@ -131,7 +131,7 @@ Es importante una valoración médica si después de una **caída o un tirón** 
   related: {
     kinesiologia: ['traumatologica', 'postquirurgica', 'deportiva'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada', 'puncion-seca-ecoguiada'],
-    lesiones: ['bursopatias', 'dolor-miofascial'],
+    lesiones: ['dolor-miofascial'],
     blog: ['epi-para-tendinopatias'],
   },
 

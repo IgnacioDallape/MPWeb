@@ -60,7 +60,7 @@ Lo que se suele llamar tendinitis es, en la mayoría de los cuadros que duran se
 
 ### Dolor de hombro, rodilla, tobillo y codo
 
-- **Hombro:** dolor al levantar el brazo, al dormir de costado o al colgar ropa, a veces con una [bursitis subacromial](/lesiones/bursopatias/) asociada.
+- **Hombro:** dolor al levantar el brazo, al dormir de costado o al colgar ropa, a veces con una bursitis subacromial asociada.
 - **Rodilla:** dolor al subir y bajar escaleras, al ponerse en cuclillas o después de estar mucho tiempo sentado.
 - **Tobillo:** inestabilidad o dolor persistente después de una torcedura. Los [esguinces](/kinesiologia-mendoza/esguinces/) tienen su propia página.
 - **Codo:** dolor al agarrar, girar una llave o usar herramientas.
@@ -168,7 +168,7 @@ Si no tenés claro a quién ir primero, leé [kinesiólogo o traumatólogo](/blo
   related: {
     kinesiologia: ['deportiva', 'postquirurgica', 'esguinces', 'dolor-lumbar'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada', 'puncion-seca-ecoguiada'],
-    lesiones: ['manguito-rotador', 'epicondilitis', 'bursopatias', 'ligamentarias'],
+    lesiones: ['manguito-rotador', 'epicondilitis', 'ligamentarias'],
     blog: ['kinesiologo-o-traumatologo', 'frio-o-calor-en-una-lesion', 'cuantas-sesiones-de-kinesiologia', 'epi-para-tendinopatias'],
   },
 
