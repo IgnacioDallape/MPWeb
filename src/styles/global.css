@@ -26,6 +26,18 @@
   --color-ice-200: #cfe0ff;
   --color-pending: #ffe08a;
 
+  /* Gris topo: los grises neutros pasan a una escala cálida (fondos, bordes y textos) */
+  --color-zinc-50: #f2ece6;
+  --color-zinc-100: #e8e0d8;
+  --color-zinc-200: #dbd0c5;
+  --color-zinc-300: #c5b7a9;
+  --color-zinc-400: #8a7d71;
+  --color-zinc-500: #5a5048;
+  --color-zinc-600: #4a413a;
+  --color-zinc-700: #423a34;
+  --color-zinc-800: #302a25;
+  --color-zinc-900: #211d19;
+
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -45,7 +57,8 @@
     text-size-adjust: 100%;
   }
   body {
-    @apply bg-white font-sans text-[1.0625rem] leading-[1.7] text-zinc-800 antialiased;
+    @apply font-sans text-[1.0625rem] leading-[1.7] text-zinc-800 antialiased;
+    background: #e2d8ce;
     overflow-x: clip;
   }
   h1, h2, h3, h4 {
@@ -201,8 +214,9 @@
   .faq .answer p { @apply m-0; }
   .faq h3 { @apply m-0 font-display text-[1rem] leading-snug tracking-normal; }
 
-  /* Fondos grises: degradé perla suave en lugar de gris plano */
-  .bg-zinc-50 { background-image: linear-gradient(180deg, #f8f9fb 0%, #eceef2 55%, #e2e6ec 100%); }
+  /* Fondos en gris topo con degradé (secciones claras y fondo general) */
+  .bg-zinc-50, .bg-zinc-50\/60 { background-image: linear-gradient(180deg, #d9cdc1 0%, #c9baab 60%, #bcab9b 100%); }
+  section.bg-white { background-color: #e2d8ce; background-image: linear-gradient(180deg, #e9e1d8 0%, #d8ccc0 100%); }
 
   /* Tarjetas: carrusel deslizable en el celular, grilla desde tablet */
   .carousel {
