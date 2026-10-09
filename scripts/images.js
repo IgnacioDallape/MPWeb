@@ -24,10 +24,10 @@ const logo = readFileSync(resolve(root, 'public/img/logo/mp-studio.svg'), 'utf8'
 const og = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
 <rect width="1200" height="630" fill="#fafafa"/>
 <rect x="0" y="0" width="1200" height="630" fill="url(#g)"/>
-<defs><radialGradient id="g" cx=".85" cy=".2" r=".6"><stop offset="0" stop-color="#5b6b8c" stop-opacity=".14"/><stop offset="1" stop-color="#5b6b8c" stop-opacity="0"/></radialGradient></defs>
+<defs><radialGradient id="g" cx=".85" cy=".2" r=".6"><stop offset="0" stop-color="#777777" stop-opacity=".14"/><stop offset="1" stop-color="#777777" stop-opacity="0"/></radialGradient></defs>
 ${logo}
-<text x="72" y="236" font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="#5b6b8c">KINESIOLOGÍA EN MENDOZA</text>
-<text font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="60" font-weight="800" fill="#1c1e21"><tspan x="72" y="318">Fisioterapia</tspan><tspan x="72" y="388">Invasiva</tspan><tspan x="72" y="458" fill="#1b2b4b">Ecoguiada</tspan></text>
+<text x="72" y="236" font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="#5a5a5a">KINESIOLOGÍA EN MENDOZA</text>
+<text font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="60" font-weight="800" fill="#1c1e21"><tspan x="72" y="318">Fisioterapia</tspan><tspan x="72" y="388">Invasiva</tspan><tspan x="72" y="458" fill="#3a3a3a">Ecoguiada</tspan></text>
 <text x="72" y="530" font-family="Manrope, Segoe UI, Arial, sans-serif" font-size="24" font-weight="600" fill="#61666c">EPI, neuromodulación, MEP y punción seca</text>
 <rect x="620" y="60" width="560" height="510" rx="32" fill="#151719"/>
 ${hero}

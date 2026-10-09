@@ -5,5 +5,5 @@ const { cert, dark = false } = Astro.props;
 ---
 <div class:list={['mt-8 flex max-w-xl items-center gap-4 rounded-2xl border p-3 pr-5', dark ? 'border-white/10 bg-white/[0.04]' : 'border-zinc-200 bg-white']}>
   <Fragment set:html={certBadge(cert, 76)} />
-  <p class:list={['m-0 text-[0.86rem] leading-snug', dark ? 'text-white/75' : 'text-zinc-500']}><strong class:list={['block font-display text-[0.98rem]', dark ? 'text-white' : 'text-navy-900']}>Formación certificada</strong>{CERTS[cert]}. Certificación de MVClinic, Institute of Invasive Physiotherapy.</p>
+  <p class:list={['m-0 text-[0.86rem] leading-snug', dark ? 'text-white/75' : 'text-zinc-500']}><strong class:list={['block font-display text-[0.98rem]', dark ? 'text-white' : 'text-ink-soft']}>Formación certificada</strong>{CERTS[cert]}. Certificación de MVClinic, Institute of Invasive Physiotherapy.</p>
 </div>

@@ -15,7 +15,7 @@ const { href, title, text, icon, badge, tag, more = 'Ver más', dark = false, re
     <span class:list={['mb-2 grid size-12 place-items-center rounded-2xl', dark ? 'bg-white/10 text-ice-300' : 'bg-navy-50 text-navy-700']}><Icon name={icon} /></span>
   )}
   {tag && <span class="tag">{tag}</span>}
-  <h3 class:list={['text-[1.25rem] leading-tight font-semibold', dark ? 'text-white' : 'text-navy-950']}><a href={href} class="card-link-cover text-inherit no-underline">{title}</a></h3>
+  <h3 class:list={['text-[1.25rem] leading-tight font-semibold', dark ? 'text-white' : 'text-ink']}><a href={href} class="card-link-cover text-inherit no-underline">{title}</a></h3>
   <p class:list={['m-0 text-[0.96rem] leading-relaxed', dark ? 'text-white/75' : 'text-zinc-600']}>{text}</p>
   <span aria-hidden="true" class:list={['mt-auto inline-flex items-center gap-2 pt-3 text-[0.88rem] font-bold', dark ? 'text-ice-300' : 'text-navy-600']}>{more}<Icon name="arrow" size={16} class="transition-transform duration-300 group-hover:translate-x-1" /></span>
 </article>

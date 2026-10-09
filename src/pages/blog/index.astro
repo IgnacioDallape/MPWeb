@@ -43,7 +43,7 @@ const schema = [
   <div class="bg-zinc-50 pb-24">
     {cats.map((c) => (
       <section class="mx-auto max-w-[1240px] px-5 pt-20 sm:px-8" aria-labelledby={slug(c)}>
-        <h2 id={slug(c)} class="mb-8 text-[clamp(1.5rem,3vw,2.2rem)] font-semibold text-navy-950" data-reveal>{c}</h2>
+        <h2 id={slug(c)} class="mb-8 text-[clamp(1.5rem,3vw,2.2rem)] font-semibold text-ink" data-reveal>{c}</h2>
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"><Cards kind="blog" items={posts.filter((p) => p.category === c)} /></div>
       </section>
     ))}

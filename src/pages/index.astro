@@ -112,10 +112,10 @@ const schema = [
       <div>
         <div data-reveal>
           <p class="eyebrow mb-4">Descripción</p>
-          <h2 id="que-es" class="text-[clamp(2rem,4.4vw,3.3rem)] leading-[1.04] font-semibold text-navy-950">¿Qué es la Fisioterapia Invasiva <span class="text-gradient-navy">Ecoguiada</span>?</h2>
+          <h2 id="que-es" class="text-[clamp(2rem,4.4vw,3.3rem)] leading-[1.04] font-semibold text-ink">¿Qué es la Fisioterapia Invasiva <span class="text-gradient-navy">Ecoguiada</span>?</h2>
         </div>
         <div class="mt-7 space-y-5 text-[1.08rem] text-zinc-600" data-reveal>
-          <p>La <strong class="text-navy-950">fisioterapia invasiva ecoguiada</strong> engloba tratamientos que utilizan agujas ultrafinas para actuar directamente sobre la estructura afectada, siempre guiados por ecografía. Permite tratar de forma precisa lesiones tendinosas, musculares, ligamentarias y estructuras relacionadas con el sistema nervioso periférico.</p>
+          <p>La <strong class="text-ink">fisioterapia invasiva ecoguiada</strong> engloba tratamientos que utilizan agujas ultrafinas para actuar directamente sobre la estructura afectada, siempre guiados por ecografía. Permite tratar de forma precisa lesiones tendinosas, musculares, ligamentarias y estructuras relacionadas con el sistema nervioso periférico.</p>
           <p>Tras una evaluación y anamnesis completa se identifica la estructura implicada y se determina el tratamiento más adecuado. Estas intervenciones forman parte de un abordaje integral que se complementa con readaptación, ejercicio terapéutico y cargas progresivas.</p>
         </div>
         <a href="/fisioterapia-invasiva-ecoguiada/" class="btn btn-outline mt-8" data-reveal>Guía completa de fisioterapia invasiva ecoguiada<Icon name="arrow" size={18} /></a>
@@ -172,17 +172,17 @@ const schema = [
           <details class="card card-hover spotlight group group/acc p-5 not-open:gap-0 sm:p-6" open data-acc={gi === 0 ? 'first' : ''} data-reveal data-spotlight>
             <summary class="block cursor-pointer list-none sm:pointer-events-none [&::-webkit-details-marker]:hidden">
   <div class="-mx-2 -mt-2 mb-4 hidden aspect-[16/9] place-items-center overflow-hidden rounded-2xl bg-gradient-to-b from-navy-50 to-white sm:grid"><img src={`/img/3d/${CATEGORY_RENDER[g.key]}-sm.webp`} alt={`Ilustración 3D: ${g.label}`} width="480" height="270" loading="lazy" decoding="async" class="h-full w-full object-contain p-3 transition-transform duration-700 ease-out-expo group-hover:scale-[1.06]" /></div>
-              <div class="flex items-center gap-3"><h3 class="m-0 flex flex-1 items-center gap-3 text-[1.1rem] font-semibold text-navy-950"><span class="grid size-10 shrink-0 place-items-center rounded-xl bg-navy-950 text-ice-300"><Icon name={g.icon} size={20} /></span>{g.label}</h3><span class="text-[0.85rem] text-zinc-400 sm:hidden">{g.items.length}</span><Icon name="arrow" size={16} class="rotate-90 text-zinc-400 transition-transform group-open/acc:-rotate-90 sm:hidden" /></div>
+              <div class="flex items-center gap-3"><h3 class="m-0 flex flex-1 items-center gap-3 text-[1.1rem] font-semibold text-ink"><span class="grid size-10 shrink-0 place-items-center rounded-xl bg-navy-950 text-ice-300"><Icon name={g.icon} size={20} /></span>{g.label}</h3><span class="text-[0.85rem] text-zinc-400 sm:hidden">{g.items.length}</span><Icon name="arrow" size={16} class="rotate-90 text-zinc-400 transition-transform group-open/acc:-rotate-90 sm:hidden" /></div>
             </summary>
             <ul class="divide-y divide-zinc-200">
               {g.items.map((l) => (
-                <li><a href={`/lesiones/${l.slug}/`} class="group/item relative z-10 flex items-center gap-3 py-2.5 text-[0.96rem] font-medium text-zinc-700 no-underline transition hover:text-navy-900"><span class="grid size-12 flex-none place-items-center rounded-xl bg-gradient-to-b from-navy-50 to-white ring-1 ring-navy-700/5"><img src={`/img/3d/${lesionRender(l.slug)}-sm.webp`} alt="" width="48" height="48" loading="lazy" decoding="async" class="size-11 object-contain transition-transform duration-500 group-hover/item:scale-110" /></span><span class="flex-1">{l.name}</span><Icon name="arrow" size={16} class="text-zinc-300 transition group-hover/item:translate-x-1 group-hover/item:text-navy-600" /></a></li>
+                <li><a href={`/lesiones/${l.slug}/`} class="group/item relative z-10 flex items-center gap-3 py-2.5 text-[0.96rem] font-medium text-zinc-700 no-underline transition hover:text-ink-soft"><span class="grid size-12 flex-none place-items-center rounded-xl bg-gradient-to-b from-navy-50 to-white ring-1 ring-navy-700/5"><img src={`/img/3d/${lesionRender(l.slug)}-sm.webp`} alt="" width="48" height="48" loading="lazy" decoding="async" class="size-11 object-contain transition-transform duration-500 group-hover/item:scale-110" /></span><span class="flex-1">{l.name}</span><Icon name="arrow" size={16} class="text-zinc-300 transition group-hover/item:translate-x-1 group-hover/item:text-navy-600" /></a></li>
               ))}
             </ul>
           </details>
         ))}
       </div>
-      <a href="/lesiones/" class="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-navy-950" data-reveal>Ver todas las patologías<Icon name="arrow" size={18} /></a>
+      <a href="/lesiones/" class="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-ink" data-reveal>Ver todas las patologías<Icon name="arrow" size={18} /></a>
     </div>
   </section>
 
@@ -191,19 +191,19 @@ const schema = [
     <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
       <SectionHead id="tratamientos" eyebrow="Tratamientos" title='Tratamientos de fisioterapia invasiva <span class="text-gradient-navy">guiados por ecografía</span>' lead="Cada tratamiento tiene un objetivo distinto. La elección depende del tejido afectado, de la fase de la lesión y de tu actividad." />
       <div class="carousel lg:grid-cols-4"><Cards kind="tratamientos" items={treatments} /></div>
-      <a href="/tratamientos/" class="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-navy-950" data-reveal>Comparar todos los tratamientos<Icon name="arrow" size={18} /></a>
+      <a href="/tratamientos/" class="mt-10 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-ink" data-reveal>Comparar todos los tratamientos<Icon name="arrow" size={18} /></a>
 
       <!-- Kinesiología general: complementa los tratamientos ecoguiados -->
       <div class="mt-12 grid gap-6 rounded-[1.75rem] border border-zinc-200 bg-zinc-50 p-5 sm:p-7 md:mt-16 md:gap-8 md:p-10 lg:grid-cols-[1fr_1.4fr] lg:items-center" data-reveal>
         <div>
           <p class="eyebrow mb-3">Kinesiología en {tokens('{{CIUDAD}}')}</p>
-          <h3 class="text-[clamp(1.4rem,2.6vw,1.9rem)] leading-tight font-semibold text-navy-950">También hacemos kinesiología, con la misma evaluación ecográfica</h3>
+          <h3 class="text-[clamp(1.4rem,2.6vw,1.9rem)] leading-tight font-semibold text-ink">También hacemos kinesiología, con la misma evaluación ecográfica</h3>
           <p class="mt-3 text-zinc-600">Lesiones deportivas, rehabilitación después de una cirugía, dolor de espalda o de cuello y esguinces, en nuestro consultorio de {tokens('{{LOCALIDAD}}')}.</p>
-          <a href="/kinesiologia-mendoza/" class="mt-5 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-navy-950">Kinesiología en {tokens('{{CIUDAD}}')}<Icon name="arrow" size={18} /></a>
+          <a href="/kinesiologia-mendoza/" class="mt-5 inline-flex items-center gap-2 font-semibold text-navy-600 no-underline hover:text-ink">Kinesiología en {tokens('{{CIUDAD}}')}<Icon name="arrow" size={18} /></a>
         </div>
         <ul class="grid gap-3 sm:grid-cols-2">
           {services.map((x) => (
-            <li><a href={`/kinesiologia-mendoza/${x.slug}/`} class="group flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white px-4 py-3.5 font-semibold text-navy-900 no-underline transition hover:border-navy-300 hover:shadow-sm"><span class="grid size-9 shrink-0 place-items-center rounded-xl bg-navy-50 text-navy-700"><Icon name={x.icon} size={18} /></span>{x.name}<Icon name="arrow" size={16} class="ml-auto text-navy-400 transition-transform group-hover:translate-x-1" /></a></li>
+            <li><a href={`/kinesiologia-mendoza/${x.slug}/`} class="group flex items-center gap-3 rounded-2xl border border-zinc-200 bg-white px-4 py-3.5 font-semibold text-ink-soft no-underline transition hover:border-navy-300 hover:shadow-sm"><span class="grid size-9 shrink-0 place-items-center rounded-xl bg-navy-50 text-navy-700"><Icon name={x.icon} size={18} /></span>{x.name}<Icon name="arrow" size={16} class="ml-auto text-navy-400 transition-transform group-hover:translate-x-1" /></a></li>
           ))}
         </ul>
       </div>
