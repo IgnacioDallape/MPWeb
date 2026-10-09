@@ -28,6 +28,16 @@ const LESION_FALLBACK = {
   'lesion-de-menisco': 'ligamentarias',
   'hombro-congelado': 'manguito-rotador',
   'sindrome-del-tunel-carpiano': 'nmp',
+  ciatica: 'nmp',
+  'hernia-de-disco': 'dolor',
+  escoliosis: 'dolor',
+  'dolor-de-espalda': 'dolor-cronico-musculoesqueletico',
+  'dolor-de-codo': 'epicondilitis',
+  'dolor-de-muneca': 'epitrocleitis',
+  'dolor-de-tobillo': 'ligamentarias',
+  'artrosis-de-rodilla': 'tendinopatia-rotuliana',
+  'dolor-patelofemoral': 'tendinopatia-rotuliana',
+  'espolon-calcaneo': 'fascitis-plantar',
 };
 export const lesionRender = (slug) => LESION_FALLBACK[slug] || slug;
 // Render representativo de cada categoría (fichas de la home).
@@ -35,10 +45,10 @@ export const CATEGORY_RENDER = {
   tendinosas: 'tendinopatia-aquiles',
   musculares: 'desgarros-musculares',
   ligamentarias: 'ligamentarias',
-  bursas: 'bursopatias',
+  columna: 'dolor',
   zonas: 'manguito-rotador',
   sobrecarga: 'fascitis-plantar',
-  articulares: 'ligamentarias',
+  articulares: 'bursopatias',
   nerviosas: 'nmp',
   dolor: 'dolor-cronico-musculoesqueletico',
 };

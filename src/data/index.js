@@ -5,13 +5,13 @@ const load = (mods) =>
     .filter((x) => !x.draft);
 
 export const CATEGORIES = {
-  zonas: { label: 'Dolor por zona', icon: 'target', intro: 'Dolor de hombro, rodilla o cadera: qué puede estar pasando y cómo se evalúa.' },
+  zonas: { label: 'Dolor por zona', icon: 'target', intro: 'Dolor de espalda, hombro, codo, muñeca, cadera, rodilla o tobillo: qué puede estar pasando y cómo se evalúa.' },
+  columna: { label: 'Columna', icon: 'layers', intro: 'Ciática, hernia de disco y escoliosis: evaluación y ejercicio para la columna.' },
   tendinosas: { label: 'Lesiones tendinosas', icon: 'tendon', intro: 'Tendinitis, tendón de Aquiles, rotuliano, manguito rotador, epicondilitis, epitrocleitis y otras tendinopatías.' },
   musculares: { label: 'Lesiones musculares', icon: 'muscle', intro: 'Contracturas, tortícolis, desgarros, dolor miofascial y fibrosis tras lesiones previas.' },
   sobrecarga: { label: 'Lesiones por sobrecarga', icon: 'bolt', intro: 'Fascitis plantar, pubalgia, periostitis tibial y otras lesiones por exceso de carga.' },
   ligamentarias: { label: 'Lesiones ligamentarias', icon: 'joint', intro: 'Esguinces y lesiones de ligamentos con dolor o inestabilidad persistente.' },
-  articulares: { label: 'Lesiones articulares', icon: 'joint', intro: 'Lesiones de menisco y hombro congelado.' },
-  bursas: { label: 'Bursopatías', icon: 'layers', intro: 'Bursitis de cadera, hombro, rodilla, codo y talón.' },
+  articulares: { label: 'Lesiones articulares y bursitis', icon: 'joint', intro: 'Menisco, artrosis de rodilla, dolor de rótula, hombro congelado y bursitis.' },
   nerviosas: { label: 'Atrapamientos nerviosos', icon: 'nerve', intro: 'Síndrome del túnel carpiano y otros atrapamientos de nervios periféricos.' },
   dolor: { label: 'Dolor musculoesquelético persistente', icon: 'pulse', intro: 'Dolor que se mantiene en el tiempo y necesita un abordaje integral.' },
 };

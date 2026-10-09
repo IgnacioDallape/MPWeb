@@ -1,7 +1,7 @@
 export default {
   slug: 'bursopatias',
   order: 1,
-  category: 'bursas',
+  category: 'articulares',
   name: 'Bursopatías y bursitis',
   icon: 'layers',
   cardText: 'Dolor lateral de cadera, hombro, codo, rodilla o talón por bursitis: la ecografía diferencia bursa y tendón para orientar el tratamiento.',

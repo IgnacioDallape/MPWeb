@@ -71,6 +71,7 @@ function createFibers(count) {
       uColor: { value: ICE.clone() },
       uDeep: { value: ICE_DEEP.clone() },
       uLesion: { value: LESION.clone() },
+      uAlpha: { value: 1 },
     },
     vertexShader: /* glsl */ `
       attribute float aSeed;
@@ -95,7 +96,7 @@ function createFibers(count) {
       }`,
     fragmentShader: /* glsl */ `
       uniform vec3 uColor, uDeep, uLesion;
-      uniform float uEnergy;
+      uniform float uEnergy, uAlpha;
       varying float vScan, vLesion, vFade, vSeed;
       void main() {
         vec3 col = mix(uDeep, uColor, 0.35 + vSeed * 0.65);
@@ -103,7 +104,7 @@ function createFibers(count) {
         col += vec3(0.75, 0.88, 1.0) * vScan * 0.7;
         col += uLesion * vLesion * uEnergy * 0.8;
         float a = (0.045 + vSeed * 0.05 + vScan * 0.16 + vLesion * 0.07) * vFade;
-        gl_FragColor = vec4(col, a);
+        gl_FragColor = vec4(col, min(a * uAlpha, 1.0));
       }`,
   });
   return new THREE.LineSegments(geo, mat);
@@ -299,8 +300,27 @@ export function createScene(canvas, { mobile = false } = {}) {
   world.add(fibers, sheath, probe, needle, lesionGlow);
   scene.add(dust);
 
+  // Variante gris perla: fondo claro, sin brillo aditivo ni bloom, fibras en azul acero.
+  const light = document.documentElement.dataset.tema === 'perla';
+  if (light) {
+    scene.fog.color.set('#e4e6ea');
+    scene.traverse((o) => {
+      if (o.material?.blending === THREE.AdditiveBlending) {
+        o.material.blending = THREE.NormalBlending;
+        o.material.needsUpdate = true;
+      }
+    });
+    const u = fibers.material.uniforms;
+    u.uColor.value.set('#4f73b8');
+    u.uDeep.value.set('#1b2b4b');
+    u.uAlpha.value = 3.4;
+    sheath.material.uniforms.uColor.value.set('#34508a');
+    dust.material.color.set('#34508a');
+    dust.material.opacity = 0.3;
+  }
+
   let composer = null;
-  if (!mobile) {
+  if (!mobile && !light) {
     composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
     composer.addPass(new UnrealBloomPass(new THREE.Vector2(1, 1), 0.75, 0.45, 0.6));
