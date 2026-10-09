@@ -23,10 +23,10 @@ export function ultrasoundHero({ live = false } = {}) {
   <clipPath id="us-clip"><rect x="36" y="58" width="404" height="376" rx="6"/></clipPath>
   <linearGradient id="us-depth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#45484b"/><stop offset=".35" stop-color="#1d1f21"/><stop offset="1" stop-color="#0e0f10"/></linearGradient>
   <radialGradient id="us-lesion" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#050505" stop-opacity=".95"/><stop offset=".7" stop-color="#0b0c0d" stop-opacity=".7"/><stop offset="1" stop-color="#0b0c0d" stop-opacity="0"/></radialGradient>
-  <radialGradient id="us-tip" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#e6e6e6" stop-opacity=".9"/><stop offset="1" stop-color="#e6e6e6" stop-opacity="0"/></radialGradient>
+  <radialGradient id="us-tip" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#a9c7ff" stop-opacity=".9"/><stop offset="1" stop-color="#a9c7ff" stop-opacity="0"/></radialGradient>
   <linearGradient id="us-shadow" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000" stop-opacity=".85"/><stop offset="1" stop-color="#000" stop-opacity=".98"/></linearGradient>
   <filter id="us-speckle" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 .85  0 0 0 0 .9  0 0 0 0 .9  0 0 0 1.1 -.42"/></filter>
-  <linearGradient id="us-sweep" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6e6e6" stop-opacity="0"/><stop offset="1" stop-color="#e6e6e6" stop-opacity=".18"/></linearGradient>
+  <linearGradient id="us-sweep" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9c7ff" stop-opacity="0"/><stop offset="1" stop-color="#a9c7ff" stop-opacity=".18"/></linearGradient>
 </defs>
 <rect width="560" height="470" fill="#071024"/>
 <g font-family="Manrope, system-ui, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2" fill="#8a8e92">
@@ -60,7 +60,7 @@ export function ultrasoundHero({ live = false } = {}) {
   <g data-us-label="" fill="#d9dcdf"><text x="150" y="112">Aguja</text></g>
   <line x1="148" y1="116" x2="128" y2="122" stroke="#d9dcdf" stroke-opacity=".6"/>
   <g data-us-label="" fill="#d9dcdf"><text x="350" y="208">Tendón</text></g>
-  <g data-us-label="" fill="#e6e6e6"><text x="230" y="300">Zona a tratar</text></g>
+  <g data-us-label="" fill="#a9c7ff"><text x="230" y="300">Zona a tratar</text></g>
   <line x1="268" y1="288" x2="284" y2="252" stroke="#d6d9dc" stroke-opacity=".7"/>
   <g data-us-label="" fill="#a7abaf"><text x="60" y="398">Superficie ósea</text></g>
 </g>
@@ -88,9 +88,9 @@ export function ultrasoundLive() {
   return `<svg class="us-live" viewBox="0 0 560 470" aria-hidden="true" focusable="false" preserveAspectRatio="xMidYMid slice">
 <defs>
   <clipPath id="usl-clip"><rect x="36" y="58" width="404" height="376" rx="6"/></clipPath>
-  <radialGradient id="usl-tip" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#cfe0ff" stop-opacity=".95"/><stop offset=".45" stop-color="#d9d9d9" stop-opacity=".45"/><stop offset="1" stop-color="#d9d9d9" stop-opacity="0"/></radialGradient>
-  <radialGradient id="usl-lesion" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#d9d9d9" stop-opacity=".22"/><stop offset="1" stop-color="#d9d9d9" stop-opacity="0"/></radialGradient>
-  <linearGradient id="usl-sweep" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6e6e6" stop-opacity="0"/><stop offset=".85" stop-color="#e6e6e6" stop-opacity=".14"/><stop offset="1" stop-color="#cfe0ff" stop-opacity=".35"/></linearGradient>
+  <radialGradient id="usl-tip" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#cfe0ff" stop-opacity=".95"/><stop offset=".45" stop-color="#7ea8f5" stop-opacity=".45"/><stop offset="1" stop-color="#7ea8f5" stop-opacity="0"/></radialGradient>
+  <radialGradient id="usl-lesion" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#7ea8f5" stop-opacity=".22"/><stop offset="1" stop-color="#7ea8f5" stop-opacity="0"/></radialGradient>
+  <linearGradient id="usl-sweep" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9c7ff" stop-opacity="0"/><stop offset=".85" stop-color="#a9c7ff" stop-opacity=".14"/><stop offset="1" stop-color="#cfe0ff" stop-opacity=".35"/></linearGradient>
 </defs>
 <g clip-path="url(#usl-clip)">
   <g class="us-fibers">${flows}</g>
@@ -99,9 +99,9 @@ export function ultrasoundLive() {
   <line class="us-needle" x1="44" y1="66" x2="284" y2="224" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
   <g class="us-tipwrap"><circle class="us-tip" cx="285" cy="225" r="18" fill="url(#usl-tip)"/>${sparks}</g>
   <rect class="us-sweep" x="36" y="18" width="404" height="44" fill="url(#usl-sweep)"/>
-  <rect class="us-flicker" x="36" y="58" width="404" height="376" fill="#e6e6e6"/>
+  <rect class="us-flicker" x="36" y="58" width="404" height="376" fill="#a9c7ff"/>
 </g>
-<circle class="us-rec" cx="279" cy="34.5" r="3" fill="#d9d9d9"/>
+<circle class="us-rec" cx="279" cy="34.5" r="3" fill="#7ea8f5"/>
 </svg>`;
 }
 

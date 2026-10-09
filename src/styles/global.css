@@ -10,26 +10,20 @@
   --font-sans: 'Manrope Variable', 'Manrope Fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   --font-display: 'Space Grotesk Variable', 'Manrope Variable', system-ui, sans-serif;
 
-  /* Paleta gris (pedido del cliente: el azul pasa a gris #878787).
-     Los nombres "navy" e "ice" se mantienen para no renombrar todas las clases. */
-  --color-ink: #1f1f1f;
-  --color-ink-soft: #2e2e2e;
-  --color-abyss: #6f6f6f;
-  --color-navy-950: #878787;
-  --color-navy-900: #7c7c7c;
-  --color-navy-850: #747474;
-  --color-navy-800: #6b6b6b;
-  --color-navy-700: #3a3a3a;
-  --color-navy-600: #474747;
-  --color-navy-500: #5a5a5a;
-  --color-navy-400: #8f8f8f;
-  --color-navy-300: #b5b5b5;
-  --color-navy-100: #e8e8e8;
-  --color-navy-50: #f3f3f3;
-  --color-ice-500: #6a6a6a;
-  --color-ice-400: #e6e6e6;
-  --color-ice-300: #f4f4f4;
-  --color-ice-200: #ffffff;
+  --color-abyss: #141b29;
+  --color-navy-950: #1a2233;
+  --color-navy-900: #212b3f;
+  --color-navy-850: #27324a;
+  --color-navy-800: #2d3a55;
+  --color-navy-700: #1b2b4b;
+  --color-navy-600: #24385f;
+  --color-navy-500: #34508a;
+  --color-navy-100: #e3e9f5;
+  --color-navy-50: #f1f4fa;
+  --color-ice-500: #5d8bea;
+  --color-ice-400: #7ea8f5;
+  --color-ice-300: #a9c7ff;
+  --color-ice-200: #cfe0ff;
   --color-pending: #ffe08a;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -59,7 +53,7 @@
   }
   ::selection {
     background: var(--color-ice-300);
-    color: var(--color-ink);
+    color: var(--color-navy-950);
   }
   :focus-visible {
     @apply rounded outline-2 outline-offset-4 outline-ice-400;
@@ -71,20 +65,20 @@
   /* Fondos */
   .bg-grid {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      linear-gradient(rgba(169, 199, 255, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(169, 199, 255, 0.055) 1px, transparent 1px);
     background-size: 56px 56px;
   }
   .bg-grid-fade {
     mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 40%, transparent 100%);
   }
   .bg-dots-light {
-    background-image: radial-gradient(rgba(40, 40, 40, 0.12) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(27, 43, 75, 0.12) 1px, transparent 1px);
     background-size: 22px 22px;
   }
   .glow {
     @apply pointer-events-none absolute rounded-full;
-    background: radial-gradient(circle closest-side, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08) 45%, transparent 100%);
+    background: radial-gradient(circle closest-side, rgba(93, 139, 234, 0.32), rgba(93, 139, 234, 0.12) 45%, transparent 100%);
   }
   .noise::after {
     content: '';
@@ -99,7 +93,7 @@
   }
   .glass-light {
     @apply border border-navy-700/10 bg-white/90;
-    box-shadow: 0 1px 2px rgba(20, 20, 20, 0.04), 0 24px 48px -28px rgba(20, 20, 20, 0.25);
+    box-shadow: 0 1px 2px rgba(10, 21, 48, 0.04), 0 24px 48px -28px rgba(10, 21, 48, 0.25);
   }
 
   /* Tipografía */
@@ -112,7 +106,7 @@
   }
   .on-dark .eyebrow { @apply text-ice-300; }
   .text-gradient {
-    background: linear-gradient(100deg, #ffffff 0%, #f2f2f2 50%, #d9d9d9 100%);
+    background: linear-gradient(100deg, #ffffff 0%, var(--color-ice-200) 40%, var(--color-ice-400) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -131,16 +125,16 @@
   .btn:hover { @apply -translate-y-0.5; }
   .btn-primary {
     @apply bg-navy-700 text-white;
-    box-shadow: 0 10px 30px -12px rgba(20, 20, 20, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 30px -12px rgba(27, 43, 75, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   }
   .btn-primary:hover { @apply bg-navy-900 text-white; }
   .btn-glow {
-    @apply bg-white text-ink;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4), 0 10px 30px -10px rgba(20, 20, 20, 0.45);
+    @apply bg-white text-navy-900;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4), 0 10px 40px -10px rgba(126, 168, 245, 0.75);
   }
-  .btn-glow:hover { @apply bg-zinc-100 text-ink; }
+  .btn-glow:hover { @apply bg-ice-200 text-navy-950; }
   .btn-outline-dark { @apply border border-white/20 text-white hover:border-ice-300/60 hover:bg-white/5 hover:text-white; }
-  .btn-outline { @apply border border-navy-700/20 text-navy-700 hover:border-navy-700 hover:bg-navy-50 hover:text-ink-soft; }
+  .btn-outline { @apply border border-navy-700/20 text-navy-700 hover:border-navy-700 hover:bg-navy-50 hover:text-navy-900; }
   .btn-sm { @apply min-h-10 px-4 py-2 text-[0.88rem]; }
   /* Brillo que recorre el botón al pasar el mouse */
   .btn-shine::after {
@@ -155,20 +149,20 @@
   }
   .card-hover:hover {
     @apply -translate-y-1 border-navy-700/25;
-    box-shadow: 0 30px 60px -30px rgba(20, 20, 20, 0.35);
+    box-shadow: 0 30px 60px -30px rgba(10, 21, 48, 0.35);
   }
   .card-link-cover::after { content: ''; @apply absolute inset-0 rounded-[inherit]; }
   .spotlight { --x: 50%; --y: 50%; }
   .spotlight::before {
     content: '';
     @apply pointer-events-none absolute inset-0 rounded-[inherit] opacity-0 transition-opacity duration-500;
-    background: radial-gradient(420px circle at var(--x) var(--y), rgba(255, 255, 255, 0.16), transparent 45%);
+    background: radial-gradient(420px circle at var(--x) var(--y), rgba(126, 168, 245, 0.16), transparent 45%);
   }
   .spotlight:hover::before { @apply opacity-100; }
   .border-gradient {
     background:
       linear-gradient(var(--color-navy-900), var(--color-navy-900)) padding-box,
-      linear-gradient(140deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.06) 40%, rgba(255, 255, 255, 0.3)) border-box;
+      linear-gradient(140deg, rgba(169, 199, 255, 0.45), rgba(169, 199, 255, 0.04) 40%, rgba(169, 199, 255, 0.25)) border-box;
     border: 1px solid transparent;
   }
 
@@ -195,8 +189,8 @@
 
   /* FAQ (details nativo) */
   .faq details { @apply rounded-2xl border border-zinc-200 bg-white transition-colors duration-300; }
-  .faq details[open] { @apply border-navy-700/30; box-shadow: 0 20px 40px -30px rgba(20, 20, 20, 0.35); }
-  .faq summary { @apply flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-display font-semibold text-ink-soft; }
+  .faq details[open] { @apply border-navy-700/30; box-shadow: 0 20px 40px -30px rgba(10, 21, 48, 0.35); }
+  .faq summary { @apply flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-display font-semibold text-navy-900; }
   .faq summary::-webkit-details-marker { display: none; }
   .faq summary::after {
     content: '+';
@@ -206,12 +200,6 @@
   .faq .answer { @apply px-5 pb-5 text-zinc-600; }
   .faq .answer p { @apply m-0; }
   .faq h3 { @apply m-0 font-display text-[1rem] leading-snug tracking-normal; }
-
-  /* Secciones oscuras: degradé desde el gris #878787 hacia un gris más profundo */
-  .on-dark.bg-navy-950, .on-dark.bg-abyss, #xp, #metodo { background-image: linear-gradient(160deg, #878787 0%, #747474 55%, #5f5f5f 100%); }
-
-  /* Sobre el gris, el texto blanco semitransparente pierde contraste: se usa blanco pleno */
-  .on-dark [class*="text-white/"], [data-header-inner] [class*="text-white/"] { color: #fff; }
 
   /* Fondos grises: degradé perla suave en lugar de gris plano */
   .bg-zinc-50 { background-image: linear-gradient(180deg, #f8f9fb 0%, #eceef2 55%, #e2e6ec 100%); }
@@ -239,17 +227,17 @@
 
   /* Contenido editorial (markdown) */
   .prose-site {
-    @apply prose prose-zinc max-w-none prose-headings:font-display prose-headings:tracking-tight prose-headings:text-ink prose-h2:mt-14 prose-h2:text-[1.75rem] prose-h3:text-[1.2rem] prose-a:font-semibold prose-a:text-navy-600 prose-a:decoration-ice-400/60 prose-a:underline-offset-4 hover:prose-a:text-ink-soft prose-strong:text-ink prose-li:marker:text-ice-500;
+    @apply prose prose-zinc max-w-none prose-headings:font-display prose-headings:tracking-tight prose-headings:text-navy-950 prose-h2:mt-14 prose-h2:text-[1.75rem] prose-h3:text-[1.2rem] prose-a:font-semibold prose-a:text-navy-600 prose-a:decoration-ice-400/60 prose-a:underline-offset-4 hover:prose-a:text-navy-900 prose-strong:text-navy-950 prose-li:marker:text-ice-500;
     font-size: 1.07rem;
   }
   .prose-site > h2:first-child { @apply mt-0; }
   /* Respuesta directa al inicio del artículo (la que citan buscadores y asistentes) */
   .prose-site .lede-answer {
-    @apply mt-0 mb-10 border-l-[3px] border-ice-500 pl-5 font-display text-[1.18rem] leading-relaxed font-medium text-ink-soft;
+    @apply mt-0 mb-10 border-l-[3px] border-ice-500 pl-5 font-display text-[1.18rem] leading-relaxed font-medium text-navy-900;
   }
   .prose-site .lede-answer + h2 { @apply mt-0; }
   .prose-site .callout {
-    @apply my-8 rounded-2xl border border-navy-700/10 bg-navy-50 px-6 py-5 text-ink-soft;
+    @apply my-8 rounded-2xl border border-navy-700/10 bg-navy-50 px-6 py-5 text-navy-900;
     border-left: 3px solid var(--color-ice-500);
   }
   .prose-site .callout p { @apply m-0; }
@@ -266,7 +254,7 @@
   .cta-inline .btn { @apply relative; }
 
   /* Formularios */
-  .field { @apply grid gap-1.5 text-[0.93rem] font-semibold text-ink-soft; }
+  .field { @apply grid gap-1.5 text-[0.93rem] font-semibold text-navy-900; }
   .field input, .field select, .field textarea {
     @apply w-full rounded-xl border border-zinc-300 bg-white px-4 py-3 font-sans text-base font-normal text-zinc-900 transition focus:border-navy-500 focus:outline-none focus:ring-4 focus:ring-ice-300/40;
   }

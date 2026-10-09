@@ -10,8 +10,8 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { probe as labProbe } from './lab3d.js';
 
-const ICE = new THREE.Color('#ffffff');
-const ICE_DEEP = new THREE.Color('#bdbdbd');
+const ICE = new THREE.Color('#a9c7ff');
+const ICE_DEEP = new THREE.Color('#5d8bea');
 const LESION = new THREE.Color('#ff9a6b');
 const LESION_POS = new THREE.Vector3(0.9, 0.06, 0.05);
 
@@ -100,7 +100,7 @@ function createFibers(count) {
       void main() {
         vec3 col = mix(uDeep, uColor, 0.35 + vSeed * 0.65);
         col = mix(col, uLesion, vLesion * 0.75);
-        col += vec3(0.95, 0.95, 0.95) * vScan * 0.7;
+        col += vec3(0.75, 0.88, 1.0) * vScan * 0.7;
         col += uLesion * vLesion * uEnergy * 0.8;
         float a = (0.045 + vSeed * 0.05 + vScan * 0.16 + vLesion * 0.07) * vFade;
         gl_FragColor = vec4(col, a);
@@ -140,7 +140,7 @@ function createSheath() {
         float fres = pow(1.0 - abs(dot(vN, vV)), 2.5);
         float fade = smoothstep(5.4, 3.6, abs(vX));
         float ring = exp(-pow((vX - uScanX) * 6.0, 2.0)) * uScanOn;
-        vec3 col = uColor * fres * 0.55 + vec3(0.92, 0.92, 0.92) * ring * 0.9;
+        vec3 col = uColor * fres * 0.55 + vec3(0.7, 0.85, 1.0) * ring * 0.9;
         gl_FragColor = vec4(col, (fres * 0.12 + ring * 0.35) * fade);
       }`,
   });
@@ -180,7 +180,7 @@ function createProbe() {
         float sweep = exp(-pow((fract(uTime * 0.35) - d) * 9.0, 2.0));
         float edge = smoothstep(0.62, 0.78, abs(vP.x) / (0.5 + 0.28 * d));
         float a = ((1.0 - d) * 0.035 + lines * 0.012 + sweep * 0.09 + edge * 0.1) * uOn;
-        gl_FragColor = vec4(vec3(0.9, 0.9, 0.9), a);
+        gl_FragColor = vec4(vec3(0.66, 0.8, 1.0), a);
       }`,
   });
   const plane = new THREE.Mesh(pg, planeMat);
@@ -243,7 +243,7 @@ function createNeedle(glowTex) {
       }`,
     fragmentShader: /* glsl */ `
       varying float vA;
-      void main(){ float d = length(gl_PointCoord - 0.5); if (d > 0.5) discard; gl_FragColor = vec4(vec3(0.95, 0.95, 0.95), (1.0 - d * 2.0) * vA); }`,
+      void main(){ float d = length(gl_PointCoord - 0.5); if (d > 0.5) discard; gl_FragColor = vec4(vec3(0.8, 0.9, 1.0), (1.0 - d * 2.0) * vA); }`,
   });
   const sparks = new THREE.Points(pg, pm);
   group.add(sparks);
@@ -270,18 +270,18 @@ export function createScene(canvas, { mobile = false } = {}) {
   renderer.toneMappingExposure = 0.9;
 
   const scene = new THREE.Scene();
-  scene.fog = new THREE.FogExp2('#7c7c7c', 0.05);
+  scene.fog = new THREE.FogExp2('#1a2233', 0.05);
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
 
   const camera = new THREE.PerspectiveCamera(34, 1, 0.1, 80);
   camera.position.set(0, 0.9, 11);
 
-  scene.add(new THREE.AmbientLight('#e0e0e0', 0.35));
+  scene.add(new THREE.AmbientLight('#9db6e8', 0.35));
   const key = new THREE.DirectionalLight('#ffffff', 2.2);
   key.position.set(3, 5, 4);
   scene.add(key);
-  const rim = new THREE.PointLight('#ffffff', 30, 14);
+  const rim = new THREE.PointLight('#5d8bea', 30, 14);
   rim.position.set(-3, 1.5, -3);
   scene.add(rim);
 

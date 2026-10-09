@@ -32,7 +32,7 @@ const schema = [S.breadcrumbs(crumbs), S.webPage({ path, type: 'ContactPage', ti
   <section class="bg-zinc-50 py-16 md:py-24">
     <div class="mx-auto grid max-w-[1240px] gap-8 px-5 sm:px-8 lg:grid-cols-2 lg:gap-12">
       <div data-reveal>
-        <h2 class="mb-6 text-[1.8rem] font-semibold text-ink">Datos de contacto</h2>
+        <h2 class="mb-6 text-[1.8rem] font-semibold text-navy-950">Datos de contacto</h2>
         <ul class="grid gap-3">
           {[
             ['pin', 'Dirección', `${b.address}, ${b.city}, ${b.province} ${b.postalCode}`, null],
@@ -43,7 +43,7 @@ const schema = [S.breadcrumbs(crumbs), S.webPage({ path, type: 'ContactPage', ti
           ].map(([ic, label, value, href]) => (
             <li class="flex gap-4 rounded-2xl border border-zinc-200 bg-white p-4">
               <span class="grid size-11 flex-none place-items-center rounded-xl bg-navy-950 text-ice-300"><Icon name={ic as string} size={20} /></span>
-              <span><strong class="block text-[0.75rem] font-semibold tracking-[0.14em] text-zinc-400 uppercase">{label}</strong>{href ? <a href={href as string} class="font-semibold text-navy-800" rel="noopener" target={(href as string).startsWith('http') ? '_blank' : undefined}>{value}</a> : <span class="font-semibold text-ink">{value}</span>}</span>
+              <span><strong class="block text-[0.75rem] font-semibold tracking-[0.14em] text-zinc-400 uppercase">{label}</strong>{href ? <a href={href as string} class="font-semibold text-navy-800" rel="noopener" target={(href as string).startsWith('http') ? '_blank' : undefined}>{value}</a> : <span class="font-semibold text-navy-950">{value}</span>}</span>
             </li>
           ))}
         </ul>
@@ -58,7 +58,7 @@ const schema = [S.breadcrumbs(crumbs), S.webPage({ path, type: 'ContactPage', ti
       </div>
 
       <div id="turno" data-reveal>
-        <h2 class="mb-2 text-[1.8rem] font-semibold text-ink">Solicitar turno</h2>
+        <h2 class="mb-2 text-[1.8rem] font-semibold text-navy-950">Solicitar turno</h2>
         <p class="mb-6 text-zinc-500">Completá estos datos y se abrirá WhatsApp con el mensaje listo para enviar. No se almacena ninguna información en este sitio.</p>
         <form id="wa-form" data-wa={waNumber} action={hasWhatsapp() ? `https://wa.me/${waNumber}` : '#'} method="get" target="_blank" class="glass-light grid gap-4 rounded-3xl p-6 md:p-8">
           <label class="field">Nombre<input name="nombre" autocomplete="given-name" required /></label>
@@ -79,7 +79,7 @@ const schema = [S.breadcrumbs(crumbs), S.webPage({ path, type: 'ContactPage', ti
     <div class="mx-auto grid max-w-[1240px] gap-12 px-5 sm:px-8 lg:grid-cols-2">
       <div data-reveal>
         <p class="eyebrow mb-4">Primera consulta</p>
-        <h2 id="primera-consulta" class="text-[clamp(1.6rem,3vw,2.3rem)] font-semibold text-ink">Qué incluye la evaluación</h2>
+        <h2 id="primera-consulta" class="text-[clamp(1.6rem,3vw,2.3rem)] font-semibold text-navy-950">Qué incluye la evaluación</h2>
         <ul class="mt-6 grid gap-3">
           {['Entrevista sobre tu lesión, actividad y objetivos.', 'Exploración física: movilidad, fuerza y tolerancia a la carga.', 'Ecografía musculoesquelética de la zona.', 'Explicación de lo encontrado y propuesta de plan.'].map((t) => (
             <li class="flex gap-3"><span class="mt-1 grid size-6 flex-none place-items-center rounded-full bg-navy-700 text-white"><Icon name="check" size={14} /></span>{t}</li>
@@ -88,7 +88,7 @@ const schema = [S.breadcrumbs(crumbs), S.webPage({ path, type: 'ContactPage', ti
         <p class="mt-6 text-zinc-600">Si tenés estudios previos, traelos. Más detalles en <a href="/blog/primera-sesion-fisioterapia-invasiva/" class="font-semibold text-navy-600">qué esperar en la primera sesión</a>.</p>
       </div>
       <div data-reveal>
-        <h2 class="text-[clamp(1.6rem,3vw,2.3rem)] font-semibold text-ink">Áreas de atención</h2>
+        <h2 class="text-[clamp(1.6rem,3vw,2.3rem)] font-semibold text-navy-950">Áreas de atención</h2>
         <p class="mt-4 text-zinc-600">Consultorio en {b.city}, con atención a pacientes de todo Mendoza: {b.areaServed.filter((a) => a !== b.city).join(', ')} y el resto de la provincia.</p>
         <p class="text-zinc-600">Por obras sociales, prepagas y formas de pago, consultanos por WhatsApp.</p>
       </div>

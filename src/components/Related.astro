@@ -5,7 +5,7 @@ const { id, title, intro, cols = 3, count } = Astro.props;
 {count > 0 && (
   <section class="border-t border-zinc-200 bg-zinc-50/60 py-16 md:py-20" aria-labelledby={id}>
     <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
-      <h2 id={id} class="text-[clamp(1.5rem,2.8vw,2.1rem)] font-semibold text-ink" data-reveal>{title}</h2>
+      <h2 id={id} class="text-[clamp(1.5rem,2.8vw,2.1rem)] font-semibold text-navy-950" data-reveal>{title}</h2>
       {intro && <p class="mt-2 text-zinc-500" data-reveal>{intro}</p>}
       <div class:list={['carousel mt-8', cols === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3']}>
         <slot />
