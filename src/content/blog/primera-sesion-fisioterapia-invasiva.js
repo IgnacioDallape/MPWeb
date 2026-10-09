@@ -1,6 +1,6 @@
 export default {
   slug: 'primera-sesion-fisioterapia-invasiva',
-  title: 'Primera sesión de fisioterapia invasiva: qué esperar | {{NOMBRE}}',
+  title: 'Primera sesión de fisioterapia invasiva | {{NOMBRE}}',
   description:
     'Guía para tu primera sesión de fisioterapia invasiva ecoguiada: cómo prepararte, qué pasa durante el procedimiento, qué se siente y qué cuidados seguir.',
   h1: 'Primera sesión de fisioterapia invasiva ecoguiada: qué esperar paso a paso',

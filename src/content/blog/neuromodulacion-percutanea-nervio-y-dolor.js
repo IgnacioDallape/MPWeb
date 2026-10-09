@@ -1,6 +1,6 @@
 export default {
   slug: 'neuromodulacion-percutanea-nervio-y-dolor',
-  title: 'Neuromodulación percutánea: nervio, músculo y dolor | {{NOMBRE}}',
+  title: 'Neuromodulación percutánea: nervio y dolor | {{NOMBRE}}',
   description:
     'Cómo funciona la neuromodulación percutánea: el nervio periférico, las respuestas motoras y sensitivas, la inhibición muscular y la modulación del dolor.',
   h1: 'Neuromodulación percutánea: cómo actúa sobre el nervio, el músculo y el dolor',

@@ -6,7 +6,7 @@ export default {
   icon: 'bolt',
   cardText: 'Corriente galvánica aplicada con una aguja ultrafina sobre el tendón o tejido afectado, guiada por ecografía en tiempo real.',
 
-  title: 'EPI: Electrólisis Percutánea Intratisular en {{CIUDAD}} | {{NOMBRE}}',
+  title: 'EPI (electrólisis percutánea) en {{CIUDAD}} | {{NOMBRE}}',
   description:
     'Qué es la EPI, cómo se realiza con guía ecográfica, en qué tendinopatías y lesiones se indica y cómo se integra con el ejercicio. Evaluación previa en {{CIUDAD}}.',
   h1: 'Electrólisis Percutánea Intratisular (EPI) guiada por ecografía',

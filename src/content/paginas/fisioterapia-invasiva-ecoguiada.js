@@ -1,7 +1,7 @@
 // Página pilar: la URL más importante del sitio después de la home.
 export default {
   path: '/fisioterapia-invasiva-ecoguiada/',
-  title: 'Fisioterapia Invasiva Ecoguiada: tratamientos y lesiones | {{NOMBRE}}',
+  title: 'Fisioterapia Invasiva Ecoguiada en {{CIUDAD}} | {{NOMBRE}}',
   description:
     'Tratamientos de fisioterapia invasiva guiados por ecografía: EPI, neuromodulación percutánea, MEP y punción seca. Evaluación personalizada en {{CIUDAD}}.',
   h1: 'Fisioterapia invasiva ecoguiada',

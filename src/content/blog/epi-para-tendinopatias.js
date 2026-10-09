@@ -1,6 +1,6 @@
 export default {
   slug: 'epi-para-tendinopatias',
-  title: 'EPI para tendinopatías: cuándo y cómo con ejercicio | {{NOMBRE}}',
+  title: 'EPI para tendinopatías: cuándo y cómo se usa | {{NOMBRE}}',
   description:
     'Cuándo se considera la EPI en una tendinopatía, qué criterios orientan la decisión, por qué no se usa sola y cómo se combina con las fases del ejercicio.',
   h1: 'EPI para tendinopatías: cuándo se considera y cómo se combina con el ejercicio',

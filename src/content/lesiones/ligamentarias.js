@@ -6,7 +6,7 @@ export default {
   icon: 'joint',
   cardText: 'Esguince de tobillo, lesiones de los ligamentos colaterales de rodilla e inestabilidad crónica: evaluación ecográfica, propiocepción y vuelta segura.',
 
-  title: 'Rehabilitación de lesiones ligamentarias en {{CIUDAD}} | {{NOMBRE}}',
+  title: 'Lesiones ligamentarias: tratamiento en {{CIUDAD}} | {{NOMBRE}}',
   description:
     'Esguince de tobillo, ligamento colateral de rodilla o inestabilidad que se repite: evaluación con ecografía y rehabilitación con propiocepción en {{CIUDAD}}.',
   h1: 'Rehabilitación de lesiones ligamentarias y esguinces',

@@ -6,7 +6,7 @@ export default {
   icon: 'tendon',
   cardText: 'Dolor justo debajo de la rótula al saltar, frenar o hacer sentadillas. Frecuente en vóley y básquet. Plan de carga y evaluación ecográfica.',
 
-  title: 'Tratamiento de la tendinopatía rotuliana en {{CIUDAD}} | {{NOMBRE}}',
+  title: 'Tendinopatía rotuliana: tratamiento en {{CIUDAD}} | {{NOMBRE}}',
   description:
     'Tratamiento de la tendinopatía rotuliana o rodilla de saltador: evaluación con ecografía, progresión de cargas y tratamientos ecoguiados si se indican. En {{CIUDAD}}.',
   h1: 'Tratamiento de la tendinopatía rotuliana (rodilla de saltador)',

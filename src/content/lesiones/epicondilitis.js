@@ -8,7 +8,7 @@ export default {
 
   title: 'Tratamiento de la epicondilitis en {{CIUDAD}} | {{NOMBRE}}',
   description:
-    'Tratamiento de la epicondilitis o codo de tenista: evaluación ecográfica, ejercicio para los extensores de muñeca y tratamientos ecoguiados si se indican. En {{CIUDAD}}.',
+    'Tratamiento de la epicondilitis o codo de tenista: evaluación ecográfica, ejercicio para los extensores y tratamientos ecoguiados si se indican. En {{CIUDAD}}.',
   h1: 'Tratamiento de la epicondilitis (codo de tenista)',
   lead:
     'Cuando agarrar una taza, abrir un frasco o estrechar una mano te provoca un pinchazo en la parte de afuera del codo, lo más probable es una epicondilitis. Y no hace falta jugar al tenis para tenerla: la mayoría de los casos aparecen en personas que usan mucho las manos en el trabajo o en casa.',
