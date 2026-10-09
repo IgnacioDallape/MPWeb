@@ -209,7 +209,7 @@
   #site-header.is-compact .brand-text { max-height: 0; opacity: 0; }
   #site-header.is-compact .brand-logo { height: 52px; }
   #site-header.is-compact [data-mobile-menu] { top: 92px; max-height: calc(100dvh - 176px); }
-  #site-header.is-compact [data-header-inner] { background-color: color-mix(in oklab, var(--color-navy-800) 96%, transparent); }
+  #site-header.is-compact [data-header-inner] { background-color: color-mix(in oklab, var(--color-navy-950) 92%, transparent); }
 
   /* Tarjetas: carrusel deslizable en el celular, grilla desde tablet */
   .carousel {
