@@ -131,3 +131,22 @@ if (matchMedia('(max-width: 639px)').matches) {
     if (d.dataset.acc !== 'first') d.open = false;
   });
 }
+
+// ---------- Carruseles del celular: puntos que muestran la tarjeta visible
+if (matchMedia('(max-width: 639px)').matches) {
+  document.querySelectorAll('.carousel').forEach((c) => {
+    const items = [...c.children];
+    if (items.length < 2) return;
+    const dots = document.createElement('div');
+    dots.className = 'carousel-dots';
+    dots.setAttribute('aria-hidden', 'true');
+    dots.innerHTML = items.map(() => '<span></span>').join('');
+    c.after(dots);
+    const marks = [...dots.children];
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && marks.forEach((m, i) => m.toggleAttribute('data-on', items[i] === e.target))),
+      { root: c, threshold: 0.6 }
+    );
+    items.forEach((it) => io.observe(it));
+  });
+}
