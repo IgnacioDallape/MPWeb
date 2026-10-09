@@ -201,6 +201,14 @@
   .faq .answer p { @apply m-0; }
   .faq h3 { @apply m-0 font-display text-[1rem] leading-snug tracking-normal; }
 
+  /* Tarjetas: carrusel deslizable en el celular, grilla desde tablet */
+  .carousel {
+    @apply -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-5 sm:overflow-visible sm:px-0 sm:pb-0;
+    scrollbar-width: none;
+  }
+  .carousel::-webkit-scrollbar { display: none; }
+  .carousel > * { @apply w-[82%] shrink-0 snap-start sm:w-auto; }
+
   /* Contenido editorial (markdown) */
   .prose-site {
     @apply prose prose-zinc max-w-none prose-headings:font-display prose-headings:tracking-tight prose-headings:text-navy-950 prose-h2:mt-14 prose-h2:text-[1.75rem] prose-h3:text-[1.2rem] prose-a:font-semibold prose-a:text-navy-600 prose-a:decoration-ice-400/60 prose-a:underline-offset-4 hover:prose-a:text-navy-900 prose-strong:text-navy-950 prose-li:marker:text-ice-500;

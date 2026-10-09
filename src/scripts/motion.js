@@ -124,3 +124,10 @@ if (reduced) {
     document.readyState === 'complete' ? go() : addEventListener('load', go, { once: true });
   }
 }
+
+// ---------- Patologías de la home: en el celular cada grupo se abre al tocarlo
+if (matchMedia('(max-width: 639px)').matches) {
+  document.querySelectorAll('details[data-acc]').forEach((d) => {
+    if (d.dataset.acc !== 'first') d.open = false;
+  });
+}

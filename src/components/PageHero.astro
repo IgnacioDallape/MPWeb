@@ -6,7 +6,7 @@ import Render3D from './Render3D.astro';
 interface Props { crumbs: { name: string; path: string }[]; eyebrow?: string; h1: string; lead?: string; facts?: { label: string; value: string }[]; render?: string; renderAlt?: string }
 const { crumbs, eyebrow, h1, lead, facts, render, renderAlt = '' } = Astro.props;
 ---
-<section class="on-dark noise relative overflow-hidden bg-navy-950 pt-36 pb-16 text-white md:pt-44 md:pb-20">
+<section class="on-dark noise relative overflow-hidden bg-navy-950 pt-28 pb-12 text-white md:pt-44 md:pb-20">
   <div class="bg-grid bg-grid-fade absolute inset-0" aria-hidden="true"></div>
   <div class="glow -top-40 right-[-10%] size-[640px] opacity-60" aria-hidden="true"></div>
   <div class="glow bottom-[-60%] left-[-10%] size-[520px] opacity-30" aria-hidden="true"></div>

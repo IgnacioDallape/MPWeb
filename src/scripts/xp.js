@@ -45,10 +45,11 @@ async function startHero() {
   // La portada muestra solo el tejido tendinoso (fibras animadas): la sonda y la aguja
   // aparecen recién en la sección Metodología.
   Object.assign(s, { insert: 0, energy: 0, scanOn: 0, scanAuto: 0, offsetX: mobile ? 0 : 1.5 });
-  Object.assign(s.cam, mobile ? { x: 0, y: 1.0, z: 9.5 } : { x: -0.6, y: 0.9, z: 8.2 });
-  Object.assign(s.look, { x: 0.4, y: 0, z: 0 });
+  // En el celular el tejido se ubica debajo de los botones (la cámara mira más arriba).
+  Object.assign(s.cam, mobile ? { x: 0, y: 3.9, z: 9.5 } : { x: -0.6, y: 0.9, z: 8.2 });
+  Object.assign(s.look, mobile ? { x: 0.2, y: 3.0, z: 0 } : { x: 0.4, y: 0, z: 0 });
   // Al salir de la portada la cámara se acerca levemente
-  m.gsap.to(s.cam, { z: mobile ? 8.5 : 7.2, y: 1.3, ease: 'none', scrollTrigger: { trigger: wrap, start: 'top top', end: 'bottom top', scrub: 1 } });
+  m.gsap.to(s.cam, { z: mobile ? 8.5 : 7.2, y: mobile ? 3.9 : 1.3, ease: 'none', scrollTrigger: { trigger: wrap, start: 'top top', end: 'bottom top', scrub: 1 } });
 }
 
 // ---------------------------------------------------------------- Metodología (historia por scroll)
