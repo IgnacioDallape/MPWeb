@@ -66,24 +66,6 @@ const ga = known(config.gaId);
     <script is:inline>
       // Activa los estados iniciales de animación solo si hay JS y el usuario no pidió movimiento reducido.
       if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('motion');
-      // Variante de color para comparar (?tema=perla). ?tema=azul vuelve al diseño original.
-      (function () {
-        var t = new URLSearchParams(location.search).get('tema');
-        try {
-          if (t) t === 'perla' ? localStorage.setItem('tema', t) : localStorage.removeItem('tema');
-          else t = localStorage.getItem('tema');
-        } catch (e) {}
-        if (t !== 'perla') return;
-        var d = document.documentElement;
-        d.dataset.tema = 'perla';
-        document.querySelector('meta[name=theme-color]').content = '#e8e9eb';
-        addEventListener('DOMContentLoaded', function () {
-          d.querySelectorAll('source[srcset*="/img/hero-3d"], img[src*="/img/hero-3d"]').forEach(function (el) {
-            if (el.srcset) el.srcset = el.srcset.replace('/img/hero-3d', '/img/hero-3d-perla');
-            if (el.src) el.src = el.src.replace('/img/hero-3d', '/img/hero-3d-perla').replace('.jpg', '.webp');
-          });
-        });
-      })();
     </script>
     <Fragment set:html={jsonld} />
   </head>

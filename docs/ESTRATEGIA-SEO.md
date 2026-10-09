@@ -301,6 +301,3 @@ Los hubs de síntoma resumen y derivan a las patologías específicas para no co
 
 **Segunda tanda (octubre 2026):** columna (`ciatica`, `hernia-de-disco`, `escoliosis`), hubs de zona (`dolor-de-espalda`, `dolor-de-codo`, `dolor-de-muneca`, `dolor-de-tobillo`), articulares (`artrosis-de-rodilla`, `dolor-patelofemoral` para "condromalacia rotuliana") y `espolon-calcaneo` (deriva a fascitis plantar). La categoría "bursas" se integró en "Lesiones articulares y bursitis" y "fascia" en "Lesiones por sobrecarga".
 
-### 8.5 Variante de color "gris perla"
-
-Pedido del cliente para comparar. Se ve agregando `?tema=perla` a cualquier URL (queda guardado al navegar); `?tema=azul` vuelve al original. El diseño publicado por defecto sigue siendo el azul. Si se elige perla como definitivo, basta con fijar `data-tema="perla"` en `<html>` (Base.astro) y usar los pósters `hero-3d-perla*.webp`.

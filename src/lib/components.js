@@ -33,7 +33,7 @@ export const TREATMENT_CERT = {
 };
 
 export function certBadge(key, size = 96, cls = '') {
-  return `<picture class="block flex-none"><source type="image/webp" srcset="/img/cert-${key}.webp"><img class="cert ${cls}" style="width:${size}px;height:${size}px" src="/img/cert-${key}.png" width="${size}" height="${size}" alt="Sello Certified Quality en ${esc(CERTS[key])} – MVClinic, Institute of Invasive Physiotherapy" loading="lazy" decoding="async"></picture>`;
+  return `<picture class="block flex-none"><source type="image/webp" srcset="/img/cert-${key}.webp"><img class="cert ${cls}" style="width:${size}px;height:${size}px" src="/img/cert-${key}.png" width="${size}" height="${size}" alt="Sello Certified Quality en ${esc(CERTS[key])}, MVClinic, Institute of Invasive Physiotherapy" loading="lazy" decoding="async"></picture>`;
 }
 
 // Bloque de conversión que reemplaza {{CTA}} dentro del contenido.

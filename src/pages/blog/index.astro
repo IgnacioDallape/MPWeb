@@ -33,7 +33,7 @@ const schema = [
   >
     {featured && (
       <a href={`/blog/${featured.slug}/`} class="glass group mt-10 flex max-w-3xl flex-col gap-2 rounded-3xl p-6 text-white no-underline transition hover:border-ice-300/40 md:p-8">
-        <span class="tag">Destacado · {featured.category}</span>
+        <span class="tag">{featured.category}</span>
         <span class="font-display text-[1.5rem] leading-tight font-semibold">{featured.h1}</span>
         <span class="text-white/75">{featured.description}</span>
         <span class="mt-2 inline-flex items-center gap-2 text-[0.9rem] font-bold text-ice-300">Leer artículo<Icon name="arrow" size={16} class="transition group-hover:translate-x-1" /></span>

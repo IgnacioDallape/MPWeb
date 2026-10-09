@@ -4,7 +4,7 @@ import { waLink } from '../lib/site.js';
 interface Props { waMessage?: string }
 const href = waLink(Astro.props.waMessage);
 ---
-<div role="region" aria-label="Contacto rápido" data-chrome class="no-print fixed inset-x-0 bottom-0 z-[60] grid grid-cols-2 gap-2 border-t border-white/10 bg-navy-950/90 px-3 pt-2 pb-[calc(8px+env(safe-area-inset-bottom))] backdrop-blur-md md:hidden">
+<div role="region" aria-label="Contacto rápido" class="no-print fixed inset-x-0 bottom-0 z-[60] grid grid-cols-2 gap-2 border-t border-white/10 bg-navy-950/90 px-3 pt-2 pb-[calc(8px+env(safe-area-inset-bottom))] backdrop-blur-md md:hidden">
   <a href={href} class="btn btn-outline-dark min-h-[46px] px-3 text-[0.92rem]"><Icon name="whatsapp" size={20} />WhatsApp</a>
   <a href="/contacto/#turno" class="btn btn-glow min-h-[46px] px-3 text-[0.92rem]"><Icon name="calendar" size={20} />Solicitar turno</a>
 </div>

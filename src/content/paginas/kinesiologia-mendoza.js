@@ -20,7 +20,7 @@ export default {
     { label: 'Consultorio', value: '{{LOCALIDAD}}, {{CIUDAD}}' },
     { label: 'Evaluación', value: 'Clínica y con ecografía musculoesquelética' },
     { label: 'Base del plan', value: 'Ejercicio terapéutico y progresión de cargas' },
-    { label: 'Cuando se indica', value: 'EPI · NMP-e · MEP · Punción seca ecoguiada' },
+    { label: 'Cuando se indica', value: 'EPI, NMP-e, MEP y punción seca ecoguiada' },
   ],
   waMessage: 'Hola, quería consultar por kinesiología.',
 

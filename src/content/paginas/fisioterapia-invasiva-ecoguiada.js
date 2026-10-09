@@ -18,7 +18,7 @@ export default {
   },
   facts: [
     { label: 'Guía', value: 'Ecografía en tiempo real' },
-    { label: 'Tratamientos', value: 'EPI · NMP-e · MEP · Punción seca' },
+    { label: 'Tratamientos', value: 'EPI, NMP-e, MEP y punción seca' },
     { label: 'Abordaje', value: 'Mínimamente invasivo' },
     { label: 'Siempre con', value: 'Evaluación previa y ejercicio terapéutico' },
   ],
