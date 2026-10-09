@@ -15,14 +15,31 @@ export const SERVICE_RENDER = {
   esguinces: 'ligamentarias',
 };
 // Cada patología tiene su propio render, con el mismo nombre que su slug.
-export const lesionRender = (slug) => slug;
+// Las patologías sin render propio usan el más cercano.
+const LESION_FALLBACK = {
+  'contractura-muscular': 'dolor-miofascial',
+  torticolis: 'dolor-miofascial',
+  tendinitis: 'tendinosas',
+  'dolor-de-hombro': 'manguito-rotador',
+  'dolor-de-rodilla': 'tendinopatia-rotuliana',
+  'dolor-de-cadera': 'bursas',
+  pubalgia: 'musculares',
+  'periostitis-tibial': 'fibrosis-muscular',
+  'lesion-de-menisco': 'ligamentarias',
+  'hombro-congelado': 'manguito-rotador',
+  'sindrome-del-tunel-carpiano': 'nmp',
+};
+export const lesionRender = (slug) => LESION_FALLBACK[slug] || slug;
 // Render representativo de cada categoría (fichas de la home).
 export const CATEGORY_RENDER = {
   tendinosas: 'tendinopatia-aquiles',
-  fascia: 'fascitis-plantar',
   musculares: 'desgarros-musculares',
   ligamentarias: 'ligamentarias',
   bursas: 'bursopatias',
+  zonas: 'manguito-rotador',
+  sobrecarga: 'fascitis-plantar',
+  articulares: 'ligamentarias',
+  nerviosas: 'nmp',
   dolor: 'dolor-cronico-musculoesqueletico',
 };
 export const renderSrc = (name, size = 'sm') => (name ? `/img/3d/${name}${size === 'sm' ? '-sm' : ''}.webp` : undefined);

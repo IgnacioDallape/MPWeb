@@ -17,13 +17,13 @@ const groups = Object.entries(CATEGORIES)
   .filter((g) => g.items.length);
 const schema = [
   S.breadcrumbs(crumbs),
-  S.webPage({ path, type: 'CollectionPage', title: 'Lesiones que aborda la fisioterapia invasiva ecoguiada', description: 'Índice de lesiones musculoesqueléticas.', updated: config.launchDate }),
+  S.webPage({ path, type: 'CollectionPage', title: 'Tratamiento y recuperación de lesiones en Mendoza', description: 'Índice de lesiones y patologías musculoesqueléticas que se evalúan y tratan con kinesiología y fisioterapia invasiva ecoguiada.', updated: '2026-10-08' }),
   { '@type': 'ItemList', '@id': abs(path + '#lista'), itemListElement: lesions.map((l, i) => ({ '@type': 'ListItem', position: i + 1, url: abs(`/lesiones/${l.slug}/`), name: l.name })) },
 ];
 ---
 <Base
-  title="Lesiones que trata la Fisioterapia Invasiva en {{CIUDAD}}"
-  description="Tendinopatías, desgarros, fascitis plantar, epicondilitis, esguinces, bursitis y dolor persistente: cómo se evalúan y tratan con fisioterapia ecoguiada."
+  title="Tratamiento y recuperación de lesiones en {{CIUDAD}} | {{NOMBRE}}"
+  description="Contracturas, tendinitis, desgarros, esguinces, dolor de rodilla, hombro o cadera y fascitis plantar: cómo se evalúan, tratan y recuperan en Mendoza."
   schema={schema}
   waMessage={wa}
   updated={latest(lesions)}
@@ -33,8 +33,8 @@ const schema = [
     eyebrow="Patologías"
     render="tendinopatia-aquiles"
     renderAlt="Ilustración 3D de un tendón con una zona alterada"
-    h1="¿Qué lesiones puede abordar la fisioterapia invasiva ecoguiada?"
-    lead="Tendinopatías, lesiones musculares, ligamentarias, fascitis plantar, bursopatías y dolor persistente. Cada página explica la lesión, cómo se evalúa y qué opciones de tratamiento existen."
+    h1="Tratamiento y recuperación de lesiones"
+    lead="Contracturas, tendinitis, desgarros, esguinces, dolor de rodilla, hombro o cadera y otras lesiones del día a día y del deporte. Cada página explica la lesión, cómo se evalúa con ecografía, cómo es el tratamiento y cuánto suele llevar la recuperación."
   >
     <div class="mt-9 flex flex-wrap gap-2">
       {groups.map((g) => <a href={`#cat-${g.key}`} class="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-[0.85rem] text-white/80 no-underline transition hover:border-ice-300/50 hover:text-white">{g.label}</a>)}

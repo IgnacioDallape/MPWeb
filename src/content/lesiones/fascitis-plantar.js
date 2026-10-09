@@ -1,7 +1,7 @@
 export default {
   slug: 'fascitis-plantar',
-  order: 1,
-  category: 'fascia',
+  category: 'sobrecarga',
+  order: 0,
   name: 'Fascitis plantar',
   icon: 'foot',
   cardText: 'Dolor en el talón con los primeros pasos de la mañana o al levantarte de una silla. Evaluación ecográfica de la fascia y plan de tratamiento.',

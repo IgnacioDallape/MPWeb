@@ -11,7 +11,7 @@ import { picture } from '../lib/components.js';
 import { config, known, waLink, tokens } from '../lib/site.js';
 import { treatments, lesions, services, CATEGORIES, homePosts } from '../data/index.js';
 import { HOME_FAQS } from '../data/faqs.js';
-import { CATEGORY_RENDER } from '../data/renders.js';
+import { CATEGORY_RENDER, lesionRender } from '../data/renders.js';
 import * as S from '../lib/schema.js';
 
 const p = config.professional;
@@ -186,7 +186,7 @@ const schema = [
   <section class="relative bg-zinc-50 py-24 md:py-32" aria-labelledby="lesiones">
     <div class="bg-dots-light absolute inset-0 [mask-image:radial-gradient(ellipse_at_top,#000,transparent_70%)]" aria-hidden="true"></div>
     <div class="relative mx-auto max-w-[1240px] px-5 sm:px-8">
-      <SectionHead id="lesiones" eyebrow="Patologías" title='¿Qué lesiones y patologías pueden <span class="text-gradient-navy">abordarse</span>?' lead="Lesiones deportivas y del día a día en las que la fisioterapia invasiva ecoguiada puede formar parte del plan." />
+      <SectionHead id="lesiones" eyebrow="Patologías" title='¿Qué lesiones y patologías pueden <span class="text-gradient-navy">abordarse</span>?' lead="Lesiones deportivas y del día a día que evaluamos y tratamos con kinesiología y, cuando hace falta, fisioterapia invasiva ecoguiada." />
       <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {groups.map((g) => (
           <div class="card card-hover spotlight group p-6" data-reveal data-spotlight>
@@ -194,7 +194,7 @@ const schema = [
             <h3 class="mb-1 flex items-center gap-3 text-[1.1rem] font-semibold text-navy-950"><span class="grid size-10 place-items-center rounded-xl bg-navy-950 text-ice-300"><Icon name={g.icon} size={20} /></span>{g.label}</h3>
             <ul class="divide-y divide-zinc-200">
               {g.items.map((l) => (
-                <li><a href={`/lesiones/${l.slug}/`} class="group/item relative z-10 flex items-center gap-3 py-2.5 text-[0.96rem] font-medium text-zinc-700 no-underline transition hover:text-navy-900"><span class="grid size-12 flex-none place-items-center rounded-xl bg-gradient-to-b from-navy-50 to-white ring-1 ring-navy-700/5"><img src={`/img/3d/${l.slug}-sm.webp`} alt="" width="48" height="48" loading="lazy" decoding="async" class="size-11 object-contain transition-transform duration-500 group-hover/item:scale-110" /></span><span class="flex-1">{l.name}</span><Icon name="arrow" size={16} class="text-zinc-300 transition group-hover/item:translate-x-1 group-hover/item:text-navy-600" /></a></li>
+                <li><a href={`/lesiones/${l.slug}/`} class="group/item relative z-10 flex items-center gap-3 py-2.5 text-[0.96rem] font-medium text-zinc-700 no-underline transition hover:text-navy-900"><span class="grid size-12 flex-none place-items-center rounded-xl bg-gradient-to-b from-navy-50 to-white ring-1 ring-navy-700/5"><img src={`/img/3d/${lesionRender(l.slug)}-sm.webp`} alt="" width="48" height="48" loading="lazy" decoding="async" class="size-11 object-contain transition-transform duration-500 group-hover/item:scale-110" /></span><span class="flex-1">{l.name}</span><Icon name="arrow" size={16} class="text-zinc-300 transition group-hover/item:translate-x-1 group-hover/item:text-navy-600" /></a></li>
               ))}
             </ul>
           </div>

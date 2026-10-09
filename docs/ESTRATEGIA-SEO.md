@@ -279,3 +279,22 @@ El sitio deja de posicionar solo por "fisioterapia invasiva ecoguiada" y apunta 
 `node scripts/check-content.js src/content/*/*.js` valida campos, enlaces internos, `answer` (40 a 60 palabras), rayas, uso de "técnica" y lenguaje prohibido. El postbuild valida H1 único, títulos y descripciones duplicados, enlaces rotos y alt.
 
 Lo que hay que hacer fuera del sitio está en [CHECKLIST-SEO-LOCAL.md](CHECKLIST-SEO-LOCAL.md).
+
+### 8.4 Búsquedas de síntomas y recuperación (octubre 2026)
+
+Para aparecer cuando alguien busca un síntoma o una lesión común, no solo un tratamiento:
+
+| Grupo | Keywords | URL |
+|---|---|---|
+| Lesiones en general | tratamiento de lesiones Mendoza, recuperación de lesiones, rehabilitación de lesiones | `/lesiones/` |
+| Tratamientos en general | tratamientos de kinesiología Mendoza | `/tratamientos/` |
+| Contractura | contractura muscular, contractura en la espalda, nudos musculares | `/lesiones/contractura-muscular/` |
+| Tortícolis | tortícolis, cuello duro al despertar | `/lesiones/torticolis/` |
+| Tendinitis (hub) | tendinitis tratamiento, tendinitis vs tendinopatía | `/lesiones/tendinitis/` |
+| Dolor por zona (hubs) | dolor de hombro, dolor de rodilla, dolor de cadera | `/lesiones/dolor-de-hombro/`, `/lesiones/dolor-de-rodilla/`, `/lesiones/dolor-de-cadera/` |
+| Sobrecarga | pubalgia, periostitis tibial, dolor en la canilla al correr | `/lesiones/pubalgia/`, `/lesiones/periostitis-tibial/` |
+| Articulares | lesión de menisco, hombro congelado | `/lesiones/lesion-de-menisco/`, `/lesiones/hombro-congelado/` |
+| Nerviosas | túnel carpiano, hormigueo en la mano | `/lesiones/sindrome-del-tunel-carpiano/` |
+| Recuperación (blog) | qué hacer después de una lesión, cuánto tarda una lesión muscular, contractura o desgarro, cómo recuperarse de una lesión | `/blog/...` |
+
+Los hubs de síntoma resumen y derivan a las patologías específicas para no competir con ellas.

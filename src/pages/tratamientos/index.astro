@@ -7,7 +7,8 @@ import Cards from '../../components/Cards.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { layersFigure } from '../../lib/visuals.js';
 import { config, waLink, abs } from '../../lib/site.js';
-import { treatments, latest } from '../../data/index.js';
+import { treatments, services, latest } from '../../data/index.js';
+import Related from '../../components/Related.astro';
 import * as S from '../../lib/schema.js';
 
 const path = '/tratamientos/';
@@ -33,8 +34,8 @@ const schema = [
 ];
 ---
 <Base
-  title="Tratamientos de Fisioterapia Invasiva en {{CIUDAD}}: EPI, NMP, MEP"
-  description="Compará EPI, neuromodulación percutánea ecoguiada, microelectrólisis (MEP) y punción seca ecoguiada: qué son, en qué se diferencian y cuándo se indican."
+  title="Tratamientos en {{CIUDAD}}: kinesiología, EPI y punción seca"
+  description="Tratamientos de kinesiología y fisioterapia invasiva en Mendoza: EPI, neuromodulación, MEP, punción seca y rehabilitación de lesiones. Qué son y cuándo se indican."
   schema={schema}
   waMessage={wa}
   updated={latest(treatments)}
@@ -99,5 +100,6 @@ const schema = [
       </figure>
     </div>
   </section>
+  <Related id="kinesiologia" title="Tratamientos de kinesiología" intro="La base de toda recuperación: evaluación, ejercicio terapéutico y progresión de cargas. Los tratamientos ecoguiados se suman cuando hacen falta." count={services.length}><Cards kind="kinesiologia" items={services} /></Related>
   <CtaBand waMessage={wa} />
 </Base>
