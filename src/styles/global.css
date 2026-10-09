@@ -46,7 +46,7 @@
 
 @layer base {
   html {
-    scroll-padding-top: 96px;
+    scroll-padding-top: 140px;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
   }
@@ -215,6 +215,13 @@
 
   /* Fondos grises: degradé perla suave en lugar de gris plano */
   .bg-zinc-50 { background-image: linear-gradient(180deg, #f8f9fb 0%, #eceef2 55%, #e2e6ec 100%); }
+
+  /* Barra: logo con nombre y descripción debajo; al bajar queda solo el logo */
+  .brand-text { max-height: 3rem; }
+  #site-header.is-compact .brand-text { max-height: 0; opacity: 0; }
+  #site-header.is-compact .brand-logo { height: 52px; }
+  #site-header.is-compact [data-mobile-menu] { top: 92px; max-height: calc(100dvh - 176px); }
+  #site-header.is-compact [data-header-inner] { background-color: color-mix(in oklab, var(--color-navy-800) 96%, transparent); }
 
   /* Tarjetas: carrusel deslizable en el celular, grilla desde tablet */
   .carousel {

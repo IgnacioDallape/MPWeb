@@ -14,8 +14,7 @@ const onScroll = () => {
   const s = window.scrollY > 24;
   if (s === compact) return;
   compact = s;
-  inner?.classList.toggle('bg-navy-950/90', s);
-  inner?.classList.toggle('bg-navy-950/70', !s);
+  header.classList.toggle('is-compact', s);
 };
 addEventListener('scroll', onScroll, { passive: true });
 onScroll();
