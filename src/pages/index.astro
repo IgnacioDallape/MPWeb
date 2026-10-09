@@ -5,7 +5,6 @@ import SectionHead from '../components/SectionHead.astro';
 import Cards from '../components/Cards.astro';
 import Faq from '../components/Faq.astro';
 import CertRow from '../components/CertRow.astro';
-import CertStrip from '../components/CertStrip.astro';
 import { ultrasoundHero, ultrasoundLive } from '../lib/visuals.js';
 import { picture } from '../lib/components.js';
 import { config, known, waLink, tokens } from '../lib/site.js';
@@ -253,28 +252,6 @@ const schema = [
     </div>
   </section>
 
-  <section class="bg-white py-16 md:py-32" aria-labelledby="profesional">
-    <div class="mx-auto max-w-[1240px] px-5 sm:px-8">
-      <div class="grid items-center gap-10 overflow-hidden rounded-[2rem] border border-zinc-200 bg-zinc-50 p-6 md:mt-24 md:p-10 lg:grid-cols-[320px_1fr] lg:gap-14" data-reveal>
-        <div class="hidden aspect-[4/5] md:grid place-items-center overflow-hidden rounded-3xl bg-gradient-to-br from-navy-900 to-navy-700 p-6 text-center text-[0.85rem] text-white/70">
-          <Fragment set:html={picture('profesional', `${b.name}: evaluación con ecografía musculoesquelética`, { sizes: '(min-width: 1024px) 320px, 100vw' }) || '<img src="/img/3d/probe.webp" alt="Ilustración 3D de una sonda ecográfica" width="600" height="700" loading="lazy" decoding="async" class="render-float h-full w-full object-contain p-6" />'} />
-        </div>
-        <div>
-          <p class="eyebrow mb-3">El equipo</p>
-          <h2 id="profesional" class="text-[clamp(1.8rem,3.4vw,2.6rem)] font-semibold text-navy-950">El equipo de {b.name}</h2>
-          <p class="mt-3 text-[1.1rem] text-zinc-600">Kinesiología con formación específica en ecografía musculoesquelética y fisioterapia invasiva.</p>
-          <dl class="mt-6 grid gap-x-8 sm:grid-cols-2">
-            {[['Formación', p.education.join(', ')], ['Especialización', p.specializations.join(', ')], ['Experiencia', p.experience]].map(([k, v]) => (
-              <div class="border-b border-zinc-200 py-3"><dt class="text-[0.78rem] font-semibold tracking-wide text-zinc-400 uppercase">{k}</dt><dd class="mt-1 font-semibold text-navy-950">{v}</dd></div>
-            ))}
-          </dl>
-          <p class="eyebrow mt-8 mb-4">Certificaciones</p>
-          <CertStrip />
-          <a href="/sobre-mi/" class="btn btn-outline mt-8">Conocer trayectoria y formación<Icon name="arrow" size={18} /></a>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ============ PREGUNTAS FRECUENTES Y DATOS ============ -->
   <section class="bg-zinc-50 py-16 md:py-32" aria-labelledby="faq-home">
