@@ -1,5 +1,4 @@
 ---
-import BrandMark from './BrandMark.astro';
 import Icon from './Icon.astro';
 import { config, known, waLink } from '../lib/site.js';
 import { treatments, featuredLesions, services } from '../data/index.js';
@@ -17,7 +16,7 @@ const linkCls = 'text-white/70 no-underline transition hover:text-white';
   <div class="relative mx-auto max-w-[1240px] px-5 pt-20 pb-10 sm:px-8">
     <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_0.9fr]">
       <div>
-        <a href="/" class="flex items-center gap-3 text-white no-underline"><BrandMark class="size-10" /><span class="font-display text-lg font-semibold">{brand}</span></a>
+        <a href="/" class="inline-block no-underline" aria-label={brand}><img src="/img/logo/mp-studio-light.svg" alt={brand} width="120" height="146" class="h-28 w-auto" loading="lazy" decoding="async" /></a>
         <p class="mt-5 max-w-sm"><strong class="text-white/90">Kinesiología y fisioterapia invasiva ecoguiada</strong> en {b.city}, {b.province}. Rehabilitación musculoesquelética con evaluación ecográfica.</p>
         <address class="mt-6 grid gap-2.5 not-italic">
           <span class="flex gap-3"><Icon name="pin" size={18} class="mt-1 text-ice-400" /><span>{b.address}, {b.city}, {b.province}</span></span>

@@ -10,12 +10,12 @@ const brand = config.business.name;
 const isActive = (p: string) => (current === p ? 'page' : p !== '/' && current.startsWith(p) ? 'true' : undefined);
 ---
 <header id="site-header" class="no-print fixed inset-x-0 top-0 z-50 px-3 pt-3 transition-all duration-500 sm:px-5">
-  <div data-header-inner class="mx-auto flex h-[68px] max-w-[1480px] items-center justify-between gap-6 rounded-2xl border border-white/10 bg-navy-950/70 px-3 pl-4 shadow-[0_10px_40px_-20px_rgba(0,0,0,.8)] backdrop-blur-md transition-all duration-500 sm:px-5">
+  <div data-header-inner class="mx-auto flex h-[68px] max-w-[1600px] items-center justify-between gap-6 rounded-2xl border border-white/10 bg-navy-950/70 px-3 pl-4 shadow-[0_10px_40px_-20px_rgba(0,0,0,.8)] backdrop-blur-md transition-all duration-500 sm:px-5">
     <a href="/" class="flex min-w-0 shrink-0 items-center gap-3 text-white no-underline">
       <BrandMark />
       <span class="flex min-w-0 flex-col leading-tight">
-        <span class="truncate font-display text-[1.1rem] font-semibold tracking-tight">{brand}</span>
-        <span class="text-[0.68rem] font-semibold tracking-[0.12em] whitespace-nowrap text-ice-300/80 uppercase">Kinesiología ecoguiada</span>
+        <span class="truncate font-display text-[1.22rem] font-semibold tracking-[-0.01em]">{brand}</span>
+        <span class="text-[0.72rem] font-semibold tracking-[0.1em] whitespace-nowrap text-ice-200/85 uppercase">Kinesiología ecoguiada</span>
       </span>
     </a>
 
@@ -23,7 +23,7 @@ const isActive = (p: string) => (current === p ? 'page' : p !== '/' && current.s
       <ul class="flex items-center gap-1">
         {NAV.filter((n) => !n.mobileOnly).map((n) => (
           <li>
-            <a href={n.path} aria-current={isActive(n.path)} class="relative block rounded-xl px-2.5 py-2 text-[0.96rem] font-medium whitespace-nowrap text-white/80 no-underline transition after:absolute after:inset-x-2.5 after:-bottom-0.5 after:h-0.5 after:scale-x-0 after:rounded-full after:bg-ice-400 after:transition-transform after:duration-300 hover:text-white hover:after:scale-x-100 aria-[current]:text-white aria-[current]:after:scale-x-100 2xl:px-3 2xl:after:inset-x-3">{n.label}</a>
+            <a href={n.path} aria-current={isActive(n.path)} class="relative block rounded-xl px-2 py-2 font-display text-[0.96rem] font-medium tracking-[-0.005em] whitespace-nowrap text-white/90 no-underline transition after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:scale-x-0 after:rounded-full after:bg-ice-400 after:transition-transform after:duration-300 hover:text-white hover:after:scale-x-100 aria-[current]:text-white aria-[current]:after:scale-x-100 2xl:px-3 2xl:text-[1.06rem] 2xl:after:inset-x-3">{n.label}</a>
           </li>
         ))}
       </ul>

@@ -44,10 +44,10 @@ export function ultrasoundHero({ live = false } = {}) {
   <path d="M36 372 C 140 352, 300 350, 440 366" stroke="#f5f6f7" stroke-opacity=".9" stroke-width="5" fill="none"/>
   <path d="M36 372 C 140 352, 300 350, 440 366 L 440 434 L 36 434 Z" fill="url(#us-shadow)"/>
   <rect x="36" y="58" width="404" height="376" filter="url(#us-speckle)" opacity=".55"/>
-  <line data-needle x1="44" y1="66" x2="284" y2="224" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
+  <line data-needle="" x1="44" y1="66" x2="284" y2="224" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round"/>
   <line x1="44" y1="74" x2="276" y2="226" stroke="#ffffff" stroke-opacity=".18" stroke-width="1.5"/>
-  <circle data-tip cx="285" cy="225" r="16" fill="url(#us-tip)"/>
-  <rect data-sweep x="36" y="0" width="404" height="40" fill="url(#us-sweep)"/>
+  <circle data-tip="" cx="285" cy="225" r="16" fill="url(#us-tip)"/>
+  <rect data-sweep="" x="36" y="0" width="404" height="40" fill="url(#us-sweep)"/>
 </g>
 <rect x="36" y="58" width="404" height="376" rx="6" fill="none" stroke="#33363a"/>
 <g stroke="#6e7276" stroke-width="1">
@@ -57,12 +57,12 @@ export function ultrasoundHero({ live = false } = {}) {
   <text x="470" y="69">0</text><text x="470" y="159">1</text><text x="470" y="249">2</text><text x="470" y="339">3</text><text x="470" y="429">4 cm</text>
 </g>
 <g font-family="Manrope, system-ui, sans-serif" font-size="12" font-weight="700">
-  <g data-us-label fill="#d9dcdf"><text x="150" y="112">Aguja</text></g>
+  <g data-us-label="" fill="#d9dcdf"><text x="150" y="112">Aguja</text></g>
   <line x1="148" y1="116" x2="128" y2="122" stroke="#d9dcdf" stroke-opacity=".6"/>
-  <g data-us-label fill="#d9dcdf"><text x="350" y="208">Tendón</text></g>
-  <g data-us-label fill="#a9c7ff"><text x="230" y="300">Zona a tratar</text></g>
+  <g data-us-label="" fill="#d9dcdf"><text x="350" y="208">Tendón</text></g>
+  <g data-us-label="" fill="#a9c7ff"><text x="230" y="300">Zona a tratar</text></g>
   <line x1="268" y1="288" x2="284" y2="252" stroke="#d6d9dc" stroke-opacity=".7"/>
-  <g data-us-label fill="#a7abaf"><text x="60" y="398">Superficie ósea</text></g>
+  <g data-us-label="" fill="#a7abaf"><text x="60" y="398">Superficie ósea</text></g>
 </g>
 </svg>`;
   if (!live) return svg;
