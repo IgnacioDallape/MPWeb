@@ -13,7 +13,7 @@ export const LEGAL = [
     body: `
 ## Titular del sitio
 
-Este sitio web es titularidad de **${name}**, con domicilio profesional en ${b.address}, ${b.city}, ${b.province}. CUIT: [PENDIENTE].
+Este sitio web es titularidad de **${name}**, con domicilio profesional en ${b.address}, ${b.city}, ${b.province}.
 
 ## Alcance de la información
 
@@ -54,7 +54,7 @@ La información clínica que surja de la atención se trata con estricta confide
 
 ## Tus derechos
 
-Podés solicitar el acceso, la rectificación o la supresión de tus datos escribiendo a ${config.contact.email || '[PENDIENTE: email de contacto]'}. La Agencia de Acceso a la Información Pública, en su carácter de órgano de control de la Ley 25.326, tiene la atribución de atender las denuncias y reclamos relacionados con el incumplimiento de las normas sobre protección de datos personales.
+Podés solicitar el acceso, la rectificación o la supresión de tus datos escribiendo a ${config.contact.email || `WhatsApp al ${config.contact.phoneDisplay}`}. La Agencia de Acceso a la Información Pública, en su carácter de órgano de control de la Ley 25.326, tiene la atribución de atender las denuncias y reclamos relacionados con el incumplimiento de las normas sobre protección de datos personales.
 
 ## Actualizaciones
 

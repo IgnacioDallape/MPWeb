@@ -40,7 +40,7 @@ export const HOME_FAQS = [
 
 export const PROCESS_FAQS = [
   { q: '¿Qué tengo que llevar a la primera consulta?', a: 'Si tenés estudios previos (ecografías, resonancias, radiografías) o indicaciones médicas, traelos. También conviene usar ropa cómoda que permita descubrir la zona a evaluar.' },
-  { q: '¿Necesito una orden médica?', a: 'No es imprescindible para realizar una evaluación kinesiológica. Si tu obra social o prepaga la requiere para la cobertura, consultá antes del turno. [PENDIENTE: confirmar coberturas y requisitos.]' },
+  { q: '¿Necesito una orden médica?', a: 'No es imprescindible para realizar una evaluación kinesiológica. Si tu obra social o prepaga la requiere para la cobertura, consultá antes del turno. Por coberturas y requisitos, consultanos por WhatsApp.' },
   { q: '¿Cuánto dura una sesión?', a: 'La primera consulta incluye evaluación y suele ser más extensa. Las sesiones siguientes combinan reevaluación, tratamiento invasivo (si corresponde) y ejercicio; la duración depende del plan.' },
   { q: '¿Qué pasa si un tratamiento invasivo no es adecuado para mí?', a: 'Se propone otro abordaje: ejercicio terapéutico, terapia manual, educación o derivación médica cuando corresponde. El tratamiento se adapta al caso y no al revés.' },
   { q: '¿Atienden deportistas y personas no deportistas?', a: 'Sí. Las tendinopatías y lesiones musculares son frecuentes en deportistas, pero también aparecen por el trabajo o las actividades diarias.' },

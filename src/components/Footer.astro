@@ -7,6 +7,7 @@ const c = config.contact;
 const p = config.professional;
 const brand = b.name;
 const ig = known(c.instagram);
+const igHandle = ig ? '@' + ig.split('/').filter(Boolean).pop() : '';
 const year = new Date().getFullYear();
 const linkCls = 'text-white/70 no-underline transition hover:text-white';
 ---
@@ -19,10 +20,10 @@ const linkCls = 'text-white/70 no-underline transition hover:text-white';
         <a href="/" class="inline-block no-underline" aria-label={brand}><img src="/img/logo/mp-studio-light.svg" alt={brand} width="120" height="146" class="h-28 w-auto" loading="lazy" decoding="async" /></a>
         <p class="mt-5 max-w-sm"><strong class="text-white/90">Kinesiología y fisioterapia invasiva ecoguiada</strong> en {b.city}, {b.province}. Rehabilitación musculoesquelética con evaluación ecográfica.</p>
         <address class="mt-6 grid gap-2.5 not-italic">
-          <span class="flex gap-3"><Icon name="pin" size={18} class="mt-1 text-ice-400" /><span>{b.address}, {b.city}, {b.province}</span></span>
+          <span class="flex gap-3"><Icon name="pin" size={18} class="mt-1 text-ice-400" />{known(b.mapsUrl) ? <a class={linkCls} href={b.mapsUrl} rel="noopener" target="_blank">{b.address}, {b.city}, {b.province}</a> : <span>{b.address}, {b.city}, {b.province}</span>}</span>
           <span class="flex gap-3"><Icon name="whatsapp" size={18} class="mt-1 text-ice-400" /><a class={linkCls} href={waLink()}>{c.phoneDisplay}</a></span>
           <span class="flex gap-3"><Icon name="clock" size={18} class="mt-1 text-ice-400" /><span>{config.hoursText}</span></span>
-          <span class="flex gap-3"><Icon name="instagram" size={18} class="mt-1 text-ice-400" />{ig ? <a class={linkCls} href={ig} rel="noopener" target="_blank">Instagram</a> : <span>{c.instagram}</span>}</span>
+          <span class="flex gap-3"><Icon name="instagram" size={18} class="mt-1 text-ice-400" />{ig ? <a class={linkCls} href={ig} rel="noopener" target="_blank">{igHandle}</a> : <span>{c.instagram}</span>}</span>
         </address>
       </div>
       <nav aria-label="Kinesiología">

@@ -43,12 +43,12 @@ export default {
     seoArea: 'Mendoza',
     province: 'Mendoza',
     country: 'AR',
-    address: '[DIRECCIÓN]',
-    postalCode: '[CÓDIGO POSTAL]',
+    address: 'JP Norton 544',
+    postalCode: '5507',
     // Coordenadas exactas del consultorio (de Google Maps). null = se omiten.
     geo: null, // { lat: -34.6037, lng: -58.3816 }
     // Link "Cómo llegar" de Google Maps / Google Business Profile.
-    mapsUrl: '',
+    mapsUrl: 'https://www.google.com/maps/search/?api=1&query=JP+Norton+544%2C+Luj%C3%A1n+de+Cuyo%2C+Mendoza',
     // Áreas atendidas (ciudad + localidades cercanas reales).
     areaServed: ['Luján de Cuyo', 'Chacras de Coria', 'Mendoza', 'Godoy Cruz', 'Maipú', 'Guaymallén', 'Las Heras'],
   },
@@ -59,11 +59,11 @@ export default {
     // Solo dígitos, formato internacional para wa.me. Ej Argentina: 5493511234567
     whatsapp: '5492612130504',
     email: '',
-    instagram: '[INSTAGRAM]', // URL completa: https://www.instagram.com/usuario/
+    instagram: 'https://www.instagram.com/mpstudio.fisio/',
   },
 
   // Horarios. Texto visible + estructura para schema (días en inglés de schema.org).
-  hoursText: '[HORARIOS]',
+  hoursText: 'De 9 a 13 h y de 16 a 20 h',
   hours: [
     // { days: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '09:00', closes: '19:00' },
   ],
