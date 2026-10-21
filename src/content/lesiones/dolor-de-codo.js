@@ -150,7 +150,7 @@ Atendemos en nuestro consultorio de {{LOCALIDAD}} a pacientes de Chacras de Cori
   ],
 
   related: {
-    kinesiologia: ['traumatologica', 'deportiva', 'dolor-cervical'],
+    kinesiologia: ['traumatologica', 'deportiva'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada'],
     lesiones: ['epicondilitis', 'epitrocleitis', 'tendinitis'],
     blog: ['epicondilitis-sintomas-y-causas', 'epi-para-tendinopatias', 'ecografia-en-fisioterapia'],

@@ -56,8 +56,8 @@ Cada deporte tiene sus lesiones típicas. Algunos ejemplos frecuentes:
 - **Running:** [tendinopatía rotuliana](/lesiones/tendinopatia-rotuliana/), [tendinopatía de Aquiles](/lesiones/tendinopatia-aquiles/), fascitis plantar, dolor en la cara externa de la rodilla y sobrecargas de gemelos. Si corrés y te duele la rodilla, leé [dolor de rodilla al correr](/blog/dolor-de-rodilla-al-correr/).
 - **Fútbol, hockey y rugby:** [desgarros musculares](/lesiones/desgarros-musculares/) de isquiotibiales y aductores, esguinces de tobillo y de rodilla, golpes que dejan fibrosis.
 - **Pádel y tenis:** epicondilitis, dolor de hombro, sobrecarga de gemelo y esguinces por frenadas bruscas.
-- **Ciclismo y MTB:** dolor anterior de rodilla, sobrecarga lumbar y cervical por la posición, caídas con golpes en hombro, clavícula o muñeca.
-- **Crossfit y musculación:** dolor de hombro por [lesiones del manguito rotador](/lesiones/manguito-rotador/), tendinopatías de codo y molestias lumbares con cargas altas.
+- **Ciclismo y MTB:** dolor anterior de rodilla, sobrecargas musculares por la posición, caídas con golpes en hombro, clavícula o muñeca.
+- **Crossfit y musculación:** dolor de hombro por [lesiones del manguito rotador](/lesiones/manguito-rotador/), tendinopatías de codo y sobrecargas musculares con cargas altas.
 - **Básquet y vóley:** tendinopatía rotuliana por saltos repetidos y esguinces de tobillo al caer.
 
 Los [esguinces](/kinesiologia-mendoza/esguinces/) tienen su propia página, con el detalle de la evaluación ligamentaria.

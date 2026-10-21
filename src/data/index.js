@@ -5,13 +5,12 @@ const load = (mods) =>
     .filter((x) => !x.draft);
 
 export const CATEGORIES = {
-  zonas: { label: 'Dolor por zona', icon: 'target', intro: 'Dolor de espalda, hombro, codo, muñeca, cadera, rodilla o tobillo: qué puede estar pasando y cómo se evalúa.' },
-  columna: { label: 'Columna', icon: 'layers', intro: 'Ciática, hernia de disco y escoliosis: evaluación y ejercicio para la columna.' },
   tendinosas: { label: 'Lesiones tendinosas', icon: 'tendon', intro: 'Tendinitis, tendón de Aquiles, rotuliano, manguito rotador, epicondilitis, epitrocleitis y otras tendinopatías.' },
   musculares: { label: 'Lesiones musculares', icon: 'muscle', intro: 'Contracturas, desgarros, dolor miofascial y fibrosis tras lesiones previas.' },
+  ligamentarias: { label: 'Lesiones ligamentarias', icon: 'joint', intro: 'Ligamento colateral medial de la rodilla, ligamento peroneo astragalino anterior del tobillo y otras lesiones de ligamentos.' },
+  nerviosas: { label: 'Afecciones del sistema nervioso periférico', icon: 'nerve', intro: 'Síndrome del túnel carpiano y otros atrapamientos o irritaciones de nervios periféricos.' },
   sobrecarga: { label: 'Lesiones por sobrecarga', icon: 'bolt', intro: 'Fascitis plantar, pubalgia, periostitis tibial y otras lesiones por exceso de carga.' },
-  ligamentarias: { label: 'Lesiones ligamentarias', icon: 'joint', intro: 'Esguinces y lesiones de ligamentos con dolor o inestabilidad persistente.' },
-  nerviosas: { label: 'Atrapamientos nerviosos', icon: 'nerve', intro: 'Síndrome del túnel carpiano y otros atrapamientos de nervios periféricos.' },
+  zonas: { label: 'Dolor por zona', icon: 'target', intro: 'Dolor de espalda, hombro, codo, muñeca, cadera, rodilla o tobillo: qué puede estar pasando y cómo se evalúa.' },
   dolor: { label: 'Dolor musculoesquelético persistente', icon: 'pulse', intro: 'Dolor que se mantiene en el tiempo y necesita un abordaje integral.' },
 };
 const catOrder = Object.keys(CATEGORIES);
@@ -52,7 +51,7 @@ export function relatedOf(kind, slug) {
 
 export const latest = (list) => list.map((x) => x.updated || x.date).sort().pop();
 
-export const featuredLesions = ['contractura-muscular', 'tendinitis', 'dolor-de-rodilla', 'dolor-de-hombro', 'desgarros-musculares', 'fascitis-plantar', 'tendinopatia-aquiles', 'epicondilitis']
+export const featuredLesions = ['tendinitis', 'tendinopatia-aquiles', 'epicondilitis', 'desgarros-musculares', 'contractura-muscular', 'ligamentarias', 'sindrome-del-tunel-carpiano', 'fascitis-plantar']
   .map((s) => lesions.find((l) => l.slug === s))
   .filter(Boolean);
 

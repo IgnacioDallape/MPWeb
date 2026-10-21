@@ -12,7 +12,7 @@ const crumbs = [{ name: 'Inicio', path: '/' }, { name: 'Contacto', path }];
 const mapsHref = known(b.mapsUrl) || (b.geo ? `https://www.google.com/maps/search/?api=1&query=${b.geo.lat},${b.geo.lng}` : '');
 const waNumber = (c.whatsapp || '').replace(/\D/g, '');
 const ig = known(c.instagram);
-const zonas = ['Hombro', 'Codo / antebrazo', 'Cadera / glúteo', 'Rodilla', 'Tobillo / tendón de Aquiles', 'Pie / talón', 'Músculo (desgarro, contractura)', 'Columna / cuello', 'Otra'];
+const zonas = ['Hombro', 'Codo / antebrazo', 'Cadera / glúteo', 'Rodilla', 'Tobillo / tendón de Aquiles', 'Pie / talón', 'Músculo (desgarro, contractura)', 'Otra'];
 const schema = [S.breadcrumbs(crumbs), S.webPage({ path, type: 'ContactPage', title: 'Contacto', description: 'Datos de contacto y turnos.', updated: config.launchDate, extra: { about: { '@id': S.ids.ORG_ID() } } })];
 ---
 <Base

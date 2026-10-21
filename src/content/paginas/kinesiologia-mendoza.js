@@ -3,12 +3,12 @@ export default {
   path: '/kinesiologia-mendoza/',
   title: 'Kinesiología en {{CIUDAD}} y {{LOCALIDAD}} | {{NOMBRE}}',
   description:
-    'Kinesiología en {{CIUDAD}} con evaluación ecográfica: lesiones deportivas, postquirúrgicas, dolor lumbar y cervical y esguinces. Consultorio en {{LOCALIDAD}}.',
+    'Kinesiología en {{CIUDAD}} con evaluación ecográfica: lesiones deportivas, traumatológicas, postquirúrgicas y esguinces. Consultorio en {{LOCALIDAD}}.',
   h1: 'Kinesiología en {{CIUDAD}}',
   lead:
     'Kinesiología con evaluación clínica y ecografía musculoesquelética en {{LOCALIDAD}}. Un plan basado en ejercicio y progresión de cargas para que vuelvas a trabajar, entrenar o moverte sin dolor, con tratamientos ecoguiados cuando tu caso los necesita.',
   answer:
-    'En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), hacemos kinesiología con evaluación clínica y ecografía musculoesquelética para lesiones deportivas y traumatológicas, rehabilitación postquirúrgica, dolor lumbar y cervical, esguinces y tendinopatías. El plan se basa en ejercicio terapéutico y progresión de cargas, y suma tratamientos ecoguiados como EPI o punción seca cuando la evaluación lo indica.',
+    'En {{NOMBRE}}, en {{LOCALIDAD}} ({{CIUDAD}}), hacemos kinesiología con evaluación clínica y ecografía musculoesquelética para lesiones deportivas y traumatológicas, rehabilitación postquirúrgica, esguinces y tendinopatías. El plan se basa en ejercicio terapéutico y progresión de cargas, y suma tratamientos ecoguiados como EPI o punción seca cuando la evaluación lo indica.',
   updated: '2026-10-07',
   seo: {
     primary: 'kinesiología Mendoza',
@@ -37,17 +37,15 @@ Un kinesiólogo evalúa cómo se mueve tu cuerpo, identifica qué estructura est
 - **Agentes físicos** puntuales, siempre como complemento.
 - **Readaptación** al trabajo, al deporte o a la vida diaria.
 
-La kinesiología no se limita a "hacer aparatos". Un buen tratamiento se parece más a un entrenamiento guiado que a una sesión pasiva en la camilla. El objetivo es que el tejido lesionado vuelva a tolerar lo que le pedís: cargar cajas en una bodega, correr en el Parque San Martín, jugar al pádel o pasar ocho horas frente a la computadora sin dolor de cuello.
+La kinesiología no se limita a "hacer aparatos". Un buen tratamiento se parece más a un entrenamiento guiado que a una sesión pasiva en la camilla. El objetivo es que el tejido lesionado vuelva a tolerar lo que le pedís: cargar cajas en una bodega, correr en el Parque San Martín, jugar al pádel o pasar ocho horas con el mouse sin que te duela el codo.
 
 ## ¿Qué tratamos en {{NOMBRE}}?
 
-Trabajamos con lesiones y dolores del sistema musculoesquelético. Organizamos la atención en seis áreas:
+Trabajamos con lesiones y dolores del sistema musculoesquelético. Organizamos la atención en cuatro áreas:
 
 - **[Kinesiología deportiva](/kinesiologia-mendoza/deportiva/):** lesiones de runners, ciclistas, jugadores de fútbol amateur, pádel y gimnasio, con vuelta progresiva al entrenamiento.
 - **[Kinesiología traumatológica](/kinesiologia-mendoza/traumatologica/):** fracturas ya consolidadas, contusiones, tendinopatías y lesiones por sobrecarga del trabajo o la vida diaria.
-- **[Kinesiología postquirúrgica](/kinesiologia-mendoza/postquirurgica/):** rehabilitación después de cirugías de rodilla, hombro, tobillo o columna, coordinada con las indicaciones del cirujano.
-- **[Dolor lumbar](/kinesiologia-mendoza/dolor-lumbar/):** lumbalgia aguda y persistente, dolor que baja a la pierna, molestias al agacharte o al estar mucho tiempo sentado.
-- **[Dolor cervical](/kinesiologia-mendoza/dolor-cervical/):** dolor de cuello, contracturas, rigidez y molestias que se irradian al hombro o al brazo.
+- **[Kinesiología postquirúrgica](/kinesiologia-mendoza/postquirurgica/):** rehabilitación después de cirugías de rodilla, hombro o tobillo, coordinada con las indicaciones del cirujano.
 - **[Esguinces](/kinesiologia-mendoza/esguinces/):** esguince de tobillo, rodilla o muñeca, con trabajo de estabilidad para reducir el riesgo de recaídas.
 
 ### Patologías más frecuentes
@@ -127,7 +125,7 @@ Depende de la lesión, de cuánto tiempo lleva, de tu actividad y de cómo respo
 
 | Situación | Frecuencia orientativa | Duración orientativa del proceso |
 |---|---|---|
-| Dolor lumbar o cervical agudo | 1 a 2 sesiones por semana | Entre 2 y 6 semanas |
+| Contractura o sobrecarga muscular | 1 a 2 sesiones por semana | Entre 1 y 4 semanas |
 | Esguince de tobillo leve o moderado | 1 a 2 sesiones por semana | Entre 3 y 8 semanas |
 | Desgarro muscular | 2 sesiones por semana al inicio | Entre 3 y 10 semanas, según el grado |
 | Tendinopatía persistente | 1 sesión por semana o cada 10 días, con ejercicio en casa | Entre 2 y 4 meses o más |
@@ -163,7 +161,7 @@ Si vivís en Chacras de Coria o en otra zona cercana y buscás un kinesiólogo c
 La kinesiología es de acceso directo en muchos casos, pero algunas situaciones necesitan una evaluación médica antes de empezar:
 
 - Dolor después de un **golpe fuerte o una caída** con deformidad, mucha hinchazón o imposibilidad de apoyar.
-- **Pérdida de fuerza** progresiva, adormecimiento que se extiende o alteraciones al orinar o evacuar junto con dolor lumbar.
+- **Pérdida de fuerza** progresiva, adormecimiento que se extiende o alteraciones al orinar o evacuar junto con dolor de espalda.
 - Dolor acompañado de **fiebre**, pérdida de peso sin explicación o malestar general.
 - Dolor que **no cambia con el movimiento** ni con el reposo, o que empeora mucho de noche.
 - Dolor en el pecho, falta de aire o dolor en la pantorrilla con hinchazón y calor.

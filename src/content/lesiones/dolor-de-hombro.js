@@ -39,7 +39,7 @@ También hay dolores que se sienten en el hombro pero vienen de otro lado: el cu
 
 ## ¿Qué puede ser según dónde te duele?
 
-Esta tabla es una orientación, no un diagnóstico. Cada causa tiene su propia página con más detalle.
+Esta tabla es una orientación, no un diagnóstico.
 
 | Dónde duele y cuándo | Causa probable | Más información |
 |---|---|---|
@@ -48,7 +48,7 @@ Esta tabla es una orientación, no un diagnóstico. Cada causa tiene su propia p
 | Todo el hombro, con rigidez progresiva y pérdida de rotación | Hombro congelado o capsulitis adhesiva | [Kinesiología traumatológica](/kinesiologia-mendoza/traumatologica/) |
 | Parte de arriba del hombro, sobre la clavícula, tras una caída | Lesión acromioclavicular | [Lesiones ligamentarias](/lesiones/ligamentarias/) |
 | Cara anterior, al cargar peso con el codo doblado | Tendón largo del bíceps | Ver más abajo |
-| Desde el cuello hasta el hombro, a veces con hormigueos en el brazo | Dolor de origen cervical | [Kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/) |
+| Desde el cuello hasta el hombro, a veces con hormigueos en el brazo | Dolor de origen cervical | Consultá con un médico |
 | Detrás del hombro y en la escápula, con "nudos" | Dolor miofascial o contractura | [Dolor miofascial](/lesiones/dolor-miofascial/) |
 
 ### Manguito rotador y bursa subacromial
@@ -65,7 +65,7 @@ Duele en la parte de adelante del hombro, al cargar bolsas con el codo flexionad
 
 ### Dolor que viene del cuello
 
-Si el dolor empieza en el cuello, baja por el trapecio y empeora al girar la cabeza, o si hay hormigueos en la mano, el origen puede ser cervical. En ese caso tratar solo el hombro no alcanza.
+Si el dolor empieza en el cuello, baja por el trapecio y empeora al girar la cabeza, o si hay hormigueos en la mano, el origen puede ser cervical. En ese caso tratar solo el hombro no alcanza y conviene que lo evalúe un médico.
 
 ## ¿Cómo se siente?
 
@@ -107,7 +107,7 @@ Además del ejercicio:
 
 - **Educación:** qué posiciones conviene evitar por un tiempo y cómo dormir mejor.
 - **Terapia manual** para mejorar la movilidad y aliviar los músculos de la escápula y el cuello.
-- **Revisión del cuello y la columna dorsal,** que muchas veces están implicados.
+- **Revisión del cuello y la columna dorsal,** para descartar que el dolor venga de ahí.
 
 Si te dijeron que tenés una tendinitis de hombro, en la página de [tendinitis](/lesiones/tendinitis/) explicamos por qué el reposo total no suele ser la mejor idea. Si tu dolor de hombro viene después de una cirugía, el trabajo encaja en la [kinesiología postquirúrgica](/kinesiologia-mendoza/postquirurgica/).
 
@@ -140,7 +140,7 @@ Atendemos en nuestro consultorio de {{LOCALIDAD}} a pacientes de Chacras de Cori
     },
     {
       q: '¿El dolor de hombro puede venir del cuello?',
-      a: 'Sí, es bastante frecuente. Si el dolor empieza en el cuello, cambia al moverlo o se acompaña de hormigueos en el brazo, el origen puede ser cervical. La evaluación revisa ambos para no tratar solo el lugar donde duele.',
+      a: 'Sí, es bastante frecuente. Si el dolor empieza en el cuello, cambia al moverlo o se acompaña de hormigueos en el brazo, el origen puede ser cervical. La evaluación revisa ambos y, si el origen parece estar en el cuello, te derivamos al médico.',
     },
     {
       q: '¿Tengo que hacer reposo si me duele el hombro?',
@@ -157,7 +157,7 @@ Atendemos en nuestro consultorio de {{LOCALIDAD}} a pacientes de Chacras de Cori
   ],
 
   related: {
-    kinesiologia: ['traumatologica', 'dolor-cervical', 'postquirurgica'],
+    kinesiologia: ['traumatologica', 'postquirurgica'],
     tratamientos: ['epi-electrolisis-percutanea', 'puncion-seca-ecoguiada'],
     lesiones: ['manguito-rotador', 'tendinitis'],
     blog: ['ecografia-en-fisioterapia', 'epi-para-tendinopatias', 'cuantas-sesiones-de-kinesiologia'],

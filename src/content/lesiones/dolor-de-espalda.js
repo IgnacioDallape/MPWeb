@@ -4,29 +4,29 @@ export default {
   category: 'zonas',
   name: 'Dolor de espalda',
   icon: 'layers',
-  cardText: 'Te duele la zona lumbar, entre los omóplatos o el dolor baja por la pierna. Las causas más frecuentes según dónde duele y cuándo conviene consultar.',
+  cardText: 'Contracturas, sobrecarga y puntos gatillo en la espalda baja, la zona dorsal o entre los omóplatos. Causas musculares frecuentes y cuándo consultar al médico.',
 
   title: 'Dolor de espalda: causas y tratamiento en {{CIUDAD}} | {{NOMBRE}}',
   description:
-    'Dolor de espalda lumbar, dorsal o entre los omóplatos: causas frecuentes según la zona, señales de alarma y tratamiento con kinesiología en {{CIUDAD}}.',
-  h1: 'Dolor de espalda: causas según dónde duele y cómo se trata',
+    'Dolor de espalda de origen muscular: contracturas, sobrecarga y dolor miofascial. Causas según la zona, señales de alarma y kinesiología en {{CIUDAD}}.',
+  h1: 'Dolor de espalda muscular: causas según dónde duele y cómo se trata',
   lead:
-    'Te duele la espalda al levantarte de la cama, después de una jornada sentado frente a la computadora o tras una tarde cargando cajones en la bodega. La zona del dolor y si baja o no por la pierna son las primeras pistas para entender qué está pasando.',
+    'Te duele la espalda al levantarte de la cama, después de una jornada sentado frente a la computadora o tras una tarde cargando cajones en la bodega. Muchas veces el origen es muscular, y la zona del dolor y cómo empezó son las primeras pistas para entender qué está pasando.',
   answer:
-    'El dolor de espalda suele ser mecánico: sobrecarga muscular, contracturas o irritación de las articulaciones de la columna. Si baja por la pierna puede haber una raíz nerviosa comprometida, como en la ciática o una hernia de disco. Una evaluación clínica descarta señales de alarma y orienta un tratamiento basado en movimiento y ejercicio progresivo.',
-  updated: '2026-10-08',
+    'Gran parte del dolor de espalda es mecánico y de origen muscular: contracturas, sobrecarga o puntos gatillo en la zona lumbar, dorsal o entre los omóplatos. Si el dolor baja por la pierna con hormigueo o pérdida de fuerza, conviene consultar primero al médico. En el resto, una evaluación orienta un plan basado en movimiento y ejercicio progresivo.',
+  updated: '2026-10-21',
 
   seo: {
     primary: 'dolor de espalda',
-    secondary: ['dolor de espalda baja', 'dolor de espalda alta', 'dolor entre los omóplatos', 'dolor lumbar que baja a la pierna', 'dolor de espalda tratamiento'],
-    intent: 'Informativa y comercial local: entender por qué duele la espalda según la zona y encontrar tratamiento en Mendoza.',
-    entities: ['columna lumbar', 'columna dorsal', 'columna cervical', 'escápula', 'disco intervertebral', 'nervio ciático', 'raíz nerviosa', 'músculos paravertebrales', 'escoliosis', 'ejercicio terapéutico'],
+    secondary: ['dolor de espalda baja', 'dolor de espalda alta', 'dolor entre los omóplatos', 'dolor de espalda muscular', 'contractura en la espalda', 'dolor de espalda tratamiento'],
+    intent: 'Informativa y comercial local: entender por qué duele la espalda según la zona, reconocer el dolor de origen muscular y encontrar tratamiento en Mendoza.',
+    entities: ['músculos paravertebrales', 'cuadrado lumbar', 'trapecio', 'romboides', 'escápula', 'contractura muscular', 'punto gatillo', 'dolor miofascial', 'ejercicio terapéutico'],
   },
 
   facts: [
-    { label: 'Zonas', value: 'Lumbar, dorsal, entre los omóplatos y cervical' },
-    { label: 'Causas frecuentes', value: 'Sobrecarga, contractura, ciática, hernia de disco' },
-    { label: 'Evaluación', value: 'Historia clínica, exploración neurológica y de movimiento' },
+    { label: 'Zonas', value: 'Espalda baja, zona dorsal y entre los omóplatos' },
+    { label: 'Causas frecuentes', value: 'Sobrecarga, contractura, dolor miofascial' },
+    { label: 'Evaluación', value: 'Historia clínica, exploración del movimiento y palpación muscular' },
     { label: 'Base del tratamiento', value: 'Movimiento, ejercicio progresivo y educación' },
   ],
 
@@ -35,29 +35,28 @@ export default {
 
 La espalda sostiene el tronco en casi todo lo que hacés: sentarte, agacharte, girar, cargar peso o manejar. Es una estructura fuerte, preparada para moverse y recibir carga, pero se queja cuando la exigencia supera lo que tolera en ese momento.
 
-En la gran mayoría de los casos el dolor es **mecánico**: no hay una lesión grave detrás, sino músculos sobrecargados, articulaciones irritadas o un disco que molesta. Influyen mucho las horas sentado sin cambiar de posición, el sedentarismo, un esfuerzo puntual, el estrés y el mal descanso.
+En la gran mayoría de los casos el dolor es **mecánico**: no hay una lesión grave detrás, sino músculos sobrecargados, contracturas o puntos gatillo, a veces con rigidez de las articulaciones cercanas. Influyen mucho las horas sentado sin cambiar de posición, el sedentarismo, un esfuerzo puntual, el estrés y el mal descanso.
 
-Un grupo menor de casos tiene **compromiso de un nervio**, con dolor que baja por la pierna o el brazo. Y en muy pocas ocasiones el dolor de espalda responde a otra causa que necesita atención médica. Por eso la primera tarea es ubicar bien la zona y descartar señales de alarma.
+Un grupo menor de casos tiene **compromiso de un nervio**, con dolor que baja por la pierna o el brazo, y en muy pocas ocasiones el dolor de espalda responde a otra causa que necesita atención médica. Esos cuadros los tiene que ver primero un médico. Por eso la primera tarea es ubicar bien la zona y descartar señales de alarma.
 
 ## ¿Qué puede ser según dónde te duele?
 
-Esta tabla orienta, no diagnostica. Cada causa tiene su propia página con más detalle.
+Esta tabla orienta, no diagnostica.
 
 | Dónde duele y cómo | Causa probable | Más información |
 |---|---|---|
-| Parte baja de la espalda, sin dolor en la pierna | Dolor lumbar mecánico | [Kinesiología para el dolor lumbar](/kinesiologia-mendoza/dolor-lumbar/) |
-| Zona lumbar o glúteo con dolor que baja por detrás de la pierna, a veces hasta el pie | Ciática por irritación de una raíz nerviosa | [Ciática](/lesiones/ciatica/) |
-| Dolor lumbar con dolor en la pierna, hormigueo o pérdida de fuerza | Hernia o protrusión de disco | [Hernia de disco](/lesiones/hernia-de-disco/) |
-| Un costado de la espalda, duro y doloroso, después de un esfuerzo o un mal gesto | Contractura muscular | [Contractura muscular](/lesiones/contractura-muscular/) |
+| Un costado de la espalda baja, duro y doloroso, después de un esfuerzo o un mal gesto | Contractura muscular | [Contractura muscular](/lesiones/contractura-muscular/) |
+| Cintura que se extiende hacia la cadera o la nalga, sin hormigueos | Puntos gatillo en el cuadrado lumbar o los glúteos | [Dolor miofascial](/lesiones/dolor-miofascial/) |
 | Entre los omóplatos, con "nudos" que duelen al presionar | Dolor miofascial o puntos gatillo | [Dolor miofascial](/lesiones/dolor-miofascial/) |
-| Espalda alta y cuello, a veces hacia el hombro o el brazo | Dolor de origen cervical | [Kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/) |
-| Asimetría de hombros, caderas o costillas, con o sin dolor | Escoliosis | [Escoliosis](/lesiones/escoliosis/) |
+| Espalda alta y trapecios cargados después de muchas horas de pantalla o de volante | Sobrecarga muscular por postura sostenida | [Contractura muscular](/lesiones/contractura-muscular/) |
+| Dolor que baja por la pierna o el brazo, con hormigueo, adormecimiento o pérdida de fuerza | Posible irritación de una raíz nerviosa | Consultá primero con un médico |
+| Asimetría de hombros, caderas o costillas | Posible desviación de la columna | Consultá primero con un médico |
 
-Muchas veces conviven dos causas, por ejemplo una contractura que acompaña a un dolor lumbar o a una ciática.
+Muchas veces conviven dos causas, por ejemplo una contractura que aparece para proteger una zona irritada.
 
-### Espalda baja: dolor lumbar
+### Espalda baja: contractura y sobrecarga
 
-Es la consulta más frecuente. Duele al agacharte, al levantarte de la silla o al estar mucho tiempo parado. Suele aparecer después de un esfuerzo, como levantar cajones de uva en la cosecha o mover muebles, o de a poco por muchas horas sentado. La mayoría de los episodios mejora en semanas manteniéndose activo.
+Es la consulta más frecuente. Duele al agacharte, al levantarte de la silla o al estar mucho tiempo parado. Suele aparecer después de un esfuerzo, como levantar cajones de uva en la cosecha o mover muebles, o de a poco por muchas horas sentado. Cuando el origen es muscular, la mayoría de los episodios mejora en semanas manteniéndose activo.
 
 ### Espalda alta y dorsal
 
@@ -67,9 +66,9 @@ El dolor en la zona dorsal, a la altura del pecho, suele estar ligado a la postu
 
 Es un clásico de quienes trabajan sentados o hacen deportes con los brazos, como el pádel o la natación. Suele combinar puntos gatillo en los romboides y el trapecio con rigidez de la columna dorsal. A veces el origen está en el cuello, por eso se revisan ambos.
 
-### Dolor que baja por la pierna
+### Cuando no parece muscular: dolor que baja por la pierna
 
-Cuando el dolor lumbar se acompaña de dolor que baja por la pierna, sobre todo por debajo de la rodilla, con hormigueo o sensación de adormecimiento, hay que pensar en una raíz nerviosa irritada. La [ciática](/lesiones/ciatica/) es el síntoma y la [hernia de disco](/lesiones/hernia-de-disco/) es una de sus causas posibles, aunque no la única.
+Si el dolor de la espalda baja se acompaña de dolor que baja por la pierna, sobre todo por debajo de la rodilla, con hormigueo, adormecimiento o pérdida de fuerza, puede haber una raíz nerviosa irritada, como en una ciática o una hernia de disco. Lo mismo vale si notás una asimetría de hombros, caderas o costillas que haga pensar en una escoliosis. En esos casos el primer paso es la consulta médica: es quien indica los estudios y define cómo seguir.
 
 ## ¿Cómo se evalúa el dolor de espalda?
 
@@ -79,11 +78,12 @@ En la exploración se valoran:
 
 - La movilidad de la columna y de la cadera.
 - Los movimientos y posiciones que reproducen el dolor.
-- La exploración neurológica si hay síntomas en la pierna o el brazo: fuerza, sensibilidad y reflejos.
+- La palpación de los músculos para ubicar contracturas o puntos gatillo que reproducen tu dolor.
 - La fuerza y la resistencia de los músculos del tronco y la cadera.
 - Cómo te agachás, levantás peso o pasás de sentado a parado.
+- Una revisión de fuerza y sensibilidad si hay síntomas en la pierna o el brazo, para saber si hace falta derivarte al médico.
 
-La ecografía musculoesquelética no muestra el interior de la columna ni los discos, pero sí puede sumar información en músculos, tendones y estructuras cercanas cuando el cuadro lo justifica. Las imágenes como la resonancia se piden solo cuando el médico lo considera necesario, porque muchos hallazgos aparecen también en personas sin dolor.
+La ecografía musculoesquelética no muestra el interior de la columna, pero sí puede sumar información en los músculos y las estructuras cercanas cuando el cuadro lo justifica. Las imágenes como la resonancia las pide el médico cuando lo considera necesario, porque muchos hallazgos aparecen también en personas sin dolor.
 
 {{CTA}}
 
@@ -104,19 +104,19 @@ Además del ejercicio:
 - **Terapia manual** cuando ayuda a aliviar y a moverte mejor, siempre como complemento.
 - **Ajustes en el trabajo:** pausas activas, altura de la pantalla, cómo levantar cargas.
 
-En la [kinesiología para el dolor lumbar](/kinesiologia-mendoza/dolor-lumbar/) explicamos el abordaje completo de la zona baja, y en la página de [contractura muscular](/lesiones/contractura-muscular/) qué hacer cuando la espalda se "agarra" de golpe.
+En la página de [contractura muscular](/lesiones/contractura-muscular/) explicamos qué hacer cuando la espalda se "agarra" de golpe, y en la de [dolor miofascial](/lesiones/dolor-miofascial/) cómo se abordan los puntos gatillo que no terminan de irse.
 
 ### ¿Cuándo se suman tratamientos ecoguiados?
 
-Solo en algunos casos y como complemento del ejercicio. Si hay puntos gatillo que reproducen tu dolor, por ejemplo entre los omóplatos o en el cuadrado lumbar, se puede valorar la [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/). Cuando hay un componente nervioso o el dolor está muy sensibilizado, la [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) puede ayudar a modular el dolor y facilitar el trabajo activo.
+Solo en algunos casos y como complemento del ejercicio. Si hay puntos gatillo que reproducen tu dolor, por ejemplo entre los omóplatos o en el cuadrado lumbar, se puede valorar la [punción seca ecoguiada](/tratamientos/puncion-seca-ecoguiada/). Cuando el dolor muscular lleva tiempo y está muy sensibilizado, la [neuromodulación percutánea ecoguiada](/tratamientos/neuromodulacion-percutanea-ecoguiada/) puede ayudar a modular el dolor y facilitar el trabajo activo.
 
 ## ¿Cuánto tarda en mejorar?
 
 Como referencia orientativa:
 
-- **Dolor lumbar agudo sin compromiso nervioso:** muchas personas mejoran en 2 a 6 semanas manteniéndose activas.
 - **Contractura:** suele aliviar en días a un par de semanas.
-- **Ciática o hernia de disco:** la evolución es más lenta y suele llevar entre 6 y 12 semanas, a veces más.
+- **Sobrecarga muscular de la espalda baja o dorsal:** muchas personas mejoran en 2 a 6 semanas manteniéndose activas.
+- **Dolor miofascial con puntos gatillo persistentes:** suele llevar varias semanas de ejercicio y, en algunos casos, tratamientos complementarios.
 - **Dolor de espalda persistente:** se trabaja por objetivos a lo largo de varios meses.
 
 Lo define la evaluación de tu caso y la respuesta a las primeras semanas.
@@ -128,6 +128,7 @@ Lo define la evaluación de tu caso y la respuesta a las primeras semanas.
 - **Pérdida de peso** sin explicación o antecedentes de cáncer.
 - Dolor después de un **golpe fuerte, una caída o un accidente**.
 - Pérdida de fuerza que avanza en la pierna, adormecimiento en la zona genital o dificultad para orinar o controlar los esfuerzos: consultá de inmediato.
+- Dolor que baja por la pierna o el brazo con hormigueo o adormecimiento, o una asimetría visible de la espalda: pedí una evaluación médica antes de empezar.
 - Dolor constante que no cambia con el movimiento ni con el reposo y empeora de noche.
 
 ## ¿Dónde tratar el dolor de espalda en Mendoza?
@@ -145,32 +146,32 @@ Atendemos en nuestro consultorio de {{LOCALIDAD}} a pacientes de Chacras de Cori
       a: 'Suele deberse a puntos gatillo en los músculos de la escápula y a rigidez de la columna dorsal, muy frecuente en quienes trabajan sentados frente a la pantalla. A veces el origen está en el cuello. Si el dolor aparece con falta de aire o se irradia al brazo, andá a la guardia.',
     },
     {
-      q: '¿Cómo sé si el dolor de espalda es ciática?',
-      a: 'La ciática se reconoce porque el dolor baja por detrás de la pierna, muchas veces por debajo de la rodilla, y puede acompañarse de hormigueo o adormecimiento. Un dolor lumbar que solo llega al glúteo suele ser mecánico. Lo explicamos en la página de [ciática](/lesiones/ciatica/).',
+      q: '¿Qué hago si el dolor de espalda baja por la pierna?',
+      a: 'Si el dolor baja por detrás de la pierna, sobre todo por debajo de la rodilla, o se acompaña de hormigueo, adormecimiento o pérdida de fuerza, puede haber una raíz nerviosa irritada. En ese caso conviene consultar primero con un médico. Un dolor que solo llega al glúteo suele ser muscular o mecánico.',
     },
     {
       q: '¿Necesito una resonancia para tratar el dolor de espalda?',
-      a: 'No siempre. En la mayoría de los dolores lumbares sin señales de alarma, la evaluación clínica alcanza para empezar el tratamiento. La resonancia la indica el médico cuando hay síntomas neurológicos importantes o el cuadro no evoluciona como se espera.',
+      a: 'No siempre. En la mayoría de los dolores de espalda de origen muscular, sin señales de alarma, la evaluación clínica alcanza para empezar el tratamiento. La resonancia la indica el médico cuando hay síntomas neurológicos o el cuadro no evoluciona como se espera.',
     },
     {
       q: '¿Cuántas sesiones de kinesiología hacen falta para el dolor de espalda?',
-      a: 'Depende de la causa y de cuánto tiempo lleva el dolor. Un episodio lumbar reciente puede necesitar pocas sesiones con buena adherencia al ejercicio en casa, mientras que una ciática o un dolor persistente requieren más tiempo. Se define después de la evaluación.',
+      a: 'Depende de la causa y de cuánto tiempo lleva el dolor. Una contractura reciente puede necesitar pocas sesiones con buena adherencia al ejercicio en casa, mientras que un dolor miofascial o un dolor persistente requieren más tiempo. Se define después de la evaluación.',
     },
   ],
 
   related: {
-    kinesiologia: ['dolor-lumbar', 'dolor-cervical', 'traumatologica'],
+    kinesiologia: ['traumatologica'],
     tratamientos: ['puncion-seca-ecoguiada', 'neuromodulacion-percutanea-ecoguiada'],
-    lesiones: ['ciatica', 'hernia-de-disco', 'contractura-muscular', 'escoliosis'],
+    lesiones: ['contractura-muscular', 'dolor-miofascial'],
     blog: ['cuantas-sesiones-de-kinesiologia', 'frio-o-calor-en-una-lesion', 'kinesiologo-o-traumatologo'],
   },
 
   condition: {
     name: 'Dolor de espalda',
-    alternateName: ['Dorsalgia', 'Lumbalgia', 'Dolor entre los omóplatos', 'Dolor de espalda baja'],
-    description: 'Dolor en la región de la columna dorsal o lumbar, mayormente de origen mecánico por sobrecarga muscular o articular, que en algunos casos se acompaña de irradiación a la pierna por compromiso de una raíz nerviosa.',
-    anatomy: 'Columna dorsal y lumbar, discos intervertebrales, músculos paravertebrales, escápulas y raíces nerviosas',
-    symptoms: ['Dolor en la zona lumbar o dorsal', 'Dolor entre los omóplatos', 'Rigidez al levantarse o al agacharse', 'Dolor que baja por la pierna', 'Hormigueo o adormecimiento en la pierna'],
+    alternateName: ['Dolor de espalda muscular', 'Dorsalgia', 'Dolor entre los omóplatos', 'Dolor de espalda baja'],
+    description: 'Dolor en la región dorsal o lumbar, mayormente de origen mecánico por sobrecarga muscular, contracturas o puntos gatillo miofasciales.',
+    anatomy: 'Músculos paravertebrales, cuadrado lumbar, trapecio, romboides y musculatura escapular',
+    symptoms: ['Dolor en la zona lumbar o dorsal', 'Dolor entre los omóplatos', 'Rigidez al levantarse o al agacharse', 'Nudos que duelen al presionar', 'Dolor al girar o al cargar peso'],
   },
 
   waMessage: 'Hola, quería consultar por un dolor de espalda.',

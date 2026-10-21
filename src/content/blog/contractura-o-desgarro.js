@@ -114,7 +114,7 @@ Una contractura que vuelve cada semana o un desgarro que dejó una zona dura y s
   ],
 
   related: {
-    kinesiologia: ['deportiva', 'traumatologica', 'dolor-cervical'],
+    kinesiologia: ['deportiva', 'traumatologica'],
     tratamientos: ['puncion-seca-ecoguiada', 'neuromodulacion-percutanea-ecoguiada'],
     lesiones: ['contractura-muscular', 'desgarros-musculares', 'dolor-miofascial', 'fibrosis-muscular'],
     blog: ['cuanto-tarda-en-recuperarse-una-lesion-muscular', 'que-hacer-despues-de-una-lesion', 'frio-o-calor-en-una-lesion', 'ecografia-en-fisioterapia'],

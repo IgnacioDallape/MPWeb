@@ -47,11 +47,11 @@ A diferencia de un desgarro, en una contractura **no hay fibras rotas**. Es una 
 
 ### Contractura en el cuello y el trapecio
 
-Es la más común en personas que pasan muchas horas frente a la computadora o manejando. El **trapecio** y el **elevador de la escápula** se cargan, el cuello se pone rígido y a veces aparece dolor de cabeza en la nuca. Cuando el cuello se traba de golpe y no podés girarlo, el cuadro se parece más a una tortícolis, que también se aborda desde la [kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/). Si las molestias son frecuentes, mirá también nuestra página de [kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/).
+Es la más común en personas que pasan muchas horas frente a la computadora o manejando. El **trapecio** y el **elevador de la escápula** se cargan, el cuello se pone rígido y a veces aparece dolor de cabeza en la nuca. Si las molestias se repiten y notás "nudos" que duelen al presionar, mirá también la página de [dolor miofascial](/lesiones/dolor-miofascial/). Si el dolor de cuello se acompaña de hormigueos o pérdida de fuerza en el brazo, consultá primero con un médico.
 
 ### Contractura en la espalda
 
-Aparece en los **músculos paravertebrales** o en el cuadrado lumbar, muchas veces después de levantar peso de forma brusca, de una jornada de poda o cosecha en la viña, o de pasar el fin de semana pintando la casa. Duele al agacharte o al incorporarte de la silla. Si el dolor lumbar se repite o baja hacia la pierna, conviene leer sobre [kinesiología para el dolor lumbar](/kinesiologia-mendoza/dolor-lumbar/).
+Aparece en los **músculos paravertebrales** o en el cuadrado lumbar, muchas veces después de levantar peso de forma brusca, de una jornada de poda o cosecha en la viña, o de pasar el fin de semana pintando la casa. Duele al agacharte o al incorporarte de la silla. En [dolor de espalda](/lesiones/dolor-de-espalda/) tenés las causas musculares más frecuentes según la zona. Si el dolor baja hacia la pierna, con hormigueo o pérdida de fuerza, no es una contractura simple: consultá primero con un médico.
 
 ### Contractura en el gemelo
 
@@ -77,7 +77,7 @@ Si sentiste un tirón seco, tuviste que frenar en el acto o te apareció un more
 - **Esfuerzos poco habituales:** mudanzas, jardinería, cargar a un chico en brazos varias horas.
 - **Fatiga y deshidratación,** sobre todo en el gemelo durante el deporte con calor.
 - **Estrés y mal descanso,** que aumentan la tensión del cuello y los hombros.
-- **Protección de otra lesión:** una articulación irritada o un dolor lumbar pueden hacer que los músculos de alrededor se contraigan para "cuidar" la zona.
+- **Protección de otra lesión:** una articulación o un nervio irritados pueden hacer que los músculos de alrededor se contraigan para "cuidar" la zona.
 
 ## ¿Cómo se evalúa?
 
@@ -158,7 +158,7 @@ Atendemos en nuestro consultorio de {{LOCALIDAD}} y recibimos pacientes de Chacr
   ],
 
   related: {
-    kinesiologia: ['dolor-cervical', 'dolor-lumbar', 'deportiva'],
+    kinesiologia: ['deportiva'],
     tratamientos: ['puncion-seca-ecoguiada'],
     lesiones: ['desgarros-musculares', 'dolor-miofascial', 'fibrosis-muscular'],
     blog: ['contractura-o-desgarro', 'frio-o-calor-en-una-lesion', 'cuanto-tarda-en-recuperarse-una-lesion-muscular'],

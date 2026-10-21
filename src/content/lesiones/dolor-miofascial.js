@@ -75,7 +75,7 @@ La evaluación busca confirmar el origen miofascial y, sobre todo, **descartar o
 
 ### Diferenciarlo del dolor radicular
 
-Un dolor que baja por la pierna o por el brazo no siempre viene del músculo. Cuando una raíz nerviosa está irritada (por ejemplo, por una hernia de disco) suelen aparecer hormigueo, adormecimiento, pérdida de fuerza o cambios en los reflejos, y el dolor sigue el recorrido de ese nervio. En el dolor miofascial, en cambio, la sensibilidad nerviosa suele estar conservada y el síntoma se reproduce al presionar el músculo. Las pruebas neurológicas ayudan a separar ambos cuadros, que a veces conviven.
+Un dolor que baja por la pierna o por el brazo no siempre viene del músculo. Cuando una raíz nerviosa está irritada (por ejemplo, por una hernia de disco) suelen aparecer hormigueo, adormecimiento, pérdida de fuerza o cambios en los reflejos, y el dolor sigue el recorrido de ese nervio. En el dolor miofascial, en cambio, la sensibilidad nerviosa suele estar conservada y el síntoma se reproduce al presionar el músculo. Las pruebas neurológicas ayudan a separar ambos cuadros, que a veces conviven. Si todo apunta a una raíz nerviosa irritada, el paso siguiente es la consulta médica.
 
 ### Qué aporta la ecografía
 
@@ -91,7 +91,7 @@ Entender por qué aparece el dolor reduce la incertidumbre. Se revisan pausas ac
 
 ### Ejercicio terapéutico
 
-El ejercicio es el que sostiene los cambios a mediano plazo. Según la zona, puede incluir fortalecimiento de la musculatura escapular y cervical profunda, trabajo de glúteos y estabilidad de cadera, ejercicios de movilidad y actividad aeróbica general, que tiene un efecto positivo sobre la sensibilidad al dolor. Si el foco está en el cuello y los hombros, este trabajo se integra a la [kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/) que hacemos en {{CIUDAD}}.
+El ejercicio es el que sostiene los cambios a mediano plazo. Según la zona, puede incluir fortalecimiento de la musculatura escapular y cervical profunda, trabajo de glúteos y estabilidad de cadera, ejercicios de movilidad y actividad aeróbica general, que tiene un efecto positivo sobre la sensibilidad al dolor. Si el foco está en la espalda, en [dolor de espalda](/lesiones/dolor-de-espalda/) explicamos cómo se organiza el plan según la zona.
 
 {{CTA}}
 
@@ -132,7 +132,7 @@ Pedí una consulta médica si el dolor se acompaña de:
     },
     {
       q: '¿Cómo sé si mi dolor es muscular o viene de la columna?',
-      a: 'No siempre es fácil saberlo solo por los síntomas. El hormigueo, el adormecimiento o la pérdida de fuerza orientan hacia un origen nervioso. La exploración clínica y las pruebas neurológicas ayudan a diferenciarlos, y en ocasiones ambos conviven.',
+      a: 'No siempre es fácil saberlo solo por los síntomas. El hormigueo, el adormecimiento o la pérdida de fuerza orientan hacia un origen nervioso. La exploración clínica y las pruebas neurológicas ayudan a diferenciarlos, y si el origen parece nervioso, se deriva al médico.',
     },
     {
       q: '¿Por qué las contracturas me vuelven siempre?',
@@ -141,7 +141,7 @@ Pedí una consulta médica si el dolor se acompaña de:
   ],
 
   related: {
-    kinesiologia: ['dolor-cervical', 'dolor-lumbar'],
+    kinesiologia: [],
     tratamientos: ['puncion-seca-ecoguiada', 'neuromodulacion-percutanea-ecoguiada'],
     lesiones: ['dolor-cronico-musculoesqueletico', 'desgarros-musculares'],
     blog: ['puncion-seca-con-ecografia-que-cambia', 'diferencias-entre-epi-y-puncion-seca'],

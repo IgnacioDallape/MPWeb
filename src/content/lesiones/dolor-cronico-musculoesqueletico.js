@@ -26,7 +26,7 @@ export default {
   facts: [
     { label: 'Duración', value: 'Dolor que persiste más de tres meses' },
     { label: 'Síntoma típico', value: 'Dolor que fluctúa, se extiende o aparece con estímulos leves' },
-    { label: 'Frecuente en', value: 'Lumbalgia, cervicalgia, hombro, rodilla y dolor tras lesiones previas' },
+    { label: 'Frecuente en', value: 'Dolor muscular de espalda, hombro, rodilla y dolor tras lesiones previas' },
     { label: 'Tratamientos asociados', value: 'Educación, ejercicio gradual; NMP-e y punción seca como complemento' },
   ],
 
@@ -35,7 +35,7 @@ export default {
 
 Se habla de **dolor persistente o crónico** cuando una molestia en músculos, articulaciones, tendones o columna se mantiene más de tres meses, que es más o menos el tiempo en que la mayoría de los tejidos completan su reparación. No significa que el dolor sea "psicológico" ni que no tenga solución: significa que, además del tejido, hay otros factores que están sosteniendo el síntoma.
 
-Es una de las consultas más frecuentes en kinesiología: dolor lumbar o cervical de larga evolución, un hombro que sigue molestando años después de una lesión, una rodilla que duele aunque las imágenes "no muestren nada grave", o dolores que se repiten en distintas zonas.
+Es una de las consultas más frecuentes en kinesiología: [dolor miofascial](/lesiones/dolor-miofascial/) que se repite en la espalda o los trapecios, un hombro que sigue molestando años después de una lesión, una rodilla que duele aunque las imágenes "no muestren nada grave", o dolores que se repiten en distintas zonas.
 
 ## Cómo se siente
 
@@ -81,7 +81,7 @@ El ejercicio es la herramienta con mejor respaldo en el dolor musculoesquelétic
 
 ### Sueño, actividad y rutina
 
-Se trabaja sobre el descanso, la distribución de la actividad durante la semana (evitando el ciclo de hacer mucho un día bueno y pagarlo después) y la retoma de actividades con sentido para vos. Cuando el dolor está en la espalda baja, este enfoque es la base de nuestra [kinesiología para el dolor lumbar](/kinesiologia-mendoza/dolor-lumbar/) en {{CIUDAD}}.
+Se trabaja sobre el descanso, la distribución de la actividad durante la semana (evitando el ciclo de hacer mucho un día bueno y pagarlo después) y la retoma de actividades con sentido para vos.
 
 {{CTA}}
 
@@ -128,7 +128,7 @@ Consultá a un médico si el dolor se acompaña de:
       a: 'Puede ser un complemento útil en algunos casos, para modular el dolor y facilitar el ejercicio. No reemplaza la educación ni el ejercicio gradual, y su indicación se decide tras una evaluación.',
     },
     {
-      q: 'Mis estudios muestran desgaste o hernias, ¿eso explica mi dolor?',
+      q: 'Mis estudios muestran desgaste u otros hallazgos, ¿eso explica mi dolor?',
       a: 'No necesariamente. Muchos hallazgos de los estudios por imágenes aparecen también en personas sin dolor. Se interpretan junto con la historia y la exploración, y no siempre explican por sí solos un dolor persistente.',
     },
     {
@@ -138,7 +138,7 @@ Consultá a un médico si el dolor se acompaña de:
   ],
 
   related: {
-    kinesiologia: ['dolor-lumbar', 'dolor-cervical', 'traumatologica'],
+    kinesiologia: ['traumatologica'],
     tratamientos: ['neuromodulacion-percutanea-ecoguiada', 'puncion-seca-ecoguiada'],
     lesiones: ['dolor-miofascial'],
     blog: ['neuromodulacion-percutanea-nervio-y-dolor', 'cuando-se-recomienda-fisioterapia-invasiva'],

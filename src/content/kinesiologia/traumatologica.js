@@ -67,7 +67,7 @@ Lo que se suele llamar tendinitis es, en la mayoría de los cuadros que duran se
 
 ### Lesiones por sobrecarga laboral
 
-Muchas consultas no tienen un golpe de por medio, sino meses de repetir el mismo gesto. Tareas de poda y cosecha en viñedos, trabajo en bodegas, albañilería, cocina profesional, peluquería u oficina con muchas horas de mouse cargan una y otra vez los mismos tendones. Cuando el problema está en la espalda o el cuello, las páginas de [dolor lumbar](/kinesiologia-mendoza/dolor-lumbar/) y [dolor cervical](/kinesiologia-mendoza/dolor-cervical/) tienen el detalle.
+Muchas consultas no tienen un golpe de por medio, sino meses de repetir el mismo gesto. Tareas de poda y cosecha en viñedos, trabajo en bodegas, albañilería, cocina profesional, peluquería u oficina con muchas horas de mouse cargan una y otra vez los mismos tendones. Cuando lo que se carga son los músculos de la espalda o los trapecios, la página de [contractura muscular](/lesiones/contractura-muscular/) tiene el detalle.
 
 ## ¿Cómo es la evaluación?
 
@@ -166,7 +166,7 @@ Si no tenés claro a quién ir primero, leé [kinesiólogo o traumatólogo](/blo
   ],
 
   related: {
-    kinesiologia: ['deportiva', 'postquirurgica', 'esguinces', 'dolor-lumbar'],
+    kinesiologia: ['deportiva', 'postquirurgica', 'esguinces'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada', 'puncion-seca-ecoguiada'],
     lesiones: ['manguito-rotador', 'epicondilitis', 'ligamentarias'],
     blog: ['kinesiologo-o-traumatologo', 'frio-o-calor-en-una-lesion', 'cuantas-sesiones-de-kinesiologia', 'epi-para-tendinopatias'],

@@ -88,7 +88,7 @@ Lo mismo que esperarías de un buen fisioterapeuta en tu país de origen. Alguno
 
 - Rehabilitar un esguince de tobillo después de un partido de fútbol o una salida de trail.
 - Acompañar la recuperación tras una cirugía de rodilla u hombro.
-- Tratar un dolor lumbar o cervical relacionado con el trabajo.
+- Tratar contracturas y sobrecargas musculares relacionadas con el trabajo.
 - Abordar tendinopatías en corredores, ciclistas de montaña o jugadores de pádel.
 - Guiar la vuelta al deporte con criterios de fuerza y función.
 

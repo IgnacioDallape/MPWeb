@@ -27,7 +27,7 @@ const clean = (o) => {
 };
 
 export const ENTITY = tokens(
-  '{{NOMBRE}} es un consultorio de kinesiología y fisioterapia invasiva ecoguiada en {{LOCALIDAD}}, {{PROVINCIA}} (Argentina). Atiende kinesiología deportiva, traumatológica y postquirúrgica, dolor lumbar y cervical, esguinces y tendinopatías, con evaluación ecográfica y tratamientos como EPI, neuromodulación percutánea, MEP y punción seca ecoguiada, siempre integrados con ejercicio terapéutico.'
+  '{{NOMBRE}} es un consultorio de kinesiología y fisioterapia invasiva ecoguiada en {{LOCALIDAD}}, {{PROVINCIA}} (Argentina). Atiende kinesiología deportiva, traumatológica y postquirúrgica, esguinces, lesiones ligamentarias, musculares y tendinopatías, con evaluación ecográfica y tratamientos como EPI, neuromodulación percutánea, MEP y punción seca ecoguiada, siempre integrados con ejercicio terapéutico.'
 );
 
 export const KNOWS_ABOUT = [
@@ -35,8 +35,8 @@ export const KNOWS_ABOUT = [
   'Kinesiología deportiva',
   'Kinesiología traumatológica',
   'Rehabilitación postquirúrgica',
-  'Dolor lumbar',
-  'Dolor cervical',
+  'Lesiones ligamentarias',
+  'Afecciones del sistema nervioso periférico',
   'Rehabilitación de esguinces',
   'Fisioterapia invasiva ecoguiada',
   'Ecografía musculoesquelética',

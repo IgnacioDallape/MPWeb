@@ -42,7 +42,7 @@ La tabla resume rangos habituales. Son orientativos: tu caso puede quedar por de
 
 ### Contractura o dolor agudo
 
-Un dolor de cuello después de una mala noche o una lumbalgia tras levantar un cajón suelen mejorar en pocas sesiones. El objetivo es bajar el dolor, recuperar el movimiento y dejarte herramientas para que no vuelva. Si te interesa este tipo de cuadro, mirá la página de [kinesiología para el dolor lumbar](/kinesiologia-mendoza/dolor-lumbar/).
+Un trapecio cargado después de una mala noche o una espalda que se "agarra" tras levantar un cajón suelen mejorar en pocas sesiones. El objetivo es bajar el dolor, recuperar el movimiento y dejarte herramientas para que no vuelva. Si te interesa este tipo de cuadro, mirá la página de [contractura muscular](/lesiones/contractura-muscular/).
 
 ### Esguince
 
@@ -125,7 +125,7 @@ Si querés saber cómo prepararte para empezar, leé [qué llevar a la primera s
   ],
 
   related: {
-    kinesiologia: ['esguinces', 'postquirurgica', 'deportiva', 'dolor-lumbar'],
+    kinesiologia: ['esguinces', 'postquirurgica', 'deportiva'],
     tratamientos: ['epi-electrolisis-percutanea', 'puncion-seca-ecoguiada'],
     lesiones: ['tendinopatia-rotuliana', 'ligamentarias', 'dolor-cronico-musculoesqueletico'],
     blog: ['que-llevar-a-la-primera-sesion-de-kinesiologia', 'obra-social-y-orden-medica-kinesiologia', 'volver-a-entrenar-despues-de-una-lesion'],

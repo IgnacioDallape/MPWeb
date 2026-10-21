@@ -78,7 +78,7 @@ Un hormigueo en la mano no siempre nace en la muñeca. La compresión de una ra�
 | Empeora con | Flexión de muñeca, de noche, al manejar | Movimientos del cuello, mirar hacia arriba |
 | Síntomas en el brazo o el hombro | Poco frecuentes | Habituales |
 
-Las dos situaciones pueden coexistir. Cuando hay sospecha de componente cervical, se evalúa el cuello y se trabaja también en esa zona. Lo explicamos en [kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/).
+Las dos situaciones pueden coexistir. Cuando hay sospecha de un origen cervical, se revisa el cuello en la evaluación y se deriva al médico para que confirme el diagnóstico y defina cómo seguir.
 
 {{CTA}}
 
@@ -157,12 +157,12 @@ En nuestro consultorio de {{LOCALIDAD}} atendemos a personas de Chacras de Coria
     },
     {
       q: '¿Cómo sé si el hormigueo viene del cuello o de la muñeca?',
-      a: 'Si el hormigueo se concentra en el pulgar, el índice y el medio, empeora de noche o al doblar la muñeca, orienta al túnel carpiano. Si se acompaña de dolor de cuello o cambia al mover la cabeza, puede tener un origen cervical. La evaluación de ambas zonas lo aclara, y a veces coexisten.',
+      a: 'Si el hormigueo se concentra en el pulgar, el índice y el medio, empeora de noche o al doblar la muñeca, orienta al túnel carpiano. Si se acompaña de dolor de cuello o cambia al mover la cabeza, puede tener un origen cervical, y en ese caso conviene consultar al médico. A veces las dos causas coexisten.',
     },
   ],
 
   related: {
-    kinesiologia: ['traumatologica', 'dolor-cervical'],
+    kinesiologia: ['traumatologica'],
     tratamientos: ['neuromodulacion-percutanea-ecoguiada', 'puncion-seca-ecoguiada'],
     lesiones: ['epitrocleitis', 'tendinitis', 'dolor-miofascial'],
     blog: ['neuromodulacion-percutanea-nervio-y-dolor', 'ecografia-en-fisioterapia', 'kinesiologo-o-traumatologo'],

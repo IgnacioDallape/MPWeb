@@ -1,1 +1,18 @@
-{}
+{
+  "foto-epi-ecografia": {
+    "width": 604,
+    "height": 755,
+    "widths": [
+      480
+    ]
+  },
+  "foto-neuromodulacion": {
+    "width": 1500,
+    "height": 1875,
+    "widths": [
+      480,
+      960,
+      1440
+    ]
+  }
+}

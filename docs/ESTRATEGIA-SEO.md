@@ -246,8 +246,6 @@ El sitio deja de posicionar solo por "fisioterapia invasiva ecoguiada" y apunta 
 | Deportiva | kinesiología deportiva Mendoza, kinesiólogo deportivo, readaptación deportiva, lesiones deportivas | local / transaccional | `/kinesiologia-mendoza/deportiva/` |
 | Traumatológica | kinesiología traumatológica, rehabilitación de fracturas, tendinitis, dolor de hombro o rodilla | local / transaccional | `/kinesiologia-mendoza/traumatologica/` |
 | Postquirúrgica | rehabilitación postquirúrgica, kinesiología después de una operación, LCA, menisco, hombro | local / transaccional | `/kinesiologia-mendoza/postquirurgica/` |
-| Lumbar | kinesiología dolor lumbar, lumbalgia, dolor de espalda baja, ciática | local / transaccional | `/kinesiologia-mendoza/dolor-lumbar/` |
-| Cervical | kinesiología cervical, dolor de cuello, contractura cervical, cervicalgia | local / transaccional | `/kinesiologia-mendoza/dolor-cervical/` |
 | Esguinces | rehabilitación esguince de tobillo, esguince de rodilla o muñeca | local / transaccional | `/kinesiologia-mendoza/esguinces/` |
 | Fisioterapia invasiva | fisioterapia / kinesiología invasiva ecoguiada (sin cambios) | informacional-comercial | `/fisioterapia-invasiva-ecoguiada/` |
 | Tratamientos y patologías | EPI, NMP-e, MEP, punción seca; 12 patologías (sin cambios) | comercial local | `/tratamientos/*`, `/lesiones/*` |
@@ -301,3 +299,8 @@ Los hubs de síntoma resumen y derivan a las patologías específicas para no co
 
 **Segunda tanda (octubre 2026):** columna (`ciatica`, `hernia-de-disco`, `escoliosis`), hubs de zona (`dolor-de-espalda`, `dolor-de-codo`, `dolor-de-muneca`, `dolor-de-tobillo`), articulares (`artrosis-de-rodilla`, `dolor-patelofemoral` para "condromalacia rotuliana") y `espolon-calcaneo` (deriva a fascitis plantar). La categoría "bursas" se integró en "Lesiones articulares y bursitis" y "fascia" en "Lesiones por sobrecarga".
 
+
+
+### 8.6 Ajustes del cliente (octubre 2026)
+
+Por decisión del cliente se retiraron, por ahora, los servicios de dolor lumbar y dolor cervical y el grupo Columna (ciática, hernia de disco, escoliosis), además de tortícolis, espolón calcáneo y el grupo de lesiones articulares y bursitis. Se sumaron las páginas del ligamento colateral medial de la rodilla y del ligamento peroneo astragalino anterior del tobillo. Las patologías se ordenan priorizando las de fisioterapia invasiva: tendinosas, musculares, ligamentarias y afecciones del sistema nervioso periférico.

@@ -74,7 +74,7 @@ La punción seca puede realizarse solo con palpación, pero la ecografía agrega
 - **Protección de la pleura y el pulmón:** en músculos que están sobre el tórax (trapecio, romboides, serrato, zona intercostal) existe el riesgo de que la aguja atraviese la pleura. Ver en pantalla la costilla y la línea pleural permite planificar un recorrido que se mantenga fuera de esa zona.
 - **Vasos y nervios:** se identifican arterias, venas y nervios que pasan cerca o a través del músculo, para evitarlos.
 - **Confirmar el músculo correcto:** en regiones donde varios músculos se superponen, la imagen confirma que la aguja está en el músculo buscado y no en el vecino.
-- **Precisión en músculos por capas:** en zonas como la pantorrilla (gemelos sobre el sóleo) o la columna (músculos superficiales sobre los profundos), se puede elegir la capa exacta a tratar.
+- **Precisión en músculos por capas:** en zonas como la pantorrilla (gemelos sobre el sóleo) o la espalda (músculos paravertebrales superficiales sobre los profundos), se puede elegir la capa exacta a tratar.
 
 Profundizamos sobre esto en el artículo [punción seca con y sin ecografía: qué cambia](/blog/puncion-seca-con-ecografia-que-cambia/). También podés ver el enfoque general en la página de [fisioterapia invasiva ecoguiada](/fisioterapia-invasiva-ecoguiada/).
 
@@ -106,7 +106,7 @@ Lo más frecuente es el **dolor post-punción**: una sensación de músculo cans
 - Puede aparecer un pequeño hematoma en el punto de punción, que se resuelve solo.
 - Se indican ejercicios de movilidad, estiramiento o fuerza para consolidar el cambio.
 
-Cuando los puntos gatillo están en el trapecio, el cuello o la cintura escapular, este trabajo se integra a la [kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/) que hacemos en {{CIUDAD}}.
+Cuando los puntos gatillo están en el trapecio o la cintura escapular, este trabajo se integra al plan para el [dolor miofascial](/lesiones/dolor-miofascial/) y la [contractura muscular](/lesiones/contractura-muscular/).
 
 **Consultá de urgencia** si después de una punción en la región del tórax, la espalda alta o el cuello aparece falta de aire, dolor en el pecho que aumenta al respirar o tos persistente. Es una complicación poco frecuente, precisamente la que la guía ecográfica ayuda a prevenir, pero requiere atención médica inmediata.
 
@@ -162,7 +162,7 @@ Es habitual que se combinen: por ejemplo, tratar un tendón con EPI y, en la mis
   ],
 
   related: {
-    kinesiologia: ['dolor-cervical', 'dolor-lumbar', 'deportiva'],
+    kinesiologia: ['deportiva'],
     tratamientos: ['epi-electrolisis-percutanea', 'neuromodulacion-percutanea-ecoguiada'],
     lesiones: ['dolor-miofascial', 'desgarros-musculares', 'fibrosis-muscular', 'dolor-cronico-musculoesqueletico', 'manguito-rotador'],
     blog: ['diferencias-entre-epi-y-puncion-seca', 'puncion-seca-con-ecografia-que-cambia'],

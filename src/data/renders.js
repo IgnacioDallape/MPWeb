@@ -1,4 +1,10 @@
 // Renders 3D (public/img/3d/*.webp), generados con scripts/render-assets.mjs a partir de src/scripts/models/.
+// Fotos reales del consultorio (src/images): se muestran en la portada del tratamiento.
+export const TREATMENT_PHOTO = {
+  'epi-electrolisis-percutanea': ['foto-epi-ecografia', 'Evaluación con ecografía de la rodilla antes de un tratamiento de electrólisis percutánea (EPI) en MP Studio'],
+  'neuromodulacion-percutanea-ecoguiada': ['foto-neuromodulacion', 'Neuromodulación percutánea ecoguiada en el antebrazo, con el ecógrafo de fondo, en MP Studio'],
+};
+
 export const TREATMENT_RENDER = {
   'epi-electrolisis-percutanea': 'epi',
   'microelectrolisis-percutanea-mep': 'mep',
@@ -10,8 +16,6 @@ export const SERVICE_RENDER = {
   deportiva: 'musculares',
   traumatologica: 'manguito-rotador',
   postquirurgica: 'tendinopatia-rotuliana',
-  'dolor-lumbar': 'dolor',
-  'dolor-cervical': 'dolor-miofascial',
   esguinces: 'ligamentarias',
 };
 // Cada patología tiene su propio render, con el mismo nombre que su slug.
@@ -25,9 +29,8 @@ const LESION_FALLBACK = {
   pubalgia: 'musculares',
   'periostitis-tibial': 'fibrosis-muscular',
   'sindrome-del-tunel-carpiano': 'nmp',
-  ciatica: 'nmp',
-  'hernia-de-disco': 'dolor',
-  escoliosis: 'dolor',
+  'ligamento-colateral-medial': 'ligamentarias',
+  'ligamento-peroneo-astragalino-anterior': 'ligamentarias',
   'dolor-de-espalda': 'dolor-cronico-musculoesqueletico',
   'dolor-de-codo': 'epicondilitis',
   'dolor-de-muneca': 'epitrocleitis',
@@ -39,7 +42,6 @@ export const CATEGORY_RENDER = {
   tendinosas: 'tendinopatia-aquiles',
   musculares: 'desgarros-musculares',
   ligamentarias: 'ligamentarias',
-  columna: 'dolor',
   zonas: 'manguito-rotador',
   sobrecarga: 'fascitis-plantar',
   nerviosas: 'nmp',

@@ -33,7 +33,7 @@ No compiten: hacen cosas distintas y muchas veces complementarias.
 En muchos casos la primera consulta puede ser con kinesiología. Por ejemplo:
 
 - Dolor que apareció **de forma gradual**, sin un golpe claro: la rodilla que molesta desde que aumentaste los kilómetros en el Parque San Martín, el codo que duele después de semanas de poda en la finca.
-- **Contracturas** o dolor de cuello y espalda relacionados con postura, trabajo o un esfuerzo puntual. Ver [kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/).
+- **Contracturas** o sobrecargas musculares en el cuello y la espalda relacionadas con postura, trabajo o un esfuerzo puntual. Ver [contractura muscular](/lesiones/contractura-muscular/).
 - Molestias de **sobrecarga** en deportistas: tendones, fascia plantar, sobrecargas musculares. La [kinesiología deportiva](/kinesiologia-mendoza/deportiva/) se ocupa de esto.
 - **Esguinces leves** en los que podés apoyar y caminar, aunque duela.
 - Dolor que ya tiene diagnóstico médico y necesita rehabilitación.
@@ -64,7 +64,8 @@ La tabla es orientativa. Ante la duda, una consulta inicial con cualquiera de lo
 
 | Situación | Primera consulta sugerida | Por qué |
 |---|---|---|
-| Dolor lumbar sin golpe y sin síntomas neurológicos | Kinesiólogo | Suele responder bien a ejercicio y educación |
+| Contractura en la espalda sin golpe y sin hormigueos ni pérdida de fuerza | Kinesiólogo | Suele responder bien a ejercicio y educación |
+| Dolor de espalda que baja por la pierna con hormigueo o pérdida de fuerza | Médico | Hay que evaluar si hay una raíz nerviosa comprometida |
 | Torcedura de tobillo, podés apoyar | Kinesiólogo | Esguince leve o moderado, se descartan signos de fractura en la evaluación |
 | Torcedura de tobillo, no podés dar cuatro pasos | Médico o guardia | Puede requerir radiografía |
 | Dolor de hombro de semanas al levantar el brazo | Kinesiólogo | Frecuente en problemas del [manguito rotador](/lesiones/manguito-rotador/) |

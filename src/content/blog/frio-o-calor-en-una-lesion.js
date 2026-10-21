@@ -50,7 +50,7 @@ El calor (termoterapia) suele sentar mejor en molestias **sin traumatismo recien
 - Rigidez matinal en articulaciones o músculos.
 - Dolor muscular persistente, como el [dolor miofascial](/lesiones/dolor-miofascial/), antes de hacer ejercicios de movilidad.
 
-El calor relaja, mejora la sensación de rigidez y puede ser un buen paso previo para moverte. Si el dolor de espalda o de cuello se repite, conviene mirar más allá del alivio puntual: tenés información en [kinesiología para el dolor lumbar](/kinesiologia-mendoza/dolor-lumbar/) y [kinesiología para el dolor cervical](/kinesiologia-mendoza/dolor-cervical/).
+El calor relaja, mejora la sensación de rigidez y puede ser un buen paso previo para moverte. Si el dolor de espalda o de cuello se repite, conviene mirar más allá del alivio puntual: tenés información en [contractura muscular](/lesiones/contractura-muscular/) y en [dolor de espalda](/lesiones/dolor-de-espalda/).
 
 ## ¿Cómo aplicar frío y calor sin lastimarte?
 
@@ -139,7 +139,7 @@ Si nada de esto aparece pero la molestia no mejora en una o dos semanas, podés 
   ],
 
   related: {
-    kinesiologia: ['esguinces', 'traumatologica', 'dolor-lumbar', 'dolor-cervical'],
+    kinesiologia: ['esguinces', 'traumatologica'],
     tratamientos: ['puncion-seca-ecoguiada', 'neuromodulacion-percutanea-ecoguiada'],
     lesiones: ['desgarros-musculares', 'dolor-miofascial', 'ligamentarias'],
     blog: ['volver-a-entrenar-despues-de-una-lesion', 'kinesiologo-o-traumatologo', 'cuantas-sesiones-de-kinesiologia'],
