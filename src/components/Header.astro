@@ -1,7 +1,6 @@
 ---
 // Barra superior: logo centrado. En escritorio el menú se reparte a ambos lados del logo;
 // en celular y tablet el logo queda al centro y el botón de menú a la derecha.
-import BrandMark from './BrandMark.astro';
 import Icon from './Icon.astro';
 import { NAV } from '../data/nav.js';
 import { config, waLink } from '../lib/site.js';
@@ -25,11 +24,7 @@ const linkCls =
     </nav>
 
     <a href="/" class="brand col-start-2 flex flex-col items-center text-white no-underline" aria-label={`${brand}, inicio`}>
-      <BrandMark class="brand-logo h-[58px] transition-all duration-500 sm:h-[68px]" />
-      <span class="brand-text grid overflow-hidden text-center leading-tight transition-all duration-500">
-        <span class="mt-1.5 font-display text-[1rem] font-semibold tracking-[-0.01em]">{brand}</span>
-        <span class="text-[0.58rem] font-semibold tracking-[0.08em] whitespace-nowrap text-ice-200/90 uppercase">Fisioterapia invasiva ecoguiada</span>
-      </span>
+      <img src="/img/logo/mp-studio-header.svg" alt={brand} width="64" height="75" class="brand-logo h-[60px] w-auto drop-shadow-[0_6px_14px_rgba(0,0,0,.35)] transition-all duration-500 sm:h-[70px]" decoding="async" />
     </a>
 
     <nav aria-label="Principal (continuación)" class="hidden justify-self-start xl:block">
@@ -43,7 +38,7 @@ const linkCls =
         <Icon name="menu" class="group-open:hidden" />
         <Icon name="close" class="hidden group-open:block" />
       </summary>
-      <nav aria-label="Principal (móvil)" data-mobile-menu class="glass fixed inset-x-3 top-[136px] max-h-[calc(100dvh-220px)] overflow-auto rounded-2xl !bg-navy-950 p-3 sm:inset-x-5">
+      <nav aria-label="Principal (móvil)" data-mobile-menu class="glass fixed inset-x-3 top-[92px] max-h-[calc(100dvh-180px)] overflow-auto rounded-2xl !bg-navy-950 p-3 sm:inset-x-5">
         <ul>
           {NAV.map((n) => (
             <li>
