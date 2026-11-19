@@ -14,7 +14,7 @@
 
 export default {
   // Dominio definitivo, sin barra final. Ej: 'https://www.kinesiologiaecoguiada.com.ar'
-  siteUrl: 'https://mpfisio.com.ar',
+  siteUrl: 'https://www.mpfisio.com.ar',
   lang: 'es-AR',
   locale: 'es_AR',
 
