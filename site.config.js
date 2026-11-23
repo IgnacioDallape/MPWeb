@@ -55,9 +55,9 @@ export default {
 
   contact: {
     // Como se muestra en la web (igual que en Google Business Profile).
-    phoneDisplay: '+54 9 261 213-0504',
+    phoneDisplay: '+54 9 261 504-5507',
     // Solo dígitos, formato internacional para wa.me. Ej Argentina: 5493511234567
-    whatsapp: '5492612130504',
+    whatsapp: '5492615045507',
     email: '',
     instagram: 'https://www.instagram.com/mpstudio.fisio/',
   },

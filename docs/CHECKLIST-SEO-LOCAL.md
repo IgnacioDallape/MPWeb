@@ -12,7 +12,7 @@ Lo que no se puede hacer desde el código y más pesa para aparecer en Google Ma
 - [ ] Crear o reclamar la ficha en business.google.com y verificarla.
 - [ ] Nombre exacto: **MP Studio** (sin agregar keywords al nombre: Google lo penaliza).
 - [ ] Categoría principal: **Kinesiólogo** / Fisioterapeuta. Secundarias: Clínica de fisioterapia, Servicio de rehabilitación.
-- [ ] Dirección, teléfono (+54 9 261 213-0504) y horarios **idénticos** a los de la web.
+- [ ] Dirección, teléfono (+54 9 261 504-5507) y horarios **idénticos** a los de la web.
 - [ ] Descripción: usar la misma frase de entidad del sitio (constante `ENTITY` en `src/lib/schema.js`).
 - [ ] Servicios: cargar los 6 de kinesiología y los 4 tratamientos con el mismo nombre que en la web, cada uno con su URL.
 - [ ] Área de servicio: Luján de Cuyo, Chacras de Coria, Godoy Cruz, Mendoza, Maipú, Guaymallén, Las Heras.
