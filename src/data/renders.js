@@ -1,7 +1,9 @@
 // Renders 3D (public/img/3d/*.webp), generados con scripts/render-assets.mjs a partir de src/scripts/models/.
 // Fotos reales del consultorio (src/images): se muestran en la portada del tratamiento.
 export const TREATMENT_PHOTO = {
-  'epi-electrolisis-percutanea': ['foto-epi-ecografia', 'Evaluación con ecografía de la rodilla antes de un tratamiento de electrólisis percutánea (EPI) en MP Studio'],
+  'epi-electrolisis-percutanea': ['foto-epi', 'Electrólisis percutánea intratisular (EPI) guiada con ecografía en MP Studio'],
+  'microelectrolisis-percutanea-mep': ['foto-microelectrolisis', 'Agujas de microelectrólisis percutánea (MEP) conectadas al equipo en MP Studio'],
+  'puncion-seca-ecoguiada': ['foto-puncion-seca', 'Punción seca ecoguiada: agujas finas en el músculo con la sonda ecográfica, en MP Studio'],
   'neuromodulacion-percutanea-ecoguiada': ['foto-neuromodulacion', 'Neuromodulación percutánea ecoguiada en el antebrazo, con el ecógrafo de fondo, en MP Studio'],
 };
 

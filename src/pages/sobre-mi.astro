@@ -42,8 +42,8 @@ const schema = [
 
   <section class="bg-white py-14 md:py-28" aria-labelledby="forma">
     <div class="mx-auto grid max-w-[1240px] items-center gap-12 px-5 sm:px-8 lg:grid-cols-[360px_1fr] lg:gap-16">
-      <div class="grid aspect-[4/5] place-items-center overflow-hidden rounded-[2rem] bg-gradient-to-br from-navy-900 to-navy-700 p-6 text-center text-[0.85rem] text-white/70" data-reveal>
-        <Fragment set:html={picture('profesional', `${config.business.name}: evaluación ecográfica`, { sizes: '(min-width: 1024px) 360px, 100vw' }) || '<img src="/img/3d/probe.webp" alt="Ilustración 3D de una sonda de ecografía musculoesquelética" width="480" height="300" loading="lazy" decoding="async" class="w-full object-contain" />'} />
+      <div class="aspect-[4/5] overflow-hidden rounded-[2rem] bg-navy-900 ring-1 ring-navy-700/10" data-reveal>
+        <Fragment set:html={picture('foto-ecografia-equipo', `${config.business.name}: ecógrafo con imagen musculoesquelética durante una evaluación`, { sizes: '(min-width: 1024px) 360px, 100vw', cls: 'block h-full w-full' }) || '<img src="/img/3d/probe.webp" alt="Ilustración 3D de una sonda de ecografía musculoesquelética" width="480" height="300" loading="lazy" decoding="async" class="w-full object-contain" />'} />
       </div>
       <div>
         <SectionHead id="forma" eyebrow="Nuestra forma de trabajar" title='Tecnología al servicio de <span class="text-gradient-navy">una buena evaluación</span>' />

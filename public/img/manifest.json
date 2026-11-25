@@ -1,11 +1,4 @@
 {
-  "foto-epi-ecografia": {
-    "width": 604,
-    "height": 755,
-    "widths": [
-      480
-    ]
-  },
   "foto-neuromodulacion": {
     "width": 1500,
     "height": 1875,
@@ -13,6 +6,41 @@
       480,
       960,
       1440
+    ]
+  },
+  "foto-ecografia-equipo": {
+    "width": 446,
+    "height": 558,
+    "widths": [
+      446
+    ]
+  },
+  "foto-ecografia": {
+    "width": 434,
+    "height": 542,
+    "widths": [
+      434
+    ]
+  },
+  "foto-epi": {
+    "width": 436,
+    "height": 546,
+    "widths": [
+      436
+    ]
+  },
+  "foto-microelectrolisis": {
+    "width": 440,
+    "height": 550,
+    "widths": [
+      440
+    ]
+  },
+  "foto-puncion-seca": {
+    "width": 482,
+    "height": 602,
+    "widths": [
+      480
     ]
   }
 }
