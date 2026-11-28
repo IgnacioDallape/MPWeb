@@ -7,7 +7,7 @@ import Cards from '../../components/Cards.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { layersFigure } from '../../lib/visuals.js';
 import { config, waLink, abs } from '../../lib/site.js';
-import { treatments, services, latest } from '../../data/index.js';
+import { treatments, latest } from '../../data/index.js';
 import Related from '../../components/Related.astro';
 import * as S from '../../lib/schema.js';
 
@@ -100,6 +100,5 @@ const schema = [
       </figure>
     </div>
   </section>
-  <Related id="kinesiologia" title="Tratamientos de kinesiología" intro="La base de toda recuperación: evaluación, ejercicio terapéutico y progresión de cargas. Los tratamientos ecoguiados se suman cuando hacen falta." count={services.length}><Cards kind="kinesiologia" items={services} /></Related>
   <CtaBand waMessage={wa} />
 </Base>

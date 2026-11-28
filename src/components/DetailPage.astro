@@ -107,7 +107,6 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
     <>
       <Related id="lesiones-relacionadas" title="Patologías que vemos con frecuencia" intro="Cada caso se evalúa de forma individual, con exploración y ecografía." count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
       <Related id="tratamientos-relacionados" title="Tratamientos ecoguiados que pueden sumarse al plan" intro="Se indican solo cuando la evaluación lo justifica, siempre junto con el ejercicio." count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
-      <Related id="kinesiologia-relacionada" title="Otros servicios de kinesiología" count={rel.kinesiologia.length}><Cards kind="kinesiologia" items={rel.kinesiologia} /></Related>
       <Related id="articulos-relacionados" title="Para profundizar" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
     </>
   )}
@@ -115,7 +114,6 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
     <>
       <Related id="lesiones-relacionadas" title="Lesiones en las que suele indicarse" intro="La indicación siempre depende de la evaluación individual." count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
       <Related id="tratamientos-relacionados" title="Otros tratamientos de fisioterapia invasiva ecoguiada" count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
-      <Related id="kinesiologia-relacionada" title="Kinesiología en Mendoza" count={rel.kinesiologia.length}><Cards kind="kinesiologia" items={rel.kinesiologia} /></Related>
       <Related id="articulos-relacionados" title="Para profundizar" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
     </>
   )}
@@ -123,7 +121,6 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
     <>
       <Related id="tratamientos-relacionados" title="Tratamientos que pueden formar parte del plan" intro="Se combinan con ejercicio terapéutico y progresión de cargas cuando la evaluación lo indica." count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
       <Related id="lesiones-relacionadas" title="Lesiones relacionadas" count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
-      <Related id="kinesiologia-relacionada" title="Kinesiología relacionada" count={rel.kinesiologia.length}><Cards kind="kinesiologia" items={rel.kinesiologia} /></Related>
       <Related id="articulos-relacionados" title="Artículos sobre esta lesión" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
     </>
   )}
@@ -131,7 +128,6 @@ if (hasFaq) schema.push(S.faqPage(path, item.faqs));
     <>
       <Related id="lesiones-relacionadas" title="Lesiones relacionadas" count={rel.lesiones.length}><Cards kind="lesiones" items={rel.lesiones} /></Related>
       <Related id="tratamientos-relacionados" title="Tratamientos mencionados" count={rel.tratamientos.length}><Cards kind="tratamientos" items={rel.tratamientos} /></Related>
-      <Related id="kinesiologia-relacionada" title="Servicios de kinesiología" count={rel.kinesiologia.length}><Cards kind="kinesiologia" items={rel.kinesiologia} /></Related>
       <Related id="articulos-relacionados" title="Seguí leyendo" count={rel.blog.length}><Cards kind="blog" items={rel.blog} /></Related>
     </>
   )}

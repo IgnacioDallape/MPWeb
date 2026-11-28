@@ -41,7 +41,7 @@ const schema = [
   <PageHero crumbs={crumbs} eyebrow="Kinesiología" h1={page.h1} lead={page.lead} facts={page.facts} render="probe" renderAlt="Ilustración 3D de una sonda de ecografía musculoesquelética">
     <div class="mt-9 flex flex-wrap gap-3">
       <a href={waLink(page.waMessage)} class="btn btn-glow btn-shine" data-magnetic><Icon name="whatsapp" size={20} />Solicitar una evaluación</a>
-      <a href="#servicios-kinesiologia" class="btn btn-outline-dark">Ver servicios<Icon name="arrow" size={18} /></a>
+      <a href="#que-tratamos-en-mp-studio" class="btn btn-outline-dark">Ver servicios<Icon name="arrow" size={18} /></a>
     </div>
   </PageHero>
 
@@ -66,7 +66,6 @@ const schema = [
     </article>
   </div>
 
-  <Related id="servicios-kinesiologia" title="Servicios de kinesiología" intro="Cada servicio parte de la misma base: evaluación con ecografía y un plan de ejercicio a tu medida." count={services.length}><Cards kind="kinesiologia" items={services} /></Related>
   <Related id="tratamientos-relacionados" title="Fisioterapia invasiva ecoguiada" intro="Tratamientos que se suman al plan de kinesiología cuando la evaluación lo indica." cols={4} count={treatments.length}><Cards kind="tratamientos" items={treatments} /></Related>
   <Related id="articulos-relacionados" title="Guías para pacientes" count={guides.length}><Cards kind="blog" items={guides} /></Related>
   <CtaBand waMessage={page.waMessage} />
